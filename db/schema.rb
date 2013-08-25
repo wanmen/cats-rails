@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825085439) do
+ActiveRecord::Schema.define(version: 20130825091143) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "follows", force: true do |t|
     t.integer  "user_id"
@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "follows", ["followable_id", "followable_type", "user_id"], name: "index_follows_on_followable_id_and_followable_type_and_user_id", unique: true
-  add_index "follows", ["followable_id", "followable_type"], name: "index_follows_on_followable_id_and_followable_type"
-  add_index "follows", ["user_id"], name: "index_follows_on_user_id"
+  add_index "follows", ["followable_id", "followable_type", "user_id"], name: "index_follows_on_followable_id_and_followable_type_and_user_id", unique: true, using: :btree
+  add_index "follows", ["followable_id", "followable_type"], name: "index_follows_on_followable_id_and_followable_type", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "likes", force: true do |t|
     t.integer  "likeable_id"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "index_likes_on_likeable_id_and_likeable_type_and_user_id", unique: true
-  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type"
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+  add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "index_likes_on_likeable_id_and_likeable_type_and_user_id", unique: true, using: :btree
+  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "links", force: true do |t|
     t.integer  "list_id"
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type"
-  add_index "links", ["list_id"], name: "index_links_on_list_id"
+  add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
+  add_index "links", ["list_id"], name: "index_links_on_list_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "title"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "lists", ["admin_id"], name: "index_lists_on_admin_id"
+  add_index "lists", ["admin_id"], name: "index_lists_on_admin_id", using: :btree
 
   create_table "rates", force: true do |t|
     t.integer  "user_id"
@@ -120,9 +120,9 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "rates", ["rateable_id", "rateable_type", "user_id"], name: "index_rates_on_rateable_id_and_rateable_type_and_user_id", unique: true
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-  add_index "rates", ["user_id"], name: "index_rates_on_user_id"
+  add_index "rates", ["rateable_id", "rateable_type", "user_id"], name: "index_rates_on_rateable_id_and_rateable_type_and_user_id", unique: true, using: :btree
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["user_id"], name: "index_rates_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.integer  "topic_id"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["tagable_id", "tagable_type"], name: "index_tags_on_tagable_id_and_tagable_type"
-  add_index "tags", ["topic_id"], name: "index_tags_on_topic_id"
+  add_index "tags", ["tagable_id", "tagable_type"], name: "index_tags_on_tagable_id_and_tagable_type", using: :btree
+  add_index "tags", ["topic_id"], name: "index_tags_on_topic_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"
@@ -154,10 +154,14 @@ ActiveRecord::Schema.define(version: 20130825085439) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "thumbnail"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "title"
