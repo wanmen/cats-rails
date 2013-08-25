@@ -1,4 +1,6 @@
 Cats::Application.routes.draw do
+  resources :follows
+
   resources :rates
 
   resources :comments
