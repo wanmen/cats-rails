@@ -1,0 +1,31 @@
+<h1>Listing rates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Rateable</th>
+      <th>Star</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rates.each do |rate| %>
+      <tr>
+        <td><%= rate.user %></td>
+        <td><%= rate.rateable %></td>
+        <td><%= rate.star %></td>
+        <td><%= link_to 'Show', rate %></td>
+        <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
+        <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rate', new_rate_path %>

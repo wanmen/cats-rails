@@ -1,4 +1,12 @@
 Cats::Application.routes.draw do
+  resources :rates
+
+  resources :comments
+
+  resources :likes
+
+  resources :tags
+
   resources :topics
 
   resources :lists

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825073321) do
+ActiveRecord::Schema.define(version: 20130825082053) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -54,6 +54,27 @@ ActiveRecord::Schema.define(version: 20130825073321) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", force: true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
   create_table "lists", force: true do |t|
     t.string   "title"
     t.text     "summary"
@@ -63,6 +84,28 @@ ActiveRecord::Schema.define(version: 20130825073321) do
   end
 
   add_index "lists", ["admin_id"], name: "index_lists_on_admin_id"
+
+  create_table "rates", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "star"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+  add_index "rates", ["user_id"], name: "index_rates_on_user_id"
+
+  create_table "tags", force: true do |t|
+    t.integer  "topic_id"
+    t.integer  "tagable_id"
+    t.string   "tagable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["topic_id"], name: "index_tags_on_topic_id"
 
   create_table "topics", force: true do |t|
     t.string   "name"
