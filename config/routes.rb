@@ -1,4 +1,6 @@
 Cats::Application.routes.draw do
+  resources :topics
+
   resources :lists
 
   resources :articles
