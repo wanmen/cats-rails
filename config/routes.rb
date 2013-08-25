@@ -1,4 +1,6 @@
 Cats::Application.routes.draw do
+  resources :videos
+
   resources :books
 
   devise_for :admins
