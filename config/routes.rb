@@ -1,4 +1,6 @@
 Cats::Application.routes.draw do
+  resources :links
+
   resources :follows
 
   resources :rates

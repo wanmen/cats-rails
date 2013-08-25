@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  list_id: 
+  linkable_id: 
+
+two:
+  list_id: 
+  linkable_id: 
