@@ -1,4 +1,8 @@
 Cats::Application.routes.draw do
+  resources :lists
+
+  resources :articles
+
   resources :videos
 
   resources :books
