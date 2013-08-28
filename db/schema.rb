@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130825091143) do
+ActiveRecord::Schema.define(version: 20130828083031) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20130825091143) do
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -52,7 +55,10 @@ ActiveRecord::Schema.define(version: 20130825091143) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -104,12 +110,13 @@ ActiveRecord::Schema.define(version: 20130825091143) do
   create_table "lists", force: true do |t|
     t.string   "title"
     t.text     "summary"
-    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "type"
   end
 
-  add_index "lists", ["admin_id"], name: "index_lists_on_admin_id", using: :btree
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "rates", force: true do |t|
     t.integer  "user_id"
@@ -124,18 +131,18 @@ ActiveRecord::Schema.define(version: 20130825091143) do
   add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
   add_index "rates", ["user_id"], name: "index_rates_on_user_id", using: :btree
 
-  create_table "tags", force: true do |t|
-    t.integer  "topic_id"
+  create_table "taglinks", force: true do |t|
+    t.integer  "tag_id"
     t.integer  "tagable_id"
     t.string   "tagable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["tagable_id", "tagable_type"], name: "index_tags_on_tagable_id_and_tagable_type", using: :btree
-  add_index "tags", ["topic_id"], name: "index_tags_on_topic_id", using: :btree
+  add_index "taglinks", ["tagable_id", "tagable_type"], name: "index_taglinks_on_tagable_id_and_tagable_type", using: :btree
+  add_index "taglinks", ["tag_id"], name: "index_taglinks_on_tag_id", using: :btree
 
-  create_table "topics", force: true do |t|
+  create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -158,6 +165,8 @@ ActiveRecord::Schema.define(version: 20130825091143) do
     t.string   "uid"
     t.string   "name"
     t.string   "thumbnail"
+    t.integer  "role",                  default:0
+    t.integer  "department",            default:0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -171,6 +180,9 @@ ActiveRecord::Schema.define(version: 20130825091143) do
     t.string   "lecturer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
 
 end
