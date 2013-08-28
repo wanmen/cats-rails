@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828083031) do
+ActiveRecord::Schema.define(version: 20130828155913) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(version: 20130828083031) do
     t.datetime "updated_at"
   end
 
-  add_index "taglinks", ["tagable_id", "tagable_type"], name: "index_taglinks_on_tagable_id_and_tagable_type", using: :btree
   add_index "taglinks", ["tag_id"], name: "index_taglinks_on_tag_id", using: :btree
+  add_index "taglinks", ["tagable_id", "tagable_type"], name: "index_taglinks_on_tagable_id_and_tagable_type", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -165,10 +165,15 @@ ActiveRecord::Schema.define(version: 20130828083031) do
     t.string   "uid"
     t.string   "name"
     t.string   "thumbnail"
-    t.integer  "role",                  default:0
-    t.integer  "department",            default:0
+    t.integer  "role",                   default: 0
+    t.integer  "department",             default: 0
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

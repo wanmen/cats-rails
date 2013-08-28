@@ -4,7 +4,22 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer = "Devise::Mailer"
+  config.mailer_sender = "万门大学"
+
+  # ==> ORM configuration
+  # Load and configure the ORM. Supports :active_record (default) and
+  # :mongoid (bson_ext recommended) by default. Other ORMs may be
+  # available as additional gems.
+  require 'devise/orm/active_record'
+  require 'omniauth-renren-oauth2'
+  require 'omniauth-weibo-oauth2'
+  require 'omniauth-douban-oauth2'
+
+  config.omniauth :weibo, "3820802944", "9a4855c31ac4619fafb2b8f139c7b846", :strategy_class => OmniAuth::Strategies::Weibo
+  config.omniauth :renren, "605dddd8b117428c97369dfb283eb796","911a006a5079492d8400374b0a76b9b8",:strategy_class => OmniAuth::Strategies::Renren
+  config.omniauth :douban, "0a953dd512413a691fbfb97f36c3af3b","5c202e480ae039f6",:strategy_class => OmniAuth::Strategies::Douban
+
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -100,7 +115,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming his account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming his account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -198,7 +213,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
