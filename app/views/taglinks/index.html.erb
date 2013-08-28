@@ -1,0 +1,29 @@
+<h1>Listing taglinks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Tagable</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taglinks.each do |taglink| %>
+      <tr>
+        <td><%= taglink.topic %></td>
+        <td><%= taglink.tagable %></td>
+        <td><%= link_to 'Show', taglink %></td>
+        <td><%= link_to 'Edit', edit_taglink_path(taglink) %></td>
+        <td><%= link_to 'Destroy', taglink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Taglink', new_taglink_path %>

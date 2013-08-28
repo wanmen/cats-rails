@@ -1,4 +1,4 @@
 class Tag < ActiveRecord::Base
-  belongs_to :topic
-  belongs_to :tagable, :polymorphic=>true
+	has_many :likes, :as => :likeable
+	has_many :follows, :as => :followable
 end

@@ -3,8 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Topic</th>
-      <th>Tagable</th>
+      <th>Name</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,8 +13,7 @@
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= tag.topic %></td>
-        <td><%= tag.tagable %></td>
+        <td><%= tag.name %></td>
         <td><%= link_to 'Show', tag %></td>
         <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
         <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'New tag', new_tag_path %>

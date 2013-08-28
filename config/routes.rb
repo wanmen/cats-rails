@@ -11,7 +11,7 @@ Cats::Application.routes.draw do
 
   resources :tags
 
-  resources :topics
+  resources :taglinks
 
   resources :lists
 

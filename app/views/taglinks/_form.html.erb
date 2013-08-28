@@ -1,0 +1,25 @@
+<%= form_for(@taglink) do |f| %>
+  <% if @taglink.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@taglink.errors.count, "error") %> prohibited this taglink from being saved:</h2>
+
+      <ul>
+      <% @taglink.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tag %><br>
+    <%= f.text_field :tag %>
+  </div>
+  <div class="field">
+    <%= f.label :tagable %><br>
+    <%= f.text_field :tagable %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
