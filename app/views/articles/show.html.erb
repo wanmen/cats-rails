@@ -14,7 +14,10 @@
   <strong>Content:</strong>
   <%= @article.content %>
 </p>
-
+<p>
+  <strong>Creator:</strong>
+  <%= @article.user[:name] %>
+</p>
 <p>
   <strong>Url:</strong>
   <%= @article.url %>

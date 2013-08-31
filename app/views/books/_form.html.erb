@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

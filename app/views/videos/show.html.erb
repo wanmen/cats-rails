@@ -14,7 +14,10 @@
   <strong>Summary:</strong>
   <%= @video.summary %>
 </p>
-
+<p>
+  <strong>Creator:</strong>
+  <%= @video.user[:name] %>
+</p>
 <p>
   <strong>Url:</strong>
   <%= @video.url %>

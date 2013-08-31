@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :confirmable,:trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:douban,:weibo,:renren]
-  
+         :recoverable, :rememberable, :confirmable,:trackable, :validatable, :omniauthable, :omniauth_providers => [:douban,:weibo,:renren]
+  has_many :books
+  has_many :videos
+  has_many :articles
+  has_many :lists
   	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 	  user = User.where(:provider => auth.provider, :uid => auth.uid).first
 	  unless user
