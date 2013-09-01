@@ -17,6 +17,9 @@ class BooksController < ApplicationController
     @likeable = @book
     @likes = @likeable.likes
     @like = Like.new
+    @rateable = @book
+    @rates = @rateable.rates
+    @rate = Rate.new
   end
 
   # GET /books/new

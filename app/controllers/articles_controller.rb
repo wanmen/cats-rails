@@ -16,6 +16,9 @@ class ArticlesController < ApplicationController
     @likeable = @article
     @likes = @likeable.likes
     @like = Like.new
+    @rateable = @article
+    @rates = @rateable.rates
+    @rate = Rate.new
   end
 
   # GET /articles/new

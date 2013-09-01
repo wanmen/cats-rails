@@ -16,6 +16,9 @@ class ListsController < ApplicationController
     @likeable = @list
     @likes = @likeable.likes
     @like = Like.new
+    @rateable = @list
+    @rates = @rateable.rates
+    @rate = Rate.new
   end
 
   # GET /lists/new

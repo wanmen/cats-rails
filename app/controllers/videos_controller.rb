@@ -16,6 +16,9 @@ class VideosController < ApplicationController
     @likeable = @video
     @likes = @likeable.likes
     @like = Like.new
+    @rateable = @video
+    @rates = @rateable.rates
+    @rate = Rate.new
   end
 
   # GET /videos/new

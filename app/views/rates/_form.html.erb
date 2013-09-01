@@ -1,8 +1,7 @@
-<%= form_for(@rate) do |f| %>
+<%= form_for [@rateable, @rate] do |f| %>
   <% if @rate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rate.errors.count, "error") %> prohibited this rate from being saved:</h2>
-
+    <div class="error_messages">
+      <h2>Please correct the following errors.</h2>
       <ul>
       <% @rate.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,15 +9,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :rateable %><br>
-    <%= f.text_field :rateable %>
-  </div>
   <div class="field">
     <%= f.label :star %><br>
     <%= f.number_field :star %>
