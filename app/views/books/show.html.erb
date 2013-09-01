@@ -44,19 +44,10 @@
   <%= @book.url %>
 </p>
 
-<% unless @book.comments.empty? %>
-  <h2><%= pluralize(@book.comments.size, 'comment') %></h2>
-
-  <div id="comments">
-  <% for comment in @book.comments %>
-    <div class="comment">
-      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
-      <%=simple_format comment.content %>
-    </div>
-  <% end %>
-  </div>
-<% end %>
-
+<%= render :partial => 'likes/likes' %>
+<%= render :partial => 'likes/form' %>
+<h3>All comments:</h3>
+<%= render :partial => 'comments/comments' %>
 <h3>Add your comment:</h3>
 <%= render :partial => 'comments/form' %>
 

@@ -14,6 +14,9 @@ class BooksController < ApplicationController
     @commentable = @book
     @comments = @commentable.comments
     @comment = Comment.new
+    @likeable = @book
+    @likes = @likeable.likes
+    @like = Like.new
   end
 
   # GET /books/new

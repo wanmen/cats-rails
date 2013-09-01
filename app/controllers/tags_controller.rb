@@ -10,6 +10,9 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    @likeable = @tag
+    @likes = @likeable.likes
+    @like = Like.new
   end
 
   # GET /tags/new

@@ -10,6 +10,12 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
+    @commentable = @video
+    @comments = @commentable.comments
+    @comment = Comment.new
+    @likeable = @video
+    @likes = @likeable.likes
+    @like = Like.new
   end
 
   # GET /videos/new

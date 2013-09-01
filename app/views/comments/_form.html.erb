@@ -9,16 +9,11 @@
       </ul>
     </div>
   <% end %>
-  <% if current_user %>
-    <%= f.text_field :user_id,:value=>current_user[:id],:type=>:hidden %>
-    <p>
-      <%= f.label :content %><br />
-      <%= f.text_area :content %>
-    </p>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% else %>
-  <button>登陆以评论</button>
-  <% end %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

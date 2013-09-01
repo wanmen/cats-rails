@@ -10,6 +10,12 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @commentable = @article
+    @comments = @commentable.comments
+    @comment = Comment.new
+    @likeable = @article
+    @likes = @likeable.likes
+    @like = Like.new
   end
 
   # GET /articles/new

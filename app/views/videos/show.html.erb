@@ -28,5 +28,12 @@
   <%= @video.lecturer %>
 </p>
 
+<%= render :partial => 'likes/likes' %>
+<%= render :partial => 'likes/form' %>
+<h3>All comments:</h3>
+<%= render :partial => 'comments/comments' %>
+<h3>Add your comment:</h3>
+<%= render :partial => 'comments/form' %>
+
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

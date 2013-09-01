@@ -1,48 +1,42 @@
 class LikesController < ApplicationController
   before_action :set_like, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
-  # GET /likes
-  # GET /likes.json
   def index
-    @likes = Like.all
+    @likeable = find_likeable
+    @likes = @likeable.likes
   end
-
-  # GET /likes/1
-  # GET /likes/1.json
+  
   def show
   end
-
-  # GET /likes/new
+  
   def new
     @like = Like.new
   end
-
-  # GET /likes/1/edit
-  def edit
-  end
-
-  # POST /likes
-  # POST /likes.json
+  
   def create
-    @like = Like.new(like_params)
-
+    @likeable = find_likeable
+    @like = @likeable.likes.new(:user_id => current_user.id)
     respond_to do |format|
       if @like.save
-        format.html { redirect_to @like, notice: 'Like was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @like }
+        format.html { redirect_to @likeable, notice: 'like was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @likeable }
       else
         format.html { render action: 'new' }
         format.json { render json: @like.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PATCH/PUT /likes/1
-  # PATCH/PUT /likes/1.json
+  
+  def edit
+    @like = Like.find(params[:id])
+  end
+  
   def update
+    @like = Like.find(params[:id])
     respond_to do |format|
       if @like.update(like_params)
-        format.html { redirect_to @like, notice: 'Like was successfully updated.' }
+        format.html { redirect_to @like, notice: 'like was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -50,25 +44,31 @@ class LikesController < ApplicationController
       end
     end
   end
-
-  # DELETE /likes/1
-  # DELETE /likes/1.json
+  
   def destroy
+    @like = Like.find(params[:id])
     @like.destroy
-    respond_to do |format|
-      format.html { redirect_to likes_url }
-      format.json { head :no_content }
+    flash[:notice] = "Successfully destroyed like."
+    redirect_to likes_url
+  end
+  
+  private
+
+  def find_likeable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
     end
+    nil
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_like
+    @like = Like.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_like
-      @like = Like.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def like_params
-      params.require(:like).permit(:likeable_id, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def like_params
+    params.require(:like).permit().merge(user_id: current_user.id)
+  end
 end
