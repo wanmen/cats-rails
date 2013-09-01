@@ -5,9 +5,9 @@ Cats::Application.routes.draw do
 
   resources :rates
 
-  resources :likes
-
-  resources :tags
+  resources :tags do
+    resources :likes
+  end
 
   resources :taglinks
 
