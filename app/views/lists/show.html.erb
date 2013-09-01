@@ -15,7 +15,7 @@
   <%= @list.user[:name] %>
 </p>
 <p>
-	links
+  <%= @list.links.length %> links
   <% @list.links.each do |link| %>
     <%= link %>
   <% end %>

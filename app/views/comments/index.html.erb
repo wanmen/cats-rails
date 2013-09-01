@@ -1,31 +1,18 @@
-<h1>Listing comments</h1>
+<div id="comments">
+<% for comment in @comments %>
+  <div class="comment">
+    <%=simple_format comment.content %>
+  </div>
+<% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Commentable</th>
-      <th>User</th>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.commentable %></td>
-        <td><%= comment.user %></td>
-        <td><%= comment.content %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2>New Comment</h2>
 
-<br>
-
-<%= link_to 'New Comment', new_comment_path %>
+<% form_for [@commentable, Comment.new] do |f| %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

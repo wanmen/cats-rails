@@ -5,22 +5,31 @@ Cats::Application.routes.draw do
 
   resources :rates
 
-  resources :comments
-
   resources :likes
 
   resources :tags
 
   resources :taglinks
 
-  resources :lists
+  resources :lists do
+    resources :comments
+    resources :likes
+  end
 
-  resources :articles
+  resources :articles do
+    resources :comments
+    resources :likes
+  end
 
-  resources :videos
+  resources :videos do
+    resources :comments
+    resources :likes
+  end
 
-  resources :books
-
+  resources :books do
+    resources :comments
+    resources :likes
+  end
   devise_for :admins
 
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks",:registrations => "users/registrations"}

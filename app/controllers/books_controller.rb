@@ -11,6 +11,9 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @commentable = @book
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /books/new

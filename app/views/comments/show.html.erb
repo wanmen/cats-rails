@@ -1,19 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Commentable:</strong>
-  <%= @comment.commentable %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
+<% title "Comment" %>
 
 <p>
   <strong>Content:</strong>
-  <%= @comment.content %>
+  <%=h @comment.content %>
 </p>
+<p>
+  <strong>User id:</strong>
+  <%=h @comment.user_id %>
+</p>
+<p>
+  <strong>Commentable:</strong>
+  <%=h @comment.commentable_id %>
+</p>
+<p>
+  <strong>Commentable Type:</strong>
+  <%=h @comment.commentable_type %>
+</p>
+
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
