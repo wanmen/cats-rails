@@ -1,10 +1,9 @@
 Cats::Application.routes.draw do
   resources :links
 
-  resources :follows
-
   resources :tags do
     resources :likes
+    resources :follows
   end
 
   resources :taglinks

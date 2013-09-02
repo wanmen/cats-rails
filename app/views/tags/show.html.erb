@@ -4,6 +4,9 @@
   <strong>Name:</strong>
   <%= @tag.name %>
 </p>
+
+<%= render :partial => 'follows/follows' %>
+<%= render :partial => 'follows/form' %>
 <%= render :partial => 'likes/likes' %>
 <%= render :partial => 'likes/form' %>
 

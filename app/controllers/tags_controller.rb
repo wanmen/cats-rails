@@ -13,6 +13,9 @@ class TagsController < ApplicationController
     @likeable = @tag
     @likes = @likeable.likes
     @like = Like.new
+    @followable = @tag
+    @follows = @followable.follows
+    @follow = Follow.new
   end
 
   # GET /tags/new
