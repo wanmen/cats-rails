@@ -23,6 +23,9 @@ class BooksController < ApplicationController
     @taglinkable = @book
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
+    @linkable = @book
+    @links = @linkable.links
+    @link = Link.new
   end
 
   # GET /books/new

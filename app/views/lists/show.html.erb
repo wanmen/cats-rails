@@ -14,12 +14,7 @@
   <strong>Creator:</strong>
   <%= @list.user[:name] %>
 </p>
-<p>
-  <%= @list.links.length %> links
-  <% @list.links.each do |link| %>
-    <%= link %>
-  <% end %>
-</p>
+
 <%= render :partial => 'taglinks/taglinks' %>
 <%= render :partial => 'taglinks/form' %>
 <%= render :partial => 'likes/likes' %>

@@ -1,0 +1,8 @@
+<%= @links.length %>links
+<div id="links">
+<% @links.each do |link| %>
+  <div class="link">
+    <%= link.list.title %>
+  </div>
+<% end %>
+</div>

@@ -22,6 +22,9 @@ class ArticlesController < ApplicationController
     @taglinkable = @article
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
+    @linkable = @article
+    @links = @linkable.links
+    @link = Link.new
   end
 
   # GET /articles/new

@@ -22,6 +22,9 @@ class VideosController < ApplicationController
     @taglinkable = @video
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
+    @linkable = @video
+    @links = @linkable.links
+    @link = Link.new
   end
 
   # GET /videos/new

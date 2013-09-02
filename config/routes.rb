@@ -1,12 +1,9 @@
 Cats::Application.routes.draw do
-  resources :links
 
   resources :tags do
     resources :likes
     resources :follows
   end
-
-  resources :taglinks
 
   resources :lists do
     resources :comments
@@ -20,6 +17,7 @@ Cats::Application.routes.draw do
     resources :likes
     resources :rates
     resources :taglinks
+    resources :links
   end
 
   resources :videos do
@@ -27,6 +25,7 @@ Cats::Application.routes.draw do
     resources :likes
     resources :rates
     resources :taglinks
+    resources :links
   end
 
   resources :books do
@@ -34,6 +33,7 @@ Cats::Application.routes.draw do
     resources :likes
     resources :rates
     resources :taglinks
+    resources :links
   end
   devise_for :admins
 

@@ -1,8 +1,7 @@
-<%= form_for(@link) do |f| %>
+<%= form_for [@linkable, @link] do |f| %>
   <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
+    <div class="error_messages">
+      <h2>Please correct the following errors.</h2>
       <ul>
       <% @link.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,15 +9,10 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :list %><br>
-    <%= f.text_field :list %>
-  </div>
-  <div class="field">
-    <%= f.label :linkable %><br>
-    <%= f.text_field :linkable %>
-  </div>
+  <p>
+    <%= f.label :list_id %><br />
+    <%= f.text_field :list_id %>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>
