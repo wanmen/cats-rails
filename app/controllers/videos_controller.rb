@@ -19,6 +19,9 @@ class VideosController < ApplicationController
     @rateable = @video
     @rates = @rateable.rates
     @rate = Rate.new
+    @taglinkable = @video
+    @taglinks = @taglinkable.taglinks
+    @taglink = Taglink.new
   end
 
   # GET /videos/new

@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
     @rateable = @article
     @rates = @rateable.rates
     @rate = Rate.new
+    @taglinkable = @article
+    @taglinks = @taglinkable.taglinks
+    @taglink = Taglink.new
   end
 
   # GET /articles/new

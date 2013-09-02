@@ -1,0 +1,8 @@
+<%= @taglinks.length %>tags
+<div id="taglinks">
+<% @taglinks.each do |taglink| %>
+  <div class="taglink">
+    <%= taglink.tag.name %>
+  </div>
+<% end %>
+</div>

@@ -12,24 +12,28 @@ Cats::Application.routes.draw do
     resources :comments
     resources :likes
     resources :rates
+    resources :taglinks
   end
 
   resources :articles do
     resources :comments
     resources :likes
     resources :rates
+    resources :taglinks
   end
 
   resources :videos do
     resources :comments
     resources :likes
     resources :rates
+    resources :taglinks
   end
 
   resources :books do
     resources :comments
     resources :likes
     resources :rates
+    resources :taglinks
   end
   devise_for :admins
 

@@ -19,6 +19,9 @@ class ListsController < ApplicationController
     @rateable = @list
     @rates = @rateable.rates
     @rate = Rate.new
+    @taglinkable = @list
+    @taglinks = @taglinkable.taglinks
+    @taglink = Taglink.new
   end
 
   # GET /lists/new

@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Taglink < ActiveRecord::Base
   belongs_to :tag
   belongs_to :tagable, :polymorphic=>true
 end

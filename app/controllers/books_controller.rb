@@ -20,6 +20,9 @@ class BooksController < ApplicationController
     @rateable = @book
     @rates = @rateable.rates
     @rate = Rate.new
+    @taglinkable = @book
+    @taglinks = @taglinkable.taglinks
+    @taglink = Taglink.new
   end
 
   # GET /books/new

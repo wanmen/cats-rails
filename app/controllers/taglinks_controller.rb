@@ -1,45 +1,39 @@
 class TaglinksController < ApplicationController
   before_action :set_taglink, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
-  # GET /taglinks
-  # GET /taglinks.json
   def index
-    @taglinks = Taglink.all
+    @taglinkable = find_taglinkable
+    @taglinks = @taglinkable.taglinks
   end
-
-  # GET /taglinks/1
-  # GET /taglinks/1.json
+  
   def show
   end
-
-  # GET /taglinks/new
+  
   def new
     @taglink = Taglink.new
   end
-
-  # GET /taglinks/1/edit
-  def edit
-  end
-
-  # POST /taglinks
-  # POST /taglinks.json
+  
   def create
-    @taglink = Taglink.new(taglink_params)
-
+    @taglinkable = find_taglinkable
+    @taglink = @taglinkable.taglinks.new(taglink_params)
     respond_to do |format|
       if @taglink.save
-        format.html { redirect_to @taglink, notice: 'taglink was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @taglink }
+        format.html { redirect_to @taglinkable, notice: 'taglink was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @taglinkable }
       else
         format.html { render action: 'new' }
         format.json { render json: @taglink.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PATCH/PUT /taglinks/1
-  # PATCH/PUT /taglinks/1.json
+  
+  def edit
+    @taglink = Taglink.find(params[:id])
+  end
+  
   def update
+    @taglink = Taglink.find(params[:id])
     respond_to do |format|
       if @taglink.update(taglink_params)
         format.html { redirect_to @taglink, notice: 'taglink was successfully updated.' }
@@ -50,25 +44,31 @@ class TaglinksController < ApplicationController
       end
     end
   end
-
-  # DELETE /taglinks/1
-  # DELETE /taglinks/1.json
+  
   def destroy
+    @taglink = Taglink.find(params[:id])
     @taglink.destroy
-    respond_to do |format|
-      format.html { redirect_to taglinks_url }
-      format.json { head :no_content }
+    flash[:notice] = "Successfully destroyed taglink."
+    redirect_to taglinks_url
+  end
+  
+  private
+
+  def find_taglinkable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
     end
+    nil
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_taglink
+    @taglink = Taglink.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_taglink
-      @taglink = Taglink.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def taglink_params
-      params.require(:taglink).permit(:topic_id, :taglinkable)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def taglink_params
+    params.require(:taglink).permit(:tag_id)
+  end
 end
