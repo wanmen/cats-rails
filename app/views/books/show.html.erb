@@ -43,10 +43,13 @@
   <strong>Url:</strong>
   <%= @book.url %>
 </p>
-
+对应<%= @links.length %>个书单：
 <%= render :partial => 'links/links' %>
+<a href="/lists/new">新建书单</a>
+<% if (@lists.length>0) %>
+加入我的书单
 <%= render :partial => 'links/form' %>
-
+<% end %>
 <%= render :partial => 'taglinks/taglinks' %>
 <%= render :partial => 'taglinks/form' %>
 

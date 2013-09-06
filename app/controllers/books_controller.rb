@@ -26,6 +26,12 @@ class BooksController < ApplicationController
     @linkable = @book
     @links = @linkable.links
     @link = Link.new
+    if (current_user)
+      @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 1)
+    else
+      @lists = []
+    end
+    @tags = Tag.all
   end
 
   # GET /books/new

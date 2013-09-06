@@ -1,8 +1,7 @@
-<%= @links.length %>links
 <div id="links">
 <% @links.each do |link| %>
   <div class="link">
-    <%= link.list.title %>
+    <a href="/lists/<%= link.list.id %>"><%= link.list.title %></a>
   </div>
 <% end %>
 </div>

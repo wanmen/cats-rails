@@ -10,10 +10,9 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :tag_id %><br />
-    <%= f.text_field :tag_id %>
+    <%= f.select :tag_id, @tags.map{ |c| [c.name, c.id] } %>
   </p>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '添加标签' %>
   </div>
 <% end %>

@@ -10,10 +10,9 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :star %><br>
-    <%= f.number_field :star %>
+    <%= f.number_field :star,:id=>'rate',:type=>'hidden'%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '打分',:id=>'rate_button' %>
   </div>
 <% end %>

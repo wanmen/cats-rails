@@ -22,15 +22,18 @@ class ListsController < ApplicationController
     @taglinkable = @list
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
+    @tags = Tag.all
   end
 
   # GET /lists/new
   def new
+    @types =[["书单",1],["视频集",2],["经验贴集",3]]
     @list = List.new
   end
 
   # GET /lists/1/edit
   def edit
+    @types =[["书单",1],["视频集",2],["经验贴集",3]]
   end
 
   # POST /lists
@@ -81,6 +84,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:title, :summary, :user_id)
+      params.require(:list).permit(:title, :summary, :user_id,:list_type)
     end
 end

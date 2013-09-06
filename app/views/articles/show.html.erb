@@ -28,8 +28,13 @@
   <%= @article.author %>
 </p>
 
+对应<%= @links.length %>个经验贴列表：
 <%= render :partial => 'links/links' %>
+<a href="/lists/new">新建经验贴列表</a>
+<% if (@lists.length>0) %>
+加入我的经验贴列表
 <%= render :partial => 'links/form' %>
+<% end %>
 
 <%= render :partial => 'taglinks/taglinks' %>
 <%= render :partial => 'taglinks/form' %>

@@ -12,11 +12,15 @@
   <% end %>
   <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
   <div class="field">
-    <%= f.label :title %><br>
+    标题：
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :summary %><br>
+    类型：
+    <%= f.select :list_type, @types %>
+  </div>
+  <div class="field">
+    描述：
     <%= f.text_area :summary %>
   </div>
   <div class="actions">

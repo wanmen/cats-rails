@@ -10,10 +10,9 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :list_id %><br />
-    <%= f.text_field :list_id %>
+    <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
   </p>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "加入" %>
   </div>
 <% end %>

@@ -25,6 +25,12 @@ class ArticlesController < ApplicationController
     @linkable = @article
     @links = @linkable.links
     @link = Link.new
+    if (current_user)
+      @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 3)
+    else
+      @lists = []
+    end
+    @tags = Tag.all
   end
 
   # GET /articles/new

@@ -115,9 +115,21 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/assets/jquery.js"></script>
+<script src="/assets/jquery.raty.js"></script>
 <script src="/assets/bootstrap.min.js"></script>
 <script src="/assets/holder.js"></script>
-
+<script>
+$('#rate_button').hide();
+$('#star').raty({
+  score: function() {
+    return $(this).attr('data-score');
+  },
+  click: function(score, evt) {
+    $('#rate')[0].value = score;
+    $('#rate_button').show();
+  }
+});
+</script>
 </body>
 </html>
 

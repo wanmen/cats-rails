@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20130828155913) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "type"
+    t.integer  "list_type",     default: 0
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
