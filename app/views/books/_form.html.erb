@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <p>
+    <a href="/uploader?return_url=<%=request.original_url%>">上传封面</a>
+  </p>
+  <div class="field">
+    <% if params[:url] %>
+      <img src="<%= upyun_url+ params[:url] %>">
+       <%= f.text_field :cover, :value=> upyun_url+params[:url],:type=>:hidden%>
+    <% else %>
+       或者<%= f.text_field :cover,:placeholder=>'添加图片URL'%>
+    <% end %>
+  </div>
   <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
   <div class="field">
     <%= f.label :title %><br>
@@ -19,10 +30,6 @@
   <div class="field">
     <%= f.label :dbid %><br>
     <%= f.number_field :dbid %>
-  </div>
-  <div class="field">
-    <%= f.label :cover %><br>
-    <%= f.text_field :cover %>
   </div>
   <div class="field">
     <%= f.label :summary %><br>

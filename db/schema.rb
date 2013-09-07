@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20130828155913) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "thumbnail"
+    t.string   "thumbnail",              default:"/assets/profile.png"
     t.integer  "role",                   default: 0
     t.integer  "department",             default: 0
     t.string   "confirmation_token"

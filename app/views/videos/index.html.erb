@@ -18,7 +18,7 @@
     <% @videos.each do |video| %>
       <tr>
         <td><%= video.title %></td>
-        <td><%= video.cover %></td>
+        <td><img src="<%= video.cover %>"></td>
         <td><%= video.summary %></td>
         <td><%= video.url %></td>
         <td><%= video.lecturer %></td>

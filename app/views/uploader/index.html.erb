@@ -1,0 +1,5 @@
+<form action="<%= upyun_api_url %>" method="post" enctype="multipart/form-data">
+<%= upyun_form_input_tag(:return_url => @return_url) %>
+<input type="file" name="file" />
+<button type="submit">上传图片</button>
+</form>

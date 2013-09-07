@@ -7,6 +7,17 @@
   <%= f.email_field :email, :autofocus => true %></div>
   <div><%= f.label :name,"昵称" %><br />
   <%= f.text_field :name %></div>
+  <p>
+    <a href="/uploader?return_url=<%=request.original_url%>">上传头像</a>
+  </p>
+  <div class="field">
+    <% if params[:url] %>
+      <img src="<%= upyun_url+ params[:url] %>">
+       <%= f.text_field :thumbnail, :value=> upyun_url+params[:url],:type=>:hidden%>
+    <% else %>
+       或者<%= f.text_field :thumbnail,:placeholder=>'添加图片URL'%>
+    <% end %>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
