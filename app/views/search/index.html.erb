@@ -1,0 +1,13 @@
+<% if @books %>
+ <% @books.each do |book| %>
+ 	<%= book.title %>
+ 	<a href="/books/<%= book.id %>"><img src="<%= book.cover %>!medium"></a>
+ <% end %>
+ <% @videos.each do |video| %>
+ 	<%= video.title %>
+ 	<a href="/videos/<%= video.id %>"><img src="<%= video.cover %>!small"></a>
+ <% end %>
+ <% @articles.each do |article| %>
+ 	<a href="/articles/<%= article.id %>"><%= article.title %></a>
+ <% end %>
+<% end %>

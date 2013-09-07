@@ -44,6 +44,7 @@ Cats::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get '/uploader' => 'uploader#index', :as => :new_uploader
+  get '/search' => 'search#index', :as => :new_search
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
