@@ -1,9 +1,10 @@
 <div class="container">
   <div class="page-header">
-    <h2>Books</h2>
+    <h2>万门书库</h2>
   </div>
   <div class="row">
     <div class="col-xs-8">
+      <h3>精选推荐</h3>
       <div class="row">
           <% @recommend.each do |link| %>
             <div class="col-xs-4">
@@ -13,6 +14,8 @@
             </div>
           <% end %>
       </div>
+      <hr>
+      <h3>最新图书</h3>
       <div class="row">
         <div class="row">
           <% @newest.each do |book| %>
@@ -26,9 +29,13 @@
       </div>
     </div>
     <div class="col-xs-4">
-       <a href="#" class="thumbnail">
-         <img src="data:image/png;base64," data-src="holder.js/360x508" alt="">
-       </a>
+       <% @popular.each do |book| %>
+       <p>
+            <a href="/books/<%=book.id %>">
+               <%=book.title %>
+            </a>
+       </p>
+        <% end %>
     </div>
   </div>
 
