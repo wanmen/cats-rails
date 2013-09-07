@@ -27,22 +27,15 @@
   <strong>Lecturer:</strong>
   <%= @video.lecturer %>
 </p>
-对应<%= @links.length %>个视频集：
 <%= render :partial => 'links/links' %>
-<a href="/lists/new">新建视频集</a>
-<% if (@lists.length>0) %>
-加入我的视频集
 <%= render :partial => 'links/form' %>
-<% end %>
 <%= render :partial => 'taglinks/taglinks' %>
 <%= render :partial => 'taglinks/form' %>
 <%= render :partial => 'likes/likes' %>
 <%= render :partial => 'likes/form' %>
 <%= render :partial => 'rates/rates' %>
 <%= render :partial => 'rates/form' %>
-<h3>All comments:</h3>
 <%= render :partial => 'comments/comments' %>
-<h3>Add your comment:</h3>
 <%= render :partial => 'comments/form' %>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |

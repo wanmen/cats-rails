@@ -1,3 +1,4 @@
+<h3>添加新评论</h3>
 <%= form_for [@commentable, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div class="error_messages">
@@ -9,6 +10,8 @@
       </ul>
     </div>
   <% end %>
+  <% if current_user %>
+  <img src="<%= current_user[:thumbnail]%>" width="50px">
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>
@@ -16,4 +19,9 @@
   <div class="actions">
     <%= f.submit '评论' %>
   </div>
+  <% else %>
+  <div class="actions">
+    <%= f.submit '登陆以评论' %>
+  </div>
+  <% end %>
 <% end %>

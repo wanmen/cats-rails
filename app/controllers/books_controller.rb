@@ -6,6 +6,9 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @recommend = List.find(1).links
+    @newest = Book.find(:all, :limit => 3, :order=> 'created_at desc')
+    @popular = Book.top5
   end
 
   # GET /books/1

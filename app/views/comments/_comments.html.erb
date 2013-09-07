@@ -1,7 +1,8 @@
+<h3>所有评论</h3>
 <div id="comments">
 <% @comments.each do |comment| %>
   <div class="comment">
-  	<em><%= comment.user[:name]%> on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+  	<em><img src="<%= comment.user[:thumbnail]%>" width="50px"><%= comment.user[:name]%> 在 <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
     <%= simple_format comment.content %>
   </div>
 <% end %>

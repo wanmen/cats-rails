@@ -1,41 +1,84 @@
-<h1>Listing books</h1>
+<div class="container">
+  <div class="page-header">
+    <h2>Books</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="row">
+          <% @recommend.each do |link| %>
+            <div class="col-xs-4">
+              <a href="/books/<%=link.linkable.id %>" class="thumbnail">
+                 <img src="<%=link.linkable.cover %>" alt="">
+              </a>
+            </div>
+          <% end %>
+      </div>
+      <div class="row">
+        <div class="row">
+          <% @newest.each do |book| %>
+            <div class="col-xs-4">
+              <a href="/books/<%=book.id %>" class="thumbnail">
+                 <img src="<%=book.cover %>" alt="">
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+       <a href="#" class="thumbnail">
+         <img src="data:image/png;base64," data-src="holder.js/360x508" alt="">
+       </a>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Dbid</th>
-      <th>Cover</th>
-      <th>Summary</th>
-      <th>Isbn</th>
-      <th>Author</th>
-      <th>Publisher</th>
-      <th>Url</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.dbid %></td>
-        <td><img src="<%= book.cover %>"></td>
-        <td><%= book.summary %></td>
-        <td><%= book.isbn %></td>
-        <td><%= book.author %></td>
-        <td><%= book.publisher %></td>
-        <td><%= book.url %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  <div class="page-header">
+    <h2>Book Lists</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/360x248" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+       <a href="#" class="thumbnail">
+         <img src="data:image/png;base64," data-src="holder.js/360x508" alt="">
+       </a>
+    </div>
+  </div>
+</div>
+</div>
 
 <%= link_to 'New Book', new_book_path %>

@@ -5,4 +5,10 @@ class Book < ActiveRecord::Base
 	has_many :rates, :as => :rateable
 	has_many :links, :as => :linkable
 	belongs_to :user
+	scope :top5,
+    select("books.id, books.title, count(likes.id) AS likes_count").
+    joins(:likes).
+    group("books.id").
+    order("likes_count DESC").
+    limit(5)
 end

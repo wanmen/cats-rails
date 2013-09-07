@@ -1,35 +1,61 @@
-<h1>Listing videos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Cover</th>
-      <th>Summary</th>
-      <th>Url</th>
-      <th>Lecturer</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><img src="<%= video.cover %>"></td>
-        <td><%= video.summary %></td>
-        <td><%= video.url %></td>
-        <td><%= video.lecturer %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+ <div class="container">
+  <div class="page-header">
+    <h1>万门视频</h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-8">
+          <a href="/videos/<%= @videos[0].id %>.html" class="thumbnail">
+             <img src="<%= @videos[0].cover %>" width="360" height="248" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/160x120" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/160x120" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+              <img src="data:image/png;base64," data-src="holder.js/160x120" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/160x120" alt="">
+          </a>
+        </div>
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/160x120" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+     <div class="row">
+        <div class="col-xs-12">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/240x180" alt="">
+          </a>
+        </div>
+        <div class="col-xs-12">
+          <a href="#" class="thumbnail">
+             <img src="data:image/png;base64," data-src="holder.js/240x180" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
 
 <%= link_to 'New Video', new_video_path %>

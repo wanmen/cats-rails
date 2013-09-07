@@ -1,18 +1,29 @@
-<%= form_for [@linkable, @link] do |f| %>
-  <% if @link.errors.any? %>
-    <div class="error_messages">
-      <h2>Please correct the following errors.</h2>
-      <ul>
-      <% @link.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<% if current_user %>
+  <% if (@lists.length>0) %>
+  <a onclick="addList()">添加到我的单子</a>
+  <div id="listForm" style="display:none;">
+    添加到<%= form_for [@linkable, @link] do |f| %>
+    <% if @link.errors.any? %>
+      <div class="error_messages">
+        <h2>Please correct the following errors.</h2>
+        <ul>
+        <% @link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+      <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
+    </p>
+    <div class="actions">
+      <%= f.submit "加入" %>
     </div>
+    <a onclick="hideList()">隐藏</a>
   <% end %>
-  <p>
-    <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
-  </p>
-  <div class="actions">
-    <%= f.submit "加入" %>
+  <a href="/lists/new">新建单子</a>
   </div>
+  <% else %>
+  <a href="/lists/new">新建单子</a>
+  <% end %>
 <% end %>

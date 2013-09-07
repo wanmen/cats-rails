@@ -1,43 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>万门大学</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="shortcut icon" href="/assets/favicon.ico">
-  <!-- Bootstrap core CSS -->
-  <link href="/assets/bootstrap.css" rel="stylesheet">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <link href="css/bootstrap-ie7.css" rel="stylesheet">
+    <title>万门大学</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/bottle.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
-  <![endif]-->
+    <![endif]-->
+  </head>
 
-  <!-- Custom styles for this template -->
-  <link href="/assets/index.css" rel="stylesheet">
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% if flash[:alert] %>
-    <p class="alert alert-warning">
-      <%= flash[:alert] %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </p>
-<% end %>
-<% if flash[:notice] %>
-  <p class="alert alert-info">
-      <%= flash[:notice] %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </p>
-<% end %>
-  <div class="navbar-wrapper">
-  <div class="container">
+  <body>
 
-    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,25 +36,20 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">知识库<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/books.html">图书</a></li>
                 <li><a href="/videos.html">视频</a></li>
                 <li><a href="/articles.html">经验贴</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">更多</li>
-                <li><a href="#">万门X</a></li>
               </ul>
             </li>
-            <li><a href="#">课程</a></li>
-            <li><a href="#">关于</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
                 <% if (current_user[:sign_in_count]<=1) %>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="50px"></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
                     <li> <%= link_to "登出", destroy_user_session_path, :method => :delete %>
@@ -76,7 +58,7 @@
                 </li>
                 <% else %>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="50px"></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
                     <li> <%= link_to "登出", destroy_user_session_path, :method => :delete %>
@@ -101,35 +83,56 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <% if flash[:alert] %>
+    <p class="alert alert-warning">
+          <%= flash[:alert] %>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </p>
+    <% end %>
+    <% if flash[:notice] %>
+    <p class="alert alert-info">
+          <%= flash[:notice] %>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </p>
+    <% end %>
+    <%= yield %>
+    <footer>
+      <p class="pull-right"><a href="#">向上</a></p>
+      <p>&copy; 万门公益 &middot; 京ICP备13038614号<a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
 
-  </div>
-</div>
-<%= yield %>
-<!-- FOOTER -->
-<hr>
-<footer>
-  <p class="pull-right"><a href="#">向上</a></p>
-  <p>&copy; 万门公益 &middot; 京ICP备13038614号<a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-</footer>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="/assets/jquery.js"></script>
-<script src="/assets/jquery.raty.js"></script>
-<script src="/assets/bootstrap.min.js"></script>
-<script src="/assets/holder.js"></script>
-<script>
-$('#rate_button').hide();
-$('#star').raty({
-  score: function() {
-    return $(this).attr('data-score');
-  },
-  click: function(score, evt) {
-    $('#rate')[0].value = score;
-    $('#rate_button').show();
-  }
-});
-</script>
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/jquery.raty.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+    <script src="/assets/holder.js"></script>
+    <script>
+    $('#rate_button').hide();
+    $('#star').raty({
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      click: function(score, evt) {
+        $('#rate')[0].value = score;
+        $('#rate_button').show();
+      }
+    });
+    function addTag(){
+      $('#tagForm').show();
+    }
+    function hideTag(){
+      $('#tagForm').hide();
+    }
+    function addList(){
+      $('#listForm').show();
+    }
+    function hideList(){
+      $('#listForm').hide();
+    }
+    </script>
+
+  </body>
 </html>
 

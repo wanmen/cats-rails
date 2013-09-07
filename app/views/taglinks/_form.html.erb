@@ -1,18 +1,24 @@
-<%= form_for [@taglinkable, @taglink] do |f| %>
-  <% if @taglink.errors.any? %>
-    <div class="error_messages">
-      <h2>Please correct the following errors.</h2>
-      <ul>
-      <% @taglink.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<% if current_user %>
+  <a onclick="addTag()">添加新标签</a>
+  <div id="tagForm" style="display:none;">
+    <%= form_for [@taglinkable, @taglink] do |f| %>
+      <% if @taglink.errors.any? %>
+        <div class="error_messages">
+          <h2>Please correct the following errors.</h2>
+          <ul>
+          <% @taglink.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.select :tag_id, @tags.map{ |c| [c.name, c.id] } %>
-  </p>
-  <div class="actions">
-    <%= f.submit '添加标签' %>
+      <p>
+        <%= f.select :tag_id, @tags.map{ |c| [c.name, c.id] } %>
+      </p>
+      <div class="actions">
+        <%= f.submit '添加' %>
+      </div>
+    <% end %>
+    <a onclick="hideTag()">隐藏</a>
   </div>
 <% end %>
