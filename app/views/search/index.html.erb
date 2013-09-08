@@ -1,13 +1,54 @@
-<% if @books %>
- <% @books.each do |book| %>
- 	<%= book.title %>
- 	<a href="/books/<%= book.id %>"><img src="<%= book.cover %>!medium"></a>
- <% end %>
- <% @videos.each do |video| %>
- 	<%= video.title %>
- 	<a href="/videos/<%= video.id %>"><img src="<%= video.cover %>!small"></a>
- <% end %>
- <% @articles.each do |article| %>
- 	<a href="/articles/<%= article.id %>"><%= article.title %></a>
- <% end %>
-<% end %>
+<div class="container">
+	<div class="page-header">
+      <h1>搜索结果</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+        	<% if @books %>
+				<% @books.each do |book| %>
+				  <div class="row">
+		            <div class="col-xs-4">
+		              <a href="/books/<%= book.id %>" class="thumbnail">
+		                 <img src="<%= book.cover %>!medium" width="360" alt="">
+		              </a>
+		            </div>
+		            <div class="col-xs-8">
+		              <h3><%= book.title %></h3>
+		              <p><%= book.summary[0,200] %></p>
+		            </div>
+		          </div>
+				<% end %>
+			<% end %>
+			<% if @videos %>
+				<% @videos.each do |video| %>
+				 	<div class="row">
+		            <div class="col-xs-4">
+		              <a href="/videos/<%= video.id %>" class="thumbnail">
+		                 <img src="<%= video.cover %>!medium" width="360" alt="">
+		              </a>
+		            </div>
+		            <div class="col-xs-8">
+		              <h3><%= video.title %></h3>
+		              <p><%= video.summary[0,200] %></p>
+		            </div>
+		          </div>
+				<% end %>
+			<% end %>
+			<% if @articles %>
+				<% @articles.each do |article| %>
+				 	<div class="row">
+		            <div class="col-xs-4">
+		              <a href="/articles/<%= article.id %>" class="thumbnail">
+		              	<%= article.title %>
+		              </a>
+		            </div>
+		            <div class="col-xs-8">
+		              <h3><%= article.title %></h3>
+		              <p><%= article.summary[0,200] %></p>
+		            </div>
+		          </div>
+				<% end %>
+			<% end %>
+    	</div>
+ 	 </div>
+</div>

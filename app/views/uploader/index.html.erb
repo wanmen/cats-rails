@@ -1,7 +1,12 @@
-<div class="container" style="margin-top:100px;">
-	<form action="<%= upyun_api_url %>" method="post" enctype="multipart/form-data">
-	<%= upyun_form_input_tag(:return_url => @return_url) %>
-	<input type="file" name="file" />
-	<button type="submit">上传图片</button>
-	</form>
+<div class="container">
+    <div class="page-header">
+      <h1>上传图片</h1>
+    </div>
+    <div class="row">
+      	<form action="<%= upyun_api_url %>" method="post" enctype="multipart/form-data">
+		<%= upyun_form_input_tag(:return_url => @return_url) %>
+		<input type="file" name="file" />
+		<button type="submit">上传图片</button>
+		</form>
+    </div>
 </div>

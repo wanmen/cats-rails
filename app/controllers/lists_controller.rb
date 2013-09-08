@@ -23,6 +23,15 @@ class ListsController < ApplicationController
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
     @tags = Tag.all
+    if (@list.list_type ==1 )
+      @type="books"
+    else 
+      if (@list.list_type ==2)
+        @type= "videos"
+      else
+        @type = "articles"
+      end
+    end
   end
 
   # GET /lists/new

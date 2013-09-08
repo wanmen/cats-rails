@@ -7,8 +7,10 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @recommend = List.find(1).links(3)
-    @newest = Book.find(:all, :limit => 3, :order=> 'created_at desc')
+    @newest = Book.newest5
     @popular = Book.top5
+    @newestBooklist = List.newest5Booklist
+    @popularBooklist = List.top5Booklist
   end
 
   # GET /books/1
