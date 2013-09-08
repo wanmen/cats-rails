@@ -9,7 +9,7 @@
           <% @recommend.each do |link| %>
             <div class="col-xs-4">
               <a href="/books/<%=link.linkable.id %>" class="thumbnail">
-                 <img src="<%=link.linkable.cover %>!medium" alt="">
+                 <img src="<%=link.linkable.cover %>!big" alt="">
               </a>
             </div>
           <% end %>
@@ -21,7 +21,7 @@
           <% @newest.each do |book| %>
             <div class="col-xs-4">
               <a href="/books/<%=book.id %>" class="thumbnail">
-                 <img src="<%=book.cover %>!medium" alt="">
+                 <img src="<%=book.cover %>!big" alt="">
               </a>
             </div>
           <% end %>
