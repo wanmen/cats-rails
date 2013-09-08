@@ -46,6 +46,12 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form method="get" action="/search" class="navbar-form pull-left">
+                <input type="text" name="title" placeholder="图书，视频，经验贴" class="span2">
+                <button type="submit" class="btn">搜索</button>
+              </form>
+            </li>
             <% if user_signed_in? %>
                 <% if (current_user[:sign_in_count]<=1) %>
                 <li class="dropdown">
