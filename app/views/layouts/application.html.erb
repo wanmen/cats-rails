@@ -20,6 +20,23 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+    <style>
+    #videoPanel{
+      z-index: 100;
+      width:100%;
+      margin-top: 80px;
+      padding:0 100px;
+      position: absolute;
+      top:0px;
+      left:0px;
+    }
+    #videoFrame{
+      width: 100%;
+      height: 600px;
+      text-align: center;
+      margin:0 auto;
+    }
+    </style>
   </head>
 
   <body>
@@ -137,6 +154,19 @@
     }
     function hideList(){
       $('#listForm').hide();
+    }
+    function showVideo(video){
+      if(video.indexOf('youku')!=-1){
+        var vid=video.slice(video.indexOf("id_")+3,-5);
+        video = "http://player.youku.com/embed/"+vid;
+      }
+      window.open(video);
+     // $('#videoPanel').show();
+     // $('#videoFrame').attr('src', video);
+    }
+    function hideVideo(){
+      $('#videoPanel').hide();
+      $('#videoFrame').attr('src','');
     }
     </script>
 

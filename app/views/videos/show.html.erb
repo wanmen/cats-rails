@@ -16,7 +16,7 @@
         </div>
         <div class="col-xs-8">
           主讲人: <%= @video.lecturer %> <br/>
-          链接: <%= @video.url %> <br/>
+          <a class="btn btn-primary" onclick="showVideo('<%= @video.url %>');">查看</a> <br/>
           <hr/>
             <%= render :partial => 'links/links' %>
             <%= render :partial => 'links/form' %>
@@ -44,4 +44,8 @@
     <%= render :partial => 'comments/form' %>
   </div>
 </div>
+</div>
+<div id="videoPanel" style="display:none;">
+  <button type="button" class="close"  onclick="hideVideo()">&times;</button>
+  <div><iframe src="" id="videoFrame"></iframe></div>
 </div>
