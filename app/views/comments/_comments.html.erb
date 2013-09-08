@@ -2,7 +2,8 @@
 <div id="comments">
 <% @comments.each do |comment| %>
   <div class="comment">
-  	<em><img src="<%= comment.user[:thumbnail]%>" width="50px"><%= comment.user[:name]%> 在 <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+  	<img src="<%= comment.user[:thumbnail]%>" width="50px">
+  	<em><%= comment.user[:name]%> 在 <%= comment.created_at.strftime('%b %d, %Y %H:%M') %></em>
     <%= simple_format comment.content %>
   </div>
 <% end %>

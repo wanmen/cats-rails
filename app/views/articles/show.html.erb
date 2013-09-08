@@ -1,45 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @article.summary %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-<p>
-  <strong>Creator:</strong>
-  <%= @article.user[:name] %>
-</p>
-<p>
-  <strong>Url:</strong>
-  <%= @article.url %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
-
-<%= render :partial => 'links/links' %>
-<%= render :partial => 'links/form' %>
-
-<%= render :partial => 'taglinks/taglinks' %>
-<%= render :partial => 'taglinks/form' %>
-<%= render :partial => 'likes/likes' %>
-<%= render :partial => 'likes/form' %>
-
-<%= render :partial => 'rates/rates' %>
-<%= render :partial => 'rates/form' %>
-<%= render :partial => 'comments/comments' %>
-<%= render :partial => 'comments/form' %>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="page-header">
+        <h3><%= @article.title %></h3>
+        <p><%= @article.user[:name] %>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+          <%= link_to '修改', edit_article_path(@article) %>  |
+          <%= link_to '返回', articles_path %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    作者：<%= @article.author %>
+    简要：<%= @article.summary %>
+    正文：<%= @article.content %>
+    链接：<%= @article.url %>
+  </div>
+  <div class="col-xs-8">
+    单子
+    <%= render :partial => 'links/links' %>
+    <%= render :partial => 'links/form' %>
+    <br/>
+    标签
+    <%= render :partial => 'taglinks/taglinks' %>
+    <%= render :partial => 'taglinks/form' %>
+    <br/>
+    喜欢
+    <%= render :partial => 'likes/likes' %>
+    <%= render :partial => 'likes/form' %>
+    <br/>
+    推荐指数
+    <%= render :partial => 'rates/rates' %>
+    <%= render :partial => 'rates/form' %>
+  </div>
+  <div class="col-xs-8"> 
+    <%= render :partial => 'comments/comments' %>
+    <%= render :partial => 'comments/form' %>
+  </div>
+</div>

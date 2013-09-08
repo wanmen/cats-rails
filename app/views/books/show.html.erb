@@ -1,60 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="page-header">
+        <h3><%= @book.title %></h3>
+        <p><%= @book.user[:name] %>修改于<%= @book[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+          <%= link_to '修改', edit_book_path(@book) %>  |
+          <%= link_to '返回', books_path %>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="/books/<%= @book.id %>" class="thumbnail">
+             <img src="<%= @book.cover %>" width="360" height="248"  alt="">
+          </a>
+        </div>
+        <div class="col-xs-8">
+          作者: <%= @book.author %><br/>
+          链接：<%= @book.url %><br/>
+          出版社: <%= @book.publisher %><br/>
+          ISBN：<%= @book.isbn %><br/>
+          豆瓣ID：<%= @book.dbid %><br/>
+          <hr/>
+          书单
+          <%= render :partial => 'links/links' %>
+          <%= render :partial => 'links/form' %>
+          <br/>
+          标签
+          <%= render :partial => 'taglinks/taglinks' %>
+          <%= render :partial => 'taglinks/form' %>
+          <br/>
+          喜欢
+          <%= render :partial => 'likes/likes' %>
+          <%= render :partial => 'likes/form' %>
+          <br/>
+          推荐指数
+          <%= render :partial => 'rates/rates' %>
+          <%= render :partial => 'rates/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-8">
+     <%= @book.summary %>
+  </div>
+  <div class="col-xs-8">
 
-<p>
-  <strong>标题</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>豆瓣ID:</strong>
-  <%= @book.dbid %>
-</p>
-
-<p>
-  <img src="<%= @book.cover %>!big">
-</p>
-
-<p>
-  <strong>简介:</strong>
-  <%= @book.summary %>
-</p>
-
-<p>
-  <strong>Isbn号:</strong>
-  <%= @book.isbn %>
-</p>
-<p>
-  <strong>添加者:</strong>
-  <%= @book.user[:name] %>
-</p>
-
-<p>
-  <strong>作者:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>出版社:</strong>
-  <%= @book.publisher %>
-</p>
-
-<p>
-  <strong>链接:</strong>
-  <%= @book.url %>
-</p>
-<%= render :partial => 'links/links' %>
-<%= render :partial => 'links/form' %>
-
-<%= render :partial => 'taglinks/taglinks' %>
-<%= render :partial => 'taglinks/form' %>
-
-<%= render :partial => 'likes/likes' %>
-<%= render :partial => 'likes/form' %>
-
-<%= render :partial => 'rates/rates' %>
-<%= render :partial => 'rates/form' %>
-<%= render :partial => 'comments/comments' %>
-<%= render :partial => 'comments/form' %>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+  <%= render :partial => 'comments/comments' %>
+  <%= render :partial => 'comments/form' %>
+  </div>
+</div>
+</div>

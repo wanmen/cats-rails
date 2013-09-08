@@ -12,8 +12,7 @@
   <% end %>
   <% if current_user %>
   <img src="<%= current_user[:thumbnail]%>" width="50px">
-  <p>
-    <%= f.label :content %><br />
+  <p> 
     <%= f.text_area :content %>
   </p>
   <div class="actions">

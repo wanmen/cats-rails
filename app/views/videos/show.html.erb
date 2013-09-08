@@ -1,42 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
-
-<p>
-  <strong>Cover:</strong>
-  <img src="<%= @video.cover %>!big">
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @video.summary %>
-</p>
-<p>
-  <strong>Creator:</strong>
-  <%= @video.user[:name] %>
-</p>
-<p>
-  <strong>Url:</strong>
-  <%= @video.url %>
-</p>
-
-<p>
-  <strong>Lecturer:</strong>
-  <%= @video.lecturer %>
-</p>
-<%= render :partial => 'links/links' %>
-<%= render :partial => 'links/form' %>
-<%= render :partial => 'taglinks/taglinks' %>
-<%= render :partial => 'taglinks/form' %>
-<%= render :partial => 'likes/likes' %>
-<%= render :partial => 'likes/form' %>
-<%= render :partial => 'rates/rates' %>
-<%= render :partial => 'rates/form' %>
-<%= render :partial => 'comments/comments' %>
-<%= render :partial => 'comments/form' %>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="page-header">
+        <h3><%= @video.title %></h3>
+        <p><%= @video.user[:name] %>修改于<%= @video[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+          <%= link_to '修改', edit_video_path(@video) %>  |
+          <%= link_to '返回', videos_path %>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="#" class="thumbnail">
+             <img src="<%= @video.cover %>!big" width="360" height="240" alt="">
+          </a>
+        </div>
+        <div class="col-xs-8">
+          主讲人: <%= @video.lecturer %> <br/>
+          链接: <%= @video.url %> <br/>
+          <hr/>
+            <%= render :partial => 'links/links' %>
+            <%= render :partial => 'links/form' %>
+            <br/>
+            标签
+            <%= render :partial => 'taglinks/taglinks' %>
+            <%= render :partial => 'taglinks/form' %>
+            <br/>
+            喜欢
+            <%= render :partial => 'likes/likes' %>
+            <%= render :partial => 'likes/form' %>
+            <br/>
+            推荐指数
+            <%= render :partial => 'rates/rates' %>
+            <%= render :partial => 'rates/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <%= @video.summary %>
+  </div>
+  <div class="col-xs-8">
+    <%= render :partial => 'comments/comments' %>
+    <%= render :partial => 'comments/form' %>
+  </div>
+</div>
+</div>
