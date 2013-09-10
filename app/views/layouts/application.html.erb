@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="/assets/favicon.ico">
-
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords" content="网络大学，高等教育"/>
+    <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
     <title>万门大学</title>
-
+    <link rel="shortcut icon" href="/assets/favicon.ico">
     <!-- Bootstrap core CSS -->
     <link href="/assets/bootstrap.css" rel="stylesheet">
 
+    <link href="/assets/wm-default.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/assets/bottle.css" rel="stylesheet">
 
@@ -90,16 +89,8 @@
                 </li>
                 <% end %>
             <% else %>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">登陆</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <%= link_to image_tag("/assets/weibo_login.png", :width=>"24px"), user_omniauth_authorize_path(:weibo) %>
-                      <%= link_to image_tag("/assets/renren_login.png", :width=>"24px"), user_omniauth_authorize_path(:renren) %>
-                      <%= link_to image_tag("/assets/douban_login.png", :width=>"24px"), user_omniauth_authorize_path(:douban) %>
-                    </li>
-                    <li> <a href="/users/sign_in">万门登陆</a></li>
-                  </ul>
+                <li>
+                  <a class="btn btn-default" href="/users/sign_in">登录</a>
                 </li>
             <% end %>
           </ul>
@@ -119,10 +110,18 @@
     </p>
     <% end %>
     <%= yield %>
-    <hr>
-    <footer>
-      <p class="pull-right"><a href="#">向上</a></p>
-      <p>&copy; 万门公益 &middot;</p>
+    <footer class="navbar-default navbar-fixed-bottom" role="contentinfo">
+      <div class="container">
+        <address class="text-muted">
+          &copy; 2013 万门大学 &ensp; 京ICP备12345678号
+          <div class="pull-right">
+            <a href="about.html">关于万门</a> &bull;
+            <a href="join_us.html">加入我们</a> &bull;
+            <a href="help.html">帮助中心</a> &bull;
+            <a href="terms.html">免责声明</a>
+          </div>
+        </address>
+      </div>
     </footer>
 
     <!-- Bootstrap core JavaScript
@@ -160,9 +159,9 @@
         var vid=video.slice(video.indexOf("id_")+3,-5);
         video = "http://player.youku.com/embed/"+vid;
       }
-      window.open(video);
-     // $('#videoPanel').show();
-     // $('#videoFrame').attr('src', video);
+      //window.open(video);
+      $('#videoPanel').show();
+      $('#videoFrame').attr('src', video);
     }
     function hideVideo(){
       $('#videoPanel').hide();

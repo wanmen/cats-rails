@@ -1,38 +1,65 @@
-<h2>注册</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <% if session["devise.social_data"] %>
-  <%= f.text_field :provider, :type => 'hidden', :value=>session["devise.social_data"]["provider"] %>
-  <%= f.text_field :uid, :type => 'hidden', :value=>session["devise.social_data"]["uid"] %>
-  <%= f.text_field :thumbnail, :type => 'hidden', :value=>session["devise.social_data"]["info"]["image"] %>
-  <div><img src="<%=session["devise.social_data"]["info"]["image"]%>" title="<%=session["devise.social_data"]["info"]["name"]%>"></div>
-  <div>
-  	<%= f.label :email,"邮箱" %><br />
-  	<%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"input-block-level"%>
+<main class="container wx-sign" role="main">
+  <div class="col-md-4 col-md-offset-1">
+    <h4 class="wx-sign-in">欢迎加入万门大学</h4>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:class=>"form-horizontal",:role=>"form") do |f| %>
+    <%= devise_error_messages! %>
+    <% if session["devise.social_data"] %>
+    <%= f.text_field :provider, :type => 'hidden', :value=>session["devise.social_data"]["provider"] %>
+    <%= f.text_field :uid, :type => 'hidden', :value=>session["devise.social_data"]["uid"] %>
+    <%= f.text_field :thumbnail, :type => 'hidden', :value=>session["devise.social_data"]["info"]["image"] %>
+    <div><img src="<%=session["devise.social_data"]["info"]["image"]%>" title="<%=session["devise.social_data"]["info"]["name"]%>"></div>
+    <div class="form-group">
+      <label class="sr-only control-label" for="user_email">邮箱</label>
+      <div class="col-md-10">
+        <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="sr-only control-label" for="user_name">昵称</label>
+      <div class="col-md-10">
+        <%= f.text_field :name,:value=>session["devise.social_data"]["info"]["name"],:placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称"%>
+      </div>
+    </div>
+    <% else %>
+    <div class="form-group">
+      <label class="sr-only control-label" for="user_email">邮箱</label>
+      <div class="col-md-10">
+        <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="sr-only control-label" for="user_name">昵称</label>
+      <div class="col-md-10">
+        <%= f.text_field :name, :placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称"%>
+      </div>
+    </div>
+    <% end %>
+      <div class="form-group">
+        <label class="sr-only control-label" for="user_password">密码</label>
+        <div class="col-md-10">
+          <%= f.password_field :password,:class=> "form-control",:placeholder=>"密码",:title=>"请输入你的帐号密码"%>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only control-label" for="user_password_confirmation">确认密码</label>
+        <div class="col-md-10">
+         <%= f.password_field :password_confirmation,:class=>"form-control",:placeholder=>"确认密码",:title=>"请再次输入你的帐号密码" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <button class="btn btn-default" type="submit">完成注册</button>
+        </div>
+      </div>   
+    <% end %>
   </div>
-  <div>
-  <%= f.label :name,"昵称" %><br />
-  <%= f.text_field :name,:value=>session["devise.social_data"]["info"]["name"],:placeholder=>"昵称",:class=>"input-block-level"%>
+  <div class="col-md-4 col-md-offset-1">
+    <h4 class="wx-sign-up">你还可以用第三方帐号登录</h4>
+    <a class="btn btn-primary wx-sign-button" href="/users/auth/renren">使用人人帐号登录</a>
+    <a class="btn btn-success wx-sign-button" href="/users/auth/douban">使用豆瓣帐号登录</a>
+    <a class="btn btn-danger wx-sign-button" href="/users/auth/weibo">使用新浪微博登录</a>
+    <p>
+      已有帐号？<a href="/users/sign_in">马上登录</a>
+    </p>
   </div>
-  <% else %>
-  <div>
-  <%= f.label :email,"邮箱" %><br />
-  <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"input-block-level" %>
-  </div>
-  <div>
-  <%= f.label :name,"昵称" %><br />
-  <%= f.text_field :name,:placeholder=>"昵称",:class=>"input-block-level" %>
-  </div>
-  <% end %>
-
-  <div><%= f.label :password,"密码" %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation,"确认密码" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "注册" %></div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</main>

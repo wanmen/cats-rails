@@ -26,11 +26,11 @@ module UploaderHelper
 	  raw [tag(:input, :type => "hidden", :name => "policy", :value => policy),tag(:input, :type => :hidden, :name => "signature",:value => sign)].join("\n")
 	end
 	def domain_url()
-		raw "http://localhost:3000"
+		raw "http://wanmen.org:3000"
 	end
 
 	def upyun_url()
-		raw "http://wanmen.b0.upaiyun.com"
+		raw "http://img.wanmen.org"
 	end
 
 	def upyun_api_url()
