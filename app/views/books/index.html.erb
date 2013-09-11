@@ -1,73 +1,65 @@
-<div class="container">
-  <div class="page-header">
-    <h2>万门书库</h2>
-  </div>
-  <div class="row">
-    <div class="col-xs-8">
-      <h3>精选推荐</h3>
+<main class="container" role="main">
+  <article class="col-sm-8">
+    <section class="wm-book-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-star"></span> 精选图书
+        <a href="">查看更多</a>
+      </h3>
       <div class="row">
-          <% @recommend.each do |link| %>
-            <div class="col-xs-4">
-              <a href="/books/<%=link.linkable.id %>" class="thumbnail">
-                 <img src="<%=link.linkable.cover %>!big" alt="">
-              </a>
-            </div>
-          <% end %>
+        <% @recommend.each do |link| %>
+          <figure class="col-sm-4">
+            <a href="/books/<%=link.linkable.id %>" class="thumbnail">
+               <img src="<%=link.linkable.cover %>!big" alt="">
+            </a>
+            <figcaption>
+              <a href="/books/<%=link.linkable.id %>"><%=link.linkable.title%></a>
+            </figcaption>
+          </figure>
+        <% end %>
       </div>
-      <hr>
-      <h3>最新图书</h3>
+    </section>
+
+    <section class="wm-book-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-calendar"></span> 最新图书
+        <a href="">查看更多</a>
+      </h3>
       <div class="row">
-        <div class="row">
-          <% @newest.each do |book| %>
-            <div class="col-xs-4">
-              <a href="/books/<%=book.id %>" class="thumbnail">
-                 <img src="<%=book.cover %>!big" alt="">
-              </a>
-            </div>
-          <% end %>
-        </div>
+        <% @newest.each do |book| %>
+          <figure class="col-sm-4">
+            <a class="thumbnail" href="/books/<%=book.id %>">
+              <img src="<%=book.cover %>!big" alt="">
+            </a>
+            <figcaption>
+              <a href="/books/<%=book.id %>"><%=book.title %></a>
+            </figcaption>
+          </figure>
+        <% end %>
       </div>
-    </div>
-    <div class="col-xs-4">
-       <h3>热门图书</h3>
+    </section>
+  </article>
+
+  <aside class="col-sm-4">
+    <section>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-book"></span> 热门图书
+      </h3>
+      <ol class="wm-list-popular">
        <% @popular.each do |book| %>
-       <p>
-            <a href="/books/<%=book.id %>">
-               <%=book.title %>
-            </a>
-       </p>
+        <li><a href="/books/<%=book.id %>"> <%=book.title %></a></li>
        <% end %>
-    </div>
-  </div>
+      </ol>
+    </section>
 
-  <div class="page-header">
-    <h2>万门书单</h2>
-  </div>
-  <div class="row">
-    <h3>最新书单</h3>
-    <div class="col-xs-8">
-      <div class="row">
-        <% @newestBooklist.each do |list| %>
-        <div class="col-xs-4">
-            <a href="/lists/<%=list.id %>">
-               <%=list.title %>
-            </a>
-        </div>
+    <section>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-tasks"></span> 热门书单
+      </h3>
+      <ol class="wm-list-popular">
+       <% @popularBooklist.each do |list| %>
+         <li><a href="/lists/<%=list.id %>"><%=list.title %></a></li>
        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <h3>热门书单</h3>
-      <% @popularBooklist.each do |list| %>
-        <p>
-            <a href="/lists/<%=list.id %>">
-               <%=list.title %>
-            </a>
-        </p>
-       <% end %>
-    </div>
-  </div>
-</div>
-</div>
-
-<%= link_to 'New Book', new_book_path %>
+      </ol>
+    </section>
+  </aside>
+</main>

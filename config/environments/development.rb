@@ -37,7 +37,7 @@ Cats::Application.configure do
   :port                 => 587,
   :domain               => 'wanmen.org',
   :user_name            => 'wanmen.org@gmail.com',
-  :password             => 'ithinkican',
+  :password             => 'wanmendaxue',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
   config.action_mailer.default_url_options = { :host => 'wanmen.org' }

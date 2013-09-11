@@ -8,9 +8,9 @@ class BooksController < ApplicationController
     @books = Book.all
     @recommend = List.find(1).links(3)
     @newest = Book.newest5
-    @popular = Book.top5
+    @popular = Book.top10
     @newestBooklist = List.newest5Booklist
-    @popularBooklist = List.top5Booklist
+    @popularBooklist = List.top10Booklist
   end
 
   # GET /books/1

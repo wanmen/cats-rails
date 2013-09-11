@@ -11,8 +11,6 @@
     <link href="/assets/bootstrap.css" rel="stylesheet">
 
     <link href="/assets/wm-default.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="/assets/bottle.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,8 +37,7 @@
   </head>
 
   <body>
-
-    <div class="navbar navbar-default navbar-fixed-top">
+    <header class="navbar navbar-default navbar-fixed-top" role="banner">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -50,26 +47,28 @@
           </button>
           <a class="navbar-brand" href="/">万门大学</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">知识库<b class="caret"></b></a>
+            <li class="active">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="books.html">知识库<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/books.html">图书</a></li>
                 <li><a href="/videos.html">视频</a></li>
                 <li><a href="/articles.html">经验贴</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">其它分类</li>
+                <li><a href="/tags.html">标签</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form method="get" action="/search" class="navbar-form pull-left">
+          <li>
+            <form method="get" action="/search" class="navbar-form pull-left">
                 <input type="text" name="title" placeholder="图书，视频，经验贴" class="span2">
                 <button type="submit" class="btn">搜索</button>
-              </form>
-            </li>
-            <% if user_signed_in? %>
-                <% if (current_user[:sign_in_count]<=1) %>
+            </form>
+          </li>
+           <% if user_signed_in? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
                   <ul class="dropdown-menu">
@@ -78,25 +77,15 @@
                     </li>
                   </ul>
                 </li>
-                <% else %>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "修改",edit_user_registration_path %> </li>
-                    <li> <%= link_to "登出", destroy_user_session_path, :method => :delete %>
-                    </li>
-                  </ul>
-                </li>
-                <% end %>
             <% else %>
                 <li>
-                  <a class="btn btn-default" href="/users/sign_in">登录</a>
+                  <a class="navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
                 </li>
             <% end %>
           </ul>
-        </div><!--/.nav-collapse -->
+        </nav>
       </div>
-    </div>
+    </header>
     <% if flash[:alert] %>
     <p class="alert alert-warning">
           <%= flash[:alert] %>
@@ -129,8 +118,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/assets/jquery.js"></script>
     <script src="/assets/jquery.raty.js"></script>
-    <script src="/assets/bootstrap.min.js"></script>
-    <script src="/assets/holder.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/wx-dom.js"></script>
     <script>
     $('#rate_button').hide();
     $('#star').raty({
