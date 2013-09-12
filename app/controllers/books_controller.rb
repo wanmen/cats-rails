@@ -7,9 +7,9 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @recommend = List.find(1).links(3)
-    @newest = Book.newest5
+    @newest = Book.newest3
     @popular = Book.top10
-    @newestBooklist = List.newest5Booklist
+    @newestBooklist = List.newest3Booklist
     @popularBooklist = List.top10Booklist
   end
 

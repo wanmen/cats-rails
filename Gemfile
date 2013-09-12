@@ -6,6 +6,11 @@ gem 'rails', '4.0.0'
 # Use devise for user authentication
 gem 'devise'
 
+# Javascript Run Time
+gem 'execjs'
+
+gem 'therubyracer'
+
 # Use mysql for database
 gem 'mysql2'
 # in ubuntu, you will probably need to install some dependent libraries: sudo apt-get install mysql-client libmysqlclient-dev
