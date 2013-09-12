@@ -9,8 +9,6 @@ Rails Version
 
 * System dependencies
 
-bundle install
-
 # Use devise for user authentication
 用户登录系统包
 gem 'devise'
