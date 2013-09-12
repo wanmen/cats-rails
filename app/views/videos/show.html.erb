@@ -3,7 +3,7 @@
     <div class="col-xs-8">
       <div class="page-header">
         <h3><%= @video.title %></h3>
-        <p><%= @video.user[:name] %>修改于<%= @video[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+        <p><a href="/users/<%=@video.user[:id]%>"><%= @video.user[:name] %></a>修改于<%= @video[:updated_at].strftime('%b %d, %Y %H:%M')  %>
           <%= link_to '修改', edit_video_path(@video) %>  |
           <%= link_to '返回', videos_path %>
         </p>

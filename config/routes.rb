@@ -35,6 +35,9 @@ Cats::Application.routes.draw do
     resources :taglinks
     resources :links
   end
+
+  resources :users
+  
   devise_for :admins
 
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks",:registrations => "users/registrations"}

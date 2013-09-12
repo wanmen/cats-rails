@@ -6,9 +6,45 @@
 </p>
 
 <%= render :partial => 'follows/follows' %>
+<% @tag.follows.each do |follow| %>
+<a href="/users/<%=follow.user.id %>"><img src="<%=follow.user.thumbnail %>!small" title="<%=follow.user.name %>" width="50px"/></a>
+<% end %>
 <%= render :partial => 'follows/form' %>
 <%= render :partial => 'likes/likes' %>
 <%= render :partial => 'likes/form' %>
+<br>
+对应的内容
+<% @tag.taglinks.each do |taglink| %>
+	<%if taglink.tagable.is_a?(Book) %>
+		<p>
+			<a href="/books/<%= taglink.tagable_id %>">
+			<img src="<%= taglink.tagable.cover %>" width="100px">
+			<%= taglink.tagable.title %>
+			</a>
+		</p>
+	<%elsif taglink.tagable.is_a?(Video) %>
+		<p>
+			<a href="/books/<%= taglink.tagable_id %>">
+				<img src="<%= taglink.tagable.cover %>" width="100px">
+				<%= taglink.tagable.title %>
+			</a>
+		</p>
+	<%elsif taglink.tagable.is_a?(Article) %>
+		<p>
+			<a href="/books/<%= taglink.tagable_id %>">
+				<%= taglink.tagable.title %>
+				<%= taglink.tagable.summary %>
+			</a>
+		</p>
+	<%elsif taglink.tagable.is_a?(List) %>
+		<p>
+			<a href="/books/<%= taglink.tagable_id %>">
+				<%= taglink.tagable.title %>
+			</a>
+			<%= taglink.tagable.summary %>
+		</p>
+	<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>

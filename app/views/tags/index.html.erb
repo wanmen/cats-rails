@@ -7,6 +7,8 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,9 +16,11 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tag.taglinks.length%>个对应内容</td>
+        <td><%= tag.follows.length%>个关注</td>
+        <td><%= tag.follows.length%>个喜欢</td>
+        <td><%= link_to '显示', tag %></td>
+        <td><%= link_to '修改', edit_tag_path(tag) %></td>
       </tr>
     <% end %>
   </tbody>
