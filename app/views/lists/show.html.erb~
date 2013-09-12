@@ -3,7 +3,7 @@
       <div class="col-xs-8">
         <div class="page-header">
           <h3><%= @list.title %></h3>
-          <p><a href="/scholars/<%=@list.user[:id]%>"><%= @list.user[:name] %></a>修改于<%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+          <p><a href="/users/<%=@list.user[:id]%>"><%= @list.user[:name] %></a>修改于<%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
             <%= link_to '修改', edit_list_path(@list) %>
           </p>
           <p><%= @list.summary %></p>
