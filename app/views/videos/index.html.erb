@@ -2,41 +2,17 @@
   <div class="page-header">
     <h1>万门视频</h1>
   </div>
+
   <div class="row">
     <div class="col-xs-8">
       <div class="row">
-        <div class="col-xs-8">
-          <a href="/videos/<%= @recommend[0].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[0].linkable.cover %>!medium" width="360" height="248" alt="">
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="/videos/<%= @recommend[1].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[1].linkable.cover %>!medium" width="160" height="120" alt="">
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="/videos/<%= @recommend[2].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[2].linkable.cover %>!medium" width="160" height="120" alt="">
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-           <a href="/videos/<%= @recommend[3].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[3].linkable.cover %>!medium" width="160" height="120" alt="">
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="/videos/<%= @recommend[4].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[4].linkable.cover %>!medium" width="160" height="120" alt="">
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="/videos/<%= @recommend[5].linkable.id %>.html" class="thumbnail">
-             <img src="<%= @recommend[5].linkable.cover %>!medium" width="160" height="120" alt="">
-          </a>
-        </div>
+        <% @newestVideolist.each do |list|%>
+            <div class="col-xs-4">
+              <a href="/videos/<%= list.links[0].linkable.id %>.html" class="thumbnail">
+                 <img src="<%= list.links[0].linkable.cover %>!medium" width="160" height="120" alt="">
+              </a>
+            </div>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-4">

@@ -1,0 +1,35 @@
+<main class="container" role="main">
+	<a href="/scholars/<%= @user.id%>"><img src="<%= @user.thumbnail%>"> <%= @user.name %></a>
+	Ta的书
+	<% @user.books.each do |book| %>
+	<p>
+		<a href="/books/<%= book.id %>">
+			<img src="<%= book.cover%>!medium" width="100px"><%= book.title %>
+		</a>
+	</p>
+	<% end %>
+	Ta的视频
+	<% @user.videos.each do |video| %>
+	<p>
+		<a href="/videos/<%= video.id %>">
+			<img src="<%= video.cover%>!medium" width="100px"><%= video.title %>
+		</a>
+	</p>
+	<% end %>
+	Ta的经验贴
+	<% @user.articles.each do |article| %>
+	<p>
+		<a href="/articles/<%= article.id %>">
+			<%= article.title %>
+		</a>
+	</p>
+	<% end %>
+	Ta的单子
+	<% @user.lists.each do |list| %>
+	<p>
+		<a href="/lists/<%= list.id %>">
+			<%= list.title %>
+		</a>
+	</p>
+	<% end %>
+</main>

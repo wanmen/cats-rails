@@ -2,17 +2,17 @@
   <article class="col-sm-8">
     <section class="wm-book-gallery">
       <h3 class="page-header">
-        <span class="glyphicon glyphicon-star"></span> 精选图书
+        <span class="glyphicon glyphicon-star"></span> 最新书单
         <a href="">查看更多</a>
       </h3>
       <div class="row">
-        <% @recommend.each do |link| %>
+        <% @newestBooklist.each do |booklist| %>
           <figure class="col-sm-4">
-            <a href="/books/<%=link.linkable.id %>" class="thumbnail">
-               <img src="<%=link.linkable.cover %>!big" alt="">
+            <a href="/lists/<%=booklist.id %>" class="thumbnail">
+               <img src="<%=booklist.links[0].linkable.cover %>!big" alt="">
             </a>
             <figcaption>
-              <a href="/books/<%=link.linkable.id %>"><%=link.linkable.title%></a>
+              <a href="/lists/<%=booklist.id %>"><%=booklist.title%></a>
             </figcaption>
           </figure>
         <% end %>

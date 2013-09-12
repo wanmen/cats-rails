@@ -4,10 +4,10 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
-    @recommend = List.find(2).links(6)
-    @newest = Video.find(:all, :limit => 3, :order=> 'created_at desc')
-    @popular = Video.top5
+    @newest = Video.newest3
+    @popular = Video.top10
+    @newestVideolist = List.newest6Videolist
+    @popularVideolist = List.top10Videolist
   end
 
   # GET /videos/1

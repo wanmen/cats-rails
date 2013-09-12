@@ -3,7 +3,7 @@
     <div class="col-xs-8">
       <div class="page-header">
         <h3><%= @book.title %></h3>
-        <p><a href="/users/<%=@book.user[:id]%>"><%= @book.user[:name] %></a>修改于<%= @book[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+        <p><a href="/scholars/<%=@book.user[:id]%>"><%= @book.user[:name] %></a>修改于<%= @book[:updated_at].strftime('%b %d, %Y %H:%M')  %>
           <%= link_to '修改', edit_book_path(@book) %>  |
           <%= link_to '返回', books_path %>
         </p>

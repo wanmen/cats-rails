@@ -5,8 +5,6 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
-    @recommend = List.find(1).links(3)
     @newest = Book.newest3
     @popular = Book.top10
     @newestBooklist = List.newest3Booklist
