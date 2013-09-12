@@ -43,11 +43,11 @@
 
     <section>
       <h3 class="page-header">
-        <span class="glyphicon glyphicon-book"></span> 热门标签
+        <span class="glyphicon glyphicon-book"></span> 热门图书
       </h3>
       <ol class="wm-list-popular">
-       <% @popularTags.each do |tag| %>
-        <li><a href="/tags/<%=tag.id %>"> <%=tag.name %></a></li>
+       <% @popular.each do |book| %>
+        <li><a href="/books/<%=book.id %>"> <%=book.title %></a></li>
        <% end %>
       </ol>
     </section>

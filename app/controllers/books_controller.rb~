@@ -7,7 +7,6 @@ class BooksController < ApplicationController
   def index
     @newest = Book.newest3
     @popular = Book.top10
-    @popularTags = Tag.top20
     @newestBooklist = List.newest3Booklist
     @popularBooklist = List.top10Booklist
   end
