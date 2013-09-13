@@ -8,8 +8,8 @@ zh-CN:
       already_confirmed: "已经激活，请重新登录."
       not_locked: "未锁定"
       not_saved:
-        one: "因为 1 个错误导致此 %{resource}保存失败:"
-        other: "因为 %{count}个错误导致此 %{resource}保存失败:"
+        one: "因为一个错误导致注册失败"
+        other: "因为 %{count}个错误导致注册失败:"
   activerecord:
     errors:
       models:
@@ -22,9 +22,13 @@ zh-CN:
             password:
               blank: 请输入密码
               confirmation: 密码不相同
-              too_short: 密码太短
+              too_short: "密码太短,需要大于6个字母"
+            password_confirmation:
+              confirmation: 请确认密码
             current_password:
-              blank:请输入现在的密码
+              blank: 请输入现在的密码
+            confirmation_token:
+              invalid: "确认码不正确"
   devise:
     failure:
       already_authenticated: '您已经登录.'

@@ -7,6 +7,6 @@ class Book < ActiveRecord::Base
 	belongs_to :user
 	scope :top10,
     select("books.id, books.title, count(likes.id) AS likes_count").joins(:likes).group("books.id").order("likes_count DESC").limit(10)
-    scope :newest3,
+	scope :newest3,
     select("books.*").order("created_at desc").limit(3)
 end

@@ -5,7 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "weibo") if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => "微博") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
@@ -17,7 +17,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "renren") if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => "人人") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "douban") if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => "豆瓣") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
