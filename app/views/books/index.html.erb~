@@ -25,7 +25,12 @@
         <a href="">查看更多</a>
       </h3>
       <div class="row">
-        <% @newestBooklist.each do |booklist| %>
+	<% count=0 %>
+        <% @popularBooklist.each do |booklist| %>
+	<% count = count+1 %>
+	<% if count = 4 %>
+	     </div><div class="row">
+	<% end %>
           <figure class="col-sm-4">
             <a href="/lists/<%=booklist.id %>" class="thumbnail">
                <img src="<%=booklist.links[0].linkable.cover %>!big" alt="">
