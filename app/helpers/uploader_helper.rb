@@ -4,7 +4,7 @@ module UploaderHelper
 	  opts[:prefix] ||= ""
 	  opts[:allow_exts] ||= "jpg,jpeg,gif,png"
 	  opts[:min_length] ||= 0
-	  opts[:max_length] ||= 200.kilobyte
+	  opts[:max_length] ||= 4.megabyte
 	  opts[:return_url] ||= root_url
 	  opts[:notify_url] ||= root_url
 	  opts[:unsharp] ||= false

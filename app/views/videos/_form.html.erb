@@ -15,7 +15,7 @@
   </p>
   <div class="field">
     <% if params[:url] %>
-      <img src="<%= upyun_url+ params[:url] %>">
+      <img src="<%= upyun_url+ params[:url] %>!medium">
        <%= f.text_field :cover, :value=> upyun_url+params[:url],:type=>:hidden%>
     <% else %>
        或者<%= f.text_field :cover,:placeholder=>'添加图片URL'%>

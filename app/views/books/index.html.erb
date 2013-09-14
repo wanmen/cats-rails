@@ -9,7 +9,7 @@
         <% @newestBooklist.each do |booklist| %>
           <figure class="col-sm-4">
             <a href="/lists/<%=booklist.id %>" class="thumbnail">
-               <img src="<%=booklist.links[0].linkable.cover %>!big" alt="">
+               <img src="<%=booklist.links[0].linkable.cover %>!medium" alt="">
             </a>
             <figcaption>
               <a href="/lists/<%=booklist.id %>"><%=booklist.title%></a>
@@ -28,7 +28,7 @@
         <% @newest.each do |book| %>
           <figure class="col-sm-4">
             <a class="thumbnail" href="/books/<%=book.id %>">
-              <img src="<%=book.cover %>!big" alt="">
+              <img src="<%=book.cover %>!medium" alt="">
             </a>
             <figcaption>
               <a href="/books/<%=book.id %>"><%=book.title %></a>
