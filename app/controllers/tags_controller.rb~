@@ -57,7 +57,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       if params[:delete]
         @tag.destroy
-        format.html { redirect_to tags_url, notice: 'tag was successfully deleted.' }
+        format.html { redirect_to tags_url }
         format.json { head :no_content }
       elsif @tag.update(tag_params)
         format.html { redirect_to @tag, notice: 'tag was successfully updated.' }
