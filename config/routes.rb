@@ -35,7 +35,6 @@ Cats::Application.routes.draw do
     resources :taglinks
     resources :links
   end
-
   resources :scholars
   
   #devise_for :admins

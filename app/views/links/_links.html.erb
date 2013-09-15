@@ -1,8 +1,4 @@
-对应<%= @links.length %>个单子：
-<div id="links">
+<span>已加入<%= @links.length %>个书单</span> 
 <% @links.each do |link| %>
-  <div class="link">
-    <a href="/lists/<%= link.list.id %>"><%= link.list.title %></a>
-  </div>
+    <a href="/lists/<%= link.list.id %>"><%= link.list.title %></a>|
 <% end %>
-</div>

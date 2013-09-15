@@ -14,7 +14,6 @@ gem 'therubyracer'
 # Use mysql for database
 gem 'mysql2'
 # in ubuntu, you will probably need to install some dependent libraries: sudo apt-get install mysql-client libmysqlclient-dev
-
 gem 'tlsmail'
 gem 'omniauth'
 gem 'omniauth-weibo-oauth2'

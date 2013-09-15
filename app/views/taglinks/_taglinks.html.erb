@@ -1,8 +1,4 @@
-<%= @taglinks.length %>个标签
-<div id="taglinks">
+<span><%= @taglinks.length %>个标签</span>
 <% @taglinks.each do |taglink| %>
-  <div class="taglink">
-    <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a>
-  </div>
+    <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a>|
 <% end %>
-</div>
