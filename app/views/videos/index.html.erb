@@ -1,37 +1,108 @@
  <% content_for :head do %>
    <title>视频 | 万门大学</title>
 <% end %>
- <div class="container">
-  <div class="page-header">
-    <h1>万门视频</h1>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-8">
+<main class="container" role="main">
+  <article class="col-sm-8">
+    <section class="wm-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-star"></span> 精选推荐
+        <a class="wm-quick-link" href="">查看全部</a>
+      </h3>
       <div class="row">
-        <% @newestVideolist.each do |list|%>
-            <div class="col-xs-4">
-              <a href="/videos/<%= list.links[0].linkable.id %>.html" class="thumbnail">
-                 <img src="<%= list.links[0].linkable.cover %>!medium" width="160" height="120" alt="">
-              </a>
-            </div>
+        <% @bestVideolist.each do |list|%>
+        <figure class="col-sm-4">
+          <a href="/lists/<%= list.id %>.html" class="thumbnail">
+            <img src="<%= list.links[0].linkable.cover %>!medium" alt="<%= list.title %>" title="<%= list.title %>"/>
+          </a>
+          <figcaption>
+            <a href="/lists/<%= list.id %>.html" title="<%= list.title %>"><%= list.title %></a>
+          </figcaption>
+        </figure>
         <% end %>
       </div>
-    </div>
-    <div class="col-xs-4">
-     <div class="row">
-        <% @newest.each do |video| %>  
-          <div class="col-xs-12">
-            <a href="/videos/<%= video.id %>" class="thumbnail">
-               <img src="<%=video.cover %>!medium" alt="">
-            </a>
-          </div>
+      <div class="row">
+        <% @best.each do |video| %>
+        <figure class="col-sm-4">
+          <a class="thumbnail" href="/videos/<%=video.id %>.html">
+            <img src="<%=video.cover %>!medium" alt="<%=video.title %>" title="<%=video.title %>"/>
+          </a>
+          <figcaption>
+            <a href="/videos/<%=video.id %>.html" title="<%=video.title %>"><%=video.title %></a>
+          </figcaption>
+        </figure>
         <% end %>
       </div>
-    </div>
-  </div>
-  
-</div>
-</div>
+    </section>
 
+    <section class="wm-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-calendar"></span> 最新视频
+        <a class="wm-quick-link" href="">查看全部</a>
+      </h3>
+      <div class="row">
+        <% @newest.each do |video| %>  
+        <figure class="col-sm-4">
+          <a class="thumbnail" href="/videos/<%= video.id %>">
+            <img src="<%=video.cover %>!medium" alt="<%=video.title%>" title="<%=video.title%>"/>
+          </a>
+          <figcaption>
+            <a href="/videos/<%= video.id %>" title="<%=video.title%>"><%=video.title%></a>
+          </figcaption>
+        </figure>
+        <% end %>
+      </div>
+    </section>
+  </article>
+
+  <aside class="col-sm-4">
+    <section>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-th-list"></span> 热门视频
+        <a class="wm-quick-link" href="">查看全部</a>
+      </h3>
+      <ol class="wm-list-popular">
+        <% @popular.each do |video| %>
+          <li><a href="/videos/<%=video.id %>"> <%=video.title %></a></li>
+        <% end %>
+      </ol>
+    </section>
+
+    <section>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-stats"></span> 热门标签
+        <a class="wm-quick-link" href="">查看全部</a>
+      </h3>
+      <div class="wm-tags-popular">
+        【<a class="wm-tag-category" href="">物理</a>】
+        <a href="">牛顿力学</a> |
+        <a href="">统计物理</a> |
+        <a href="">量子场论</a>
+      </div>
+      <div class="wm-tags-popular">
+        【<a class="wm-tag-category" href="">计算机</a>】
+        <a href="">编程</a> |
+        <a href="">机器学习</a> |
+        <a href="">网页设计</a>
+      </div>
+      <div class="wm-tags-popular">
+        【<a class="wm-tag-category" href="">数学</a>】
+        <a href="">微积分</a> |
+        <a href="">线性代数</a> |
+        <a href="">数学物理方程</a>
+      </div>
+      <div class="wm-tags-popular">
+        【<a class="wm-tag-category" href="">外国语</a>】
+        <a href="">英语</a> |
+        <a href="">法语</a> |
+        <a href="">希伯来语</a>
+      </div>
+      <div class="wm-tags-popular">
+        【<a class="wm-tag-category" href="">文学</a>】
+        <a href="">中国古典文学</a> |
+        <a href="">文学史</a> |
+        <a href="">希腊文学</a>
+      </div>
+    </section>
+  </aside>
+</main>
 <%= link_to 'New Video', new_video_path %>

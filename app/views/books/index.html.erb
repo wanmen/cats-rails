@@ -9,47 +9,28 @@
         <a class="wm-quick-link" href="">查看全部</a>
       </h3>
       <div class="row">
-        <% count=0 %>
-              <% @popularBooklist.each do |booklist| %>
-        <% count = count+1 %>
-        <% if count == 4 %>
-             </div><div class="row">
-        <% end %>
+          <% @bestBooklist.each do |booklist| %>
           <figure class="col-sm-4">
-            <a href="/lists/<%=booklist.id %>" class="thumbnail">
-               <img src="<%=booklist.links[0].linkable.cover %>!big" alt="">
+            <a href="/lists/<%=booklist.id %>.html" class="thumbnail">
+               <img src="<%=booklist.links[0].linkable.cover %>!medium" alt="">
             </a>
             <figcaption>
-              <a href="/lists/<%=booklist.id %>"><%=booklist.title%></a>
+              <a href="/lists/<%=booklist.id %>.html"><%=booklist.title%></a>
             </figcaption>
           </figure>
         <% end %>
       </div>
       <div class="row">
+        <% @best.each do |book| %>
         <figure class="col-sm-4">
-          <a class="thumbnail" href="books/1.html">
-            <img src="http://img.wanmen.org/2013/09/04feec86b4294f78ba6d00c4085f88fc.jpg" alt="" title="枪炮、病菌与钢铁"/>
+          <a class="thumbnail" href="/books/<%=book.id %>.html">
+            <img src="<%=book.cover %>!medium" alt="<%=book.title %>" title="<%=book.title %>"/>
           </a>
           <figcaption>
-            <a href="books/1.html" title="枪炮、病菌与钢铁">枪炮、病菌与钢铁</a>
+            <a href="/books/<%=book.id %>.html" title="<%=book.title %>"><%=book.title %></a>
           </figcaption>
         </figure>
-        <figure class="col-sm-4">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/adeb1e84045dbd4bcf398a71c887fa75.jpg" alt="" title="玻利维亚日记"/>
-          </a>
-          <figcaption>
-            <a href="" title="玻利维亚日记">玻利维亚日记</a>
-          </figcaption>
-        </figure>
-        <figure class="col-sm-4">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/7120dc81dc165a9aeccfe8397df205be.jpg" alt="" title="我的前半生"/>
-          </a>
-          <figcaption>
-            <a href="" title="我的前半生">我的前半生</a>
-          </figcaption>
-        </figure>
+        <% end %>
       </div>
     </section>
 
@@ -61,11 +42,11 @@
       <div class="row">
          <% @newest.each do |book| %>
           <figure class="col-sm-4">
-            <a class="thumbnail" href="/books/<%=book.id %>">
-              <img src="<%=book.cover %>!big" alt="" title="<%=book.title %>"/>
+            <a class="thumbnail" href="/books/<%=book.id %>.html">
+              <img src="<%=book.cover %>!medium" alt="" title="<%=book.title %>"/>
             </a>
             <figcaption>
-              <a href="/books/<%=book.id %>" title="<%=book.title %>"><%=book.title %></a>
+              <a href="/books/<%=book.id %>.html" title="<%=book.title %>"><%=book.title %></a>
             </figcaption>
           </figure>
         <% end %>
@@ -81,7 +62,7 @@
       </h3>
       <ol class="wm-list-popular">
         <% @popularBooklist.each do |list| %>
-         <li><a href="/lists/<%=list.id %>"><%=list.title %></a></li>
+         <li><a href="/lists/<%=list.id %>.html"><%=list.title %></a></li>
         <% end %>
       </ol>
     </section>
@@ -93,7 +74,7 @@
       </h3>
       <ol class="wm-list-popular">
         <% @popular.each do |book| %>
-          <li><a href="/books/<%=book.id %>"> <%=book.title %></a></li>
+          <li><a href="/books/<%=book.id %>.html"> <%=book.title %></a></li>
         <% end %>
       </ol>
     </section>
@@ -104,7 +85,7 @@
         <a class="wm-quick-link" href="">查看全部</a>
       </h3>
       <div class="wm-tags-popular">
-        【<a class="wm-tag-category" href="">物理</a>】
+        【<a class="wm-tag-category" href="/tags/1">物理</a>】
         <a href="">牛顿力学</a> |
         <a href="">统计物理</a> |
         <a href="">量子场论</a>

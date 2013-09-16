@@ -4,10 +4,11 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @newest = Video.newest3
+    @newest = Video.newest6
     @popular = Video.top10
-    @newestVideolist = List.newest6Videolist
+    @best = Video.best6
     @popularVideolist = List.top10Videolist
+    @bestVideolist = List.best3Videolist
   end
 
   # GET /videos/1

@@ -5,11 +5,12 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @newest = Book.newest3
+    @newest = Book.newest6
     @popular = Book.top10
     @popularTags = Tag.top20
-    @newestBooklist = List.newest3Booklist
+    @best = Book.best6
     @popularBooklist = List.top10Booklist
+    @bestBooklist = List.best3Booklist
   end
 
   # GET /books/1
