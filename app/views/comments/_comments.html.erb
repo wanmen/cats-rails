@@ -1,10 +1,20 @@
-<h3>所有评论</h3>
-<div id="comments">
+<h4 class="text-muted">有<%=@comments.length%>条评论</h4>
 <% @comments.each do |comment| %>
-  <div class="comment">
-  	<img src="<%= comment.user[:thumbnail]%>" width="50px">
-  	<em><%= comment.user[:name]%> 在 <%= comment.created_at.strftime('%b %d, %Y %H:%M') %></em>
-    <%= simple_format comment.content %>
-  </div>
-<% end %>
+<div class="row">
+	<figure class="col-sm-2 wm-user-info">
+	  <a href="/scholars/<%= comment.user[:id]%>">
+	  	<img src="<%= comment.user[:thumbnail]%>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
+	  </a>
+	</figure>
+	<div class="col-sm-10 wm-user-comment">
+	  <h5>
+	    <a href="/scholars/<%= comment.user[:id]%>"><%= comment.user[:name]%></a>
+	    <span><%= comment.created_at.strftime('%b %d, %Y %H:%M') %></span>
+	  </h5>
+	  <p>
+    	<%= simple_format comment.content %>
+	  </p>
+	</div>
 </div>
+<hr/>
+<% end %>
