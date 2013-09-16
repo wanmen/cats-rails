@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20130916050939) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "type",       default: 1 # type 2 means the copyright belongs to wanmen, type 1 means it is an internet resource.
+    t.integer  "type",       default: 1
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
