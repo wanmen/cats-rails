@@ -54,55 +54,8 @@
     </section>
 
     <section class="wm-comments">
-      <h4 class="text-muted">有2条评论</h4>
-      <div class="row">
-        <figure class="col-sm-2 wm-user-info">
-          <a href="">
-            <img class="img-rounded" src="/assets/user/user_soliton.jpg" alt="" title="soliton"/>
-          </a>
-        </figure>
-        <div class="col-sm-10 wm-user-comment">
-          <h5>
-            <a href="">soliton</a>
-            <span>2013-09-13 19:26</span>
-          </h5>
-          <p>如何理解人类的发展史？在挖掘冷冰冰的事实的时候，人们从制度转型的角度来试图解释为什么会这样。而政治、经济与社会则是理解制度转型最重要的三个方面。
-          </p>
-        </div>
-      </div>
-      <hr/>
-      <div class="row">
-        <figure class="col-sm-2 wm-user-info">
-          <a href="">
-            <img class="img-rounded" src="/assets/user/user_photino.jpg" alt="" title="photino"/>
-          </a>
-        </figure>
-        <div class="col-sm-10 wm-user-comment">
-          <h5>
-            <a href="">photino</a>
-            <span>2013-09-13 19:32</span>
-          </h5>
-          <p>作为后人，我们总是免不了要对发生过的历史作些“如果”的想象，特别是当这种历史对我们是带有屈辱色彩的历史。比如中国人就常想“如果戊戌变法成功了中国如何”，“没有文化大革命又如何”，同时也会有大量“为什么这样，为什么那样”的问题，如“为什么日本能维新成功，而中国不能”。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <hr/>
-
-    <section>
-      <h4 class="text-muted">
-        你的评论
-        <a class="btn btn-primary btn-sm pull-right" href="../help/editor.html">如何编辑？</a>
-      </h4>
-      <form class="form-horizontal" role="form">
-        <div class="wmd-panel">
-          <div id="wmd-button-bar"></div>
-          <textarea class="wmd-input" id="wmd-input"></textarea>
-        </div>
-        <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
-        <button class="btn btn-primary" type="submit">发布</button>
-      </form>
+      <%= render :partial => 'comments/comments' %>
+      <%= render :partial => 'comments/form' %>
     </section>
   </article>
 
@@ -201,55 +154,3 @@
     editor.run();
   })();
 </script>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8">
-      <div class="page-header">
-        <h3><%= @book.title %></h3>
-        <p><a href="/scholars/<%=@book.user[:id]%>"><%= @book.user[:name] %></a>修改于<%= @book[:updated_at].strftime('%b %d, %Y %H:%M')  %>
-          <%= link_to '修改', edit_book_path(@book) %>  |
-          <%= link_to '返回', books_path %>
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <a href="/books/<%= @book.id %>" class="thumbnail">
-             <img src="<%= @book.cover %>!medium" width="360" height="248"  alt="">
-          </a>
-        </div>
-        <div class="col-xs-8">
-          作者: <%= @book.author %><br/>
-          链接：<%= @book.url %><br/>
-          出版社: <%= @book.publisher %><br/>
-          ISBN：<%= @book.isbn %><br/>
-          豆瓣ID：<%= @book.dbid %><br/>
-          <hr/>
-          书单
-          <%= render :partial => 'links/links' %>
-          <%= render :partial => 'links/form' %>
-          <br/>
-          标签
-          <%= render :partial => 'taglinks/taglinks' %>
-          <%= render :partial => 'taglinks/form' %>
-          <br/>
-          喜欢
-          <%= render :partial => 'likes/likes' %>
-          <%= render :partial => 'likes/form' %>
-          <br/>
-          推荐指数
-          <%= render :partial => 'rates/rates' %>
-          <%= render :partial => 'rates/form' %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-8">
-     <%= @book.summary %>
-  </div>
-  <div class="col-xs-8">
-
-  <%= render :partial => 'comments/comments' %>
-  <%= render :partial => 'comments/form' %>
-  </div>
-</div>
-</div>
