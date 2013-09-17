@@ -1,6 +1,26 @@
 <h1>Editing link</h1>
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @link %> |
-<%= link_to 'Back', links_path %>
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    描述：
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+  	顺序：
+    <%= f.number_field :order_num %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to 'back', @link.list %>

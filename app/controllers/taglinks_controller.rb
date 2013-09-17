@@ -8,6 +8,7 @@ class TaglinksController < ApplicationController
   end
   
   def show
+    redirect_to @taglink.tagable
   end
   
   def new
@@ -49,7 +50,7 @@ class TaglinksController < ApplicationController
     @taglink = Taglink.find(params[:id])
     @taglink.destroy
     flash[:notice] = "Successfully destroyed taglink."
-    redirect_to taglinks_url
+    redirect_to @taglink.tagable
   end
   
   private

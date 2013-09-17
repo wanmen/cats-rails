@@ -2,13 +2,13 @@
 
 <p>
   <strong>List:</strong>
-  <%= @link.list %>
+  <%= @link.list.title %>
 </p>
 
 <p>
   <strong>Linkable:</strong>
-  <%= @link.linkable %>
+  <%= @link.linkable.title %>
 </p>
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<%= link_to 'Edit', edit_link_path(@link) %>
+<%= link_to 'Show', @link.list %>

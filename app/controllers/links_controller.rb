@@ -36,7 +36,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link, notice: 'link was successfully updated.' }
+        format.html { redirect_to @link.list, notice: 'link was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -49,7 +49,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.destroy
     flash[:notice] = "Successfully destroyed link."
-    redirect_to links_url
+    redirect_to @link.list
   end
   
   private
