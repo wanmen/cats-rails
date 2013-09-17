@@ -1,8 +1,28 @@
 <div class="container">
 	<div class="page-header">
-      <h1>搜索结果</h1>
+      <h1>搜索结果: <%= @title %></h1>
     </div>
     <div class="row">
+    	<div class="col-xs-4">
+    		普通类型
+    		<ul>
+	    		<li><input type="checkbox" id="book">图书</li>
+	    		<li><input type="checkbox" id="video">视频</li>
+	    		<li><input type="checkbox" id="article">经验贴</li>
+	    	</ul>
+	    	单子类型
+    		<ul>
+	    		<li><input type="checkbox" id="booklist">书单</li>
+	    		<li><input type="checkbox" id="videolist">视频集</li>
+	    		<li><input type="checkbox" id="articlelist">帖子集</li>
+	    		<li><input type="checkbox" id="multilist">综合集</li>
+	    	</ul>
+	    	标签
+	    	<ul>
+	    		<li><input type="checkbox" id="0" checked="true">所有</li>
+	    		<li><input type="checkbox" id="1">物理</li>
+	    	</ul>
+    	</div>
         <div class="col-xs-8">
         	<% if @books %>
 				<% @books.each do |book| %>
@@ -52,3 +72,6 @@
     	</div>
  	 </div>
 </div>
+<script src="/assets/jquery.js"></script>
+<script src="/assets/bootstrap.js"></script>
+<script src="/assets/wm-dom.js"></script>

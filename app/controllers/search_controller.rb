@@ -2,6 +2,7 @@ class SearchController < ApplicationController
 	def index
 		@params = params
 		if(params[:title])
+			@title = params[:title]
 			if (params[:type])
 				case params[:type] 
 				when 'book' 
