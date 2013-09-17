@@ -154,3 +154,30 @@
     editor.run();
   })();
 </script>
+<script src="/assets/jquery.raty.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#rate_button').hide();
+      $('#star').raty({
+        score: function() {
+          return $(this).attr('data-score');
+        },
+        click: function(score, evt) {
+          $('#rate')[0].value = score;
+          $('#rate_button').show();
+        }
+      });
+    });
+    function addTag(){
+      $('#tagForm').show();
+    }
+    function hideTag(){
+      $('#tagForm').hide();
+    }
+    function addList(){
+      $('#listForm').show();
+    }
+    function hideList(){
+      $('#listForm').hide();
+    }
+</script>

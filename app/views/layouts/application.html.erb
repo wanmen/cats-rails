@@ -102,53 +102,6 @@
         </address>
       </div>
     </footer>
-
-    <script src="/assets/jquery.js"></script>
-
-    <script src="/assets/jquery.raty.js"></script>
-    <script src="/assets/bootstrap.js"></script>
-    <script src="/assets/wm-dom.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('.carousel').carousel({interval: 3000});
-      });
-    $('#rate_button').hide();
-    $('#star').raty({
-      score: function() {
-        return $(this).attr('data-score');
-      },
-      click: function(score, evt) {
-        $('#rate')[0].value = score;
-        $('#rate_button').show();
-      }
-    });
-    function addTag(){
-      $('#tagForm').show();
-    }
-    function hideTag(){
-      $('#tagForm').hide();
-    }
-    function addList(){
-      $('#listForm').show();
-    }
-    function hideList(){
-      $('#listForm').hide();
-    }
-    function showVideo(video){
-      if(video.indexOf('youku')!=-1){
-        var vid=video.slice(video.indexOf("id_")+3,-5);
-        video = "http://player.youku.com/embed/"+vid;
-      }
-      //window.open(video);
-      $('#videoPanel').show();
-      $('#videoFrame').attr('src', video);
-    }
-    function hideVideo(){
-      $('#videoPanel').hide();
-      $('#videoFrame').attr('src','');
-    }
-    </script>
-
   </body>
 </html>
 

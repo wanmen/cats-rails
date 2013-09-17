@@ -42,3 +42,79 @@
     </div>
   </div>
 </div>
+<script src="/assets/jquery.js"></script>
+<script src="/assets/bootstrap.js"></script>
+<script src="/assets/wm-dom.js"></script>
+<script src="/assets/Markdown.Converter.js"></script>
+<script src="/assets/Markdown.Sanitizer.js"></script>
+<script src="/assets/Markdown.Editor.js"></script>
+<script src="/assets/Markdown.Extra.js"></script>
+<script src="/assets/Markdown.local.zh.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}
+  });
+</script>
+<script type="text/javascript">
+  (function() {
+    var QUEUE = MathJax.Hub.queue,
+      math = null;
+
+    QUEUE.Push(function() {
+      math = MathJax.Hub.getAllJax('#wmd-preview')[0];
+    });
+
+    window.UpdateMath = function(TeX) {
+      $('wmd-preview').html(TeX);
+      MathJax.Hub.Queue(['Typeset', math, 'wmd-preview']);
+    }
+
+    $('#wmd-input').keypress(function(event) {
+      UpdateMath($(this).val());
+    });
+
+  })();
+</script>
+<script type="text/javascript">
+  (function () {
+    var converter = Markdown.getSanitizingConverter();
+    converter.hooks.chain('preBlockGamut', function(text, rbg) {
+      return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm,
+        function (whole, inner) {
+          return "<blockquote>" + rbg(inner) + '</blockquote>\n';
+      });
+    });
+
+    var editor = new Markdown.Editor(converter, null, {strings: Markdown.local.zh});
+    editor.run();
+  })();
+</script>
+<script src="/assets/jquery.raty.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#rate_button').hide();
+      $('#star').raty({
+        score: function() {
+          return $(this).attr('data-score');
+        },
+        click: function(score, evt) {
+          $('#rate')[0].value = score;
+          $('#rate_button').show();
+        }
+      });
+    });
+    function addTag(){
+      $('#tagForm').show();
+    }
+    function hideTag(){
+      $('#tagForm').hide();
+    }
+    function addList(){
+      $('#listForm').show();
+    }
+    function hideList(){
+      $('#listForm').hide();
+    }
+</script>
