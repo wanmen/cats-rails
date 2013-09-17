@@ -14,16 +14,12 @@
   <tbody>
     <% @taglinks.each do |taglink| %>
       <tr>
-        <td><%= taglink.topic %></td>
-        <td><%= taglink.tagable %></td>
-        <td><%= link_to 'Show', taglink %></td>
-        <td><%= link_to 'Edit', edit_taglink_path(taglink) %></td>
-        <td><%= link_to 'Destroy', taglink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= taglink.tag.name %></td>
+        <td><%= taglink.tagable.title %></td>
+        <td><%= link_to 'Destroy', request.fullpath+'/'+taglink.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Taglink', new_taglink_path %>

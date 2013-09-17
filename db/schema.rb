@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20130916050939) do
     t.integer  "list_id"
     t.integer  "linkable_id"
     t.string   "linkable_type"
+    t.integer  "order_num"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

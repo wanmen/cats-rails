@@ -16,6 +16,14 @@
     <p>
       <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
     </p>
+    <p>
+      加描述
+      <%= f.text_field :description %>
+    </p>
+    <p>
+      在单子中的顺序
+      <%= f.number_field :order_num %>
+    </p>
     <div class="actions">
       <%= f.submit "加入" %>
     </div>

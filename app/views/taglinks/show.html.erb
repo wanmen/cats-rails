@@ -2,13 +2,10 @@
 
 <p>
   <strong>Tag:</strong>
-  <%= @taglink.tag %>
+  <%= @taglink.tag.name %>
 </p>
 
 <p>
   <strong>Tagable:</strong>
-  <%= @taglink.tagable %>
+  <%= @taglink.tagable.title %>
 </p>
-
-<%= link_to 'Edit', edit_taglink_path(@taglink) %> |
-<%= link_to 'Back', taglinks_path %>
