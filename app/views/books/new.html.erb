@@ -1,5 +1,12 @@
-<h1>加新书</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', books_path %>
+<% content_for :head do %>
+   <title>添加新书 | 万门大学</title>
+<% end %>
+<main class="container" role="main">
+  <h3 class="page-header text-center">
+    <span class="wm-title">添加新书</span>
+    <span class="wm-quick-link">
+        <a href="JavaScript:window.history.back();">返回</a>
+    </span>
+  </h3>
+  <%= render 'form' %>
+</main>
