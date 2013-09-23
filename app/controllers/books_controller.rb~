@@ -51,21 +51,15 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.where(title: book_params[:title], author: book_params[:author]).take
+    @book = Book.new(book_params)
 
     respond_to do |format|
-      if @book != nil
-        format.html { redirect_to @book, notice: 'Book was already created.' }
-        format.json { render action: 'show', status: :failed, location: @book }
+      if @book.save
+        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @book }
       else
-        @book = Book.new(book_params)
-        if @book.save
-          format.html { redirect_to @book, notice: 'Book was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @book }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @book.errors, status: :unprocessable_entity }
-        end 
+        format.html { render action: 'new' }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
   end
