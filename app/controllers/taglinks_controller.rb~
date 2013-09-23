@@ -16,22 +16,16 @@ class TaglinksController < ApplicationController
   end
   
   def create
+    exist = Taglink.where(tag_id: params[:taglink][:tag_id]).take
     @taglinkable = find_taglinkable
-    @taglink = Taglink.where(tag_id: params[:taglink][:tag_id]).take
-    
+    @taglink = @taglinkable.taglinks.new(taglink_params)
     respond_to do |format|
-      if @taglink != nil
-        format.html { redirect_to @taglinkable, notice: 'taglink is alrealy exist.' }
-        format.json { render action: 'show', status: failed, location: @taglinkable }
+      if @taglink.save
+        format.html { redirect_to @taglinkable, notice: 'taglink was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @taglinkable }
       else
-        @taglink = @taglinkable.taglinks.new(taglink_params)
-        if @taglink.save
-          format.html { redirect_to @taglinkable, notice: 'taglink was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @taglinkable }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @taglink.errors, status: :unprocessable_entity }
-        end
+        format.html { render action: 'new' }
+        format.json { render json: @taglink.errors, status: :unprocessable_entity }
       end
     end
   end
