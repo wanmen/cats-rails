@@ -1,5 +1,5 @@
 <span><%= @taglinks.length %>个标签</span>
 <% @taglinks.each do |taglink| %>
     <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a>
-    <%= link_to '删除', taglink_path(taglink), method: :delete, data: { confirm: 'Are you sure?' } %>|
+    <%= link_to '删除', '/taglinks/'+taglink.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %>|
 <% end %>
