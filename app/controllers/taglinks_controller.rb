@@ -8,7 +8,6 @@ class TaglinksController < ApplicationController
   end
   
   def show
-    redirect_to @taglink.tagable
   end
   
   def new
