@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916050939) do
+ActiveRecord::Schema.define(version: 20130926041337) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -100,10 +100,10 @@ ActiveRecord::Schema.define(version: 20130916050939) do
     t.integer  "list_id"
     t.integer  "linkable_id"
     t.string   "linkable_type"
-    t.integer  "order_num"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "order_num",     default: 0
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
@@ -188,7 +188,7 @@ ActiveRecord::Schema.define(version: 20130916050939) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "ownership",  default: 1 # type 2 means the copyright belongs to wanmen, type 1 otherwise.
+    t.integer  "ownership",  default: 1
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
