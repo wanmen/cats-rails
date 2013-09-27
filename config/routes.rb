@@ -42,6 +42,8 @@ Cats::Application.routes.draw do
 
   # static pages
   resources :terms
+  resources :help
+  resources :aboutus
 
   #devise_for :admins
 
