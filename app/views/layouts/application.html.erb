@@ -57,7 +57,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
-                    <li> <%= link_to "登出", destroy_user_session_path, :method => :delete %>
+                    <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
                     </li>
                   </ul>
                 </div>
