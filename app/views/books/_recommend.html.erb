@@ -1,0 +1,20 @@
+<aside class="col-sm-4">
+  <section class="wm-recommend">
+    <h3 class="page-header">
+      <span class="glyphicon glyphicon-plus-sign"></span> 推荐图书
+      <a class="wm-quick-link" href="">查看全部</a>
+    </h3>
+    <div class="row">
+      <% @best.each do |recommendbook| %>
+      <figure class="col-sm-6">
+        <a class="thumbnail" href="/books/<%=recommendbook.id %>.html">
+          <img src="<%= recommendbook.cover %>!medium" alt="" title="<%= recommendbook.title %>"/>
+        </a>
+        <figcaption>
+          <a href="/books/<%=recommendbook.id %>.html" title="<%= recommendbook.title %>"><%= recommendbook.title %></a>
+        </figcaption>
+      </figure>
+    </div>
+    <% end %>
+  </section>
+</aside>

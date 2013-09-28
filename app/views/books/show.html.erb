@@ -60,50 +60,7 @@
     <%= render :partial => 'comments/form' %>
   </article>
 
-  <aside class="col-sm-4">
-    <section class="wm-recommend">
-      <h3 class="page-header">
-        <span class="glyphicon glyphicon-plus-sign"></span> 同主题推荐
-        <a class="wm-quick-link" href="">查看全部</a>
-      </h3>
-      <div class="row">
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/5c4c8a8a674fa4be2f7374344f95a4aa.jpg" alt="" title="苏联遗传学劫难"/>
-          </a>
-          <figcaption>
-            <a href="" title="苏联遗传学劫难">苏联遗传学劫难</a>
-          </figcaption>
-        </figure>
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/24dc33387b1c0ca121f5f7a8e4f8cfe4.jpg" alt="" title="人类基因的历史地图"/>
-          </a>
-          <figcaption>
-            <a href="" title="人类基因的历史地图">人类基因的历史地图</a>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="row">
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/adeb1e84045dbd4bcf398a71c887fa75.jpg" alt="" title="玻利维亚日记"/>
-          </a>
-          <figcaption>
-            <a href="" title="玻利维亚日记">玻利维亚日记</a>
-          </figcaption>
-        </figure>
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://img.wanmen.org/2013/09/5537418d7e0b069154b597513189781b.jpg" alt=""/>
-          </a>
-          <figcaption>
-            <a href="" title="学术与政治学术">学术与政治学术</a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-  </aside>
+  <%= render :partial => 'books/recommend' %>
 </main>
 
 <script src="/assets/wm-dom.js"></script>

@@ -31,6 +31,7 @@ class BooksController < ApplicationController
     @linkable = @book
     @links = @linkable.links
     @link = Link.new
+    @best = Book.best6
     if (current_user)
       @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 1)
     else
