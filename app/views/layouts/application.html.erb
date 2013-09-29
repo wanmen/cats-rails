@@ -35,7 +35,7 @@
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">知识库<b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="books.html">知识库<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
                   <a href="/books.html"><span class="glyphicon glyphicon-book"></span> 图书</a>
@@ -54,21 +54,21 @@
               </ul>
             </li>
           </ul>
-         <% if user_signed_in? %>
-              <div class="dropdown navbar-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "修改",edit_user_registration_path %> </li>
-                  <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
-                  </li>
-                </ul>
-              </div>
-          <% else %>
-              <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
-          <% end %>
-          <form class="navbar-right navbar-form" method="get" action="/search" role="search">
+           <% if user_signed_in? %>
+                <div class="dropdown navbar-right">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "修改",edit_user_registration_path %> </li>
+                    <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
+                    </li>
+                  </ul>
+                </div>
+            <% else %>
+                <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
+            <% end %>
+          <form class="navbar-right navbar-form" role="search" method="get" action="/search">
             <div class="input-group">
-              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
+              <input class="form-control" type="text" name="title" placeholder="图书，视频，经验贴" title="请输入关键字进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -97,9 +97,9 @@
         <address>
           &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
           <div class="pull-right">
-            <a href="/about.html">关于万门</a> |
-            <a href="/join_us.html">加入我们</a> |
-            <a href="/help.html">帮助中心</a> |
+            <a href="/about.html">关于万门</a> &bull;
+            <a href="/join_us.html">加入我们</a> &bull;
+            <a href="/help.html">帮助中心</a> &bull;
             <a href="/terms.html">免责声明</a>
           </div>
         </address>
