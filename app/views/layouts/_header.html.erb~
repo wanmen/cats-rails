@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords" content="网络大学，高等教育"/>
+    <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
+    <title>经验贴 | 万门大学</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css" media="screen"/>
+    <link rel="stylesheet" href="../../assets/css/wm-default.css" media="screen"/>
+    <link rel="icon" type="image/png" href="../../assets/img/favicon.png"/>
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" href="../../assets/css/bootstrap-ie7.css"/>
+    <![endif]-->
+  </head>
+
+  <body>
