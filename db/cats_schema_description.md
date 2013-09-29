@@ -9,6 +9,7 @@ TABLE comments
 TABLE likes
 
 TABLE links
+# item(book,video,article) list relation
 
 TABLE lists
       integer type: ["书单",1],["视频集",2],["经验贴集",3]
