@@ -33,21 +33,21 @@
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="books.html">知识库<b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">知识库<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="books.html"><span class="glyphicon glyphicon-book"></span> 图书</a>
+                  <a href="/books.html"><span class="glyphicon glyphicon-book"></span> 图书</a>
                 </li>
                 <li>
-                  <a href="videos.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频</a>
+                  <a href="/videos.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频</a>
                 </li>
                 <li>
-                  <a href="articles.html"><span class="glyphicon glyphicon-edit"></span> 经验贴</a>
+                  <a href="/articles.html"><span class="glyphicon glyphicon-edit"></span> 经验贴</a>
                 </li>
                 <li class="divider"></li>
                 <li class="dropdown-header">其它分类</li>
                 <li>
-                  <a href="tags.html"><span class="glyphicon glyphicon-tags"></span> 标签</a>
+                  <a href="/tags.html"><span class="glyphicon glyphicon-tags"></span> 标签</a>
                 </li>
               </ul>
             </li>
@@ -64,9 +64,9 @@
             <% else %>
                 <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
             <% end %>
-          <form class="navbar-right navbar-form" action="search.html" role="search">
+          <form class="navbar-right navbar-form" role="search" method="get" action="/search">
             <div class="input-group">
-              <input class="form-control" type="search" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
+              <input class="form-control" type="text" name="title" placeholder="图书，视频，经验贴" title="请输入关键字进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -90,7 +90,7 @@
     </p>
     <% end %>
     <%= yield %>
-    <footer class="navbar-default" role="contentinfo">
+     <footer class="navbar-default" role="contentinfo">
       <div class="container">
         <address>
           &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
@@ -98,7 +98,7 @@
             <a href="about.html">关于万门</a> &bull;
             <a href="join_us.html">加入我们</a> &bull;
             <a href="help.html">帮助中心</a> &bull;
-            <a href="terms.html">免责声明</a> &ensp;
+            <a href="terms.html">免责声明</a>
           </div>
         </address>
       </div>

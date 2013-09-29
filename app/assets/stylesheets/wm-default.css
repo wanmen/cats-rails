@@ -1,305 +1,307 @@
+
 body {
-    padding-top: 60px;
-    text-align: justify;
+  padding-top: 60px;
+  text-align: justify;
 }
 
 main {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 main h3 {
-    font-size: 144%;
+  font-size: 144%;
 }
 
 main p {
-    margin-bottom: 1em;
-    line-height: 169%;
+  margin-bottom: 1em;
+  line-height: 169%;
 }
 
 article ol li {
-    margin: 1em 0;
-    text-indent: 0px;
-    line-height: 169%;
+  margin: 1em 0;
+  text-indent: 0px;
+  line-height: 169%;
 }
 
 article dl {
-    margin-left: 2em;
+  margin-left: 2em;
 }
 
 article dt {
-    font-size: 16px;
-    font-weight: normal;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 article dd {
-    margin: 0.8em 0 1.6em 2em;
-    line-height: 169%;
+  margin: 0.8em 0 1.6em 2em;
+  line-height: 169%;
 }
 
 aside ul {
-    padding-left: 20px;
-    line-height: 169%;
-    list-style: outside square;
+  padding-left: 20px;
+  line-height: 169%;
+  list-style: outside square;
 }
 
 footer address {
-    margin: 10px 0;
-    color: #999999;
+  margin: 10px 0;
+  color: #999999;
 }
 
 blockquote {
-    padding-left: 4px;
-    background: #F5F5F5;
-    border-left: 2px dotted #428BCA;
+  padding-left: 4px;
+  background: #F5F5F5;
+  border-left: 2px dotted #428BCA;
 }
 
 .glyphicon {
-    font-size: 83.3%;
+  font-size: 83.3%;
 }
 
 .page-header + .wm-pub-metadata {
-    margin-top: -14px;
+  margin-top: -14px;
 }
 
 .wm-hidden {
-    display: none;
+  display: none;
 }
 
 .wm-inline-block {
-    display: inline-block;
+  display: inline-block;
 }
 
 .wm-reset {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .wm-md-top {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .wm-md-left {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .wm-lg-left {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .wm-lg-bottom {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .wm-indent {
-    margin: 1em 0;
-    text-indent: 2em;
+  margin: 1em 0;
+  text-indent: 2em;
 }
 
 .wm-back-to-top {
-    position: fixed;
-    bottom: 40px;
-    right: 5px;
-    font-size: 240%;
-    line-height: 100%;
+  position: fixed;
+  bottom: 40px;
+  right: 5px;
+  font-size: 240%;
+  line-height: 100%;
 }
 
 .wm-quick-link {
-    float: right;
-    margin-top: 7px;
-    font-size: 14px;
+  float: right;
+  margin-top: 7px;
+  font-size: 14px;
 }
 
 .wm-homepage {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .wm-newest h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .wm-newest ul {
-    padding: 5px 0;
-    list-style: none;
+  padding: 5px 0;
+  list-style: none;
 }
 
 .wm-newest li {
-    margin: 10px 20px 0;
+  margin: 10px 20px 0;
 }
 
 .wm-carousel {
-    margin-bottom: 20px;
-    padding: 0;
+  margin-bottom: 20px;
+  padding: 0;
 }
 
 .wm-carousel img {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .wm-features h3 {
-    text-align: center;
+  text-align: center;
 }
 
 .wm-features img {
-    height: 36px;
-    margin-right: 7px;
+  height: 36px;
+  margin-right: 7px;
 }
 
 .wm-features p {
-    margin: 20px;
+  margin: 20px;
 }
 
 .wm-form label {
-    display: inline-block;
-    margin-top: 7px;
-    font-weight: normal;
-    text-align: right;
+  display: inline-block;
+  margin-top: 7px;
+  font-weight: normal;
+  text-align: right;
 }
 
 .wm-sign {
-    margin: 5% 0;
+  margin: 5% 0;
 }
 
 .wm-sign-button {
-    display: block;
-    min-width: 180px;
-    max-width: 50%;
-    margin: 15px 0;
+  display: block;
+  min-width: 180px;
+  max-width: 50%;
+  margin: 15px 0;
 }
 
 .wm-metadata {
-    line-height: 169%;
+  line-height: 169%;
 }
 
 .wm-metadata span {
-    margin-right: 5px;
-    color: #999999;
+  margin-right: 5px;
+  color: #999999;
 }
 
 .wm-pub-metadata {
-    margin-top: -5px;
-    font-size: 12px;
-    color: #999999;
+  margin-top: -5px;
+  font-size: 12px;
+  color: #999999;
 }
 
 .wm-gallery {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .wm-gallery img {
-    width: 100%;
+  width: 100%;
 }
 
 .wm-gallery figcaption {
-    margin: 8px 0 24px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
+  margin: 8px 0 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .wm-tag-list {
-    line-height: 169%;
+  line-height: 169%;
 }
 
 .wm-tag-list span {
-    color: #999999;
+  color: #999999;
 }
 
 .wm-book-list {
-    margin: 2em;
+  margin: 2em;
 }
 
 .wm-video {
-    display: none;
-    position: fixed;
-    top: 100px;
-    padding: 0 20px 20px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 7px;
-    box-shadow: 0px 6px 12px rgba(0,​ 0,​ 0,​ 0.176);
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 100px;
+  padding: 0 20px 20px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 7px;
+  box-shadow: 0px 6px 12px rgba(0,​ 0,​ 0,​ 0.176);
+  z-index: 1000;
 }
 
 .wm-video iframe {
-    width: 100%;
-    height: 400px;
+  width: 100%;
+  height: 400px;
 }
 
 .wm-sns-share img {
-    margin: 0 2px;
-    cursor: pointer;
+  margin: 0 2px;
+  cursor: pointer;
 }
 
 .wm-sns-share a {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .wm-comments {
-    margin: 25px 0 0;
+  margin: 25px 0 0;
 }
 
 .wm-comments h4 {
-    margin: 14px 0;
-    font-size: 14px;
-    font-weight: normal;
-    color: #999999;
+  margin: 14px 0;
+  font-size: 14px;
+  font-weight: normal;
+  color: #999999;
 }
 
 .wm-user-photo {
-    height: 32px;
-    margin: 10px 0 6px;
+  height: 32px;
+  margin: 10px 0 6px;
 }
 
 .wm-user-info img {
-    width: 100%;
-    max-width: 80px;
+  width: 100%;
+  max-width: 80px;
 }
 
 .wm-user-comment {
-    font-size: 13px;
-    line-height: 169%;
+  font-size: 13px;
+  line-height: 169%;
 }
 
 .wm-user-comment h5 {
-    margin: 0 0 13px;
+  margin: 0 0 13px;
 }
 
 .wm-user-comment h5 span {
-    float: right;
-    font-size: 12px;
-    color: #999999;
+  float: right;
+  font-size: 12px;
+  color: #999999;
 }
 
 .wm-recommend img {
-    width: 100%;
+  width: 100%;
 }
 
 .wm-recommend figcaption {
-    margin: 6px 0 18px;
-    font-size: 13px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
+  margin: 6px 0 18px;
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .wm-list-popular li {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .wm-tags-popular div {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 @media (min-width: 768px) {
-    .navbar-form {
-        width: 28%;
-        max-width: 400px;
-    }
-    .wm-form input {
-        width: 75%;
-    }
+  .navbar-form {
+    width: 28%;
+    max-width: 400px;
+  }
+  .wm-form input {
+    width: 75%;
+  }
 }
+
