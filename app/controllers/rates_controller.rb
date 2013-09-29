@@ -17,9 +17,8 @@ class RatesController < ApplicationController
   def create
     @rateable = find_rateable
     @rate = @rateable.rates.where("user_id = ?", current_user.id)
-    
     respond_to do |format|
-      if @rate != nil
+      if @rate != []
         format.html { redirect_to @rateable, notice: 'You have already rated this item.' }
         format.json { render action: 'show', status: :failed, location: @rateable }
       else

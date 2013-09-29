@@ -1,7 +1,10 @@
-<main class="container wx-sign" role="main">
+<% content_for :head do %>
+   <title>注册 | 万门大学</title>
+<% end %>
+<main class="container wm-sign" role="main">
   <div class="col-sm-5 col-md-4 col-sm-offset-1">
-    <h4 class="wm-sign-in">欢迎加入万门大学</h4>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:class=>"form-horizontal",:role=>"form") do |f| %>
+    <h4 class="wm-lg-bottom">欢迎加入万门大学</h4>
+     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:class=>"form-horizontal",:role=>"form") do |f| %>
     <%= devise_error_messages! %>
     <% if session["devise.social_data"] %>
     <%= f.text_field :provider, :type => 'hidden', :value=>session["devise.social_data"]["provider"] %>
@@ -11,55 +14,55 @@
     <div class="form-group">
       <label class="sr-only control-label" for="user_email">邮箱</label>
       <div class="col-sm-10">
-        <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱"%>
+        <%= f.email_field :email, :autofocus => true,:required=>true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱"%>
       </div>
     </div>
     <div class="form-group">
       <label class="sr-only control-label" for="user_name">昵称</label>
       <div class="col-sm-10">
-        <%= f.text_field :name,:value=>session["devise.social_data"]["info"]["name"],:placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称"%>
+        <%= f.text_field :name,:value=>session["devise.social_data"]["info"]["name"],:placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称",:required=>true%>
       </div>
     </div>
     <% else %>
     <div class="form-group">
       <label class="sr-only control-label" for="user_email">邮箱</label>
       <div class="col-sm-10">
-        <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱"%>
+        <%= f.email_field :email, :autofocus => true,:placeholder=>"邮箱",:class=>"form-control", :title=>"请输入你的帐号邮箱",:required=>true%>
       </div>
     </div>
     <div class="form-group">
       <label class="sr-only control-label" for="user_name">昵称</label>
       <div class="col-sm-10">
-        <%= f.text_field :name, :placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称"%>
+        <%= f.text_field :name, :placeholder=>"昵称",:class=>"form-control",:title=>"请输入你的网络昵称",:required=>true%>
       </div>
     </div>
     <% end %>
       <div class="form-group">
         <label class="sr-only control-label" for="user_password">密码</label>
         <div class="col-sm-10">
-          <%= f.password_field :password,:class=> "form-control",:placeholder=>"密码",:title=>"请输入你的帐号密码"%>
+          <%= f.password_field :password,:class=> "form-control",:placeholder=>"密码",:title=>"请输入你的帐号密码",:required=>true%>
         </div>
       </div>
       <div class="form-group">
         <label class="sr-only control-label" for="user_password_confirmation">确认密码</label>
         <div class="col-sm-10">
-         <%= f.password_field :password_confirmation,:class=>"form-control",:placeholder=>"确认密码",:title=>"请再次输入你的帐号密码" %>
+         <%= f.password_field :password_confirmation,:class=>"form-control",:placeholder=>"确认密码",:title=>"请再次输入你的帐号密码",:required=>true %>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-10 text-center">
           <button class="btn btn-primary" type="submit">完成注册</button>
         </div>
-      </div>   
+      </div> 
     <% end %>
   </div>
   <div class="col-sm-5 col-sm-offset-1">
-    <h4 class="wx-sign-up">你还可以用第三方帐号登录</h4>
+    <h4 class="wm-lg-bottom">你还可以用第三方账号登录</h4>
     <a class="btn btn-primary wm-sign-button" href="/users/auth/renren">使用人人帐号登录</a>
     <a class="btn btn-success wm-sign-button" href="/users/auth/douban">使用豆瓣帐号登录</a>
     <a class="btn btn-danger wm-sign-button" href="/users/auth/weibo">使用新浪微博登录</a>
     <p>
-      已有帐号？<a href="/users/sign_in">马上登录</a>
+      已有账号？<a href="/users/sign_in">马上登录</a>
     </p>
   </div>
 </main>

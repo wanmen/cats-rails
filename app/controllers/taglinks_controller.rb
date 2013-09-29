@@ -53,7 +53,6 @@ class TaglinksController < ApplicationController
   end
   
   def destroy
-    @taglink = Taglink.find(params[:id])
     @taglink.destroy
     flash[:notice] = "Successfully destroyed taglink."
     redirect_to @taglink.tagable

@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <meta charset="utf-8" ></meta>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords" content="网络大学，高等教育"/>
     <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
-    <link rel="stylesheet" href="/assets/bootstrap.css" media="screen"/>
-    <link rel="stylesheet" href="/assets/wm-default.css" media="screen"/>
-    <link rel="shortcut icon" href="/assets/favicon.png"/>
     <%= yield :head %>
+    <link rel="stylesheet" href="/assets/bootstrap.css" media="screen"/>
+    <link rel="stylesheet" href="/assets/wm-default.css" media="screen"/> 
+    <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
+    <%= javascript_include_tag "application" %>  
+    <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+    <%= csrf_meta_tag %>
     <!--[if lt IE 9]>
-      <script src="/assets/html5shiv.js"></script>
-      <script src="/assets/respond.js"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.js"></script>
     <![endif]-->
     <!--[if lt IE 8]>
-      <link rel="stylesheet" href="/assets/bootstrap-ie7.css"/>
+      <link rel="stylesheet" href="css/bootstrap-ie7.css"/>
     <![endif]-->
   </head>
 
   <body>
-    <header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <header class="navbar navbar-default navbar-fixed-top" role="banner">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,21 +54,21 @@
               </ul>
             </li>
           </ul>
-           <% if user_signed_in? %>
-                <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "修改",edit_user_registration_path %> </li>
-                    <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
-                    </li>
-                  </ul>
-                </div>
-            <% else %>
-                <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
-            <% end %>
-          <form class="navbar-right navbar-form" role="search" method="get" action="/search">
+         <% if user_signed_in? %>
+              <div class="dropdown navbar-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px"></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "修改",edit_user_registration_path %> </li>
+                  <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
+                  </li>
+                </ul>
+              </div>
+          <% else %>
+              <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
+          <% end %>
+          <form class="navbar-right navbar-form" method="get" action="/search" role="search">
             <div class="input-group">
-              <input class="form-control" type="text" name="title" placeholder="图书，视频，经验贴" title="请输入关键字进行搜索"/>
+              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -90,15 +92,15 @@
     </p>
     <% end %>
     <%= yield %>
-     <footer class="navbar-default" role="contentinfo">
+    <footer class="navbar-default" role="contentinfo">
       <div class="container">
         <address>
           &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
           <div class="pull-right">
-            <a href="about.html">关于万门</a> &bull;
-            <a href="join_us.html">加入我们</a> &bull;
-            <a href="help.html">帮助中心</a> &bull;
-            <a href="terms.html">免责声明</a>
+            <a href="/about.html">关于万门</a> |
+            <a href="/join_us.html">加入我们</a> |
+            <a href="/help.html">帮助中心</a> |
+            <a href="/terms.html">免责声明</a>
           </div>
         </address>
       </div>

@@ -1,12 +1,32 @@
-<h2>重新发送确认邮箱</h2>
-
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "重新发送" %></div>
+<% content_for :head do %>
+   <title>重新确认 | 万门大学</title>
 <% end %>
+<main class="container wm-sign" role="main">
+  <div class="col-sm-5 col-md-4 col-sm-offset-1">
+    <h4 class="wm-lg-bottom">重新发送确认邮箱</h4>
+    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+	  <%= devise_error_messages! %>
 
-<%= render "users/shared/links" %>
+	  <div class="form-group">
+        <label class="sr-only control-label" for="user_email">邮箱</label>
+        <div class="col-sm-10">
+          <%= f.email_field :email, :autofocus => true,:class=>"form-control", :placeholder=>"邮箱", :title=>"请输入你的帐号邮箱",:required=>true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-10">
+          <button class="btn btn-primary" type="submit">重新发送</button>
+        </div>
+      </div>   
+	<% end %>
+  </div>
+  <div class="col-sm-5 col-sm-offset-1">
+    <h4 class="wm-lg-bottom">你还可以用第三方账号登录</h4>
+    <a class="btn btn-primary wm-sign-button" href="/users/auth/renren">使用人人帐号登录</a>
+    <a class="btn btn-success wm-sign-button" href="/users/auth/douban">使用豆瓣帐号登录</a>
+    <a class="btn btn-danger wm-sign-button" href="/users/auth/weibo">使用新浪微博登录</a>
+    <p>
+      还没有帐号？<a href="/users/sign_up">马上注册</a>
+    </p>
+  </div>
+</main>
