@@ -15,7 +15,7 @@
       </div>
     <% end %>
     <% if current_user %>
-      <% if current_user[:role]>=2 %>
+      <% if current_user[:role]>= SCHOLAR %>
       <img src="<%= current_user[:thumbnail]%>" width="50px">
 
       <div class="wmd-panel">

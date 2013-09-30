@@ -12,7 +12,7 @@
   <div class="field">
     <%= f.number_field :star,:id=>'rate',:type=>'hidden'%>
   </div>
-  <% if current_user&& current_user[:role]>=2 %>
+  <% if current_user&& current_user[:role]>=SCHOLAR %>
     <div class="actions">
       <%= f.submit '打分',:id=>'rate_button' %>
     </div>

@@ -12,28 +12,28 @@
 </h3>
 <section>
   <dl>
- 	<% if @role == 0 %>
+ 	<% if @role == BEGINNER %>
 	<dt>您现在是万门大学新生，可以做的事情是</dt>
 	<dd> 1.浏览和分享万门图书馆现有的书单，视频集等资源</dd>
 	<dd> 2.搜索万门图书馆现有的资源</dd>
 	<dd> 3.<%= form_for('') do |f| %><button class="btn btn-primary">申请</button><% end %>成为学者，Email我们你的自我介绍。学者的一个职责是对万门现有资源进行筛选，需要保证筛选的真实可靠性，我们的名额会有一定限制。
 	</dd>
-	<% elsif @role == 1 %>
+	<% elsif @role == PRESCHOLAR %>
 	<dt>谢谢您申请万门学者，我们会尽快处理您的请求。您现在可以</dt>
 	<dd> 1.浏览和分享万门图书馆现有的书单，视频集等资源</dd>
 	<dd> 2.搜索万门图书馆现有的资源</dd>
-	<% elsif @role == 2 %>
+	<% elsif @role == SCHOLAR %>
 	<dt>您现在是万门学者，可以做的事情是</dt>
 	<dd>对书单，视频等资源的点赞，打分和评论。</dd>
 	<dd>请注意操作的真实可靠性,不要乱发无用的评论，不然会被贬的</dd>
 	<dd>学者得到赏识将可以被提拔为管理员，为广大新生提供更多更优质的资源</dd>
 	<dd>你也可以直接<%= form_for('') do |f| %><button class="btn btn-primary">申请</button><% end %>
 	</dd>
-	<% elsif @role == 3 %>
+	<% elsif @role == PREADMIN %>
 	<dt>谢谢您申请万门管理员，我们会尽快处理您的请求。您现在可以</dt>
 	<dd>对书单，视频等资源的点赞，打分和评论。</dd>
 	<dd>请注意操作的真实可靠性</dd>
-	<% elsif @role == 4 %>
+	<% elsif @role == ADMIN %>
 	<dt>您现在是万门大学管理员，可以做的事情是</dt>
 	<dd> <a class="btn btn-primary" href="/books/new.html">添加新书</a></dd>
 	<dd> <a class="btn btn-primary" href="/videos/new.html">添加视频</a></dd>
@@ -42,7 +42,7 @@
 	<dd> <a class="btn btn-primary" href="/books/1.html">添加和删除内容对应的标签</a></dd>
 	<dd> <a class="btn btn-primary" href="/books/1.html">添加内容到你的单子</a></dd>
 	<dd> Email我们举报不受节操的学者和管理员</dd>
-	<% elsif @role == 9 %>
+	<% elsif @role == SUPERADMIN %>
 	<dt>您现在是万门大学超级管理员，可以做的事情是</dt>
 	<dd> <a class="btn btn-primary" href="/tags/new.html">添加</a>或修改标签</a></dd>
 	<dd> 修改管理员创建的内容</dd>
@@ -52,11 +52,11 @@
 	 <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
 	提拔/贬为
 	<select name="[role]">
-		<option value="0">新生</option>
-		<option value="2">学者</option>
-		<option value="4">管理员</option>
-		<option value="9">超级管理员</option>
-		<option value="-1">黑名单</option>
+		<option value="<%= BEGINNER %>">新生</option>
+		<option value="<%= SCHOLAR %>">学者</option>
+		<option value="<%= ADMIN %>">管理员</option>
+		<option value="<%= SUPERADMIN %>">超级管理员</option>
+		<option value="<%= BLACKLIST %>">黑名单</option>
 	</select>
 	<button class="btn btn-primary" href="/tags/new.html">确认</button>
 	</dd>

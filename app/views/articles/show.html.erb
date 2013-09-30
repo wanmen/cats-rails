@@ -8,7 +8,7 @@
         <h3><%= @article.title %></h3>
         <p><a href="/scholars/<%= @article.user[:id]%>"><%= @article.user[:name] %></a>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
         
-        <% if current_user&& current_user[:role]>=2 %>
+        <% if current_user&& current_user[:role]>= SCHOLAR %>
           <%= link_to '修改', edit_article_path(@article) %>  |
         <% end %>
           <%= link_to '返回', articles_path %>
