@@ -6,7 +6,9 @@
     <h3 class="page-header">
       <span class="wm-title"><%= @list.title %></span>
       <span class="wm-quick-link">
+        <% if current_user&& current_user[:role]>=2 %>
         <a href="/lists/<%=@list.id %>/edit">修改</a> |
+        <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
     </h3>
@@ -35,7 +37,9 @@
             <p>
               <%= link.description %>
             </p>
-            <p> <a href="/links/<%= link.id%>/edit">修改描述或顺序</a></p>
+           
+           <% if current_user&& current_user[:role]>=2 %> <p> <a href="/links/<%= link.id%>/edit">修改描述或顺序</a></p>
+           <% end %>
           </div>
         </div>
         <hr/>

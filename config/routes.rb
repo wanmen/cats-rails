@@ -56,6 +56,7 @@ Cats::Application.routes.draw do
   get '/uploader' => 'uploader#index', :as => :new_uploader
   get '/search' => 'search#index', :as => :new_search
   get '/manage' => 'help#manage', :as => :help_manage
+  post '/manage' => 'help#apply', :as => :help_apply
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

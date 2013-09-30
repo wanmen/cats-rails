@@ -6,7 +6,9 @@
     <h3 class="page-header">
       <span class="wm-title"><%= @video.title %></span>
       <span class="wm-quick-link">
+        <% if current_user&& current_user[:role]>=2 %>
         <%= link_to '修改', edit_video_path(@video) %>  |
+        <% end %>
         <%= link_to '返回', videos_path %>
       </span>
     </h3>

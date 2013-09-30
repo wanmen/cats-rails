@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_user&& current_user[:role]>=2 %>
   <% if (@lists.length>0) %>
   <a onclick="addList()">添加到我的单子</a>
   <div id="listForm" style="display:none;">

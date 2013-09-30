@@ -7,7 +7,9 @@
     <h3 class="page-header">
       <span class="wm-title"><%= @book.title %></span>
       <span class="wm-quick-link">
-        <%= link_to '修改', edit_book_path(@book) %>  |
+        <% if current_user&& current_user[:role]>=2 %>
+          <%= link_to '修改', edit_book_path(@book) %>  | 
+        <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
     </h3>

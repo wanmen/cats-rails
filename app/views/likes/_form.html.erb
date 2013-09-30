@@ -1,3 +1,5 @@
+<% if current_user&& current_user[:role]>=2 %>
 <%= form_for [@likeable, @like],:class=>"wm-inline-form" do |f| %>
     <%= f.submit '我喜欢',:class=>"btn btn-default btn-xs" %>
+<% end %>
 <% end %>
