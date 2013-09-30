@@ -9,15 +9,26 @@
     <link rel="stylesheet" href="/assets/bootstrap.css" media="screen"/>
     <link rel="stylesheet" href="/assets/wm-default.css" media="screen"/> 
     <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
-    <%= javascript_include_tag "application" %>  
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/turbolinks.js"></script>
+    <script src="/assets/rails.js"></script>
+    <script src="/assets/application.js"></script>
+    <script src="/assets/Markdown.Converter.js"></script>
+    <script src="/assets/Markdown.Sanitizer.js"></script>
+    <script src="/assets/Markdown.Editor.js"></script>
+    <script src="/assets/Markdown.Extra.js"></script>
+    <script src="/assets/Markdown.local.zh.js"></script>
+    <script src="/assets/jquery.raty.js"></script>
+    <script src="/assets/wm-dom.js"></script>
     <link rel="icon" type="image/png" href="/assets/favicon.png"/>
     <%= csrf_meta_tag %>
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.js"></script>
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.js"></script>
     <![endif]-->
     <!--[if lt IE 8]>
-      <link rel="stylesheet" href="css/bootstrap-ie7.css"/>
+      <link rel="stylesheet" href="/assets/bootstrap-ie7.css"/>
     <![endif]-->
   </head>
 
@@ -103,9 +114,9 @@
         <address>
           &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
           <div class="pull-right">
-            <a href="/about.html">关于万门</a> &bull;
-            <a href="/join_us.html">加入我们</a> &bull;
-            <a href="/help.html">帮助中心</a> &bull;
+            <a href="/about.html">关于万门</a> |
+            <a href="/join_us.html">加入我们</a> |
+            <a href="/help.html">帮助中心</a> |
             <a href="/terms.html">免责声明</a>
           </div>
         </address>

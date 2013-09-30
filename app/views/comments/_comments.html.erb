@@ -12,9 +12,7 @@
 	    <a href="/scholars/<%= comment.user[:id]%>"><%= comment.user[:name]%></a>
 	    <span><%= comment.created_at.strftime('%b %d, %Y %H:%M') %></span>
 	  </h5>
-	  <p>
-    	<%= simple_format comment.content %>
-	  </p>
+      <%= simple_format comment.content %>
 	</div>
 </div>
 <hr/>
