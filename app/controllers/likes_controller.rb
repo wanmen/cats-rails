@@ -19,7 +19,7 @@ class LikesController < ApplicationController
     @like = @likeable.likes.where("user_id = ?", current_user.id)
 
     respond_to do |format|
-      if @like != nil
+      if @like != []
         format.html { redirect_to @likeable, notice: 'You have already liked this item.' }
         format.json { render action: 'show', status: :failed, location: @likeable }
       else
