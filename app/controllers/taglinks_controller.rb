@@ -16,11 +16,11 @@ class TaglinksController < ApplicationController
   
   def create
     @taglinkable = find_taglinkable
-    @taglink = Taglink.where(tag_id: params[:taglink][:tag_id]).take
-    
+    @taglink = Taglink.where("tag_id = ? AND tagable_id = ? AND tagable_type = ?", params[:taglink][:tag_id], @taglinkable.id, @taglinkable.class).take
+
     respond_to do |format|
       if @taglink != nil
-        format.html { redirect_to @taglinkable, notice: 'taglink is alrealy exist.' }
+        format.html { redirect_to @taglinkable, notice: 'taglink is alrealy exist.'}
         format.json { render action: 'show', status: failed, location: @taglinkable }
       else
         @taglink = @taglinkable.taglinks.new(taglink_params)
@@ -33,6 +33,7 @@ class TaglinksController < ApplicationController
         end
       end
     end
+
   end
   
   def edit
