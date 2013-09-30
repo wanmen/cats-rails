@@ -57,69 +57,13 @@
     <section class="wm-indent">
       <%= @video.summary %>
     </section>
-
     <hr/>
-
-    <section class="wm-book-comments">
-      <div class="wm-sns-share">
-        <span class="text-muted">分享到</span>
-        <img src="/assets/sns/renren.png" height="24" alt="人人" title="分享到人人"/>
-        <img src="/assets/sns/douban.png" height="24" alt="豆瓣" title="分享到豆瓣"/>
-        <img src="/assets/sns/sina.png" height="24" alt="新浪微博" title="分享到新浪微博"/>
-        <img src="/assets/sns/qzone.png" height="24" alt="QQ空间" title="分享到QQ空间"/>
-        <img src="/assets/sns/tencent.png" height="24" alt="腾讯微博" title="分享到腾讯微博"/>
-        <a class="btn btn-primary btn-sm wm-quick-link" href="">发表评论</a>
-      </div>
-    </section>
+    <%= render :partial => 'comments/shares' %>  
     <%= render :partial => 'comments/comments' %>
     <hr/>
     <%= render :partial => 'comments/form' %>
   </article>
-
-  <aside class="col-sm-4">
-    <section class="wm-recommend">
-      <h3 class="page-header">
-        <span class="glyphicon glyphicon-plus-sign"></span> 同主题推荐
-        <a class="wm-quick-link" href="">查看全部</a>
-      </h3>
-      <div class="row">
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://wanmen.b0.upaiyun.com/2013/09/af58525f19423673842fec1fe9958430.jpg" alt="" title="自由主义"/>
-          </a>
-          <figcaption>
-            <a href="" title="自由主义">自由主义</a>
-          </figcaption>
-        </figure>
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://wanmen.b0.upaiyun.com/2013/09/87a6dc1e89458fe81a9603028d4139af.jpg" alt="" title="中国传统生命礼俗"/>
-          </a>
-          <figcaption>
-            <a href="" title="中国传统生命礼俗">中国传统生命礼俗</a>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="row">
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://wanmen.b0.upaiyun.com/2013/09/d7dc0a2fab3257f5e4678a39ca0b60ba.jpg" alt="" title="太平洋岛屿世界"/>
-          </a>
-          <figcaption>
-            <a href="" title="太平洋岛屿世界">太平洋岛屿世界</a>
-          </figcaption>
-        </figure>
-        <figure class="col-sm-6">
-          <a class="thumbnail" href="">
-            <img src="http://wanmen.b0.upaiyun.com/2013/09/ea0f63bbc0479a8a39056910ba67163e.jpg" alt="" title="科学在文化中的定位和挑战"/>
-          </a>
-          <figcaption>
-            <a href="" title="科学在文化中的定位和挑战">科学在文化中的定位和挑战</a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-  </aside>
+  <%= render :partial => 'videos/recommend' %>
 </main>
 <%= render :partial => 'layouts/markdown' %>
 <%= render :partial => 'layouts/raty' %>
