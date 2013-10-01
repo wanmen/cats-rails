@@ -62,7 +62,7 @@
             </li>
             </ul>
                 <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" width="40px">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" alt=""/>
                   </a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
@@ -75,7 +75,7 @@
             <% end %>
           <form class="navbar-right navbar-form" role="search" method="get" action="/search">
             <div class="input-group">
-              <input class="form-control" type="text" name="title" placeholder="图书，视频，经验贴" title="请输入关键字进行搜索"/>
+              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
