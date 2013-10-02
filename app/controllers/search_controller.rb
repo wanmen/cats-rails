@@ -8,6 +8,8 @@ class SearchController < ApplicationController
 		@videolists=[]
 		@articlelists=[]
 		@mixlists=[]
+		@type=[]
+		@list=[]
 		if params[:type]
 			@type = params[:type].split(',')
 			@type.each do |t|
