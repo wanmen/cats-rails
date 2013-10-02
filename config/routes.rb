@@ -42,7 +42,7 @@ Cats::Application.routes.draw do
 
   # static pages
   resources :terms
-  resources :help
+  #resources :help
   resources :aboutus
 
   #devise_for :admins
@@ -57,6 +57,7 @@ Cats::Application.routes.draw do
   get '/search' => 'search#index', :as => :new_search
   get '/manage' => 'help#manage', :as => :help_manage
   post '/manage' => 'help#apply', :as => :help_apply
+  get '/help/editor' => 'help#editor', :as => :help_editor
   
   post '/lists/:id/sort' => 'lists#sort', :as=> :sort
   # Example of regular route:
