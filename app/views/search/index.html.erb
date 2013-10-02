@@ -12,13 +12,13 @@
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
-          <label><input type="checkbox" id="book" <% if @type %> checked<% end %>/>图书 <span class="text-muted">(<%= @books.length%>)</span></label>
+          <label><input type="checkbox" id="book" <% if @type&&(@type.include?'book') %> checked<% end %> onchange="research()" />图书 <span class="text-muted">(<%= @books.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="video"  <% if @type %> checked<% end %>/>视频 <span class="text-muted"> (<%= @videos.length%>)</span></label>
+          <label><input type="checkbox" id="video"  <% if @type&&(@type.include?'video') %> checked<% end %> onchange="research()" />视频 <span class="text-muted"> (<%= @videos.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="article"  <% if @type %> checked<% end %>/>经验贴 <span class="text-muted"> (<%= @articles.length%>)</span></label>
+          <label><input type="checkbox" id="article"  <% if @type&&(@type.include?'article') %> checked<% end %> onchange="research()" />经验贴 <span class="text-muted"> (<%= @articles.length%>)</span></label>
         </div>
       </div>
     </section>
@@ -29,16 +29,16 @@
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
-          <label><input type="checkbox" id="book_list"  <% if @list %> checked<% end %>/>书单<span class="text-muted"> (<%= @booklists.length%>)</span></label>
+          <label><input type="checkbox" id="booklist"  <% if @list&&(@list.include?'book') %> checked<% end %> onchange="research()" />书单<span class="text-muted"> (<%= @booklists.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="video_list"  <% if @list %> checked<% end %>/>视频集<span class="text-muted">  (<%= @videolists.length%>)</span></label>
+          <label><input type="checkbox" id="videolist"  <% if @list&&(@list.include?'video') %> checked<% end %> onchange="research()" />视频集<span class="text-muted">  (<%= @videolists.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="article_list"  <% if @list %> checked<% end %>/>帖子集<span class="text-muted">  (<%= @articlelists.length%>)</span></label>
+          <label><input type="checkbox" id="articlelist"  <% if @list&&(@list.include?'article') %> checked<% end %> onchange="research()" />帖子集<span class="text-muted">  (<%= @articlelists.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="multi_list"  <% if @list %> checked<% end %>/>综合集 <span class="text-muted"> (<%= @mixlists.length%>)</span></label>
+          <label><input type="checkbox" id="mixlist"  <% if @list&&(@type.include?'mix') %> checked<% end %> onchange="research()" />综合集 <span class="text-muted"> (<%= @mixlists.length%>)</span></label>
         </div>
       </div>
     </section>
