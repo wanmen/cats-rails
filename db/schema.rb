@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 20131002013007) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
-    t.integer  "order_num",     default: 0
+    t.string   "description",               null: false
+    t.integer  "order_num",     default: 0, null: false
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree

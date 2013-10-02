@@ -16,7 +16,7 @@
 	<dt>您现在是万门大学新生，可以做的事情是</dt>
 	<dd> 1.浏览和分享万门图书馆现有的书单，视频集等资源</dd>
 	<dd> 2.搜索万门图书馆现有的资源</dd>
-	<dd> 3.<%= form_for(:class->"wm-inline-block") do |f| %><button class="btn btn-primary">申请</button><% end %>成为学者，Email我们你的自我介绍。学者的一个职责是对万门现有资源进行筛选，需要保证筛选的真实可靠性，我们的名额会有一定限制。
+	<dd> 3.<%= form_for(:class=>"wm-inline-block") do |f| %><button class="btn btn-primary">申请</button><% end %>成为学者，Email我们你的自我介绍。学者的一个职责是对万门现有资源进行筛选，需要保证筛选的真实可靠性，我们的名额会有一定限制。
 	</dd>
 	<% elsif @role == PRESCHOLAR %>
 	<dt>谢谢您申请万门学者，我们会尽快处理您的请求。您现在可以</dt>
@@ -27,7 +27,7 @@
 	<dd>对书单，视频等资源的点赞，打分和评论。</dd>
 	<dd>请注意操作的真实可靠性,不要乱发无用的评论，不然会被贬的</dd>
 	<dd>学者得到赏识将可以被提拔为管理员，为广大新生提供更多更优质的资源</dd>
-	<dd>你也可以直接<%= form_for(:class->"wm-inline-block") do |f| %><button class="btn btn-primary">申请</button><% end %>
+	<dd>你也可以直接<%= form_for(:class=>"wm-inline-block") do |f| %><button class="btn btn-primary">申请</button><% end %>
 	</dd>
 	<% elsif @role == PREADMIN %>
 	<dt>谢谢您申请万门管理员，我们会尽快处理您的请求。您现在可以</dt>
