@@ -42,11 +42,23 @@
         </div>
       </div>
     </section>
+    <% if @tags!=[] %>
+    <section>
+      <div class="checkbox wm-search-type">
+         <label>标签<span class="text-muted"> (共<%= @tags.length %>项)</span></label>
+      </div>
+      <div class="wm-lg-left">
+      <% @tags.each do |t| %>
+        <a href="/tags/<%= t.id %>"><%= t.name %></a>
+      <% end %>
+      </div>
+    </section>
+    <% end %>
   </aside>
 
   <article class="col-sm-9">
     <h3 class="page-header">
-      搜索结果:<%= @title %> <span class="text-muted">(共<%= @allresults.length %>项)</span>
+      搜索结果:<%= @title %><span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span>
       <span class="wm-quick-link">
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
@@ -75,19 +87,27 @@
        <%  else %>
           [Undefined]
        <%  end %>
-        <%= link_to result.title,result %></a>
+        <%= link_to result.title,result %>
         </h4>
-       <!-- 
-       <p class="wm-pub-metadata">
-          <a href="users/1.html">soliton</a> 发布于 2013-09-14 21:27
-          <span class="pull-right">4个标签 | 1个单子 | 2人喜欢 | 2条评论</span>
-        </p>-->
+        <p class="wm-pub-metadata">
+          <a href="/scholars/<%= result.user[:id] %>.html"><%= result.user[:name] %></a> 发布于 <%= result.user[:created_at].strftime('%b %d, %Y %H:%M') %>
+          <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
+        </p>
         <p><%= result.summary[0,200] %>
-           <a href="/books/<%= result.id %>.html">继续阅读</a>
+          <%= link_to "继续阅读",result %>
         </p>
       </div>
       <hr/>
      <% end %>
+     <% @tags.each do |tag| %>
+      <div>
+       标签： <a href="/tags/<%= tag.id %>"><%= tag.name %></a> 
+          <%= tag.taglinks.length%>个对应内容
+          <%= tag.follows.length%>个关注
+          <%= tag.likes.length%>个喜欢
+      </div>
+      <hr/>
+      <% end %>
     </section>
 
     <section class="text-center">

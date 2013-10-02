@@ -10,6 +10,10 @@ class SearchController < ApplicationController
 		@mixlists=[]
 		@type=[]
 		@list=[]
+		@tags=[]
+		if params[:title]
+			@tags = Tag.find(:all, :conditions => ["name LIKE ?", "%"+params[:title]+"%"])
+		end
 		if params[:type]
 			@type = params[:type].split(',')
 			@type.each do |t|

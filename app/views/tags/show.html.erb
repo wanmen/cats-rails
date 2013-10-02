@@ -1,50 +1,65 @@
-<p id="notice"><%= notice %></p>
+<main class="container" role="main">
+  <aside class="col-sm-3">
+    <h3 class="page-header">
+      <span class="glyphicon glyphicon-check"></span>  <strong>标签名:</strong>
+  		<%= @tag.name %>
+    </h3>
+    <section>
+        <%= render :partial => 'follows/follows' %>
+		<% @tag.follows.each do |follow| %>
+		<a href="/scholars/<%=follow.user.id %>"><%=follow.user.name %></a>
+		<% end %>
+		<%= render :partial => 'follows/form' %>
+		<%= render :partial => 'likes/likes' %>
+		<%= render :partial => 'likes/form' %>
+    </section>
+  </aside>
 
-<p>
-  <strong>标签名:</strong>
-  <%= @tag.name %>
-</p>
+  <article class="col-sm-9">
+    <h3 class="page-header">
+      对应结果 <span class="text-muted">(共<%= @tag.taglinks.length %>项)</span>
+      <span class="wm-quick-link">
+        <a href="JavaScript:window.history.back();">返回</a>
+      </span>
+    </h3>
+    <section>
+     <% @tag.taglinks.each do |taglink| %>
+      <div>
+        <h4>
+        <% case taglink.tagable.class.name
+        when 'Book'%>
+          [图书]
+       <% when 'Video'%>
+          [视频]
+       <% when 'Article' %>
+          [经验贴]
+       <% when 'List' %>
+          <% if taglink.tagable.list_type == BOOKLIST %>
+          [书单]
+          <% elsif taglink.tagable.list_type == VIDEOLIST %>
+          [视频集]
+          <% elsif taglink.tagable.list_type == ARTICLELIST %>
+          [帖子集]
+          <% else %>
+          [综合集]
+          <% end %>
+       <%  else %>
+          [Undefined]
+       <%  end %>
+        <%= link_to taglink.tagable.title,taglink.tagable %>
+        </h4>
+       <!-- 
+       <p class="wm-pub-metadata">
+          <a href="users/1.html">soliton</a> 发布于 2013-09-14 21:27
+          <span class="pull-right">4个标签 | 1个单子 | 2人喜欢 | 2条评论</span>
+        </p>-->
+        <p><%= taglink.tagable.summary[0,200] %>
+        <%= link_to '继续阅读',taglink.tagable %>
+        </p>
+      </div>
+      <hr/>
+     <% end %>
+    </section>
+  </article>
 
-<%= render :partial => 'follows/follows' %>
-<% @tag.follows.each do |follow| %>
-<a href="/users/<%=follow.user.id %>"><img src="<%=follow.user.thumbnail %>!small" title="<%=follow.user.name %>" width="50px"/></a>
-<% end %>
-<%= render :partial => 'follows/form' %>
-<%= render :partial => 'likes/likes' %>
-<%= render :partial => 'likes/form' %>
-<br>
-对应的内容
-<% @tag.taglinks.each do |taglink| %>
-	<%if taglink.tagable.is_a?(Book) %>
-		<p>
-			<a href="/books/<%= taglink.tagable_id %>">
-			<img src="<%= taglink.tagable.cover %>" width="100px">
-			<%= taglink.tagable.title %>
-			</a>
-		</p>
-	<%elsif taglink.tagable.is_a?(Video) %>
-		<p>
-			<a href="/books/<%= taglink.tagable_id %>">
-				<img src="<%= taglink.tagable.cover %>" width="100px">
-				<%= taglink.tagable.title %>
-			</a>
-		</p>
-	<%elsif taglink.tagable.is_a?(Article) %>
-		<p>
-			<a href="/books/<%= taglink.tagable_id %>">
-				<%= taglink.tagable.title %>
-				<%= taglink.tagable.summary %>
-			</a>
-		</p>
-	<%elsif taglink.tagable.is_a?(List) %>
-		<p>
-			<a href="/books/<%= taglink.tagable_id %>">
-				<%= taglink.tagable.title %>
-			</a>
-			<%= taglink.tagable.summary %>
-		</p>
-	<% end %>
-<% end %>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+</main>
