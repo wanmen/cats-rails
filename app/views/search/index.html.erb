@@ -46,7 +46,7 @@
 
   <article class="col-sm-9">
     <h3 class="page-header">
-      搜索结果:<%= @title %> <span class="text-muted">(共<%= @results.length %>项)</span>
+      搜索结果:<%= @title %> <span class="text-muted">(共<%= @allresults.length %>项)</span>
       <span class="wm-quick-link">
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
@@ -92,18 +92,9 @@
 
     <section class="text-center">
      <ul class="pagination">
-       <li class="disabled"><a href="上一页">&laquo;</a></li>
-       <li class="active"><a href="#">1</a></li>
-       <li><a href="#">2</a></li>
-       <li><a href="#">3</a></li>
-       <li><a href="#">4</a></li>
-       <li><a href="#">5</a></li>
-       <li><a href="#">6</a></li>
-       <li><a href="#">7</a></li>
-       <li><a href="#">8</a></li>
-       <li><a href="#">9</a></li>
-       <li><a href="#">10</a></li>
-       <li><a href="#" title="下一页">&raquo;</a></li>
+       <% for i in 0..@numberofpages %>
+        <li <% if (i == @page) %>class="active"<% end %>><a onclick="showpage(<%= i+1%>)"><%= i+1%></a></li>
+       <% end %>
      </ul>
     </section>
   </article>
@@ -168,5 +159,8 @@ function alllists(){
     document.getElementById("mixlist").checked=false;
   }
   research();
+}
+function showpage(pid){
+ window.location= window.location.href+'&page='+pid;
 }
 </script>
