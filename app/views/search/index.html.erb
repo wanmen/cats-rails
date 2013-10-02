@@ -8,7 +8,7 @@
     </h3>
     <section>
       <div class="checkbox wm-search-type">
-        <label><input type="checkbox" <% if @type %> checked<% end %>/>普通类型<span class="text-muted">(共<%= @books.length+@videos.length+@articles.length %>项)</span></label>
+        <label><input type="checkbox" id="alltypes" <% if @type.length == 3 %> checked<% end %> onchange="alltypes()"/>所有普通类型<span class="text-muted">(共<%= @books.length+@videos.length+@articles.length %>项)</span></label>
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
@@ -25,7 +25,7 @@
 
     <section>
       <div class="checkbox wm-search-type">
-        <label><input type="checkbox" <% if @list %> checked<% end %>/>单子类型<span class="text-muted"> (共<%= @booklists.length+@videolists.length+@articlelists.length+@mixlists.length %>项)</span></label>
+        <label><input type="checkbox" id="alllists" <% if @list.length == 4 %> checked<% end %> onchange="alllists()"/>所有单子类型<span class="text-muted"> (共<%= @booklists.length+@videolists.length+@articlelists.length+@mixlists.length %>项)</span></label>
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
@@ -38,7 +38,7 @@
           <label><input type="checkbox" id="articlelist"  <% if @list&&(@list.include?'article') %> checked<% end %> onchange="research()" />帖子集<span class="text-muted">  (<%= @articlelists.length%>)</span></label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="mixlist"  <% if @list&&(@type.include?'mix') %> checked<% end %> onchange="research()" />综合集 <span class="text-muted"> (<%= @mixlists.length%>)</span></label>
+          <label><input type="checkbox" id="mixlist"  <% if @list&&(@list.include?'mix') %> checked<% end %> onchange="research()" />综合集 <span class="text-muted"> (<%= @mixlists.length%>)</span></label>
         </div>
       </div>
     </section>
@@ -54,7 +54,29 @@
     <section>
      <% @results.each do |result| %>
       <div>
-        <h4>[<%= result.class %>] <%= link_to result.title,result %></a></h4>
+        <h4>
+        <% case result.class.name
+        when 'Book'%>
+          [图书]
+       <% when 'Video'%>
+          [视频]
+       <% when 'Article' %>
+          [经验贴]
+       <% when 'List' %>
+          <% if result.list_type == 1 %>
+          [书单]
+          <% elsif result.list_type == 2 %>
+          [视频集]
+          <% elsif result.list_type == 3 %>
+          [帖子集]
+          <% else %>
+          [综合集]
+          <% end %>
+       <%  else %>
+          [Undefined]
+       <%  end %>
+        <%= link_to result.title,result %></a>
+        </h4>
        <!-- 
        <p class="wm-pub-metadata">
           <a href="users/1.html">soliton</a> 发布于 2013-09-14 21:27
@@ -87,3 +109,64 @@
   </article>
 
 </main>
+<script type="text/javascript">
+function gup( name ){
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+  var regexS = "[\\?&]"+name+"=([^&#]*)";  
+  var regex = new RegExp( regexS );  
+  var results = regex.exec( window.location.href ); 
+  if( results == null )    
+    return "";  
+  else    
+    return results[1];
+}
+function research(){
+  var type = [];
+  if(document.getElementById("book").checked)
+    type.push('book');
+  if (document.getElementById("video").checked)
+    type.push('video');
+  if (document.getElementById("article").checked)
+    type.push('article');
+  var list = [];
+  if(document.getElementById("booklist").checked)
+    list.push('book');
+  if (document.getElementById("videolist").checked)
+    list.push('video');
+  if (document.getElementById("articlelist").checked)
+    list.push('article');
+  if (document.getElementById("mixlist").checked)
+    list.push('mix');
+  if (gup('title')!=""){
+    window.location = '/search?type='+type.join()+'&list='+list.join()+'&title='+gup('title');
+  }else{
+    window.location = '/search?type='+type.join()+'&list='+list.join();
+  }
+}
+function alltypes(){
+  if(document.getElementById("alltypes").checked){
+    document.getElementById("book").checked=true;
+    document.getElementById("video").checked=true;
+    document.getElementById("article").checked=true;
+  }else{
+    document.getElementById("book").checked=false;
+    document.getElementById("video").checked=false;
+    document.getElementById("article").checked=false;
+  }
+  research();
+}
+function alllists(){
+  if(document.getElementById("alllists").checked){
+    document.getElementById("booklist").checked=true;
+    document.getElementById("videolist").checked=true;
+    document.getElementById("articlelist").checked=true;
+    document.getElementById("mixlist").checked=true;
+  }else{
+    document.getElementById("booklist").checked=false;
+    document.getElementById("videolist").checked=false;
+    document.getElementById("articlelist").checked=false;
+    document.getElementById("mixlist").checked=false;
+  }
+  research();
+}
+</script>
