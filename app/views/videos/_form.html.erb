@@ -2,7 +2,6 @@
   <% if @video.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
-
       <ul>
       <% @video.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,35 +9,40 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <a href="/uploader?return_url=<%=request.original_url%>">上传封面</a>
-  </p>
-  <div class="field">
-    <% if params[:url] %>
-      <img src="<%= upyun_url+ params[:url] %>!medium">
-       <%= f.text_field :cover, :value=> upyun_url+params[:url],:type=>:hidden%>
-    <% else %>
-       或者<%= f.text_field :cover,:placeholder=>'添加图片URL'%>
-    <% end %>
+  <div class="form-group">
+    <a href="/uploader?return_url=<%=request.original_url%>" class="btn btn-success">上传封面</a>
   </div>
+  <% if params[:url] %>
+    <img src="<%= upyun_url + params[:url] %>!medium">
+    <%= f.text_field :cover, :value=> upyun_url+params[:url], :type=>:hidden %>
+  <% else %>
+    <div class="form-group">
+        <%= f.label "或者添加图片链接", :class=>"col-sm-3", :for=>"video_title" %>
+        <%= f.text_field :cover, :class=>"form-control", :placeholder=>'添加图片URL' %>
+    </div>
+  <% end %>
   <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label "标题", :class=>"col-sm-3", :for=>"video_title" %>
+    <%= f.text_field :title, :class=>"form-control", :placeholder=>"请输入标题(必填)", :title=>"请输入标题(必填)", :required=>true %>
   </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
+  <div class="form-group">
+    <%= f.label "视频链接", :class=>"col-sm-3", :for=>"video_url" %>
+    <%= f.text_field :title, :class=>"form-control", :placeholder=>"请输入视频链接(必填)", :title=>"请输入视频链接(必填)", :required=>true %>
   </div>
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
+  <div class="form-group">
+    <%= f.label "演讲者", :class=>"col-sm-3", :for=>"video_lecturer" %>
+    <%= f.text_field :lecturer, :class=>"form-control", :placeholder=>"请输入演讲者(必填)", :title=>"请输入演讲者(必填)", :required=>true %>
   </div>
-  <div class="field">
-    <%= f.label :lecturer %><br>
-    <%= f.text_field :lecturer %>
+  <div class="form-group">
+    <%= f.label "描述", :class=>"col-sm-12", :for=>"video_summary" %>
+    <div class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+        <%= f.text_area :summary, :class=>"wmd-input", :id=>"wmd-input" %>
+    </div>
+    <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-success" %>
   </div>
 <% end %>
