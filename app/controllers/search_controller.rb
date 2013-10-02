@@ -70,6 +70,6 @@ class SearchController < ApplicationController
 		else
 			@title = ''
 		end
-		@results = @books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists
+		@results = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
 	end
 end
