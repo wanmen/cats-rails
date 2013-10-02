@@ -1,6 +1,7 @@
 <span><%= @taglinks.length %>个标签</span>
 <% @taglinks.each do |taglink| %>
-    <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a>
+    <!-- <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a> -->
+    <%= taglink.tag.name %>
     <% if current_user&& current_user[:role]>=2 %> 
     <%= link_to '删除', taglink_path(taglink), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>|
