@@ -8,16 +8,10 @@
     <%= yield :head %>
     <link rel="stylesheet" href="/assets/bootstrap.css" media="screen"/>
     <link rel="stylesheet" href="/assets/wm-default.css" media="screen"/> 
+    <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/> 
     <link rel="icon" type="image/png" href="/assets/favicon.png"/>
-    <script src="/assets/jquery.js"></script>
-    <script src="/assets/bootstrap.js"></script>
-    <script src="/assets/jquery-ui.js"></script>
-    <script src="/assets/wm-dom.js"></script>
+    <%= yield :extra_head %>
     <%= csrf_meta_tag %>
-    <!--[if lt IE 9]>
-      <script src="/assets/html5shiv.js"></script>
-      <script src="/assets/respond.js"></script>
-    <![endif]-->
     <!--[if lt IE 8]>
       <link rel="stylesheet" href="/assets/bootstrap-ie7.css"/>
     <![endif]-->
@@ -90,14 +84,14 @@
     </header>
     <% if flash[:alert] %>
     <p class="alert alert-warning">
-          <%= flash[:alert] %>
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </p>
+        <%= flash[:alert] %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </p>
     <% end %>
     <% if flash[:notice] %>
     <p class="alert alert-info">
-          <%= flash[:notice] %>
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
     </p>
     <% end %>
     <%= yield %>
@@ -114,5 +108,14 @@
         </address>
       </div>
     </footer>
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/jquery-ui.js"></script>
+    <script src="/assets/wm-dom.js"></script>
+    <!--[if lt IE 9]>
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.js"></script>
+    <![endif]-->
+    <%= yield :bottom_script %>
   </body>
 </html>
