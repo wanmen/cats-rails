@@ -63,11 +63,11 @@
        <% when 'Article' %>
           [经验贴]
        <% when 'List' %>
-          <% if result.list_type == 1 %>
+          <% if result.list_type == BOOKLIST %>
           [书单]
-          <% elsif result.list_type == 2 %>
+          <% elsif result.list_type == VIDEOLIST %>
           [视频集]
-          <% elsif result.list_type == 3 %>
+          <% elsif result.list_type == ARTICLELIST %>
           [帖子集]
           <% else %>
           [综合集]

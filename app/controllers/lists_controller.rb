@@ -33,26 +33,17 @@ class ListsController < ApplicationController
     	@links_array = @list.links_array
     end
 #    @links = Link.find(@list.links_array)
-    if (@list.list_type ==1 )
-      @type="books"
-    else 
-      if (@list.list_type ==2)
-        @type= "videos"
-      else
-        @type = "articles"
-      end
-    end
   end
 
   # GET /lists/new
   def new
-    @types =[["书单",1],["视频集",2],["经验贴集",3]]
+    @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
     @list = List.new
   end
 
   # GET /lists/1/edit
   def edit
-    @types =[["书单",1],["视频集",2],["经验贴集",3]]
+    @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
   end
 
   # POST /lists
