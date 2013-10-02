@@ -9,7 +9,7 @@
           <img src="<%= upyun_url+ params[:url] %>!medium">
            <%= f.text_field :cover, :value=> upyun_url+params[:url],:type=>:hidden%>
         <% else %>
-           <%= f.text_field :cover,:placeholder=>'请输入封面图片URL(必填)',:title=>'请输入封面图片URL(必填)',:class=>'col-sm-offset-3 form-control wm-med-vspace',:required=>true,:autofocus=>true %>
+           <%= f.text_field :cover,:placeholder=>'请输入封面图片URL(必填)',:title=>'请输入封面图片URL(必填)',:class=>'col-sm-offset-3 form-control wm-md-top',:required=>true,:autofocus=>true %>
         <% end %>
         </div>
       </div>
@@ -54,5 +54,5 @@
       </div>
     </div>
     <button class="col-sm-offset-5 btn btn-primary" type="submit">完成</button>
-    <button class="btn btn-default wm-med-hspace" type="reset">重新添加</button>
+    <button class="btn btn-default wm-md-left" type="reset">重新添加</button>
 <% end %>

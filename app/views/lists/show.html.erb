@@ -9,7 +9,9 @@
       <span class="wm-quick-link">
         <% if current_user&& current_user[:role]>= SCHOLAR %>
         <a href="/lists/<%=@list.id %>/edit">修改</a> |
+        <a href="#" class="sort-trigger">Sort</a> |
         <% end %>
+        <a href="#" class="sort-trigger">Sort</a> |
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
     </h3>
@@ -23,7 +25,9 @@
     </section>
 
     <section class="wm-book-list wm-book-gallery">
-      <% @list.links.each do |link| %>
+      <% @links_array.each do |lkid| %>
+      	<% link=@Link.find(lkid) %> <!--TODO:: fix this proformance issue -->
+      <div lkid="lkarray-<%= link.id %>">
         <div class="row wm-list-item">
           <figure class="col-sm-4">
             <a href="/<%= @type %>/<%=link.linkable.id %>.html" class="thumbnail">
@@ -44,6 +48,7 @@
           </div>
         </div>
         <hr/>
+      </div>
       <% end %>
     </section>
 
@@ -72,3 +77,41 @@
 <%= render :partial => 'layouts/markdown' %>
 <%= render :partial => 'layouts/raty' %>
 <%= render :partial => 'layouts/rails' %>
+
+<script type="text/javascript">
+  var initSortable= function(thelist){
+    $(thelist).sortable({'axis':'y'});
+    $(thelist).sortable('enable');
+  }
+  var sortableToArray= function(thelist, targetAttr){
+    var tmpArray= $(thelist).sortable('toArray',{'attribute': targetAttr});
+    return tmpArray;
+  }
+  var sortableSerialize= function(thelist, targetAttr){
+    var tmpArray= $(thelist).sortable('serialize',{'attribute': targetAttr});
+    return tmpArray;
+  }
+  var disableSortable= function(thelist){
+    $(thelist).sortable('disable');
+  }
+  var enableSortable= function(thelist){
+    $(thelist).sortable('enable');
+  }
+  var triggerIsClicked= function(thetrigger, thelist){
+    initSortable(thelist);
+    $(thetrigger).text('stop sorting');
+    $(thetrigger).unbind()
+    $(thetrigger).bind('click',function(){
+      $(thetrigger).text('sort');
+      console.log(sortableSerialize(thelist,'lkid'));
+      $.post('./<%= @list.id%>/sort',sortableSerialize(thelist,'lkid'));
+      disableSortable(thelist);
+      $(thetrigger).unbind();
+      $(thetrigger).bind('click',function(){triggerIsClicked(thetrigger,thelist);})
+    });
+  }
+  $('.sort-trigger').bind('click',function(){
+    console.log('Trigging List Sort.');
+    triggerIsClicked('.sort-trigger', '.wm-book-list');
+  })
+</script>
