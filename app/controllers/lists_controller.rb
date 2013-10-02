@@ -23,6 +23,16 @@ class ListsController < ApplicationController
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
     @tags = Tag.all
+    @Link = Link
+    if (@list.links.length != @list.links_array.length)
+    	@links_array = []
+    	@list.links.each do |link|
+    		@links_array.push link.id
+    	end
+    else
+    	@links_array = @list.links_array
+    end
+#    @links = Link.find(@list.links_array)
     if (@list.list_type ==1 )
       @type="books"
     else 
@@ -85,6 +95,16 @@ class ListsController < ApplicationController
     end
   end
 
+    def sort
+    	list= List.find(params[:id])
+    	list.links_array= params[:lkarray]
+	list.save    	
+    respond_to do |format|
+      format.html { redirect_to lists_url }
+      format.json { head :no_content }
+    end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
@@ -95,4 +115,6 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:title, :summary, :user_id,:list_type)
     end
+    
+
 end
