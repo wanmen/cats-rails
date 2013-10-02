@@ -54,7 +54,29 @@
     <section>
      <% @results.each do |result| %>
       <div>
-        <h4>[<%= result.class %>] <%= link_to result.title,result %></a></h4>
+        <h4>
+        <% case result.class.name
+        when 'Book'%>
+          [图书]
+       <% when 'Video'%>
+          [视频]
+       <% when 'Article' %>
+          [经验贴]
+       <% when 'List' %>
+          <% if result.list_type == 1 %>
+          [书单]
+          <% elsif result.list_type == 2 %>
+          [视频集]
+          <% elsif result.list_type == 3 %>
+          [帖子集]
+          <% else %>
+          [综合集]
+          <% end %>
+       <%  else %>
+          [Undefined]
+       <%  end %>
+        <%= link_to result.title,result %></a>
+        </h4>
        <!-- 
        <p class="wm-pub-metadata">
           <a href="users/1.html">soliton</a> 发布于 2013-09-14 21:27
