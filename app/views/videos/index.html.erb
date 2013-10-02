@@ -6,7 +6,7 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-star"></span> 精选推荐
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=video&list=video">查看全部</a>
       </h3>
       <div class="row">
         <% @bestVideolist.each do |list|%>
@@ -37,7 +37,7 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-calendar"></span> 最新视频
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=video">查看全部</a>
       </h3>
       <div class="row">
         <% @newest.each do |video| %>  
@@ -58,7 +58,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-th-list"></span> 热门视频
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=video">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popular.each do |video| %>

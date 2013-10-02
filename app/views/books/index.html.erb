@@ -6,7 +6,7 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-star"></span> 精选推荐
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=book&list=book">查看全部</a>
       </h3>
       <div class="row">
           <% @bestBooklist.each do |booklist| %>
@@ -37,7 +37,7 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-calendar"></span> 最新图书
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=book">查看全部</a>
       </h3>
       <div class="row">
          <% @newest.each do |book| %>
@@ -58,7 +58,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-tasks"></span> 热门书单
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?list=book">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popularBooklist.each do |list| %>
@@ -70,7 +70,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-th-list"></span> 热门图书
-        <a class="wm-quick-link" href="">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=book">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popular.each do |book| %>
