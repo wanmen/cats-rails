@@ -58,7 +58,11 @@
 
   <article class="col-sm-9">
     <h3 class="page-header">
-      搜索结果:<%= @title %> <span class="text-muted">(共<%= @results.length %>项)</span>
+<<<<<<< HEAD
+      搜索结果:<%= @title %><span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span>
+=======
+      搜索结果:<%= @title %> <span class="text-muted">(共<%= @allresults.length %>项)</span>
+>>>>>>> 2357009be769dd7899eefb4d74f67510e3fcab13
       <span class="wm-quick-link">
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
