@@ -66,6 +66,10 @@ blockquote {
   display: none;
 }
 
+.wm-italic {
+  font-style: italic;
+}
+
 .wm-inline-block {
   display: inline-block;
 }
@@ -158,6 +162,26 @@ blockquote {
   text-align: right;
 }
 
+.wm-general h4 {
+  margin: 24px 0 14px;
+  text-indent: 0;
+  color: #468847;
+}
+
+.wm-general ul {
+  margin: 0 0 1em;
+}
+
+.wm-general li {
+  margin: 4px 0 4px 18px;
+  text-indent: 0;
+}
+
+.wm-general li ul {
+  padding-left: 10px;
+  list-style: outside disc;
+}
+
 .wm-sign {
   margin: 5% 0;
 }
@@ -221,6 +245,7 @@ blockquote {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 7px;
   box-shadow: 0px 6px 12px rgba(0,​ 0,​ 0,​ 0.176);
+  cursor: move;
   z-index: 1000;
 }
 
