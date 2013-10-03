@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    @pop6 = Article.pop6
+    @best6 = Article.best6
     @newest10 = Article.newest10
   end
 
