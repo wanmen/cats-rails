@@ -13,29 +13,31 @@
       <% end %>
       <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
       <div class="form-group">
-        <%= f.label "书名*", :class=>"col-sm-3", :for=>"article_title" %>
-        <%= f.text_field :title, :class=>"form-control", :placeholder=>"请输入标题(必填)", :title=>"请输入标题(必填)", :required=>true %>
+        <%= f.label "标题*", :class=>"col-sm-3", :for=>"article_title" %>
+        <%= f.text_field :title, :class=>"form-control", :placeholder=>"请输入经验贴标题(必填)", :title=>"请输入经验贴标题(必填)", :required=>true %>
       </div>
       <div class="form-group">
-        <%= f.label "简介", :class=>"col-sm-3", :for=>"article_summary" %>
-        <%= f.text_field :summary, :class=>"form-control", :placeholder=>"请输入简介", :title=>"请输入简介", :required=>true %>
+        <%= f.label "作者*", :class=>"col-sm-3", :for=>"article_author" %>
+        <%= f.text_field :author, :class=>"form-control", :placeholder=>"请输入经验贴作者(必填)", :title=>"请输入经验贴作者(必填)", :required=>true %>
       </div>
       <div class="form-group">
         <%= f.label "链接", :class=>"col-sm-3", :for=>"article_url" %>
-        <%= f.text_field :url, :class=>"form-control", :placeholder=>"请输入链接", :title=>"请输入链接" %>
+        <%= f.text_field :url, :type=>"url", :class=>"form-control", :placeholder=>"请输入经验贴链接URL", :title=>"请输入经验贴链接URL" %>
       </div>
       <div class="form-group">
-        <%= f.label "作者", :class=>"col-sm-3", :for=>"article_author" %>
-        <%= f.text_field :author, :class=>"form-control", :placeholder=>"请输入作者" %>
+        <%= f.label "摘要", :class=>"col-sm-3", :for=>"article_summary" %>
+        <div class="col-sm-9 wm-reset">
+        <%= f.text_area :summary, :rows=>"5", :class=>"form-control", :placeholder=>"请输入经验贴摘要(100字以内)", :title=>"请输入经验贴摘要(100字以内)" %>
+      	</div>
       </div>
       <div class="form-group">
-          <label class="col-sm-3" for="book_content">内容*</label>
+      	<%= f.label "内容*", :class=>"col-sm-3", :for=>"article_content" %>
           <div class="col-sm-9 wm-reset">
               <a class="btn btn-primary btn-sm pull-right" href="../help/editor.html">如何编辑？</a>
               <br/>
               <div class="wmd-panel">
                   <div id="wmd-button-bar"></div>
-                  <textarea class="wmd-input" id="wmd-input" title="请在此编辑经验贴正文" required></textarea>
+                  <%= f.text_area :content,:id=>"wmd-input", :class=>"wmd-input", :placeholder=>"请在此编辑经验贴正文", :title=>"请在此编辑经验贴正文", :required=>true %>
               </div>
               <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
           </div>
