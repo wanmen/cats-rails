@@ -1,5 +1,10 @@
 Cats::Application.routes.draw do
 
+  get "static_pages/terms"
+  get "static_pages/helpme"
+  get "static_pages/aboutus"
+  get "static_pages/joinus"
+  get "static_pages/markdowneditor"
   resources :tags do
     resources :likes
     resources :follows
@@ -41,9 +46,13 @@ Cats::Application.routes.draw do
   resources :links
 
   # static pages
-  resources :terms
-  #resources :help
-  resources :aboutus
+  get '/editor' => 'static_pages#markdowneditor', :as => :markdowneditor
+  get '/terms' => 'static_pages#terms', :as => :terms
+  get '/aboutus' => 'static_pages#aboutus', :as => :aboutus
+  get '/joinus' => 'static_pages#joinus', :as => :joinus
+  get '/helpme' => 'static_pages#helpme', :as => :helpme
+
+  resources :help
 
   #devise_for :admins
 
@@ -57,7 +66,6 @@ Cats::Application.routes.draw do
   get '/search' => 'search#index', :as => :new_search
   get '/manage' => 'help#manage', :as => :help_manage
   post '/manage' => 'help#apply', :as => :help_apply
-  get '/help/editor' => 'help#editor', :as => :help_editor
   
   post '/lists/:id/sort' => 'lists#sort', :as=> :sort
   # Example of regular route:
