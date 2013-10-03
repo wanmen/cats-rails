@@ -1,4 +1,4 @@
-<%= form_for @book, html: {class: "container form-horizontal wm-form", role:"form"} do |f| %>
+<%= form_for @book, html: {class: "container form-horizontal wm-form", role: "form"} do |f| %>
     <div class="col-sm-10">
         <div class="form-group">
             <label class="col-sm-3" for="book_cover">封面*</label>
@@ -6,59 +6,56 @@
                 <a class="btn btn-default" href="/uploader?return_url=<%=request.original_url%>">上传图片</a> <br/>
                 <% if params[:url] %>
                     <img src="<%= upyun_url+ params[:url] %>!medium">
-                <%= f.text_field :cover, :value=> upyun_url+params[:url],:type=>:hidden%>
+                <%= f.text_field :cover, :value=> upyun_url + params[:url], :type => :hidden%>
                 <% else %>
-                        <%= f.text_field :cover,:placeholder=>'请输入封面图片URL(必填)',:title=>'请输入封面图片URL(必填)',:class=>'col-sm-offset-3 form-control wm-md-top',:required=>true,:autofocus=>true %>
+                        <%= f.text_field :cover, :placeholder => '请输入封面图片URL(必填)', :title => '请输入封面图片URL(必填)', :class => 'col-sm-offset-3 form-control wm-md-top', :required => true, :autofocus => true %>
                 <% end %>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_title">书名*</label>
-            <%= f.text_field :title,:class=>'form-control',:placeholder=>'请输入书名(必填)',:title=>"请输入书名(必填)",:required=>true%>
+            <%= f.text_field :title, :class => 'form-control', :placeholder => '请输入书名(必填)', :title => "请输入书名(必填)" , :required => true %>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_author">作者*</label>
-            <%= f.text_field :author,:class=> "form-control",:placeholder=>"请输入图书作者(必填)",:title=>"请输入图书作者(必填)",:required=>true %>
+            <%= f.text_field :author, :class => "form-control", :placeholder => "请输入图书作者(必填)", :title => "请输入图书作者(必填)", :required => true %>
         </div>
         <div class="form-group">
-            <label class="col-sm-3" for="book_translater">译者(尚未加入database table）</label>
+            <label class="col-sm-3" for="book_translater">译者</label>
             <input class="form-control" type="text" id="book_translater" placeholder="请输入图书译者" title="请输入图书译者"/>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_publisher">出版社</label>
-            <%= f.text_field :publisher,:class=>"form-control",:placeholder=>"请输入出版社",:title=>"请输入出版社" %>
+            <%= f.text_field :publisher, :class => "col-sm-offset-1 form-control", :placeholder => "请输入出版社", :title => "请输入出版社" %>
         </div>
         <div class="form-group">
-            <label class="col-sm-3" for="book_pubdate">出版日期(尚未加入database table)</label>
+            <label class="col-sm-3" for="book_pubdate">出版日期</label>
             <input class="form-control" type="text" id="book_pubdate" placeholder="请输入出版日期" title="请输入出版日期"/>
         </div>
         <div class="form-group">
-            <label class="col-sm-3" for="book_isbn">ISBN</label>
-            <%= f.text_field :isbn,:class=>"form-control",:placeholder=>"ISBN号",:title=>"ISBN号" %>
-        </div>
-        <div class="form-group">
             <label class="col-sm-3" for="book_dbid">豆瓣ID</label>
-            <%= f.text_field :dbid,:class=>"form-control",:placeholder=> "请输入豆瓣ID",:title=>"请输入豆瓣ID" %>
+            <%= f.text_field :dbid, :class => "form-control", :placeholder => "请输入豆瓣ID", :title => "请输入豆瓣ID" %>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_url">图书链接</label>
-            <%= f.text_field :url,:class=>"form-control",:placeholder=>"请输入图书链接URL",:title=>"请输入图书链接URL"%>
+            <%= f.text_field :url, :class => "form-control", :placeholder => "请输入图书链接URL", :title => "请输入图书链接URL" %>
         </div>
         <div class="form-group">
-            <label class="col-sm-3" for="book_summary">简介*</label>
+            <label class="col-sm-3" for="wmd-input">书评*</label>
             <div class="col-sm-9 wm-reset">
                 <a class="btn btn-primary btn-sm pull-right" href="../help/editor.html">如何编辑？</a>
                 <br/>
                 <div class="wmd-panel">
                     <div id="wmd-button-bar"></div>
-                    <textarea class="wmd-input" id="wmd-input" title="请在此编辑经验贴正文" required></textarea>
-                </div>
+                    <%= f.text_area :summary, :class => "wmd-input", :title => 
+                    "请在此编辑书评" ,:required => true%>
+                </div>  
                 <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
             </div>
         </div>
         <div class="text-center">
             <button class="col-sm-offset-5 btn btn-primary" type="submit">完成</button>
-            <button class="btn btn-default wm-md-left" type="reset">重新输入</button>
+            <button class="btn btn-default wm-md-left" type="reset">重新修改</button>
         </div>
     </div>
 <% end %>
