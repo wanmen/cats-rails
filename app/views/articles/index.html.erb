@@ -4,11 +4,11 @@
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
-      <span class="glyphicon glyphicon-calendar"></span> 最新经验贴
+      <span class="glyphicon glyphicon-calendar"></span> 推荐经验贴
       <a class="wm-quick-link" href="/search?type=article">查看全部</a>
     </h3>
     <section class="wm-article-list">
-      <% @articles.each do |article| %>
+      <% @pop6.each do |article| %>
       <div>
         <h4><a href="/articles/<%= article.id %>.html"><%= article.title %></a></h4>
         <p class="wm-pub-metadata">
@@ -22,6 +22,7 @@
       <% end %>
     </section>
 
+    <!--
     <section class="text-center">
      <ul class="pagination">
        <li class="disabled"><a href="上一页">&laquo;</a></li>
@@ -38,9 +39,22 @@
        <li><a href="#" title="下一页">&raquo;</a></li>
      </ul>
     </section>
+    -->
   </article>
 
   <aside class="col-sm-4">
+    <section>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-tasks"></span>最新经验贴
+        <a class="wm-quick-link" href="/search?type=article">查看全部</a>
+      </h3>
+      <ol class="wm-list-popular">
+        <% @newest10.each do |a| %>
+            <li><a href="/articles/<%=a.id %>.html"><%=a.title %></a></li>
+        <% end %>
+      </ol>
+    </section>
+
     <!--
     <section>
       <h3 class="page-header">
