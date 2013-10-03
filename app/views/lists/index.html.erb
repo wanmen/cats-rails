@@ -18,9 +18,9 @@
         <td><%= list.title %></td>
         <td><%= list.summary %></td>
         <td><%= list.user[:name] %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '显示', list %></td>
+        <td><%= link_to '编辑', edit_list_path(list) %></td>
+        <td><%= link_to '删除', list, method: :delete, data: { confirm: '请再次确认删除' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New List', new_list_path %>
+<%= link_to '新建集合', new_list_path %>
