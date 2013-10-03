@@ -20,12 +20,12 @@ class TaglinksController < ApplicationController
 
     respond_to do |format|
       if @taglink != nil
-        format.html { redirect_to @taglinkable, notice: 'taglink is alrealy exist.'}
+        format.html { redirect_to @taglinkable, notice: '标签已存在'}
         format.json { render action: 'show', status: failed, location: @taglinkable }
       else
         @taglink = @taglinkable.taglinks.new(taglink_params)
         if @taglink.save
-          format.html { redirect_to @taglinkable, notice: 'taglink was successfully created.' }
+          format.html { redirect_to @taglinkable, notice: '添加标签成功' }
           format.json { render action: 'show', status: :created, location: @taglinkable }
         else
           format.html { render action: 'new' }
@@ -55,7 +55,7 @@ class TaglinksController < ApplicationController
   
   def destroy
     @taglink.destroy
-    flash[:notice] = "Successfully destroyed taglink."
+    flash[:notice] = "删除标签成功"
     redirect_to @taglink.tagable
   end
   

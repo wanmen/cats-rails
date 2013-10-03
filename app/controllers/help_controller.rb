@@ -43,10 +43,4 @@ class HelpController < ApplicationController
     end
   end
 
-  def editor
-
-  end
-  def show
-
-  end
 end

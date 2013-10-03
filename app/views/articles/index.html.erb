@@ -13,7 +13,7 @@
         <h4><a href="/articles/<%= article.id %>.html"><%= article.title %></a></h4>
         <p class="wm-pub-metadata">
           <a href="/users/<%= article.user[:id] %>"><%= article.user[:name] %></a> 发布于 <%= article.updated_at.strftime('%b %d, %Y %H:%M') %>
-          <span class="pull-right"><%= article.taglinks.length %>个标签 | <%= article.links.length %>个单子 | <%= article.likes.length %>人喜欢 | <%= article.comments.length %>个评论</span>
+          <span class="pull-right"><%= article.taglinks.length %>个标签 | <%= article.links.length %>个集合 | <%= article.likes.length %>人喜欢 | <%= article.comments.length %>个评论</span>
         </p>
         <p><%= article.summary %><a href="/articles/<%= article.id %>.html">继续阅读</a>
         </p>

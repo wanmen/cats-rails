@@ -16,9 +16,9 @@
       <tr>
         <td><%= follow.user %></td>
         <td><%= follow.followable %></td>
-        <td><%= link_to 'Show', follow %></td>
-        <td><%= link_to 'Edit', edit_follow_path(follow) %></td>
-        <td><%= link_to 'Destroy', follow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '显示', follow %></td>
+        <td><%= link_to '编辑', edit_follow_path(follow) %></td>
+        <td><%= link_to '删除', follow, method: :delete, data: { confirm: '请再次确认删除' } %></td>
       </tr>
     <% end %>
   </tbody>

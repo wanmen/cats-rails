@@ -19,12 +19,12 @@ class RatesController < ApplicationController
     @rate = @rateable.rates.where("user_id = ?", current_user.id)
     respond_to do |format|
       if @rate != []
-        format.html { redirect_to @rateable, notice: 'You have already rated this item.' }
+        format.html { redirect_to @rateable, notice: '您已经对此项目评过分了' }
         format.json { render action: 'show', status: :failed, location: @rateable }
       else
         @rate = @rateable.rates.new(rate_params)
         if @rate.save
-          format.html { redirect_to @rateable, notice: 'rate was successfully created.' }
+          format.html { redirect_to @rateable, notice: '评分成功' }
           format.json { render action: 'show', status: :created, location: @rateable }
         else
           format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class RatesController < ApplicationController
     @rate = Rate.find(params[:id])
     respond_to do |format|
       if @rate.update(rate_params)
-        format.html { redirect_to @rate, notice: 'rate was successfully updated.' }
+        format.html { redirect_to @rate, notice: '修改评分成功' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,7 +54,7 @@ class RatesController < ApplicationController
   def destroy
     @rate = Rate.find(params[:id])
     @rate.destroy
-    flash[:notice] = "Successfully destroyed rate."
+    flash[:notice] = "删除评分成功"
     redirect_to rates_url
   end
   

@@ -56,12 +56,12 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book != nil
-        format.html { redirect_to @book, notice: 'Book was already created.' }
+        format.html { redirect_to @book, notice: '此书已经存在' }
         format.json { render action: 'show', status: :failed, location: @book }
       else
         @book = Book.new(book_params)
         if @book.save
-          format.html { redirect_to @book, notice: 'Book was successfully created.' }
+          format.html { redirect_to @book, notice: '您已成功添加新书' }
           format.json { render action: 'show', status: :created, location: @book }
         else
           format.html { render action: 'new' }
@@ -76,7 +76,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: '修改图书信息成功' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -90,7 +90,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url }
+      format.html { redirect_to books_url, notice: '成功删除图书' }
       format.json { head :no_content }
     end
   end

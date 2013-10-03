@@ -20,12 +20,12 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like != []
-        format.html { redirect_to @likeable, notice: 'You have already liked this item.' }
+        format.html { redirect_to @likeable, notice: '您已喜欢过此条目' }
         format.json { render action: 'show', status: :failed, location: @likeable }
       else
         @like = @likeable.likes.new(:user_id => current_user.id)
         if @like.save
-          format.html { redirect_to @likeable, notice: 'like was successfully created.' }
+          format.html { redirect_to @likeable, notice: '喜欢已成功' }
           format.json { render action: 'show', status: :created, location: @likeable }
         else
           format.html { render action: 'new' }
@@ -55,7 +55,7 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    flash[:notice] = "Successfully destroyed like."
+    flash[:notice] = "删除喜欢已成功"
     redirect_to likes_url
   end
   
