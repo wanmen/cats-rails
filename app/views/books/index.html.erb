@@ -5,8 +5,8 @@
   <article class="col-sm-8">
     <section class="wm-gallery">
       <h3 class="page-header">
-        <span class="glyphicon glyphicon-star"></span> 精选推荐
-        <a class="wm-quick-link" href="/search?type=book&list=book">查看全部</a>
+        <span class="glyphicon glyphicon-star"></span> 精选书单
+        <a class="wm-quick-link" href="/search?list=book">查看全部</a>
       </h3>
       <div class="row">
           <% @bestBooklist.each do |booklist| %>
@@ -20,6 +20,10 @@
           </figure>
         <% end %>
       </div>
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-star"></span> 精选图书
+        <a class="wm-quick-link" href="/search?list=book">查看全部</a>
+      </h3>
       <div class="row">
         <% @best.each do |book| %>
         <figure class="col-sm-4">

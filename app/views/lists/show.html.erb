@@ -9,7 +9,7 @@
       <span class="wm-quick-link">
         <% if current_user&& current_user[:role]>= SCHOLAR %>
         <a href="/lists/<%=@list.id %>/edit">修改</a> |
-        <a href="#" class="sort-trigger">Sort</a> |
+        <a href="#" class="sort-trigger">排序</a> |
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
@@ -111,10 +111,10 @@
   }
   var triggerIsClicked= function(thetrigger, thelist){
     initSortable(thelist);
-    $(thetrigger).text('stop sorting');
+    $(thetrigger).text('停止排序');
     $(thetrigger).unbind()
     $(thetrigger).bind('click',function(){
-      $(thetrigger).text('sort');
+      $(thetrigger).text('排序');
       console.log(sortableSerialize(thelist,'lkid'));
       $.post('./<%= @list.id%>/sort',sortableSerialize(thelist,'lkid'));
       disableSortable(thelist);

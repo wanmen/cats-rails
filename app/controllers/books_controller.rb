@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     @popularTags = Tag.top20
     @best = Book.best6
     @popularBooklist = List.top10Booklist
-    @bestBooklist = List.best3Booklist
+    @bestBooklist = List.best6Booklist
   end
 
   # GET /books/1
