@@ -8,6 +8,12 @@ class SearchController < ApplicationController
 		@videolists=[]
 		@articlelists=[]
 		@mixlists=[]
+		@type=[]
+		@list=[]
+		@tags=[]
+		if params[:title]
+			@tags = Tag.find(:all, :conditions => ["name LIKE ?", "%"+params[:title]+"%"])
+		end
 		if params[:type]
 			@type = params[:type].split(',')
 			@type.each do |t|
@@ -70,6 +76,13 @@ class SearchController < ApplicationController
 		else
 			@title = ''
 		end
-		@results = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
+		@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
+		numperpage = 5
+		@page = 0
+		if params[:page]
+			@page = params[:page].to_i-1
+		end
+		@numberofpages= @allresults.length/numperpage
+		@results = @allresults[@page*numperpage,numperpage]
 	end
 end
