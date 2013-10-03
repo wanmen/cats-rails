@@ -34,12 +34,12 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag != nil
-        format.html { redirect_to @tag, notice: 'tag is alrealy exist, please choose another name.' }
+        format.html { redirect_to @tag, notice: '标签已存在' }
         format.json { render action: 'show', status: failed, location: @tag }
       else
         @tag = Tag.new(tag_params)
         if @tag.save
-          format.html { redirect_to @tag, notice: 'tag was successfully created.' }
+          format.html { redirect_to @tag, notice: '添加标签成功' }
           format.json { render action: 'show', status: :created, location: @tag }
         else
           format.html { render action: 'new' }
@@ -57,10 +57,10 @@ class TagsController < ApplicationController
     respond_to do |format|
       if params[:delete]
         @tag.destroy
-        format.html { redirect_to tags_url, notice: 'tag was successfully deleted.' }
+        format.html { redirect_to tags_url, notice: '删除标签成功' }
         format.json { head :no_content }
       elsif @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'tag was successfully updated.' }
+        format.html { redirect_to @tag, notice: '修改标签成功' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,7 +74,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'tag was successfully deleted.' }
+      format.html { redirect_to tags_url, notice: '删除标签成功' }
       format.json { head :no_content }
     end
   end

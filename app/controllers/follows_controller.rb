@@ -19,10 +19,10 @@ class FollowsController < ApplicationController
     @follow = @followable.follows.new(:user_id => current_user.id)
     respond_to do |format|
       if @follow.save
-        format.html { redirect_to @followable, notice: 'follow was successfully created.' }
+        format.html { redirect_to @followable, notice: '已关注' }
         format.json { render action: 'show', status: :created, location: @followable }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', notice: '关注失败' }
         format.json { render json: @follow.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,7 @@ class FollowsController < ApplicationController
   def destroy
     @follow = Follow.find(params[:id])
     @follow.destroy
-    flash[:notice] = "Successfully destroyed follow."
+    flash[:notice] = "成功取消关注"
     redirect_to follows_url
   end
   

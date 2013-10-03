@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @commentable, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @commentable, notice: '评论成功' }
         format.json { render action: 'show', status: :created, location: @commentable }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', notice: '评论失败' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -36,10 +36,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment, notice: '修改评论成功' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', notice: '失败' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:notice] = "Successfully destroyed comment."
+    flash[:notice] = "删除评论成功"
     redirect_to comments_url
   end
   
