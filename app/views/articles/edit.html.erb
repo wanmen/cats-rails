@@ -1,6 +1,65 @@
-<h1>Editing article</h1>
+<% content_for :head do %>
+   <title>编辑经验帖 | 万门大学</title>
+   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
+<% end %>
 
-<%= render 'form' %>
+<main class="container" role="main">
+  <h3 class="page-header text-center">
+    <span class="wm-title">编辑经验贴</span>
+    <span class="wm-quick-link">
+      <%= link_to 'Show', @article %> |
+      <%= link_to 'Back', articles_path %>
+      <a href="JavaScript:window.history.back();">返回</a>
+    </span>
+  </h3>
+  <%= render 'form' %>
+</main>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+<% content_for :bottom_script do %>
+    <script src="/assets/Markdown.Converter.js"></script>
+    <script src="/assets/Markdown.Sanitizer.js"></script>
+    <script src="/assets/Markdown.Editor.js"></script>
+    <script src="/assets/Markdown.Extra.js"></script>
+    <script src="/assets/Markdown.local.zh.js"></script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        messageStyle: "none",
+        tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}
+      });
+    </script>
+    <script type="text/javascript">
+      (function() {
+        var QUEUE = MathJax.Hub.queue,
+          math = null;
+
+        QUEUE.Push(function() {
+          math = MathJax.Hub.getAllJax('#wmd-preview')[0];
+        });
+
+        window.UpdateMath = function(TeX) {
+          $('#wmd-preview').html(TeX);
+          MathJax.Hub.Queue(['Typeset', math, 'wmd-preview']);
+        }
+
+        $('#wmd-input').keypress(function(event) {
+          UpdateMath($(this).val());
+        });
+
+      })();
+    </script>
+    <script type="text/javascript">
+      (function () {
+        var converter = Markdown.getSanitizingConverter();
+        converter.hooks.chain('preBlockGamut', function(text, rbg) {
+          return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm,
+            function (whole, inner) {
+              return "<blockquote>" + rbg(inner) + '</blockquote>\n';
+          });
+        });
+
+        var editor = new Markdown.Editor(converter, null, {strings: Markdown.local.zh});
+        editor.run();
+      })();
+    </script>
+<% end %>
