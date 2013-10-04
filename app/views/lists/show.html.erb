@@ -15,7 +15,7 @@
       </span>
     </h3>
     <p class="wm-pub-metadata">
-      <!-- <a href="/scholars/<%=@list.user[:id]%>"><%= @list.user[:name] %></a> 发布于 -->
+      <!-- <a href="/scholars/<%#=@list.user[:id]%>"><%#= @list.user[:name] %></a> 发布于 -->
       <span style="color:#5bc0de"><%= @list.user[:name] %></span>
       <%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
       <span class="pull-right"><%= @list.taglinks.length %> 个标签 | <%= @list.likes.length %>人喜欢 | <%= @list.comments.length%>个评论</span>
