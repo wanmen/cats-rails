@@ -90,7 +90,6 @@
         <%= link_to result.title,result %>
         </h4>
         <p class="wm-pub-metadata">
-          <!--<a href="/scholars/<%#= result.user[:id] %>.html"><%#= result.user[:name] %></a> 发布于 <%#= result.user[:created_at].strftime('%b %d, %Y %H:%M') %> -->
           <span style="color:#5bc0de"><%= result.user[:name] %></span>发布于 <%= result.user[:created_at].strftime('%b %d, %Y %H:%M') %>
           <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
         </p>
