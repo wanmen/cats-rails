@@ -82,7 +82,7 @@ class SearchController < ApplicationController
 		if params[:page]
 			@page = params[:page].to_i-1
 		end
-		@numberofpages= @allresults.length/numperpage
+		@numberofpages= @allresults.length/numperpage +(@allresults.length%numperpage>0? 1:0)-1
 		@results = @allresults[@page*numperpage,numperpage]
 	end
 end
