@@ -8,7 +8,7 @@ class VideosController < ApplicationController
     @popular = Video.top10
     @best = Video.best6
     @popularVideolist = List.top10Videolist
-    @bestVideolist = List.best3Videolist
+    @bestVideolist = List.best6Videolist
   end
 
   # GET /videos/1
