@@ -27,6 +27,7 @@ Cats::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   # Don't care if the mailer can't send
+
   require 'tlsmail' #key but not always described
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   ActionMailer::Base.delivery_method = :smtp
@@ -36,8 +37,8 @@ Cats::Application.configure do
   :address              => "smtp.exmail.qq.com",
   :port                 => 465,
   :domain               => 'wanmen.org',
-  :user_name            => 'admin@wanmen.org',
-  :password             => 'WANMEN2013',
+  :user_name            => 'noreply@wanmen.org',
+  :password             => 'DoNotReply2013',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
   config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }

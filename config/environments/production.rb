@@ -87,8 +87,8 @@ Cats::Application.configure do
   :address              => "smtp.exmail.qq.com",
   :port                 => 465,
   :domain               => 'wanmen.org',
-  :user_name            => 'admin@wanmen.org',
-  :password             => 'WANMEN2013',
+  :user_name            => 'noreply@wanmen.org',
+  :password             => 'DoNotReply2013',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
   config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }
