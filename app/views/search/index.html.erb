@@ -121,7 +121,7 @@
           <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
         </p>
         <p><%= result.summary[0,200] %>
-          <%= link_to "继续阅读&raquo;",result %>
+          <%= link_to "继续阅读>>",result %>
         </p>
       </div>
       <hr/>
@@ -139,11 +139,11 @@
 
     <section class="text-center">
       <ul class="pagination">
-        <li><a href="#prev" title="上一页">&laquo;</a></li>
+       <% if @page != 0 %> <li><a href="#prev" title="上一页">&laquo;</a></li><% end %>
        <% for i in [@page-3, 0].max .. [@page+7, @numberofpages].min %>
         <li<% if (i == @page) %> class="active"<% end %>><a href="?page=<%= i+1%>"><%= i+1%></a></li>
        <% end %>
-        <li><a href="#next" title="下一页">&raquo;</a></li>
+       <% if(@page+7<@numberofpages)%><li><a href="#next" title="下一页">&raquo;</a></li><% end %>
       </ul>
     </section>
   </article>
@@ -188,8 +188,9 @@
     });
 
     $('.wm-search-type :checkbox').on('click', function() {
-      $(this).parentsUntil('aside').find(':checkbox')
-        .prop('checked', (this.checked ? true : false));
+    $(this).parentsUntil('aside').find(':checkbox')
+    .prop('checked', (this.checked ? true : false));
+    $('.wm-lg-left :checkbox').change();
     });
 
     $('.wm-lg-left :checkbox').on('click', function() {
