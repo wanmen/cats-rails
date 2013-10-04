@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131002013007) do
+ActiveRecord::Schema.define(version: 20131004125319) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131002013007) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "translator"
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
@@ -102,8 +103,8 @@ ActiveRecord::Schema.define(version: 20131002013007) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description",               null: false
-    t.integer  "order_num",     default: 0, null: false
+    t.string   "description"
+    t.integer  "order_num",     default: 0
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
