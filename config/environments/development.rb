@@ -33,11 +33,11 @@ Cats::Application.configure do
   ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true 
   ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
+  :address              => "smtp.exmail.qq.com",
+  :port                 => 465,
   :domain               => 'wanmen.org',
-  :user_name            => 'wanmen.org@gmail.com',
-  :password             => 'wanmendaxue',
+  :user_name            => 'admin@wanmen.org',
+  :password             => 'WANMEN2013',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
   config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }
