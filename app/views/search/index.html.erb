@@ -192,7 +192,6 @@
     .prop('checked', (this.checked ? true : false));
     $('.wm-lg-left :checkbox').change();
     });
-
     $('.wm-lg-left :checkbox').on('click', function() {
       $(this).parentsUntil('aside').find('.wm-search-type :checkbox')
        .prop('checked', (this.checked ? true : false));
