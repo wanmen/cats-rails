@@ -9,13 +9,13 @@
       <span class="wm-quick-link">
         <% if current_user&& current_user[:role]>= SCHOLAR %>
         <a href="/lists/<%=@list.id %>/edit">修改</a> |
-        <a href="#" class="sort-trigger">Sort</a> |
+        <a href="#" class="sort-trigger">排序</a> |
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
       </span>
     </h3>
     <p class="wm-pub-metadata">
-      <a href="/scholars/<%=@list.user[:id]%>"><%= @list.user[:name] %></a> 发布于 
+      <span style="color:#5bc0de"><%= @list.user[:name] %></span> 发布于
       <%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
       <span class="pull-right"><%= @list.taglinks.length %> 个标签 | <%= @list.likes.length %>人喜欢 | <%= @list.comments.length%>个评论</span>
     </p>
@@ -113,10 +113,10 @@
   }
   var triggerIsClicked= function(thetrigger, thelist){
     initSortable(thelist);
-    $(thetrigger).text('stop sorting');
+    $(thetrigger).text('停止排序');
     $(thetrigger).unbind()
     $(thetrigger).bind('click',function(){
-      $(thetrigger).text('sort');
+      $(thetrigger).text('排序');
       console.log(sortableSerialize(thelist,'lkid'));
       $.post('./<%= @list.id%>/sort',sortableSerialize(thelist,'lkid'));
       disableSortable(thelist);

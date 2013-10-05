@@ -7,8 +7,8 @@
     <div class="col-xs-8">
       <div class="page-header">
         <h3><%= @article.title %></h3>
-        <p><a href="/scholars/<%= @article.user[:id]%>"><%= @article.user[:name] %></a>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
-        
+        <p>
+          <span style="color:#5bc0de"><%= @article.user[:name] %></span>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
         <% if current_user&& current_user[:role]>= SCHOLAR %>
           <%= link_to '修改', edit_article_path(@article) %>  |
         <% end %>

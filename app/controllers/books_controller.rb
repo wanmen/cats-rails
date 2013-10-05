@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     @popularTags = Tag.top20
     @best = Book.best6
     @popularBooklist = List.top10Booklist
-    @bestBooklist = List.best3Booklist
+    @bestBooklist = List.best6Booklist
   end
 
   # GET /books/1
@@ -103,6 +103,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :user_id, :author, :publisher, :url)
+      params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator).merge(user_id: current_user.id)
     end
 end

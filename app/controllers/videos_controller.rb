@@ -8,7 +8,7 @@ class VideosController < ApplicationController
     @popular = Video.top10
     @best = Video.best6
     @popularVideolist = List.top10Videolist
-    @bestVideolist = List.best3Videolist
+    @bestVideolist = List.best6Videolist
   end
 
   # GET /videos/1
@@ -95,6 +95,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :cover, :summary, :url, :user_id, :lecturer)
+      params.require(:video).permit(:title, :cover, :summary, :url, :lecturer).merge(user_id: current_user.id)
     end
 end

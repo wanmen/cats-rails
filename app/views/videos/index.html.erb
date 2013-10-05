@@ -5,8 +5,8 @@
   <article class="col-sm-8">
     <section class="wm-gallery">
       <h3 class="page-header">
-        <span class="glyphicon glyphicon-star"></span> 精选推荐
-        <a class="wm-quick-link" href="/search?type=video&list=video">查看全部</a>
+        <span class="glyphicon glyphicon-star"></span> 精选视频集
+        <a class="wm-quick-link" href="/search?list=video">查看全部</a>
       </h3>
       <div class="row">
         <% @bestVideolist.each do |list|%>
@@ -20,39 +20,10 @@
         </figure>
         <% end %>
       </div>
-      <div class="row">
-        <% @best.each do |video| %>
-        <figure class="col-sm-4">
-          <a class="thumbnail" href="/videos/<%=video.id %>.html">
-            <img src="<%=video.cover %>!medium" alt="<%=video.title %>" title="<%=video.title %>"/>
-          </a>
-          <figcaption>
-            <a href="/videos/<%=video.id %>.html" title="<%=video.title %>"><%=video.title %></a>
-          </figcaption>
-        </figure>
-        <% end %>
-      </div>
-    </section>
 
-    <section class="wm-gallery">
-      <h3 class="page-header">
-        <span class="glyphicon glyphicon-calendar"></span> 最新视频
-        <a class="wm-quick-link" href="/search?type=video">查看全部</a>
-      </h3>
-      <div class="row">
-        <% @newest.each do |video| %>  
-        <figure class="col-sm-4">
-          <a class="thumbnail" href="/videos/<%= video.id %>">
-            <img src="<%=video.cover %>!medium" alt="<%=video.title%>" title="<%=video.title%>"/>
-          </a>
-          <figcaption>
-            <a href="/videos/<%= video.id %>" title="<%=video.title%>"><%=video.title%></a>
-          </figcaption>
-        </figure>
-        <% end %>
-      </div>
     </section>
   </article>
+
 
   <aside class="col-sm-4">
     <section>
