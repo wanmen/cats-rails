@@ -1,6 +1,7 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_SCHOLAR_or_redirect, except: [:index, :show]
 
   def index
     @rateable = find_rateable
@@ -36,6 +37,9 @@ class RatesController < ApplicationController
   
   def edit
     @rate = Rate.find(params[:id])
+    if !qualified_to_edit(@rate,current_user,ADMIN)
+      redirect_to "/manage"
+    end
   end
   
   def update

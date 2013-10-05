@@ -1,6 +1,7 @@
 class TaglinksController < ApplicationController
   before_action :set_taglink, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
 
   def index
     @taglinkable = find_taglinkable

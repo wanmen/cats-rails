@@ -19,4 +19,15 @@ module ApplicationHelper
 			return false
 		end
 	end
+	def at_least_SCHOLAR_or_redirect
+		if !qualified_to_create?(current_user,SCHOLAR)
+			redirect_to "/manage"
+		end
+	end
+	def at_least_ADMIN_or_redirect
+		if !qualified_to_create?(current_user,SCHOLAR)
+			redirect_to "/manage"
+		end
+	end
+	
 end
