@@ -164,7 +164,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    var href = window.location.href.replace(/&page=\d/, '');
+    var href = window.location.href.replace(/&page=\d*/, '');
 
     if($('.pagination a').eq(1).text() == 1) {
       $('.pagination li').first().addClass('wm-hidden');
