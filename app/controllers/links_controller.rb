@@ -30,6 +30,9 @@ class LinksController < ApplicationController
   
   def edit
     @link = Link.find(params[:id])
+    if !qualified_to_edit?(@link,current_user,SUPERADMIN)
+      redirect_to "/manage"
+    end
   end
   
   def update
