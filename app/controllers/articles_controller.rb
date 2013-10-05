@@ -42,6 +42,9 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    if !qualified_to_edit?(Article.find(params[:id]),current_user,SUPERADMIN)
+      redirect_to "/manage"
+    end
   end
 
   # POST /articles
