@@ -1,6 +1,6 @@
 <% if current_user&& current_user[:role]>= SCHOLAR %>
   <% if (@lists.length>0) %>
-  <a onclick="addList()">添加到我的单子</a>
+  <a onclick="addList()">添加到我的集合</a>
   <div id="listForm" style="display:none;">
     添加到<%= form_for [@linkable, @link] do |f| %>
     <% if @link.errors.any? %>
@@ -21,7 +21,7 @@
       <%= f.text_field :description %>
     </p>
     <p>
-      在单子中的顺序
+      在集合中的顺序
       <%= f.number_field :order_num %>
     </p>
     <div class="actions">
@@ -29,9 +29,9 @@
     </div>
     <a onclick="hideList()">隐藏</a>
   <% end %>
-  <a href="/lists/new">新建单子</a>
+  <a href="/lists/new">新建集合</a>
   </div>
   <% else %>
-  <a href="/lists/new">新建单子</a>
+  <a href="/lists/new">新建集合</a>
   <% end %>
 <% end %>

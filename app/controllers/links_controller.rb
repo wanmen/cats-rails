@@ -19,7 +19,7 @@ class LinksController < ApplicationController
     @link = @linkable.links.new(link_params)
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @linkable, notice: 'link was successfully created.' }
+        format.html { redirect_to @linkable, notice: '成功添加到单子' }
         format.json { render action: 'show', status: :created, location: @linkable }
       else
         format.html { render action: 'new' }
@@ -36,7 +36,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link.list, notice: 'link was successfully updated.' }
+        format.html { redirect_to @link.list, notice: '成功从单子内删除' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -48,7 +48,7 @@ class LinksController < ApplicationController
   def destroy
     @link = Link.find(params[:id])
     @link.destroy
-    flash[:notice] = "Successfully destroyed link."
+    flash[:notice] = "成功从单子内删除"
     redirect_to @link.list
   end
   

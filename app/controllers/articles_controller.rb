@@ -49,10 +49,10 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: '您已成功添加新的经验贴' }
         format.json { render action: 'show', status: :created, location: @article }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', notice: '添加经验贴失败' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: '您已成功修改经验贴' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
