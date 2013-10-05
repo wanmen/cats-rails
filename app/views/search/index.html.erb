@@ -1,6 +1,7 @@
 <% content_for :head do %>
-   <title>搜索:<%= @title %> | 万门大学</title>
+  <title>搜索:<%= @title %> | 万门大学</title>
 <% end %>
+
 <main class="container" role="main">
   <aside class="col-sm-3">
     <h3 class="page-header">
@@ -85,23 +86,20 @@
 
   <article class="col-sm-9">
     <h3 class="page-header">
-      <form class="row" style="width:100%" role="search" method="get" action="/search">
-        <label class="col-sm-5" for="result">搜索结果<span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span></label>
-        <div class="input-group col-sm-7">
-          <input type="hidden" name="type" value="book,video,article">
-          <input type="hidden" name="list" value="book,video,article,mix">
-          <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴，标签" title="请输入关键词进行搜索" value="<%= @title %>"/>
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
-      </form>
-      <span class="wm-quick-link">
-        <a href="JavaScript:window.history.back();">返回</a>
-      </span>
+      搜索结果 <span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span>
     </h3>
+    <form class="wm-inline-search pull-right" role="search" method="get" action="/search">
+      <div class="input-group">
+        <input type="hidden" name="type" value="book,video,article">
+        <input type="hidden" name="list" value="book,video,article,mix">
+        <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴，标签" title="请输入关键词进行搜索" value="<%= @title %>"/>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </form>
     <section>
      <% @results.each do |result| %>
       <div>
@@ -133,7 +131,7 @@
           <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
         </p>
         <p><%= result.summary[0,200] %>
-          <%= link_to "继续阅读&gt;&gt;".html_safe,result %>
+          <%= link_to "继续阅读&raquo;".html_safe, result, {:class=>"wm-italic"} %>
         </p>
       </div>
       <hr/>
@@ -164,12 +162,12 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    var href = window.location.href.replace(/&page=\d/, '');
+    var href = window.location.href.replace(/&page=\d*/, '');
 
-    if($('.pagination a').eq(1).text() == 1) {
+    if(+$('.pagination a').eq(1).text() == 1) {
       $('.pagination li').first().addClass('wm-hidden');
     }
-    if($('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
+    if(+$('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
       $('.pagination li').last().addClass('wm-hidden');
     }
 
