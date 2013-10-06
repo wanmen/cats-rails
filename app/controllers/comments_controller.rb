@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_SCHOLAR_or_redirect, except: [:index, :show]
 
   def index
     @commentable = find_commentable
@@ -31,7 +32,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     if !qualified_to_edit?(@comment,current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
   

@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
 
   def index
     @linkable = find_linkable
@@ -31,7 +32,7 @@ class LinksController < ApplicationController
   def edit
     @link = Link.find(params[:id])
     if !qualified_to_edit?(@link,current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
   
