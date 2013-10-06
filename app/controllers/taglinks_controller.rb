@@ -79,6 +79,6 @@ class TaglinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def taglink_params
-    params.require(:taglink).permit(:tag_id)
+    params.require(:taglink).permit(:tag_id).merge(user_id: current_user.id)
   end
 end
