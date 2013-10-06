@@ -1,6 +1,7 @@
 <% content_for :head do %>
-   <title>搜索:<%= @title %> | 万门大学</title>
+  <title>搜索:<%= @title %> | 万门大学</title>
 <% end %>
+
 <main class="container" role="main">
   <aside class="col-sm-3">
     <h3 class="page-header">
@@ -8,48 +9,75 @@
     </h3>
     <section>
       <div class="checkbox wm-search-type">
-        <label><input type="checkbox" id="alltypes" <% if @type.length == 3 %> checked<% end %> onchange="alltypes()"/>所有普通类型<span class="text-muted">(共<%= @books.length+@videos.length+@articles.length %>项)</span></label>
+        <label>
+          <input type="checkbox" id="alltypes" <% if @type.length == 3 %> checked<% end %> />所有普通类型
+          <span class="badge pull-right"><%= @books.length+@videos.length+@articles.length %></span>
+        </label>
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
-          <label><input type="checkbox" id="book" <% if @type&&(@type.include?'book') %> checked<% end %> onchange="research()" />图书 <span class="text-muted">(<%= @books.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="book" <% if @type&&(@type.include?'book') %> checked<% end %> />图书
+            <span class="badge pull-right"><%= @books.length %></span>
+          </label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="video"  <% if @type&&(@type.include?'video') %> checked<% end %> onchange="research()" />视频 <span class="text-muted"> (<%= @videos.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="video" <% if @type&&(@type.include?'video') %> checked<% end %> />视频
+            <span class="badge pull-right"><%= @videos.length %></span>
+          </label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="article"  <% if @type&&(@type.include?'article') %> checked<% end %> onchange="research()" />经验贴 <span class="text-muted"> (<%= @articles.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="article" <% if @type&&(@type.include?'article') %> checked<% end %> />经验贴
+            <span class="badge pull-right"><%= @articles.length %></span>
+          </label>
         </div>
       </div>
     </section>
 
     <section>
       <div class="checkbox wm-search-type">
-        <label><input type="checkbox" id="alllists" <% if @list.length == 4 %> checked<% end %> onchange="alllists()"/>所有单子类型<span class="text-muted"> (共<%= @booklists.length+@videolists.length+@articlelists.length+@mixlists.length %>项)</span></label>
+        <label>
+          <input type="checkbox" id="alllists" <% if @list.length == 4 %> checked<% end %> />所有单子类型
+          <span class="badge pull-right"><%= @booklists.length+@videolists.length+@articlelists.length+@mixlists.length %></span>
+        </label>
       </div>
       <div class="wm-lg-left">
         <div class="checkbox">
-          <label><input type="checkbox" id="booklist"  <% if @list&&(@list.include?'book') %> checked<% end %> onchange="research()" />书单<span class="text-muted"> (<%= @booklists.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="booklist"  <% if @list&&(@list.include?'book') %> checked<% end %> />书单
+            <span class="badge pull-right"><%= @booklists.length %></span>
+          </label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="videolist"  <% if @list&&(@list.include?'video') %> checked<% end %> onchange="research()" />视频集<span class="text-muted">  (<%= @videolists.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="videolist" <% if @list&&(@list.include?'video') %> checked<% end %> />视频集
+            <span class="badge pull-right"><%= @videolists.length %></span>
+          </label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="articlelist"  <% if @list&&(@list.include?'article') %> checked<% end %> onchange="research()" />帖子集<span class="text-muted">  (<%= @articlelists.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="articlelist" <% if @list&&(@list.include?'article') %> checked<% end %> />帖子集
+            <span class="badge pull-right"><%= @articlelists.length %></span>
+          </label>
         </div>
         <div class="checkbox">
-          <label><input type="checkbox" id="mixlist"  <% if @list&&(@list.include?'mix') %> checked<% end %> onchange="research()" />综合集 <span class="text-muted"> (<%= @mixlists.length%>)</span></label>
+          <label>
+            <input type="checkbox" id="mixlist" <% if @list&&(@list.include?'mix') %> checked<% end %> />综合集
+            <span class="badge pull-right"><%= @mixlists.length %></span>
+          </label>
         </div>
       </div>
     </section>
     <% if @tags!=[] %>
     <section>
       <div class="checkbox wm-search-type">
-         <label>标签<span class="text-muted"> (共<%= @tags.length %>项)</span></label>
+         <label>标签 <span class="badge pull-right"><%= @tags.length %></span></label>
       </div>
       <div class="wm-lg-left">
       <% @tags.each do |t| %>
-        <a href="/tags/<%= t.id %>"><%= t.name %></a>
+        <a class="btn btn-default btn-xs" href="/tags/<%= t.id %>"><%= t.name %></a>
       <% end %>
       </div>
     </section>
@@ -58,11 +86,20 @@
 
   <article class="col-sm-9">
     <h3 class="page-header">
-      搜索结果:<%= @title %><span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span>
-      <span class="wm-quick-link">
-        <a href="JavaScript:window.history.back();">返回</a>
-      </span>
+      搜索结果 <span class="text-muted">(共<%= @allresults.length+@tags.length %>项)</span>
     </h3>
+    <form class="wm-inline-search pull-right" role="search" method="get" action="/search">
+      <div class="input-group">
+        <input type="hidden" name="type" value="book,video,article">
+        <input type="hidden" name="list" value="book,video,article,mix">
+        <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴，标签" title="请输入关键词进行搜索" value="<%= @title %>"/>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </form>
     <section>
      <% @results.each do |result| %>
       <div>
@@ -94,7 +131,7 @@
           <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
         </p>
         <p><%= result.summary[0,200] %>
-          <%= link_to "继续阅读",result %>
+          <%= link_to "继续阅读&raquo;".html_safe, result, {:class=>"wm-italic"} %>
         </p>
       </div>
       <hr/>
@@ -111,76 +148,72 @@
     </section>
 
     <section class="text-center">
-     <ul class="pagination">
-       <% for i in 0..@numberofpages %>
-        <li <% if (i == @page) %>class="active"<% end %>><a onclick="showpage(<%= i+1%>)"><%= i+1%></a></li>
+      <ul class="pagination" data-total="<%= @numberofpages %>">
+        <li><a href="#prev" title="上一页">&laquo;</a></li>
+       <% for i in [@page-4, 0].max .. [@page+6, @numberofpages].min %>
+        <li<% if (i == @page) %> class="active"<% end %>><a href="?page=<%= i+1%>"><%= i+1%></a></li>
        <% end %>
-     </ul>
+        <li><a href="#next" title="下一页">&raquo;</a></li>
+      </ul>
     </section>
   </article>
 
 </main>
+
 <script type="text/javascript">
-function gup( name ){
-  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
-  var regexS = "[\\?&]"+name+"=([^&#]*)";  
-  var regex = new RegExp( regexS );  
-  var results = regex.exec( window.location.href ); 
-  if( results == null )    
-    return "";  
-  else    
-    return results[1];
-}
-function research(){
-  var type = [];
-  if(document.getElementById("book").checked)
-    type.push('book');
-  if (document.getElementById("video").checked)
-    type.push('video');
-  if (document.getElementById("article").checked)
-    type.push('article');
-  var list = [];
-  if(document.getElementById("booklist").checked)
-    list.push('book');
-  if (document.getElementById("videolist").checked)
-    list.push('video');
-  if (document.getElementById("articlelist").checked)
-    list.push('article');
-  if (document.getElementById("mixlist").checked)
-    list.push('mix');
-  if (gup('title')!=""){
-    window.location = '/search?type='+type.join()+'&list='+list.join()+'&title='+gup('title');
-  }else{
-    window.location = '/search?type='+type.join()+'&list='+list.join();
-  }
-}
-function alltypes(){
-  if(document.getElementById("alltypes").checked){
-    document.getElementById("book").checked=true;
-    document.getElementById("video").checked=true;
-    document.getElementById("article").checked=true;
-  }else{
-    document.getElementById("book").checked=false;
-    document.getElementById("video").checked=false;
-    document.getElementById("article").checked=false;
-  }
-  research();
-}
-function alllists(){
-  if(document.getElementById("alllists").checked){
-    document.getElementById("booklist").checked=true;
-    document.getElementById("videolist").checked=true;
-    document.getElementById("articlelist").checked=true;
-    document.getElementById("mixlist").checked=true;
-  }else{
-    document.getElementById("booklist").checked=false;
-    document.getElementById("videolist").checked=false;
-    document.getElementById("articlelist").checked=false;
-    document.getElementById("mixlist").checked=false;
-  }
-  research();
-}
-function showpage(pid){
- window.location= window.location.href+'&page='+pid;
-}
+  $(document).ready(function() {
+    var href = window.location.href.replace(/&page=\d*/, '');
+
+    if(+$('.pagination a').eq(1).text() == 1) {
+      $('.pagination li').first().addClass('wm-hidden');
+    }
+    if(+$('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
+      $('.pagination li').last().addClass('wm-hidden');
+    }
+
+    $('.pagination a').on('click', function() {
+      var text = $(this).text(),
+        title = $(this).attr('title'),
+        current = +$('.pagination .active').text();
+      if(title == '上一页') {
+        text = current - 1;
+      } else if(title == '下一页') {
+        text = current + 1;
+      }
+      if(!$(this).parent().hasClass('active')) {
+        window.location = href + '&page=' + text;
+      }
+      return false;
+    });
+
+    $('.wm-lg-left :checkbox').on('change', function() {
+      var title = href.match(/&title=.+$/),
+        type = [],
+        list = [];
+      $('.wm-lg-left :checkbox').each(function() {
+        var id = $(this).attr('id');
+        if(this.checked) {
+          if(id.slice(-4) != 'list') {
+            type.push(id);
+          } else {
+            list.push(id.slice(0, -4));
+          }
+        }
+      });
+      window.location = '/search?type=' + type.join() + '&list=' + list.join() +
+        (title ? title : '');
+      return false;
+    });
+
+    $('.wm-search-type :checkbox').on('click', function() {
+      $(this).parentsUntil('aside').find(':checkbox')
+        .prop('checked', (this.checked ? true : false));
+      $('.wm-lg-left :checkbox').change();
+    });
+    $('.wm-lg-left :checkbox').on('click', function() {
+      $(this).parentsUntil('aside').find('.wm-search-type :checkbox')
+       .prop('checked', (this.checked ? true : false));
+    });
+
+  });
 </script>

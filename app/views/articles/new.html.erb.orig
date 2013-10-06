@@ -13,5 +13,11 @@
   <%= render 'form' %>
 </main>
 
+<<<<<<< HEAD
 <%= render :partial => 'layouts/markdown' %>
 
+=======
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+<% end %>
+>>>>>>> master

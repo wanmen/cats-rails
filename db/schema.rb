@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004125319) do
+ActiveRecord::Schema.define(version: 20131006053534) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -103,12 +103,14 @@ ActiveRecord::Schema.define(version: 20131004125319) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
-    t.integer  "order_num",     default: 0
+    t.string   "description",               null: false
+    t.integer  "order_num",     default: 0, null: false
+    t.integer  "user_id"
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
   add_index "links", ["list_id"], name: "index_links_on_list_id", using: :btree
+  add_index "links", ["user_id"], name: "index_links_on_user_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.string   "title"
@@ -141,10 +143,12 @@ ActiveRecord::Schema.define(version: 20131004125319) do
     t.string   "tagable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "taglinks", ["tag_id"], name: "index_taglinks_on_tag_id", using: :btree
   add_index "taglinks", ["tagable_id", "tagable_type"], name: "index_taglinks_on_tagable_id_and_tagable_type", using: :btree
+  add_index "taglinks", ["user_id"], name: "index_taglinks_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
