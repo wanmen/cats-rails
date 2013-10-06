@@ -38,6 +38,9 @@ class TaglinksController < ApplicationController
   
   def edit
     @taglink = Taglink.find(params[:id])
+    if !qualified_to_edit?(@taglink,current_user,SUPERADMIN)
+      redirect_to "/manage"
+    end
   end
   
   def update

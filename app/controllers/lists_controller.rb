@@ -44,6 +44,9 @@ class ListsController < ApplicationController
   # GET /lists/1/edit
   def edit
     @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
+    if !qualified_to_edit?(List.find(params[:id]),current_user,SUPERADMIN)
+      redirect_to "/manage"
+    end
   end
 
   # POST /lists

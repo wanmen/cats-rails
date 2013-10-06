@@ -118,41 +118,30 @@ blockquote {
   margin-top: 40px;
 }
 
-.wm-newest h3 {
-  margin: 0;
-}
-
-.wm-newest ul {
-  padding: 5px 0;
-  list-style: none;
-}
-
-.wm-newest li {
-  margin: 10px 20px 0;
-}
-
-.wm-carousel {
-  margin-bottom: 20px;
-  padding: 0;
-}
-
-.wm-carousel img {
+.wm-banner img {
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  border: 1px solid;
 }
 
-.wm-features h3 {
+.wm-projects {
+  padding-top: 160px;
   text-align: center;
 }
 
-.wm-features img {
-  height: 36px;
-  margin-right: 7px;
+.wm-projects .popover {
+  padding: 0;
 }
 
-.wm-features p {
-  margin: 20px;
+.wm-projects img {
+  display: block;
+  margin: -85px auto 40px;
+}
+
+.wm-projects h3 {
+  color: #428BCA;
+  cursor: help;
 }
 
 .wm-form label {
@@ -318,6 +307,11 @@ blockquote {
 
 .wm-tags-popular div {
   margin-bottom: 4px;
+}
+
+.wm-inline-search {
+  width: 60%;
+  margin-top: -40px;
 }
 
 @media (min-width: 768px) {

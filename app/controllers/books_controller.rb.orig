@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
   before_filter :check_admin_logged_in!, except: [:index, :show]
 
+=======
+  before_filter :authenticate_user!, except: [:index, :show]
+>>>>>>> 7e5935a960cd9a65a10b9a0a4d76cfc38603e459
   # GET /books
   # GET /books.json
   def index
