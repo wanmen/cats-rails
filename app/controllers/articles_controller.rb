@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to articles_url, notice: '成功删除经验贴' }
       format.json { head :no_content }
     end
   end

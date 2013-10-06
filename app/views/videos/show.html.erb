@@ -7,10 +7,13 @@
     <h3 class="page-header">
       <span class="wm-title"><%= @video.title %></span>
       <span class="wm-quick-link">
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
+        <% if current_user && current_user[:role]>= SCHOLAR %>
         <%= link_to '修改', edit_video_path(@video) %>  |
         <% end %>
-        <%= link_to '返回', videos_path %>
+        <%= link_to '返回', videos_path %>  |
+        <% if current_user && current_user[:role]>= SUPERADMIN %>
+        <%= link_to '删除', video_path(@video), method: :delete, data: { confirm: '请确认要删除此视频?'} %>
+        <% end %>
       </span>
     </h3>
     <section class="row wm-gallery">

@@ -12,6 +12,9 @@
         <a href="#" class="sort-trigger">排序</a> |
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
+        <% if current_user && current_user[:role]>= SUPERADMIN %>
+          | <%= link_to '删除', list_path(@list), method: :delete, data: { confirm: '请确认要删除此集合?' } %>
+        <% end %>
       </span>
     </h3>
     <p class="wm-pub-metadata">
