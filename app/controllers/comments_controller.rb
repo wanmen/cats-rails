@@ -50,10 +50,9 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = "删除评论成功"
-    redirect_to comments_url
+    redirect_to @comment.commentable
   end
   
   private

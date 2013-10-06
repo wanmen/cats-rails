@@ -7,10 +7,13 @@
     <h3 class="page-header">
       <span class="wm-title"><%= @book.title %></span>
       <span class="wm-quick-link">
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
+        <% if current_user && current_user[:role]>= SCHOLAR %>
           <%= link_to '修改', edit_book_path(@book) %>  | 
         <% end %>
-        <a href="JavaScript:window.history.back();">返回</a>
+        <a href="JavaScript:window.history.back();">返回</a> |
+        <% if current_user && current_user[:role]>= SUPERADMIN %>
+          <%= link_to '删除', book_path(@book), method: :delete, data: { confirm: '请确认要删除此图书?' } %>
+        <% end %>
       </span>
     </h3>
     <section class="row wm-gallery">
