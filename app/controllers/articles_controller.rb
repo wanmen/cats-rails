@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]  
   # GET /articles
   # GET /articles.json
   def index
@@ -43,7 +44,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     if !qualified_to_edit?(Article.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
 

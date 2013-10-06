@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_filter :check_admin_logged_in!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
 
   # GET /books
   # GET /books.json
@@ -48,7 +49,7 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     if !qualified_to_edit?(Book.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
 

@@ -19,4 +19,20 @@ module ApplicationHelper
 			return false
 		end
 	end
+	def at_least_SCHOLAR_or_redirect
+		if !qualified_to_create?(current_user,SCHOLAR)
+			redirect_to help_manage_path
+		end
+	end
+	def at_least_ADMIN_or_redirect
+		if !qualified_to_create?(current_user,ADMIN)
+			redirect_to help_manage_path
+		end
+	end
+	def at_least_SUPERADMIN_or_redirect
+		if !qualified_to_create?(current_user,SUPERADMIN)
+			redirect_to help_manage_path
+		end
+	end
+
 end
