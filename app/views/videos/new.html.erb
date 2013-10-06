@@ -1,6 +1,5 @@
 <% content_for :head do %>
    <title><%= @video.title %> | 万门大学</title>
-   <%= stylesheet_link_tag "wm-pagedown", :media => "screen" %>
 <% end %>
 
 <main class="container" role="main">
@@ -13,5 +12,6 @@
     </section>
 </main>
 
-<%= render :partial => 'layouts/markdown' %>
-
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+<% end %>

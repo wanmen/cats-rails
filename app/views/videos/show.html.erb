@@ -1,7 +1,7 @@
 <% content_for :head do %>
    <title><%= @video.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
+
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
@@ -69,7 +69,10 @@
   <%= render :partial => 'videos/recommend' %>
 </main>
 
-<script src="/assets/jquery-ui.js"></script>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+<% content_for :bottom_script do %>
+    <%# FIXME: use javascript_include_tag %>
+    <script src="/assets/jquery-ui.js"></script>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>
