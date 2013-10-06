@@ -42,6 +42,7 @@ Cats::Application.routes.draw do
   end
   resources :scholars
   
+  resources :comments
   resources :taglinks
   resources :links
 
