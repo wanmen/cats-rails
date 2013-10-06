@@ -1,6 +1,16 @@
-<h1>编辑视频</h1>
+<% content_for :head do %>
+   <title><%= @video.title %> | 万门大学</title>
+   <%= stylesheet_link_tag "wm-pagedown", :media => "screen" %>
+<% end %>
 
-<%= render 'form' %>
+<main class="container" role="main">
+    <section class="col-sm-8">
+        <h1>编辑视频</h1>
+        <%= render 'form' %>
+        <span class="wm-quick-link">
+        <%= link_to '返回', videos_path  %>
+        </span>
+    </section>
+</main>
 
-<%= link_to '显示', @video %> |
-<%= link_to '返回', videos_path %>
+<%= render :partial => 'layouts/markdown' %>
