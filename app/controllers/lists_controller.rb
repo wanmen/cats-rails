@@ -48,7 +48,7 @@ class ListsController < ApplicationController
     @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
     @list= List.find(params[:id])
     if !qualified_to_edit?(@list,current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
 
@@ -75,7 +75,7 @@ class ListsController < ApplicationController
     if (@target[:type] == BOOKLIST && current_user[:role] == SCHOLAR) 
 
     elsif !qualified_to_edit?(@list,current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
     respond_to do |format|
       if @list.update(list_params)

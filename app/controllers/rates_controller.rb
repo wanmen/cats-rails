@@ -38,7 +38,7 @@ class RatesController < ApplicationController
   def edit
     @rate = Rate.find(params[:id])
     if !qualified_to_edit(@rate,current_user,ADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
   

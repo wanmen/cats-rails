@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description",               null: false
-    t.integer  "order_num",     default: 0, null: false
+    t.string   "description"
+    t.integer  "order_num",     default: 0
     t.integer  "user_id"
   end
 

@@ -46,7 +46,7 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     if !qualified_to_edit?(Video.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
 

@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     if !qualified_to_edit?(@comment,current_user,SUPERADMIN)
-      redirect_to "/manage"
+      redirect_to help_manage_path
     end
   end
   
