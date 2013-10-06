@@ -211,8 +211,10 @@
       $('.wm-lg-left :checkbox').change();
     });
     $('.wm-lg-left :checkbox').on('click', function() {
+      var $_parent = $(this).parentsUntil('section');
       $(this).parentsUntil('aside').find('.wm-search-type :checkbox')
-       .prop('checked', (this.checked ? true : false));
+        .prop('checked', $_parent.find('input:checked').length ==
+           $_parent.find('input').length);
     });
 
   });
