@@ -8,11 +8,16 @@
       <div class="page-header">
         <h3><%= @article.title %></h3>
         <p>
-          <span style="color:#5bc0de"><%= @article.user[:name] %></span>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
-          <%= link_to '修改', edit_article_path(@article) %>  |
-        <% end %>
-          <%= link_to '返回', articles_path %>
+          <span style="color:#5bc0de"><%= @article.user[:name] %></span> 修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+          <span class="wm-quick-link">
+            <% if current_user && current_user[:role]>= SCHOLAR %>
+                <%= link_to '修改', edit_article_path(@article) %>  |
+            <% end %>
+            <%= link_to '返回', articles_path %>  |
+            <% if current_user && current_user[:role]>= SUPERADMIN %>
+                <%= link_to '删除', articles_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
+            <% end %>
+          </span>
         </p>
       </div>
     </div>

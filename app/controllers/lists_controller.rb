@@ -92,8 +92,23 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list.destroy
+
+    # redirect to different page according to list type
+    @redirect = "#"
+    @type = @list[:list_type]
+    puts @type
+    if @type == BOOKLIST
+      @redirect = books_path
+    elsif @type == VIDEOLIST
+      @redirect = videos_path
+    elsif @type == ARTICLELIST
+      @redirect = articles_path
+    else
+      @redirect = root_path
+    end
+
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: '删除集合成功' }
+      format.html { redirect_to @redirect, notice: '删除集合成功' }
       format.json { head :no_content }
     end
   end
