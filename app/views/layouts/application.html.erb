@@ -6,15 +6,14 @@
     <meta name="keywords" content="网络大学，高等教育"/>
     <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
     <%= yield :head %>
-    <link rel="stylesheet" href="/assets/bootstrap.css" media="screen"/>
-    <link rel="stylesheet" href="/assets/wm-default.css" media="screen"/> 
-    <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/> 
+    <%= stylesheet_link_tag "bootstrap" %>
+    <%= stylesheet_link_tag "wm-default" %>
+    <%= stylesheet_link_tag "wm-pagedown" %>
     <link rel="icon" type="image/png" href="/assets/favicon.png"/>
-    <script src="/assets/jquery.js"></script>
     <%= yield :extra_head %>
     <%= csrf_meta_tag %>
     <!--[if lt IE 8]>
-      <link rel="stylesheet" href="/assets/bootstrap-ie7.css"/>
+      <%= stylesheet_link_tag "bootstrap-ie7" %>
     <![endif]-->
   </head>
 
@@ -109,13 +108,11 @@
           </div>
         </address>
       </div>
-    </footer>
-    <script src="/assets/bootstrap.js"></script>
-    <script src="/assets/wm-dom.js"></script>
-    <!--[if lt IE 9]>
-      <script src="/assets/html5shiv.js"></script>
-      <script src="/assets/respond.js"></script>
-    <![endif]-->
-    <%= yield :bottom_script %>
+  </footer>
+  <%= javascript_include_tag "application" %>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "ie" %>
+  <![endif]-->
+  <%= yield :bottom_script %>
   </body>
 </html>
