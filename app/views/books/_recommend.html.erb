@@ -7,15 +7,14 @@
     <div class="row">
       <% @best.each do |recommendbook| %>
       <figure class="col-sm-6">
-        <a class="thumbnail" href="/books/<%=recommendbook.id %>.html">
+        <a class="thumbnail" href="/books/<%= recommendbook.id %>.html">
           <img src="<%= recommendbook.cover %>!medium" alt="" title="<%= recommendbook.title %>"/>
         </a>
         <figcaption>
-          <a href="/books/<%=recommendbook.id %>.html" title="<%= recommendbook.title %>"><%= recommendbook.title %></a>
+          <a href="/books/<%= recommendbook.id %>.html" title="<%= recommendbook.title %>"><%= recommendbook.title %></a>
         </figcaption>
       </figure>
       <% end %>
     </div>
-
   </section>
 </aside>
