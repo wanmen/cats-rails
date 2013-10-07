@@ -104,13 +104,7 @@ class BooksController < ApplicationController
     def set_book
       @book = Book.find(params[:id])
     end
-    def check_admin_logged_in! # admin must be logged in
-        if !user_signed_in?
-          authenticate_user!
-        elsif (current_user[:role]<SCHOLAR)
-          redirect_to help_manage_url, notice: '你没有权限，请发邮件申请成为管理员'
-        end
-    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator).merge(user_id: current_user.id)
