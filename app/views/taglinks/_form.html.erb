@@ -1,5 +1,5 @@
-<% if current_user&& current_user[:role]>= SCHOLAR %>
-  <div id="tagForm" style="display:none;">
+<% if current_user&& current_user[:role]>= ADMIN %>
+  <div id="tagForm">
     <%= form_for [@taglinkable, @taglink] do |f| %>
       <% if @taglink.errors.any? %>
         <div class="error_messages">
@@ -15,7 +15,7 @@
         <%= f.select :tag_id, @tags.map{ |c| [c.name, c.id] } %>
       </p>
       <div class="actions">
-        <%= f.submit '添加此标签' %>
+        <%= f.submit '添加此标签',:class=>"btn btn-primary btn-sm" %>
       </div>
     <% end %>
   </div>

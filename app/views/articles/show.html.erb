@@ -24,6 +24,10 @@
     </p>
 
     <section class="wm-indent">
+        简介:<%= @article.summary %>
+        <a href="<%= @article.url %>">查看来源</a>
+    </section>
+    <section class="wm-indent">
         <%= @article.content %>
     </section>
 
