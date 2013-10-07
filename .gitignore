@@ -19,6 +19,6 @@
 /.project
 /.settings
 /*~
-/config/database.yml
 /tmp.md
 /.idea/*
+config/database.yml

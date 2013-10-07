@@ -1,7 +1,7 @@
 <% content_for :head do %>
    <title><%= @list.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
+
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
@@ -90,45 +90,44 @@
   <%= render :partial => 'lists/recommend' %>
 </main>
 
-<script src="/assets/jquery-ui.js"></script>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
 
-<script type="text/javascript">
-  var initSortable= function(thelist){
-    $(thelist).sortable({'axis':'y'});
-    $(thelist).sortable('enable');
-  }
-  var sortableToArray= function(thelist, targetAttr){
-    var tmpArray= $(thelist).sortable('toArray',{'attribute': targetAttr});
-    return tmpArray;
-  }
-  var sortableSerialize= function(thelist, targetAttr){
-    var tmpArray= $(thelist).sortable('serialize',{'attribute': targetAttr});
-    return tmpArray;
-  }
-  var disableSortable= function(thelist){
-    $(thelist).sortable('disable');
-  }
-  var enableSortable= function(thelist){
-    $(thelist).sortable('enable');
-  }
-  var triggerIsClicked= function(thetrigger, thelist){
-    initSortable(thelist);
-    $(thetrigger).text('停止排序');
-    $(thetrigger).unbind()
-    $(thetrigger).bind('click',function(){
-      $(thetrigger).text('排序');
-      console.log(sortableSerialize(thelist,'lkid'));
-      $.post('./<%= @list.id%>/sort',sortableSerialize(thelist,'lkid'));
-      disableSortable(thelist);
-      $(thetrigger).unbind();
-      $(thetrigger).bind('click',function(){triggerIsClicked(thetrigger,thelist);})
-    });
-  }
-  $('.sort-trigger').bind('click',function(){
-    console.log('Trigging List Sort.');
-    triggerIsClicked('.sort-trigger', '.wm-book-list');
-  })
-</script>
+    <script type="text/javascript">
+      var initSortable = function(thelist){
+        $(thelist).sortable({'axis':'y'});
+        $(thelist).sortable('enable');
+      }
+      var sortableToArray = function(thelist, targetAttr){
+        var tmpArray = $(thelist).sortable('toArray',{'attribute': targetAttr});
+        return tmpArray;
+      }
+      var sortableSerialize = function(thelist, targetAttr){
+        var tmpArray = $(thelist).sortable('serialize',{'attribute': targetAttr});
+        return tmpArray;
+      }
+      var disableSortable = function(thelist){
+        $(thelist).sortable('disable');
+      }
+      var enableSortable = function(thelist){
+        $(thelist).sortable('enable');
+      }
+      var triggerIsClicked = function(thetrigger, thelist){
+        initSortable(thelist);
+        $(thetrigger).text('停止排序');
+        $(thetrigger).unbind()
+        $(thetrigger).bind('click',function(){
+          $(thetrigger).text('排序');
+          $.post('./<%= @list.id %>/sort',sortableSerialize(thelist,'lkid'));
+          disableSortable(thelist);
+          $(thetrigger).unbind();
+          $(thetrigger).bind('click',function(){triggerIsClicked(thetrigger,thelist);})
+        });
+      }
+      $('.sort-trigger').bind('click',function(){
+        triggerIsClicked('.sort-trigger', '.wm-book-list');
+      })
+    </script>
+<% end %>
