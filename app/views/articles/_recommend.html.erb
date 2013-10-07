@@ -1,0 +1,14 @@
+<aside class="col-sm-4">
+  <section class="wm-recommend">
+    <h3 class="page-header">
+      <span class="glyphicon glyphicon-plus-sign"></span> 推荐经验贴
+      <a class="wm-quick-link" href="">查看全部</a>
+    </h3>
+  <ul>
+  <% @best.each do |recommend| %>
+    <li><a href="/articles/<%=recommend.id %>.html" title="<%= recommend.title %>"><%= recommend.title %></a></li>
+  <% end %>
+  </ul>
+  </section>
+</aside>
+
