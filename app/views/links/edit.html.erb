@@ -1,4 +1,4 @@
-<h1>Editing link</h1>
+<h1>更新描述</h1>
 <%= form_for(@link) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
@@ -14,10 +14,6 @@
   <div class="field">
     描述：
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-  	顺序：
-    <%= f.number_field :order_num %>
   </div>
   <div class="actions">
     <%= f.submit %>

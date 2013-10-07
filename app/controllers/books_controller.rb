@@ -33,8 +33,8 @@ class BooksController < ApplicationController
     @links = @linkable.links
     @link = Link.new
     @best = Book.best6
-    if (current_user)
-      @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 1)
+    if (current_user&&current_user[:role]>=SCHOLAR)
+      @lists = List.where("user_id = ? AND (list_type = ? or list_type = ?)", current_user[:id], BOOKLIST, MIXLIST)
     else
       @lists = []
     end
@@ -104,7 +104,7 @@ class BooksController < ApplicationController
     def set_book
       @book = Book.find(params[:id])
     end
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator).merge(user_id: current_user.id)

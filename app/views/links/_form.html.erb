@@ -1,37 +1,23 @@
 <% if current_user&& current_user[:role]>= SCHOLAR %>
+
   <% if (@lists.length>0) %>
-  <a onclick="addList()">添加到我的集合</a>
-  <div id="listForm" style="display:none;">
-    添加到<%= form_for [@linkable, @link] do |f| %>
-    <% if @link.errors.any? %>
-      <div class="error_messages">
-        <h2>Please correct the following errors.</h2>
-        <ul>
-        <% @link.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+  <div id="listForm" >
+    添加到
+    <%= form_for [@linkable, @link] do |f| %>
+      <p>
+        <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
+      </p>
+    加描述
+      <p>
+        <%= f.text_field :description %>
+      </p>
+      <div class="actions">
+        <%= f.submit "加入到我的单子" %>
       </div>
-    <% end %>
-    <p>
-      <%= f.select :list_id, @lists.map{ |c| [c.title, c.id] } %>
-    </p>
-    <p>
-      加描述
-      <%= f.text_field :description %>
-    </p>
-    <p>
-      在集合中的顺序
-      <%= f.number_field :order_num %>
-    </p>
-    <div class="actions">
-      <%= f.submit "加入" %>
-    </div>
-    <a onclick="hideList()">隐藏</a>
-  <% end %>
-  <a href="/lists/new">新建集合</a>
+     <% end %>
+     <a href="/lists/new">新建单子</a>
   </div>
   <% else %>
-  <a href="/lists/new">新建集合</a>
+     <a href="/lists/new">新建单子</a>
   <% end %>
 <% end %>

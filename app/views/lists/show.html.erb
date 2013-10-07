@@ -58,7 +58,7 @@
               <%= link.description %>
             </p>
            
-           <% if current_user&& current_user[:role]>=SCHOLAR %> <p> <a href="/links/<%= link.id%>/edit">修改描述或顺序</a></p>
+           <% if current_user&& current_user[:role]>=SCHOLAR %> <p> <a href="/links/<%= link.id%>/edit">修改描述</a></p>
            <% end %>
           </div>
         </div>
