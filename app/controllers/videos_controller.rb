@@ -1,7 +1,8 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
+  before_action :has_access?, only: [:new, :create, :edit, :update, :destroy]
+
   # GET /videos
   # GET /videos.json
   def index
@@ -46,9 +47,6 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
-    if !qualified_to_edit?(Video.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
   end
 
   # POST /videos
@@ -100,5 +98,9 @@ class VideosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
       params.require(:video).permit(:title, :cover, :summary, :url, :lecturer).merge(user_id: current_user.id)
+    end
+
+    def has_access?
+      confirm_user_access(@video, PRIVILEGETYPE_VIDEO, params[:action])
     end
 end

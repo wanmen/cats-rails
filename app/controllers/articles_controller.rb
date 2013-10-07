@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]  
+  before_action :has_access?, only: [:new, :create, :edit, :update, :destroy]
+
   # GET /articles
   # GET /articles.json
   def index
@@ -44,9 +45,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    if !qualified_to_edit?(Article.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
   end
 
   # POST /articles
@@ -98,5 +96,9 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :summary, :content, :url, :author).merge(user_id: current_user.id)
+    end
+
+    def has_access?
+      confirm_user_access(@article, PRIVILEGETYPE_ARTICLE, params[:action])
     end
 end
