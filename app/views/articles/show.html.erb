@@ -1,7 +1,7 @@
 <% content_for :head do %>
    <title><%= @article.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/> 
 <% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-8">
@@ -51,6 +51,9 @@
     <%= render :partial => 'comments/form' %>
   </div>
 </div>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>

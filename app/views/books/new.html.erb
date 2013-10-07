@@ -1,6 +1,5 @@
 <% content_for :head do %>
    <title>添加新书 | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
 
 <main class="container" role="main">
@@ -13,5 +12,6 @@
   <%= render 'form' %>
 </main>
 
-<%= render :partial => 'layouts/markdown' %>
-
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+<% end %>

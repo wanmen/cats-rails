@@ -1,6 +1,7 @@
 <% content_for :head do %>
    <title>修改图书信息 | 万门大学</title>
 <% end %>
+
 <main class="container" role="main">
       <h3 class="page-header text-center">
         <span class="wm-title">修改图书信息</span>
@@ -11,4 +12,6 @@
 	  <%= render 'form' %>
 </main>
 
-<%= render :partial => 'layouts/markdown' %>
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+<% end %>

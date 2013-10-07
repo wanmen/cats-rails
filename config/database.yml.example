@@ -28,7 +28,7 @@ defaults: &defaults
   adapter: mysql2
   encoding: utf8
   username: root 
-  password: giveMePass
+  password: password
   host: localhost
 
 development:
@@ -38,3 +38,9 @@ development:
 test:
   <<: *defaults
   database: wanmen_test
+
+production:
+  <<: *defaults
+  database: wanmen
+  pool: 5
+  timeout: 5000
