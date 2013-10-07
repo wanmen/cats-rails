@@ -6,7 +6,8 @@ class HelpController < ApplicationController
   def manage
   	@role = current_user[:role]
   	if (current_user[:role]== SUPERADMIN)
-  		@users = User.all
+      @prescholars = User.where(role: PRESCHOLAR)
+      @preadmins = User.where(role:PREADMIN)
   	end
   end
 
@@ -23,7 +24,13 @@ class HelpController < ApplicationController
 		end
     elsif (@role == SUPERADMIN)
     	@user = User.find(params[:user_id])
-    	@user.role = params[:role]
+      if params[:role]
+      	@user.role = params[:role]
+      elsif @user.role == PREADMIN
+        @user.role = ADMIN
+      elsif @user.role == PRESCHOLAR
+        @user.role = SCHOLAR
+      end
     	respond_to do |format|
 	    	if @user.save
 		       format.html { redirect_to :back, notice: '成功修改权限' }
