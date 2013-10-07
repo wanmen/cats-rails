@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
+  before_action :has_access?, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -48,9 +48,6 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    if !qualified_to_edit?(Book.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
   end
 
   # POST /books
@@ -104,6 +101,7 @@ class BooksController < ApplicationController
     def set_book
       @book = Book.find(params[:id])
     end
+=begin
     def check_admin_logged_in! # admin must be logged in
         if !user_signed_in?
           authenticate_user!
@@ -111,8 +109,13 @@ class BooksController < ApplicationController
           redirect_to help_manage_url, notice: '你没有权限，请发邮件申请成为管理员'
         end
     end
+=end
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator).merge(user_id: current_user.id)
+    end
+
+    def has_access?
+      confirm_user_access(@book, PRIVILEGETYPE_BOOK, params[:action])
     end
 end

@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_SCHOLAR_or_redirect, except: [:index, :show]
+  before_action :has_access?, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /lists
   # GET /lists.json
@@ -46,15 +46,12 @@ class ListsController < ApplicationController
   # GET /lists/1/edit
   def edit
     @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
-    @list= List.find(params[:id])
-    if !qualified_to_edit?(@list,current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
   end
 
   # POST /lists
   # POST /lists.json
   def create
+
     @list = List.new(list_params)
 
     respond_to do |format|
@@ -71,12 +68,6 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
-    @list= List.find(params[:id])
-    if (@target[:type] == BOOKLIST && current_user[:role] == SCHOLAR) 
-
-    elsif !qualified_to_edit?(@list,current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: '修改集合成功' }
@@ -96,7 +87,6 @@ class ListsController < ApplicationController
     # redirect to different page according to list type
     @redirect = "#"
     @type = @list[:list_type]
-    puts @type
     if @type == BOOKLIST
       @redirect = books_path
     elsif @type == VIDEOLIST
@@ -113,15 +103,15 @@ class ListsController < ApplicationController
     end
   end
 
-    def sort
-    	list= List.find(params[:id])
-    	list.links_array= params[:lkarray]
-	list.save    	
+  def sort
+    list= List.find(params[:id])
+  	list.links_array= params[:lkarray]
+	  list.save
     respond_to do |format|
       format.html { redirect_to lists_url }
       format.json { head :no_content }
     end
-    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -133,6 +123,32 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:title, :summary, :list_type).merge(user_id: current_user.id)
     end
-    
 
+    def has_access?
+      action = params[:action]
+      if action == 'new'
+        type = PRIVILEGETYPE_LIST
+        @list = nil
+      else
+        if action == 'create'
+          @list = List.new(list_params)
+        end
+        list_type = @list[:list_type]
+        puts list_type
+
+
+        if list_type == BOOKLIST
+          type = PRIVILEGETYPE_BOOKLIST
+        elsif list_type == VIDEOLIST
+          type = PRIVILEGETYPE_VIDEOLIST
+        elsif list_type == ARTICLELIST
+          type = PRIVILEGETYPE_ARTICLELIST
+        else
+          type = PRIVILEGETYPE_MIXLIST
+        end
+      end
+
+      confirm_user_access(@list, type, params[:action])
+
+    end
 end
