@@ -25,6 +25,14 @@ class ListsController < ApplicationController
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
     @tags = Tag.all
+
+    @type = @list[:list_type]
+    if @type == BOOKLIST
+      @best = List.best6Booklist
+    elsif @type == VIDEOLIST
+      @best = List.best6Videolist
+    end
+
     @Link = Link
     if (@list.links.length != @list.links_array.length)
     	@links_array = []
@@ -72,7 +80,7 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1.json
   def update
     @list= List.find(params[:id])
-    if (@target[:type] == BOOKLIST && current_user[:role] == SCHOLAR) 
+    if (@list[:list_type] == BOOKLIST && current_user[:role] == SCHOLAR)
 
     elsif !qualified_to_edit?(@list,current_user,SUPERADMIN)
       redirect_to help_manage_path
