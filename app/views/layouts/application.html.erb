@@ -75,7 +75,7 @@
             </li>
             </ul>
                 <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" height="50" alt=""/>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%= current_user.thumbnail_url %>" height="50" alt=""/>
                   </a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
