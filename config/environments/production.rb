@@ -59,7 +59,7 @@ Cats::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( markdown.js ie.js raty.js bootstrap-ie7.css bootstrap.css wm-default.css wm-pagedown.css search.js )
+  config.assets.precompile += %w( markdown.js ie.js raty.js bootstrap-ie7.css bootstrap.css wm-default.css wm-pagedown.css search.js rails.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
