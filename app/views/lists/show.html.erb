@@ -87,8 +87,12 @@
     <%= render :partial => 'comments/comments' %>
     <%= render :partial => 'comments/form' %>
   </article>
-  <%= render :partial => 'lists/recommend' %>
-</main>
+  <% if @type == BOOKLIST %>
+    <%= render :partial => 'lists/recommendbooklist' %>
+  <% elsif @type == VIDEOLIST %>
+    <%= render :partial => 'lists/recommendvideolist' %>
+  <% end %>
+      </main>
 
 <% content_for :bottom_script do %>
     <%= render :partial => 'layouts/markdown' %>
