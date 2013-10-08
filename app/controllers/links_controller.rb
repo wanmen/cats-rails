@@ -40,7 +40,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link.list, notice: '成功从单子内删除' }
+        format.html { redirect_to @link.list, notice: '成功修改单子' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,6 +73,6 @@ class LinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:list_id,:description,:order_num).merge(user_id: current_user.id)
+    params.require(:link).permit(:list_id,:description).merge(user_id: current_user.id)
   end
 end

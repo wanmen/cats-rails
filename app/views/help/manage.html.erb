@@ -46,15 +46,30 @@
 	<dt>您现在是万门大学超级管理员，可以做的事情是</dt>
 	<dd> <a class="btn btn-primary" href="/tags/new.html">添加</a>或修改标签</dd>
 	<dd> 修改管理员创建的内容</dd>
-	<dd> 提拔某人或者贬低某人的职务</dd>
+	<dt>申请成为学者的人</dt>
 	<%= form_for('') do |f| %>
-	<dd>把
-	 <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
+	<dd>
+	 <%= f.select :user_id, @prescholars.map{ |c| [c.email, c.id] } %>
 	提拔/贬为
 	<select name="[role]">
-		<option value="<%= BEGINNER %>">新生</option>
 		<option value="<%= SCHOLAR %>">学者</option>
+		<option value="<%= BEGINNER %>">新生</option>
 		<option value="<%= ADMIN %>">管理员</option>
+		<option value="<%= SUPERADMIN %>">超级管理员</option>
+		<option value="<%= BLACKLIST %>">黑名单</option>
+	</select>
+	<button class="btn btn-primary" href="/tags/new.html">确认</button>
+	</dd>
+	<% end %>
+	<dt>申请成为管理员的人</dt>
+	<%= form_for('') do |f| %>
+	<dd>
+	 <%= f.select :user_id, @preadmins.map{ |c| [c.email, c.id] } %>
+	提拔/贬为
+	<select name="[role]">
+		<option value="<%= ADMIN %>">管理员</option>
+		<option value="<%= SCHOLAR %>">学者</option>
+		<option value="<%= BEGINNER %>">新生</option>
 		<option value="<%= SUPERADMIN %>">超级管理员</option>
 		<option value="<%= BLACKLIST %>">黑名单</option>
 	</select>
