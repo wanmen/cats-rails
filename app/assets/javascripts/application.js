@@ -14,4 +14,3 @@
 //= require jquery-ui
 //= require bootstrap
 //= require wm-dom
-//= require turbolinks
