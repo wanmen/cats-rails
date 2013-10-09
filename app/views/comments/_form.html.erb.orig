@@ -1,4 +1,4 @@
-<section>
+<section id="edit_comments">
   <h4 class="text-muted">
     你的评论
     <a class="btn btn-primary btn-sm pull-right" href="/help/editor.html">如何编辑？</a>
@@ -22,6 +22,7 @@
         <div id="wmd-button-bar"></div>
         <%= f.text_area :content,:class=>"wmd-input",:id=>"wmd-input" %>
       </div>
+      <input type="hidden" name="comment[html]" id="wmd-html"/>
       <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
       <button class="btn btn-primary" type="submit">发布</button>
       <% else %>
@@ -32,3 +33,15 @@
     <% end %>
   <% end %>
 </section>
+<<<<<<< HEAD
+
+<script type="text/javascript">
+  $('#edit_comments form').submit(function() {
+    $('#wmd-html').val($('#wmd-preview').html());
+    $('#wmd-input').val('');
+    $(this).submit();
+    return false;
+  });
+</script>
+=======
+>>>>>>> master
