@@ -32,3 +32,14 @@
     <% end %>
   <% end %>
 </section>
+<<<<<<< HEAD
+=======
+
+<script type="text/javascript">
+  $('#edit_comments form').submit(function() {
+    $('#wmd-input').val($('#wmd-preview').html());
+    $(this).submit();
+    return false;
+  });
+</script>
+>>>>>>> 9894a667d08024ff1b5f24ff0a95573b1c24be34
