@@ -1,0 +1,20 @@
+<aside class="col-sm-4">
+  <section class="wm-recommend">
+    <h3 class="page-header">
+      <span class="glyphicon glyphicon-plus-sign"></span> 推荐视频集
+      <a class="wm-quick-link" href="/search?list=video">查看全部</a>
+    </h3>
+    <div class="row">
+      <% @best.each do |recommend| %>
+          <figure class="col-sm-6">
+            <a class="thumbnail" href="/lists/<%= recommend.id %>.html">
+              <img src="<%= recommend.links[0].linkable.cover %>!medium" alt="" title="<%= recommend.title %>"/>
+            </a>
+            <figcaption>
+              <a href="/lists/<%= recommend.id %>.html" title="<%= recommend.title %>"><%= recommend.title %></a>
+            </figcaption>
+          </figure>
+      <% end %>
+    </div>
+  </section>
+</aside>
