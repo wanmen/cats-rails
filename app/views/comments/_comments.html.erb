@@ -15,7 +15,7 @@
         <% end %>
       </span>
 	  </h5>
-      <%= simple_format comment.content %>
+    <%=raw Kramdown::Document.new(comment.content ).to_html%>
 	</div>
 </div>
 <hr/>
