@@ -1,6 +1,7 @@
 class TaglinksController < ApplicationController
   before_action :set_taglink, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
 
   def index
     @taglinkable = find_taglinkable
@@ -38,6 +39,9 @@ class TaglinksController < ApplicationController
   
   def edit
     @taglink = Taglink.find(params[:id])
+    if !qualified_to_edit?(@taglink,current_user,SUPERADMIN)
+      redirect_to help_manage_path
+    end
   end
   
   def update
@@ -76,6 +80,6 @@ class TaglinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def taglink_params
-    params.require(:taglink).permit(:tag_id)
+    params.require(:taglink).permit(:tag_id).merge(user_id: current_user.id)
   end
 end

@@ -1,44 +1,20 @@
 <aside class="col-sm-4">
   <section class="wm-recommend">
     <h3 class="page-header">
-      <span class="glyphicon glyphicon-plus-sign"></span> 同主题推荐
+      <span class="glyphicon glyphicon-plus-sign"></span> 推荐视频
       <a class="wm-quick-link" href="">查看全部</a>
     </h3>
     <div class="row">
+      <% @best.each do |recommend| %>
       <figure class="col-sm-6">
-        <a class="thumbnail" href="">
-          <img src="http://wanmen.b0.upaiyun.com/2013/09/af58525f19423673842fec1fe9958430.jpg" alt="" title="自由主义"/>
+        <a class="thumbnail" href="/videos/<%= recommend.id %>.html">
+          <img src="<%= recommend.cover %>!medium" alt="" title="<%= recommend.title %>"/>
         </a>
         <figcaption>
-          <a href="" title="自由主义">自由主义</a>
+          <a href="/videos/<%= recommend.id %>.html" title="<%= recommend.title %>"><%= recommend.title %></a>
         </figcaption>
       </figure>
-      <figure class="col-sm-6">
-        <a class="thumbnail" href="">
-          <img src="http://wanmen.b0.upaiyun.com/2013/09/87a6dc1e89458fe81a9603028d4139af.jpg" alt="" title="中国传统生命礼俗"/>
-        </a>
-        <figcaption>
-          <a href="" title="中国传统生命礼俗">中国传统生命礼俗</a>
-        </figcaption>
-      </figure>
-    </div>
-    <div class="row">
-      <figure class="col-sm-6">
-        <a class="thumbnail" href="">
-          <img src="http://wanmen.b0.upaiyun.com/2013/09/d7dc0a2fab3257f5e4678a39ca0b60ba.jpg" alt="" title="太平洋岛屿世界"/>
-        </a>
-        <figcaption>
-          <a href="" title="太平洋岛屿世界">太平洋岛屿世界</a>
-        </figcaption>
-      </figure>
-      <figure class="col-sm-6">
-        <a class="thumbnail" href="">
-          <img src="http://wanmen.b0.upaiyun.com/2013/09/ea0f63bbc0479a8a39056910ba67163e.jpg" alt="" title="科学在文化中的定位和挑战"/>
-        </a>
-        <figcaption>
-          <a href="" title="科学在文化中的定位和挑战">科学在文化中的定位和挑战</a>
-        </figcaption>
-      </figure>
+      <% end %>
     </div>
   </section>
 </aside>

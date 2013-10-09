@@ -11,6 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-
-//= require turbolinks
-//= require_tree .
+//= require jquery-ui
+//= require bootstrap
+//= require wm-dom

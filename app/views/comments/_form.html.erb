@@ -1,7 +1,7 @@
 <section>
   <h4 class="text-muted">
     你的评论
-    <a class="btn btn-primary btn-sm pull-right" href="../help/editor.html">如何编辑？</a>
+    <a class="btn btn-primary btn-sm pull-right" href="/help/editor.html">如何编辑？</a>
   </h4>
   <%= form_for [@commentable, @comment] do |f| %>
     <% if @comment.errors.any? %>
@@ -16,7 +16,7 @@
     <% end %>
     <% if current_user %>
       <% if current_user[:role]>= SCHOLAR %>
-      <img src="<%= current_user[:thumbnail]%>" width="50px">
+      <img src="<%= current_user.thumbnail_url %>" width="50px">
 
       <div class="wmd-panel">
         <div id="wmd-button-bar"></div>

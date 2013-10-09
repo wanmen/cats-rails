@@ -1,10 +1,5 @@
 Cats::Application.routes.draw do
 
-  get "static_pages/terms"
-  get "static_pages/helpme"
-  get "static_pages/aboutus"
-  get "static_pages/joinus"
-  get "static_pages/markdowneditor"
   resources :tags do
     resources :likes
     resources :follows
@@ -42,6 +37,7 @@ Cats::Application.routes.draw do
   end
   resources :scholars
   
+  resources :comments
   resources :taglinks
   resources :links
 

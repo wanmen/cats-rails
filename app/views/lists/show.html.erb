@@ -1,7 +1,7 @@
 <% content_for :head do %>
    <title><%= @list.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
+
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
@@ -12,10 +12,13 @@
         <a href="#" class="sort-trigger">排序</a> |
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
+        <% if current_user && current_user[:role]>= SUPERADMIN %>
+          | <%= link_to '删除', list_path(@list), method: :delete, data: { confirm: '请确认要删除此集合?' } %>
+        <% end %>
       </span>
     </h3>
     <p class="wm-pub-metadata">
-      <a href="/scholars/<%=@list.user[:id]%>"><%= @list.user[:name] %></a> 发布于 
+      <span style="color:#5bc0de"><%= @list.user[:name] %></span> 发布于
       <%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
       <span class="pull-right"><%= @list.taglinks.length %> 个标签 | <%= @list.likes.length %>人喜欢 | <%= @list.comments.length%>个评论</span>
     </p>
@@ -28,29 +31,40 @@
       	<% link=@Link.find(lkid) %> <!--TODO:: fix this proformance issue -->
       <div lkid="lkarray-<%= link.id %>">
         <div class="row wm-list-item">
-          <figure class="col-sm-4">
+          <figure class="col-sm-3">
             <a href="
-       <% case link.linkable.class.name
-        when 'Book'%>
-          /books/
-       <% when 'Video'%>
-          /videos/
-       <% when 'Article' %>
-          /articles/
-       <%  end %><%=link.linkable.id %>.html" class="thumbnail">
+                <% case link.linkable.class.name
+                    when 'Book'%>
+                        /books/
+                 <% when 'Video'%>
+                        /videos/
+                 <% when 'Article' %>
+                        /articles/
+                <%  end %><%=link.linkable.id %>.html" class="thumbnail">
                <img src="<%= link.linkable.cover %>!medium" alt="" title="<%=link.linkable.title%>">
             </a>
           </figure>
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             <h4><a href="  
-      <% case link.linkable.class.name
-        when 'Book'%>
-          /books/
-       <% when 'Video'%>
-          /videos/
-       <% when 'Article' %>
-          /articles/
-       <%  end %><%=link.linkable.id %>.html"><%=link.linkable.title%></a></h4>
+                <% case link.linkable.class.name
+                    when 'Book'%>
+                        /books/
+                 <% when 'Video'%>
+                        /videos/
+                 <% when 'Article' %>
+                        /articles/
+                <%  end %><%=link.linkable.id %>.html"><%=link.linkable.title%>
+            </a></h4>
+            <span>
+                <% case link.linkable.class.name
+                    when 'Book'%>
+                        作者: <%= link.linkable.author %>
+                <% when 'Video'%>
+                        主讲人: <%= link.linkable.lecturer %>
+                <% when 'Article' %>
+                        创建者: <%= link.linkable.author %>
+                <%  end %>
+            </span>
             <p>
               <%= link.description %>
             </p>
@@ -62,10 +76,6 @@
         <hr/>
       </div>
       <% end %>
-    </section>
-
-    <section class="wm-indent">
-      <%= @list.summary %>
     </section>
 
     <section class="wm-metadata">
@@ -84,46 +94,51 @@
     <%= render :partial => 'comments/comments' %>
     <%= render :partial => 'comments/form' %>
   </article>
-  <%= render :partial => 'lists/recommend' %>
-</main>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+  <% if @type == BOOKLIST %>
+    <%= render :partial => 'lists/recommendbooklist' %>
+  <% elsif @type == VIDEOLIST %>
+    <%= render :partial => 'lists/recommendvideolist' %>
+  <% end %>
+      </main>
 
-<script type="text/javascript">
-  var initSortable= function(thelist){
-    $(thelist).sortable({'axis':'y'});
-    $(thelist).sortable('enable');
-  }
-  var sortableToArray= function(thelist, targetAttr){
-    var tmpArray= $(thelist).sortable('toArray',{'attribute': targetAttr});
-    return tmpArray;
-  }
-  var sortableSerialize= function(thelist, targetAttr){
-    var tmpArray= $(thelist).sortable('serialize',{'attribute': targetAttr});
-    return tmpArray;
-  }
-  var disableSortable= function(thelist){
-    $(thelist).sortable('disable');
-  }
-  var enableSortable= function(thelist){
-    $(thelist).sortable('enable');
-  }
-  var triggerIsClicked= function(thetrigger, thelist){
-    initSortable(thelist);
-    $(thetrigger).text('停止排序');
-    $(thetrigger).unbind()
-    $(thetrigger).bind('click',function(){
-      $(thetrigger).text('排序');
-      console.log(sortableSerialize(thelist,'lkid'));
-      $.post('./<%= @list.id%>/sort',sortableSerialize(thelist,'lkid'));
-      disableSortable(thelist);
-      $(thetrigger).unbind();
-      $(thetrigger).bind('click',function(){triggerIsClicked(thetrigger,thelist);})
-    });
-  }
-  $('.sort-trigger').bind('click',function(){
-    console.log('Trigging List Sort.');
-    triggerIsClicked('.sort-trigger', '.wm-book-list');
-  })
-</script>
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+
+    <script type="text/javascript">
+      var initSortable = function(thelist){
+        $(thelist).sortable({'axis':'y'});
+        $(thelist).sortable('enable');
+      }
+      var sortableToArray = function(thelist, targetAttr){
+        var tmpArray = $(thelist).sortable('toArray',{'attribute': targetAttr});
+        return tmpArray;
+      }
+      var sortableSerialize = function(thelist, targetAttr){
+        var tmpArray = $(thelist).sortable('serialize',{'attribute': targetAttr});
+        return tmpArray;
+      }
+      var disableSortable = function(thelist){
+        $(thelist).sortable('disable');
+      }
+      var enableSortable = function(thelist){
+        $(thelist).sortable('enable');
+      }
+      var triggerIsClicked = function(thetrigger, thelist){
+        initSortable(thelist);
+        $(thetrigger).text('停止排序');
+        $(thetrigger).unbind()
+        $(thetrigger).bind('click',function(){
+          $(thetrigger).text('排序');
+          $.post('./<%= @list.id %>/sort',sortableSerialize(thelist,'lkid'));
+          disableSortable(thelist);
+          $(thetrigger).unbind();
+          $(thetrigger).bind('click',function(){triggerIsClicked(thetrigger,thelist);})
+        });
+      }
+      $('.sort-trigger').bind('click',function(){
+        triggerIsClicked('.sort-trigger', '.wm-book-list');
+      })
+    </script>
+<% end %>

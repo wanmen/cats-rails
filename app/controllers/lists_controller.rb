@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_SCHOLAR_or_redirect, except: [:index, :show]
+
   # GET /lists
   # GET /lists.json
   def index
@@ -23,6 +25,14 @@ class ListsController < ApplicationController
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
     @tags = Tag.all
+
+    @type = @list[:list_type]
+    if @type == BOOKLIST
+      @best = List.best6Booklist
+    elsif @type == VIDEOLIST
+      @best = List.best6Videolist
+    end
+
     @Link = Link
     if (@list.links.length != @list.links_array.length)
     	@links_array = []
@@ -44,6 +54,10 @@ class ListsController < ApplicationController
   # GET /lists/1/edit
   def edit
     @types =[["书单",BOOKLIST],["视频集",VIDEOLIST],["经验贴集",ARTICLELIST],["综合集",MIXLIST]]
+    @list= List.find(params[:id])
+    if !qualified_to_edit?(@list,current_user,SUPERADMIN)
+      redirect_to help_manage_path
+    end
   end
 
   # POST /lists
@@ -65,6 +79,12 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
+    @list= List.find(params[:id])
+    if (@list[:list_type] == BOOKLIST && current_user[:role] == SCHOLAR)
+
+    elsif !qualified_to_edit?(@list,current_user,SUPERADMIN)
+      redirect_to help_manage_path
+    end
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: '修改集合成功' }
@@ -80,8 +100,23 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list.destroy
+
+    # redirect to different page according to list type
+    @redirect = "#"
+    @type = @list[:list_type]
+    puts @type
+    if @type == BOOKLIST
+      @redirect = books_path
+    elsif @type == VIDEOLIST
+      @redirect = videos_path
+    elsif @type == ARTICLELIST
+      @redirect = articles_path
+    else
+      @redirect = root_path
+    end
+
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: '删除集合成功' }
+      format.html { redirect_to @redirect, notice: '删除集合成功' }
       format.json { head :no_content }
     end
   end

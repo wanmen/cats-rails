@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
   # GET /videos
   # GET /videos.json
   def index
@@ -29,6 +30,7 @@ class VideosController < ApplicationController
     @linkable = @video
     @links = @linkable.links
     @link = Link.new
+    @best = Video.best6
     if (current_user)
       @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 2)
     else
@@ -44,6 +46,9 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
+    if !qualified_to_edit?(Video.find(params[:id]),current_user,SUPERADMIN)
+      redirect_to help_manage_path
+    end
   end
 
   # POST /videos
@@ -90,7 +95,6 @@ class VideosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_video
       @video = Video.find(params[:id])
-      @video[:url].index('youku')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
