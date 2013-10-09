@@ -22,7 +22,6 @@
         <div id="wmd-button-bar"></div>
         <%= f.text_area :content,:class=>"wmd-input",:id=>"wmd-input" %>
       </div>
-      <input type="hidden" name="comment[html]" id="wmd-html"/>
       <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
       <button class="btn btn-primary" type="submit">发布</button>
       <% else %>
@@ -36,8 +35,7 @@
 
 <script type="text/javascript">
   $('#edit_comments form').submit(function() {
-    $('#wmd-html').val($('#wmd-preview').html());
-    $('#wmd-input').val('');
+    $('#wmd-input').val($('#wmd-preview').html());
     $(this).submit();
     return false;
   });
