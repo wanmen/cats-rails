@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords" content="网络大学，高等教育"/>
     <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
+    <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
     <%= yield :head %>
     <%= stylesheet_link_tag "bootstrap" %>
     <%= stylesheet_link_tag "wm-default" %>
     <%= stylesheet_link_tag "wm-pagedown" %>
-    <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+    <link rel="shortcut icon" href="<%= asset_path "favicon.ico" %>"/>
     <%= yield :extra_head %>
     <%= csrf_meta_tag %>
     <!-- Google Analytics -->
@@ -24,6 +27,9 @@
 
     </script>
     <!-- End of Google Analytics -->
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag "ie" %>
+    <![endif]-->
     <!--[if lt IE 8]>
       <%= stylesheet_link_tag "bootstrap-ie7" %>
     <![endif]-->
@@ -65,11 +71,11 @@
            <% if user_signed_in? %>
             <ul class="nav navbar-nav">
             <li>
-             <a href="/manage.html" class="">管理</a>
+              <a href="/manage.html" class="">管理</a>
             </li>
             </ul>
                 <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=current_user[:thumbnail]%>" height="50px" alt=""/>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%= current_user.thumbnail_url %>" height="50" alt=""/>
                   </a>
                   <ul class="dropdown-menu">
                     <li><%= link_to "修改",edit_user_registration_path %> </li>
@@ -97,34 +103,31 @@
     </header>
     <% if flash[:alert] %>
     <p class="alert alert-warning">
-        <%= flash[:alert] %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </p>
     <% end %>
     <% if flash[:notice] %>
     <p class="alert alert-info">
-        <%= flash[:notice] %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </p>
     <% end %>
     <%= yield %>
     <footer class="navbar-default" role="contentinfo">
       <div class="container">
-        <address>
-          &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
-          <div class="pull-right">
-            <a href="/aboutus.html">关于万门</a> |
-            <a href="/joinus.html">加入我们</a> |
-            <a href="/helpme.html">帮助中心</a> |
-            <a href="/terms.html">免责声明</a>
-          </div>
-        </address>
+          <address>
+              &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
+              <div class="pull-right">
+                  <a href="/aboutus.html">关于万门</a> |
+                  <a href="/joinus.html">加入我们</a> |
+                  <a href="/helpme.html">帮助中心</a> |
+                  <a href="/terms.html">免责声明</a>
+              </div>
+          </address>
       </div>
   </footer>
   <%= javascript_include_tag "application" %>
-  <!--[if lt IE 9]>
-    <%= javascript_include_tag "ie" %>
-  <![endif]-->
   <%= yield :bottom_script %>
   </body>
 </html>
