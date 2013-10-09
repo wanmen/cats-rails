@@ -42,7 +42,7 @@
     <hr/>
 
     <section class="wm-indent">
-     <%= @book.summary %>
+      <%=raw Kramdown::Document.new(@book.summary).to_html%>
     </section>
 
     <hr/>
