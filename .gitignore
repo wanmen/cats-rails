@@ -22,3 +22,5 @@
 /config/database.yml
 /tmp.md
 /.idea/*
+/config/environments/development.rb
+/config/environments/production.rb
