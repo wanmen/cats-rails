@@ -58,7 +58,7 @@
     <hr/>
 
     <section class="wm-indent">
-      <%= @video.summary %>
+      <%=raw Kramdown::Document.new(@video.summary).to_html%>
     </section>
     <hr/>
     <%= render :partial => 'comments/shares' %>  
