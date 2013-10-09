@@ -1,4 +1,4 @@
-<% if current_user&& current_user[:role]>= SCHOLAR %>
+<% if can? :edit, @taglinkable %>
   <a onclick="addTag()">添加新标签</a>
   <div id="tagForm" style="display:none;">
     <%= form_for [@taglinkable, @taglink] do |f| %>

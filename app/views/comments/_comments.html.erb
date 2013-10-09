@@ -10,7 +10,7 @@
         <span style="color:#5bc0de"><%= comment.user[:name] %></span>
 	    <span><%= comment.created_at.strftime('%b %d, %Y %H:%M') %></span>
         <span>
-        <% if current_user && current_user[:role]>= SUPERADMIN %>
+        <% if can? :destroy, comment %>
           <%= link_to '删除评论', comment_path(comment), method: :delete, data: { confirm: '请确认要删除此评论?' } %>
         <% end %>
       </span>
