@@ -1,8 +1,13 @@
-<script src="/assets/jquery.raty.js"></script>
+<%= javascript_include_tag "raty" %>
 <script>
     $(document).ready(function() {
       $('#rate_button').hide();
       $('#star').raty({
+        cancelOff: '<%= asset_path 'rates/cancel-off.png' %>',
+        cancelOn: '<%= asset_path 'rates/cancel-on.png' %>',
+        starHalf: '<%= asset_path 'rates/star-half.png' %>',
+        starOff: '<%= asset_path 'rates/star-off.png' %>',
+        starOn: '<%= asset_path 'rates/star-on.png' %>',
         score: function() {
           return $(this).attr('data-score');
         },

@@ -6,6 +6,9 @@ gem 'rails', '4.0.0'
 # Use devise for user authentication
 gem 'devise'
 
+# Use CanCan to handle user access
+gem 'cancan'
+
 # Javascript Run Time
 gem 'execjs'
 

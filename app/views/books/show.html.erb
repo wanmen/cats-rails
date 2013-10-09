@@ -1,16 +1,19 @@
 <% content_for :head do %>
    <title><%= @book.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
+
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
       <span class="wm-title"><%= @book.title %></span>
       <span class="wm-quick-link">
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
+        <% if can? :edit, @book %>
           <%= link_to '修改', edit_book_path(@book) %>  | 
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
+        <% if can? :destroy, @book %>
+          |<%= link_to '删除', book_path(@book), method: :delete, data: { confirm: '请确认要删除此图书?' } %>
+        <% end %>
       </span>
     </h3>
     <section class="row wm-gallery">
@@ -20,6 +23,7 @@
       <div class="col-sm-8 wm-metadata">
         <span>作者</span> <%= @book.author %> <br/>
         <span>出版社</span> <%= @book.publisher %> <br/>
+        <span>译者</span> <%= @book.translator %> <br/>
         <hr/>
         <%= render :partial => 'taglinks/taglinks' %>
         <%= render :partial => 'taglinks/form' %>
@@ -52,6 +56,9 @@
 
   <%= render :partial => 'books/recommend' %>
 </main>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>

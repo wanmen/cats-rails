@@ -1,51 +1,60 @@
 <% content_for :head do %>
    <title><%= @article.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/> 
 <% end %>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8">
-      <div class="page-header">
-        <h3><%= @article.title %></h3>
-        <p><a href="/scholars/<%= @article.user[:id]%>"><%= @article.user[:name] %></a>修改于<%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
-        
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
-          <%= link_to '修改', edit_article_path(@article) %>  |
-        <% end %>
-          <%= link_to '返回', articles_path %>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-8">
-    作者：<%= @article.author %>
-    简要：<%= @article.summary %>
-    正文：<%= @article.content %>
-    链接：<%= @article.url %>
-  </div>
-  <div class="col-xs-8">
-    单子
-    <%= render :partial => 'links/links' %>
-    <%= render :partial => 'links/form' %>
-    <br/>
-    标签
-    <%= render :partial => 'taglinks/taglinks' %>
-    <%= render :partial => 'taglinks/form' %>
-    <br/>
-    喜欢
-    <%= render :partial => 'likes/likes' %>
-    <%= render :partial => 'likes/form' %>
-    <br/>
-    推荐指数
-    <%= render :partial => 'rates/rates' %>
-    <%= render :partial => 'rates/form' %>
-  </div>
-  <div class="col-xs-8"> 
+
+<main class="container" role="main">
+<article class="col-sm-8">
+    <h3 class="page-header">
+        <span class="wm-title">
+            <%= @article.title %>
+        </span>
+        <span class="wm-quick-link">
+            <% if can? :edit, @article %>
+                <%= link_to '修改', edit_article_path(@article) %>  |
+            <% end %>
+            <%= link_to '返回', articles_path %>
+            <% if can? :destroy, @article %>
+                |<%= link_to '删除', articles_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
+            <% end %>
+        </span>
+    </h3>
+    <p class="wm-pub-metadata">
+        <span><%= @article.user[:name] %></span> 发布于 <%= @article[:updated_at].strftime('%b %d, %Y %H:%M')  %>
+        <span class="pull-right"><%= @taglinks.length %>个标签 | <%= @links.length %>个单子 | <%= @likes.length %>人喜欢 | <%= @comments.length %>条评论</span>
+    </p>
+
+    <section class="wm-indent">
+        <%= @article.content %>
+    </section>
+
+    <section class="wm-metadata">
+        <div>
+            <span>标签</span>
+            <%= render :partial => 'taglinks/taglinks' %>
+            <%= render :partial => 'taglinks/form' %>
+            <br/>
+            <span>单子</span>
+            <%= render :partial => 'links/links' %>
+            <%= render :partial => 'links/form' %>
+            <br/>
+            <span>评分</span>
+            <%= render :partial => 'rates/rates' %>
+            <%= render :partial => 'rates/form' %>
+
+            <%= render :partial => 'likes/form' %>
+        </div>
+    </section>
+    <hr/>
     <%= render :partial => 'comments/shares' %>  
     <%= render :partial => 'comments/comments' %>
+    <hr/>
     <%= render :partial => 'comments/form' %>
-  </div>
-</div>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+  </article>
+  <%= render :partial => 'articles/recommend' %>
+</main>
+
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>

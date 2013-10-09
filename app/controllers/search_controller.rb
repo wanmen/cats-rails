@@ -11,7 +11,7 @@ class SearchController < ApplicationController
 		@type=[]
 		@list=[]
 		@tags=[]
-		if params[:title]
+		if (params[:title]&&params[:title]!='')
 			@tags = Tag.find(:all, :conditions => ["name LIKE ?", "%"+params[:title]+"%"])
 		end
 		if params[:type]
@@ -47,25 +47,25 @@ class SearchController < ApplicationController
 	 			if (params[:title])
 					case l 
 					when 'book' 
-					  @booklists += List.where(list_type: 1).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @booklists += List.where(list_type: BOOKLIST).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
 					when 'video' 
-					  @videolists +=  List.where(list_type: 2).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @videolists +=  List.where(list_type: VIDEOLIST).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
 				    when 'article' 
-					  @articlelists +=  List.where(list_type: 3).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @articlelists +=  List.where(list_type: ARTICLELIST).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
 				    when 'mix' 
-					  @articlelists +=  List.where(list_type: 4).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @articlelists +=  List.where(list_type: MIXLIST).find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
 					else # the else clause is optional  
 					end 
 				else
 					case l 
 					when 'book' 
-					  @booklists += List.where(list_type: 1)
+					  @booklists += List.where(list_type: BOOKLIST)
 					when 'video' 
-					  @videolists +=  List.where(list_type: 2)
+					  @videolists +=  List.where(list_type: VIDEOLIST)
 				    when 'article' 
-					  @articlelists +=  List.where(list_type: 3)
+					  @articlelists +=  List.where(list_type: ARTICLELIST)
 					when 'mix' 
-					  @mixlists +=  List.where(list_type: 4)
+					  @mixlists +=  List.where(list_type: MIXLIST)
 					else # the else clause is optional  
 					end 
 				end
@@ -82,7 +82,10 @@ class SearchController < ApplicationController
 		if params[:page]
 			@page = params[:page].to_i-1
 		end
-		@numberofpages= @allresults.length/numperpage
+		@numberofpages= @allresults.length/numperpage +(@allresults.length%numperpage>0? 1:0)-1
 		@results = @allresults[@page*numperpage,numperpage]
+		if (@results==nil) 
+			@results =[]
+		end
 	end
 end

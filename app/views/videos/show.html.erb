@@ -1,16 +1,19 @@
 <% content_for :head do %>
    <title><%= @video.title %> | 万门大学</title>
-   <link rel="stylesheet" href="/assets/wm-pagedown.css" media="screen"/>
 <% end %>
+
 <main class="container" role="main">
   <article class="col-sm-8">
     <h3 class="page-header">
       <span class="wm-title"><%= @video.title %></span>
       <span class="wm-quick-link">
-        <% if current_user&& current_user[:role]>= SCHOLAR %>
+        <% if can? :edit, @video %>
         <%= link_to '修改', edit_video_path(@video) %>  |
         <% end %>
-        <%= link_to '返回', videos_path %>
+        <%= link_to '返回', videos_path %>  |
+        <% if can? :destroy, @video %>
+        <%= link_to '删除', video_path(@video), method: :delete, data: { confirm: '请确认要删除此视频?'} %>
+        <% end %>
       </span>
     </h3>
     <section class="row wm-gallery">
@@ -65,6 +68,9 @@
   </article>
   <%= render :partial => 'videos/recommend' %>
 </main>
-<%= render :partial => 'layouts/markdown' %>
-<%= render :partial => 'layouts/raty' %>
-<%= render :partial => 'layouts/rails' %>
+
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+    <%= render :partial => 'layouts/raty' %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>

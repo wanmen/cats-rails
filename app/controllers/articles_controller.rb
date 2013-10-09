@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+
+  load_and_authorize_resource
+
   # GET /articles
   # GET /articles.json
   def index
@@ -27,6 +30,7 @@ class ArticlesController < ApplicationController
     @linkable = @article
     @links = @linkable.links
     @link = Link.new
+    @best = Article.best6
     if (current_user)
       @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 3)
     else
@@ -79,7 +83,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to articles_url, notice: '成功删除经验贴' }
       format.json { head :no_content }
     end
   end

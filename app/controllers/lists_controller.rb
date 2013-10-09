@@ -1,6 +1,9 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
+
+  load_and_authorize_resource
+
   # GET /lists
   # GET /lists.json
   def index
@@ -23,6 +26,14 @@ class ListsController < ApplicationController
     @taglinks = @taglinkable.taglinks
     @taglink = Taglink.new
     @tags = Tag.all
+
+    @type = @list[:list_type]
+    if @type == BOOKLIST
+      @best = List.best6Booklist
+    elsif @type == VIDEOLIST
+      @best = List.best6Videolist
+    end
+
     @Link = Link
     if (@list.links.length != @list.links_array.length)
     	@links_array = []
@@ -65,6 +76,8 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
+    @list= List.find(params[:id])
+
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: '修改集合成功' }
@@ -80,21 +93,36 @@ class ListsController < ApplicationController
   # DELETE /lists/1.json
   def destroy
     @list.destroy
+
+    # redirect to different page according to list type
+    @redirect = "#"
+    @type = @list[:list_type]
+    puts @type
+    if @type == BOOKLIST
+      @redirect = books_path
+    elsif @type == VIDEOLIST
+      @redirect = videos_path
+    elsif @type == ARTICLELIST
+      @redirect = articles_path
+    else
+      @redirect = root_path
+    end
+
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: '删除集合成功' }
+      format.html { redirect_to @redirect, notice: '删除集合成功' }
       format.json { head :no_content }
     end
   end
 
-    def sort
-    	list= List.find(params[:id])
-    	list.links_array= params[:lkarray]
-	list.save    	
+  def sort
+    list= List.find(params[:id])
+    list.links_array= params[:lkarray]
+	  list.save
     respond_to do |format|
       format.html { redirect_to lists_url }
       format.json { head :no_content }
     end
-    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

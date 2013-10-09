@@ -2,6 +2,8 @@ class TaglinksController < ApplicationController
   before_action :set_taglink, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
+  load_and_authorize_resource
+
   def index
     @taglinkable = find_taglinkable
     @taglinks = @taglinkable.taglinks
@@ -37,11 +39,9 @@ class TaglinksController < ApplicationController
   end
   
   def edit
-    @taglink = Taglink.find(params[:id])
   end
   
   def update
-    @taglink = Taglink.find(params[:id])
     respond_to do |format|
       if @taglink.update(taglink_params)
         format.html { redirect_to @taglink, notice: 'taglink was successfully updated.' }
@@ -76,6 +76,6 @@ class TaglinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def taglink_params
-    params.require(:taglink).permit(:tag_id)
+    params.require(:taglink).permit(:tag_id).merge(user_id: current_user.id)
   end
 end

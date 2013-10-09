@@ -1,8 +1,4 @@
-<script src="/assets/Markdown.Converter.js"></script>
-<script src="/assets/Markdown.Sanitizer.js"></script>
-<script src="/assets/Markdown.Editor.js"></script>
-<script src="/assets/Markdown.Extra.js"></script>
-<script src="/assets/Markdown.local.zh.js"></script>
+<%= javascript_include_tag "markdown" %>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -28,19 +24,5 @@
       UpdateMath($(this).val());
     });
 
-  })();
-</script>
-<script type="text/javascript">
-  (function () {
-    var converter = Markdown.getSanitizingConverter();
-    converter.hooks.chain('preBlockGamut', function(text, rbg) {
-      return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm,
-        function (whole, inner) {
-          return "<blockquote>" + rbg(inner) + '</blockquote>\n';
-      });
-    });
-
-    var editor = new Markdown.Editor(converter, null, {strings: Markdown.local.zh});
-    editor.run();
   })();
 </script>

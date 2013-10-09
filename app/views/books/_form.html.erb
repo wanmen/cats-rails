@@ -22,15 +22,11 @@
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_translater">译者</label>
-            <input class="form-control" type="text" id="book_translater" placeholder="请输入图书译者" title="请输入图书译者"/>
+            <%= f.text_field :translator, :class => "col-sm-offset-1 form-control", :placeholder => "请输入图书译者", :title => "请输入图书译者" %>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_publisher">出版社</label>
             <%= f.text_field :publisher, :class => "col-sm-offset-1 form-control", :placeholder => "请输入出版社", :title => "请输入出版社" %>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3" for="book_pubdate">出版日期</label>
-            <input class="form-control" type="text" id="book_pubdate" placeholder="请输入出版日期" title="请输入出版日期"/>
         </div>
         <div class="form-group">
             <label class="col-sm-3" for="book_dbid">豆瓣ID</label>
@@ -47,7 +43,7 @@
                 <br/>
                 <div class="wmd-panel">
                     <div id="wmd-button-bar"></div>
-                    <%= f.text_area :summary, :class => "wmd-input", :title => 
+                    <%= f.text_area :summary, :id => "wmd-input",  :class => "wmd-input", :title => 
                     "请在此编辑书评" ,:required => true%>
                 </div>  
                 <div class="wmd-panel wmd-preview" id="wmd-preview"></div>

@@ -4,7 +4,7 @@
 <main class="container wm-sign" role="main">
   <div class="col-sm-5 col-md-4 col-sm-offset-1">
     <h4 class="wm-lg-bottom">欢迎登录万门大学</h4>
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:class=>"form-horizontal",:role=>"form") do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html=>{:class=>"form-horizontal", :role=>"form"}) do |f| %>
           <div class="form-group">
             <label class="sr-only control-label" for="user_email">邮箱</label>
             <div class="col-sm-10">
@@ -20,17 +20,19 @@
           <div class="form-group">
             <div class="col-sm-10">
               <div class="checkbox">
-                <label><%= f.check_box :remember_me %>记住我 (下次自动登录)</label>
+                <%= f.check_box :remember_me %>记住我 (下次自动登录)
               </div>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-10">
               <button class="btn btn-primary" type="submit">登录</button>
-              <button class="btn btn-default wm-md-left" type="button"><a href="/users/password/new">忘记密码?</a></button>
-              <br><a href="/users/confirmation/new">没收到确认邮件?</a>
+              <span class="wm-md-left">
+                <a href="/users/password/new">忘记密码</a> |
+                <a href="/users/confirmation/new">重发确认邮件</a>
+              </span>
             </div>
-          </div>    
+          </div>
       <% end %>
   </div>
   <div class="col-sm-5 col-sm-offset-1">

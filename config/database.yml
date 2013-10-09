@@ -38,3 +38,9 @@ development:
 test:
   <<: *defaults
   database: wanmen_test
+
+production:
+  <<: *defaults
+  database: wanmen
+  pool: 5
+  timeout: 5000

@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
+  load_and_authorize_resource
+
   def index
     @commentable = find_commentable
     @comments = @commentable.comments
@@ -29,11 +31,9 @@ class CommentsController < ApplicationController
   end
   
   def edit
-    @comment = Comment.find(params[:id])
   end
   
   def update
-    @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: '修改评论成功' }
@@ -46,10 +46,9 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = "删除评论成功"
-    redirect_to comments_url
+    redirect_to @comment.commentable
   end
   
   private

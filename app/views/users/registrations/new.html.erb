@@ -4,7 +4,7 @@
 <main class="container wm-sign" role="main">
   <div class="col-sm-5 col-md-4 col-sm-offset-1">
     <h4 class="wm-lg-bottom">欢迎加入万门大学</h4>
-     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:class=>"form-horizontal",:role=>"form") do |f| %>
+     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:class=>"form-horizontal",:role=>"form"}) do |f| %>
     <%= devise_error_messages! %>
     <% if session["devise.social_data"] %>
     <%= f.text_field :provider, :type => 'hidden', :value=>session["devise.social_data"]["provider"] %>
