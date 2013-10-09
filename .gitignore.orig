@@ -21,5 +21,9 @@
 /*~
 /tmp.md
 /.idea/*
+<<<<<<< HEAD
 /config/environments/development.rb
 /config/environments/production.rb
+=======
+config/database.yml
+>>>>>>> c5bd1aa9fed2704e1201938301d8bfeb3d10814f

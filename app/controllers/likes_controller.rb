@@ -2,6 +2,8 @@ class LikesController < ApplicationController
   before_action :set_like, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
+  load_and_authorize_resource
+
   def index
     @likeable = find_likeable
     @likes = @likeable.likes
@@ -36,11 +38,9 @@ class LikesController < ApplicationController
   end
   
   def edit
-    @like = Like.find(params[:id])
   end
   
   def update
-    @like = Like.find(params[:id])
     respond_to do |format|
       if @like.update(like_params)
         format.html { redirect_to @like, notice: 'like was successfully updated.' }
@@ -53,7 +53,6 @@ class LikesController < ApplicationController
   end
   
   def destroy
-    @like = Like.find(params[:id])
     @like.destroy
     flash[:notice] = "删除喜欢已成功"
     redirect_to likes_url

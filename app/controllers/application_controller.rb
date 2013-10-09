@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   include ApplicationHelper
   protect_from_forgery with: :exception
+
+  # According to 'https://github.com/ryanb/cancan/issues/835#issuecomment-18663815'
+  # We need this until CanCan fix the bug
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   #before_action :at_least_SCHOLAR_or_redirect , only:[:new,:create,:delete,:update]
   after_filter :store_location
 
@@ -20,4 +29,9 @@ class ApplicationController < ActionController::Base
    def after_sign_in_path_for(resource)
 	  session[:previous_url] || root_path
    end
+
+  # Handle CanCan exception
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to help_manage_url, notice: "您没有权限执行此操作"
+  end
 end

@@ -1,4 +1,4 @@
-<% if current_user&& current_user[:role]>= SCHOLAR %>
+<% if can? :update, @lists.take! %>
   <% if (@lists.length>0) %>
   <a onclick="addList()">添加到我的集合</a>
   <div id="listForm" style="display:none;">
@@ -28,7 +28,7 @@
       <%= f.submit "加入" %>
     </div>
     <a onclick="hideList()">隐藏</a>
-  <% end %>
+    <% end %>
   <a href="/lists/new">新建集合</a>
   </div>
   <% else %>

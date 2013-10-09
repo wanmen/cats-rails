@@ -9,12 +9,12 @@
             <%= @article.title %>
         </span>
         <span class="wm-quick-link">
-            <% if current_user && current_user[:role]>= SCHOLAR %>
+            <% if can? :edit, @article %>
                 <%= link_to '修改', edit_article_path(@article) %>  |
             <% end %>
-            <%= link_to '返回', articles_path %>  |
-            <% if current_user && current_user[:role]>= SUPERADMIN %>
-                <%= link_to '删除', articles_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
+            <%= link_to '返回', articles_path %>
+            <% if can? :destroy, @article %>
+                |<%= link_to '删除', articles_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
             <% end %>
         </span>
     </h3>
