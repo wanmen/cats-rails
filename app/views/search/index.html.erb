@@ -140,8 +140,7 @@
           <span style="color:#5bc0de"><%= result.user[:name] %></span>发布于 <%= result.user[:created_at].strftime('%b %d, %Y %H:%M') %>
           <span class="pull-right"><%=result.taglinks.length %>个标签 | <%=result.links.length %>个单子 | <%=result.likes.length %>人喜欢 | <%=result.comments.length %>条评论</span>
         </p>
-        <p>
-          <%=raw Kramdown::Document.new(result.summary[0,200]).to_html%>
+        <p><%= result.summary[0,200] %>
           <%= link_to "继续阅读&raquo;".html_safe, result, {:class=>"wm-italic"} %>
         </p>
       </div>

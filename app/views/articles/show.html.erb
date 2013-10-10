@@ -24,10 +24,7 @@
     </p>
 
     <section class="wm-indent">
-     摘要: <%= @article.summary%>
-    </section>
-    <section class="wm-indent">
-     正文: <%=raw Kramdown::Document.new(@article.content).to_html%>
+        <%= @article.content %>
     </section>
 
     <section class="wm-metadata">

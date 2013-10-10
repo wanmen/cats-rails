@@ -1,4 +1,4 @@
-<%= form_for [@rateable, @rate], :html=>{:class=>"wm-inline-block",:role=>"form"} do |f| %>
+<%= form_for [@rateable, @rate] do |f| %>
   <% if @rate.errors.any? %>
     <div class="error_messages">
       <h2>Please correct the following errors.</h2>

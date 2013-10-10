@@ -1,7 +1,7 @@
 <% if can? :edit, @taglinkable %>
   <a onclick="addTag()">添加新标签</a>
   <div id="tagForm" style="display:none;">
-    <%= form_for [@taglinkable, @taglink], :html=>{:class=>"wm-inline-block",:role=>"form"} do |f| %>
+    <%= form_for [@taglinkable, @taglink] do |f| %>
       <% if @taglink.errors.any? %>
         <div class="error_messages">
           <h2>Please correct the following errors.</h2>
@@ -16,10 +16,10 @@
         <%= f.select :tag_id, @tags.map{ |c| [c.name, c.id] } %>
       </p>
       <div class="actions">
-        <%= f.submit '添加', :class=>"btn btn-default" %>
+        <%= f.submit '添加' %>
       </div>
     <% end %>
-    <a onclick="hideTag()">隐藏</a> |
+    <a onclick="hideTag()">隐藏</a>
     <a href="/tags/new">新建标签</a>
   </div>
 <% end %>
