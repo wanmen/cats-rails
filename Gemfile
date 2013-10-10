@@ -12,6 +12,8 @@ gem 'cancan'
 # Javascript Run Time
 gem 'execjs'
 
+gem 'kramdown'
+
 gem 'therubyracer'
 
 # To enable paginate

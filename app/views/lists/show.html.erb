@@ -22,8 +22,8 @@
       <%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
       <span class="pull-right"><%= @list.taglinks.length %> 个标签 | <%= @list.likes.length %>人喜欢 | <%= @list.comments.length%>个评论</span>
     </p>
-    <section class="wm-indent">
-      <%= @list.summary %>
+    <section class="wm-indent">  
+      <%=raw Kramdown::Document.new(@list.summary).to_html%>
     </section>
 
     <section class="wm-book-list wm-book-gallery">

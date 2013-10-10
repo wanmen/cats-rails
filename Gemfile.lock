@@ -61,6 +61,7 @@ GEM
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kramdown (1.1.0)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -162,6 +163,7 @@ DEPENDENCIES
   execjs
   jbuilder (~> 1.2)
   jquery-rails
+  kramdown
   mysql2
   omniauth
   omniauth-douban-oauth2
