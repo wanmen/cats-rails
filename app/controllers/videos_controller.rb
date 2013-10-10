@@ -32,7 +32,7 @@ class VideosController < ApplicationController
     @link = Link.new
     @best = Video.best6
     if (current_user)
-      @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 2)
+      @lists = List.where("user_id = ? AND (list_type = ? OR list_type = ?)", current_user[:id], VIDEOLIST, MIXLIST)
     else
       @lists = []
     end
