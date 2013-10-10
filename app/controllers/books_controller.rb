@@ -39,6 +39,11 @@ class BooksController < ApplicationController
     else
       @lists = []
     end
+    if @lists.length>0
+      @list = @lists.take!
+    else
+      @list = List.new
+    end
     @tags = Tag.all
   end
 
