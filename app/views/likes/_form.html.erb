@@ -1,5 +1,6 @@
-<% if current_user&& current_user[:role]>= SCHOLAR %>
-<%= form_for [@likeable, @like], :html=>{:class=>"wm-inline-block",:role=>"form"} do |f| %>
-    <%= f.submit '我喜欢',:class=>"btn btn-default btn-xs" %>
+<% if can? :create, @like %>
+    <%= form_for [@likeable, @like], :html=>{:class=>"wm-inline-block",:role=>"form"} do |f| %>
+        <%= f.submit '我喜欢',:class=>"btn btn-default btn-xs" %>
+    <% end %>
 <% end %>
-<% end %>
+
