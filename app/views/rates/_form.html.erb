@@ -9,10 +9,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.number_field :star,:id=>'rate',:type=>'hidden'%>
-  </div>
-  <% if current_user&& current_user[:role]>=SCHOLAR %>
+
+  <% if can? :create, @rate %>
+    <div id="star" data-score="<%= @rates.average(:star) %>"></div>
+    <div class="field">
+      <%= f.number_field :star,:id=>'rate',:type=>'hidden'%>
+    </div>
     <div class="actions">
       <%= f.submit '打分',:id=>'rate_button' %>
     </div>

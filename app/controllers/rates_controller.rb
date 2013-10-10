@@ -1,7 +1,8 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_SCHOLAR_or_redirect, except: [:index, :show]
+
+  load_and_authorize_resource
 
   def index
     @rateable = find_rateable
@@ -36,14 +37,9 @@ class RatesController < ApplicationController
   end
   
   def edit
-    @rate = Rate.find(params[:id])
-    if !qualified_to_edit(@rate,current_user,ADMIN)
-      redirect_to help_manage_path
-    end
   end
   
   def update
-    @rate = Rate.find(params[:id])
     respond_to do |format|
       if @rate.update(rate_params)
         format.html { redirect_to @rate, notice: '修改评分成功' }
@@ -56,7 +52,6 @@ class RatesController < ApplicationController
   end
   
   def destroy
-    @rate = Rate.find(params[:id])
     @rate.destroy
     flash[:notice] = "删除评分成功"
     redirect_to rates_url

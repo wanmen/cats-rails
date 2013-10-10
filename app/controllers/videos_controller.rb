@@ -1,7 +1,9 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
+
+  load_and_authorize_resource
+
   # GET /videos
   # GET /videos.json
   def index
@@ -46,9 +48,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
-    if !qualified_to_edit?(Video.find(params[:id]),current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
+
   end
 
   # POST /videos
