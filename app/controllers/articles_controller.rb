@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     @link = Link.new
     @best = Article.best6
     if (current_user)
-      @lists = List.where("user_id = ? AND list_type = ?", current_user[:id], 3)
+      @lists = List.where("user_id = ? AND (list_type = ? OR list_type = ?)", current_user[:id], ARTICLELIST, MIXLIST)
     else
       @lists = []
     end
