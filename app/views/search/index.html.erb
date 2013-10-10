@@ -158,7 +158,7 @@
     </section>
 
     <section class="text-center">
-      <ul class="pagination" data-total="<%= @numberofpages %>">
+      <ul class="pagination" data-total="<%= @numberofpages + 1 %>">
         <li><a href="#prev" title="上一页">&laquo;</a></li>
        <% for i in [@page-4, 0].max .. [@page+6, @numberofpages].min %>
         <li<% if (i == @page) %> class="active"<% end %>><a href="?page=<%= i+1%>"><%= i+1%></a></li>
@@ -174,11 +174,11 @@
   $(document).ready(function() {
     var href = window.location.href.replace(/&page=\d*/, '');
 
-    if(+$('.pagination a').eq(1).text() == 1) {
-      $('.pagination li').first().addClass('wm-hidden');
+    if($('.pagination a').eq(1).text() == 1) {
+      $('.pagination a').first().addClass('wm-hidden');
     }
-    if(+$('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
-      $('.pagination li').last().addClass('wm-hidden');
+    if($('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
+      $('.pagination a').last().addClass('wm-hidden');
     }
 
     $('.pagination a').on('click', function() {
