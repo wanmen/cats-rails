@@ -59,7 +59,7 @@ Cats::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( markdown.js, ie.js, raty.js,  bootstrap-ie7.css, bootstrap.css, wm-default.css, wm-pagedown.css )
+  config.assets.precompile += %w( markdown.js ie.js raty.js bootstrap-ie7.css bootstrap.css wm-default.css wm-pagedown.css search.js rails.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -77,4 +77,19 @@ Cats::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+    # Don't care if the mailer can't send
+  require 'tlsmail' #key but not always described
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true 
+  ActionMailer::Base.smtp_settings = {
+  :address              => "smtp.exmail.qq.com",
+  :port                 => 465,
+  :domain               => 'wanmen.org',
+  :user_name            => 'noreply@wanmen.org',
+  :password             => 'DoNotReply2013',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  }
+  config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }
 end

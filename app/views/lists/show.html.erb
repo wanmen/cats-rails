@@ -22,8 +22,8 @@
       <%= @list[:updated_at].strftime('%b %d, %Y %H:%M')  %>
       <span class="pull-right"><%= @list.taglinks.length %> 个标签 | <%= @list.likes.length %>人喜欢 | <%= @list.comments.length%>个评论</span>
     </p>
-    <section class="wm-indent">
-      <%= @list.summary %>
+    <section class="wm-indent">  
+      <%=raw Kramdown::Document.new(@list.summary).to_html%>
     </section>
 
     <section class="wm-book-list wm-book-gallery">
@@ -32,29 +32,32 @@
       <div lkid="lkarray-<%= link.id %>">
         <div class="row wm-list-item">
           <figure class="col-sm-3">
-            <a href="
                 <% case link.linkable.class.name
-                    when 'Book'%>
-                        /books/
+                    when 'Book'%>          
+                    <a href="/books/<%=link.linkable.id %>.html" class="thumbnail">
+                      <img src="<%= link.linkable.cover %>!medium" alt="" title="<%=link.linkable.title%>">
+                    </a>
                  <% when 'Video'%>
-                        /videos/
+                    <a href="/videos/<%=link.linkable.id %>.html" class="thumbnail">
+                      <img src="<%= link.linkable.cover %>!medium" alt="" title="<%=link.linkable.title%>">
+                    </a>
                  <% when 'Article' %>
-                        /articles/
-                <%  end %><%=link.linkable.id %>.html" class="thumbnail">
-               <img src="<%= link.linkable.cover %>!medium" alt="" title="<%=link.linkable.title%>">
-            </a>
+                    <a href="/articles/<%=link.linkable.id %>.html">
+                      <%=link.linkable.title%>
+                    </a>
+                <%  end %>
           </figure>
           <div class="col-sm-9">
-            <h4><a href="  
+            <h4> 
                 <% case link.linkable.class.name
                     when 'Book'%>
-                        /books/
+                        <a href=" /books/<%=link.linkable.id %>.html"><%=link.linkable.title%></a>
                  <% when 'Video'%>
-                        /videos/
+                        <a href=" /videos/<%=link.linkable.id %>.html"><%=link.linkable.title%></a>
                  <% when 'Article' %>
-                        /articles/
-                <%  end %><%=link.linkable.id %>.html"><%=link.linkable.title%>
-            </a></h4>
+                        <a href=" /articles/<%=link.linkable.id %>.html"><%=link.linkable.title%></a>
+                <%  end %>
+            </h4>
             <span>
                 <% case link.linkable.class.name
                     when 'Book'%>

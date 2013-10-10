@@ -186,6 +186,10 @@ blockquote {
   line-height: 169%;
 }
 
+.wm-metadata div {
+  display: inline-block;
+}
+
 .wm-metadata span {
   margin-right: 5px;
   color: #999999;
@@ -233,7 +237,7 @@ blockquote {
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 7px;
-  box-shadow: 0px 6px 12px rgba(0,​ 0,​ 0,​ 0.176);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
   cursor: move;
   z-index: 1000;
 }

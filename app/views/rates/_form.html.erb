@@ -14,7 +14,7 @@
   </div>
   <% if current_user&& current_user[:role]>=SCHOLAR %>
     <div class="actions">
-      <%= f.submit '打分',:id=>'rate_button' %>
+      <%= f.submit '打分', :class=>'btn btn-default btn-sm', :id=>'rate_button' %>
     </div>
   <% end %>
 <% end %>
