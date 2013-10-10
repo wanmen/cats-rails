@@ -19,6 +19,8 @@
 /.project
 /.settings
 /*~
+/config/database.yml
 /tmp.md
 /.idea/*
-config/database.yml
+/config/environments/development.rb
+/config/environments/production.rb
