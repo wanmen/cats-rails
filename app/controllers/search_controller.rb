@@ -20,9 +20,9 @@ class SearchController < ApplicationController
 	 			if (params[:title])
 					case t 
 					when 'book' 
-					  @books += Book.find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @books += Book.find(:all, :conditions => ["title LIKE ? OR author LIKE ?", "%"+params[:title]+"%", "%"+params[:title]+"%"])
 					when 'video' 
-					  @videos +=  Video.find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
+					  @videos +=  Video.find(:all, :conditions => ["title LIKE ? OR lecturer LIKE ?", "%"+params[:title]+"%", "%"+params[:title]+"%"])
 				    when 'article' 
 					  @articles +=  Article.find(:all, :conditions => ["title LIKE ?", "%"+params[:title]+"%"])
 					else # the else clause is optional  
