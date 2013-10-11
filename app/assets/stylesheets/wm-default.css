@@ -186,6 +186,10 @@ blockquote {
   line-height: 169%;
 }
 
+.wm-metadata div {
+  display: inline-block;
+}
+
 .wm-metadata span {
   margin-right: 5px;
   color: #999999;

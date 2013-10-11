@@ -1,11 +1,11 @@
 $(document).ready(function() {
     var href = window.location.href.replace(/&page=\d*/, '');
 
-    if(+$('.pagination a').eq(1).text() == 1) {
-      $('.pagination li').first().addClass('wm-hidden');
+    if($('.pagination a').eq(1).text() == 1) {
+      $('.pagination a').first().addClass('wm-hidden');
     }
-    if(+$('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
-      $('.pagination li').last().addClass('wm-hidden');
+    if($('.pagination a').eq(-2).text() == $('.pagination').data('total')) {
+      $('.pagination a').last().addClass('wm-hidden');
     }
 
     $('.pagination a').on('click', function() {
