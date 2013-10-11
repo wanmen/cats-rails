@@ -1,7 +1,8 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :at_least_ADMIN_or_redirect, except: [:index, :show]
+
+  load_and_authorize_resource
 
   def index
     @linkable = find_linkable
@@ -30,14 +31,9 @@ class LinksController < ApplicationController
   end
   
   def edit
-    @link = Link.find(params[:id])
-    if !qualified_to_edit?(@link,current_user,SUPERADMIN)
-      redirect_to help_manage_path
-    end
   end
   
   def update
-    @link = Link.find(params[:id])
     respond_to do |format|
       if @link.update(link_params)
         format.html { redirect_to @link.list, notice: '成功从单子内删除' }
@@ -50,7 +46,6 @@ class LinksController < ApplicationController
   end
   
   def destroy
-    @link = Link.find(params[:id])
     @link.destroy
     flash[:notice] = "成功从单子内删除"
     redirect_to @link.list
