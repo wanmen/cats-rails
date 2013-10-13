@@ -17,8 +17,7 @@ gem 'kramdown'
 gem 'therubyracer'
 
 # To enable paginate
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'kaminari'
 
 # Use mysql for database
 gem 'mysql2'
