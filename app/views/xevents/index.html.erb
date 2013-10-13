@@ -1,0 +1,35 @@
+<h1>Listing xevents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Summary</th>
+      <th>Location</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @xevents.each do |xevent| %>
+      <tr>
+        <td><%= xevent.title %></td>
+        <td><%= xevent.content %></td>
+        <td><%= xevent.summary %></td>
+        <td><%= xevent.location %></td>
+        <td><%= xevent.time %></td>
+        <td><%= link_to 'Show', xevent %></td>
+        <td><%= link_to 'Edit', edit_xevent_path(xevent) %></td>
+        <td><%= link_to 'Destroy', xevent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Xevent', new_xevent_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @xevent.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @xevent.content %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @xevent.summary %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @xevent.location %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @xevent.time %>
+</p>
+
+<%= link_to 'Edit', edit_xevent_path(@xevent) %> |
+<%= link_to 'Back', xevents_path %>

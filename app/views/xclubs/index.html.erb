@@ -1,0 +1,33 @@
+<h1>Listing xclubs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Started</th>
+      <th>Summary</th>
+      <th>Thumbnail</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @xclubs.each do |xclub| %>
+      <tr>
+        <td><%= xclub.name %></td>
+        <td><%= xclub.started %></td>
+        <td><%= xclub.summary %></td>
+        <td><%= xclub.thumbnail %></td>
+        <td><%= link_to 'Show', xclub %></td>
+        <td><%= link_to 'Edit', edit_xclub_path(xclub) %></td>
+        <td><%= link_to 'Destroy', xclub, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Xclub', new_xclub_path %>

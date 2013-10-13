@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @xclub.name %>
+</p>
+
+<p>
+  <strong>Started:</strong>
+  <%= @xclub.started %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @xclub.summary %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @xclub.thumbnail %>
+</p>
+
+<%= link_to 'Edit', edit_xclub_path(@xclub) %> |
+<%= link_to 'Back', xclubs_path %>
