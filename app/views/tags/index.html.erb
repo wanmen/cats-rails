@@ -186,34 +186,44 @@
       </div>
     </section>
   </article>
-</main><h1>所有标签</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>名字</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <aside class="col-sm-3">
+  </aside>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= tag.taglinks.length%>个对应内容</td>
-        <td><%= tag.follows.length%>个关注</td>
-        <td><%= tag.likes.length%>个喜欢</td>
-        <td><%= link_to '显示', tag %></td>
-        <td><%= link_to '修改', edit_tag_path(tag) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <article class="col-sm-9">
+  <section>
+    <h3 class="page-header">
+	所有标签
+    </h3>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>名字</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
 
-<br>
+	  <tbody>
+	    <% @tags.each do |tag| %>
+	      <tr>
+		<td><%= tag.name %></td>
+		<td><%= tag.taglinks.length%>个对应内容</td>
+		<td><%= tag.follows.length%>个关注</td>
+		<td><%= tag.likes.length%>个喜欢</td>
+		<td><%= link_to '显示', tag %></td>
+		<td><%= link_to '修改', edit_tag_path(tag) %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<br>
+	<%= link_to '新标签', new_tag_path %>
+  </section>
+  </article>
 
-<%= link_to '新标签', new_tag_path %>
+</main>
+
