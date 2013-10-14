@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006053534) do
+ActiveRecord::Schema.define(version: 20131013024940) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -198,5 +198,33 @@ ActiveRecord::Schema.define(version: 20131006053534) do
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
+
+  create_table "xclubs", force: true do |t|
+    t.string   "name"
+    t.date     "started"
+    t.text     "summary"
+    t.string   "thumbnail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "xevents", force: true do |t|
+    t.integer  "xclub_id"
+    t.string   "title"
+    t.text     "content"
+    t.text     "summary"
+    t.string   "location"
+    t.datetime "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "xmembers", force: true do |t|
+    t.integer  "xclub_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
