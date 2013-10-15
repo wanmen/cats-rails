@@ -1,5 +1,7 @@
 <h1>New xevent</h1>
 
-<%= render 'form' %>
+<%= form_for [@xclub, @xevent], url: xclub_xevents_path, html: {method: :post} do |f| %>
+    <%= render 'form', f: f %>
+<% end %>
 
-<%= link_to 'Back', xevents_path %>
+<%= link_to 'Back', xclub_xevent_path(@xclub, @xevent) %>

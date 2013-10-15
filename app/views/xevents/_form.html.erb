@@ -1,4 +1,3 @@
-<%= form_for(@xevent) do |f| %>
   <% if @xevent.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@xevent.errors.count, "error") %> prohibited this xevent from being saved:</h2>
@@ -34,4 +33,3 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>

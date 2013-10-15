@@ -1,3 +1,3 @@
 class Xclub < ActiveRecord::Base
-  has_many :xevents, dependent: :destroy
+  has_many :xevents, as: :xeventable, dependent: :destroy
 end

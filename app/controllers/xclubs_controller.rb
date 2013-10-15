@@ -5,11 +5,14 @@ class XclubsController < ApplicationController
   # GET /xclubs.json
   def index
     @xclubs = Xclub.all
+    @latest = Xevent.latest5
   end
 
   # GET /xclubs/1
   # GET /xclubs/1.json
   def show
+    # get the latest 5 event of the current xclub
+    @latest = Xevent.where("xclub_id = ?", @xclub.id).order("created_at DESC").limit(5)
   end
 
   # GET /xclubs/new
