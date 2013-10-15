@@ -25,7 +25,8 @@ class RatesController < ApplicationController
         format.json { render action: 'show', status: :failed, location: @rateable }
       else
         @rate = @rateable.rates.new(rate_params)
-        if @rate.save
+        @rateable.rate += (rate_params['star']).to_f / (@rateable.rates.length).to_f
+        if @rate.save && @rateable.save
           format.html { redirect_to @rateable, notice: '评分成功' }
           format.json { render action: 'show', status: :created, location: @rateable }
         else

@@ -11,7 +11,7 @@
   <% end %>
 
   <% if can? :create, @rate %>
-    <div id="star" data-score="<%= @rates.average(:star) %>"></div>
+    <div id="star" data-score="<%= @rateable.rate %>"></div>
     <div class="field">
       <%= f.number_field :star,:id=>'rate',:type=>'hidden'%>
     </div>
