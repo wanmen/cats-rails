@@ -1,133 +1,50 @@
 <% content_for :head do %>
-   <title>万门大学</title>
+  <title>万门大学</title>
 <% end %>
 
-<main class="container wm-homepage" role="main">
-  <article class="container">
-    <section class="row wm-newest">
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <h3 class="panel-heading">最新动态</h3>
-          <ul class="panel-body">
-            <li>
-              <a href="">万门大学公开课【广义相对论】</a>
-            </li>
-            <li>
-              <a href="">万门大学公开课【可计算理论】</a>
-            </li>
-            <li>
-              <a href="">万门图片小课：轻松理解“分部积分”</a>
-            </li>
-            <li>
-              <a href="">万门大学公开课【统计物理】</a>
-            </li>
-            <li>
-              <a href="">万门大学数学系书单</a>
-            </li>
-            <li>
-              <a href="">万门大学物理系书单</a>
-            </li>
-            <li>
-              <a href="">万门大学公开课【数理统计】</a>
-            </li>
-            <li>
-              <a href="">万门大学计算机系书单</a>
-            </li>
-            <li>
-              <a href="">万门大学中文系书单</a>
-            </li>
-            <li>
-              <a href="">万门大学数学小课：卷积的本质</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-sm-8">
-        <div class="carousel slide wm-carousel thumbnail" id="wmCarousel">
-          <ol class="carousel-indicators">
-            <li class="active" data-target="#wmCarousel" data-slide-to="0"></li>
-            <li data-target="#wmCarousel" data-slide-to="1"></li>
-            <li data-target="#wmCarousel" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item active">
-                <%= image_tag "slides/first_slider.png", :alt=>"" %>
-              <div class="container">
-                <div class="carousel-caption">
-                  <p>网络时代，变革大学教育的践行者。</p>
-                  <p><a class="btn btn-large btn-primary" href="sign_up.html">注册</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-                <%= image_tag "slides/second_slider.png", :alt=>"" %>
-              <div class="container">
-                <div class="carousel-caption">
-                  <p>以“独立之思考，求实之精神，人文之情怀”为立校精神的万门大学，将和万千青年人一起打开自我内心深处的那扇大门，唤起自我改变的力量，从而让智慧与美德的光芒照亮世界。</p>
-                  <p><a class="btn btn-large btn-primary" href="">查看</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-                <%= image_tag "slides/third_slider.png", :alt=>"" %>
-              <div class="container">
-                <div class="carousel-caption">
-                  <p>这是一个网站，也是一所大学——精美多元的视频课程、高效互动的线上学习环境、全面系统的数字图书馆、以及独立自由的线下实体活动。网络时代的大学，始于万门。</p>
-                  <p><a class="btn btn-large btn-primary" href="">了解</a></p>
-                </div>
-              </div>
-            </div>
+    <main class="container" role="main">
+      <article class="container">
+        <section class="wm-banner">
+          <div>
+            <img src="img/wm-banner.jpg" alt=""/>
+            <a class="btn btn-primary btn-lg" href="join_us.html">加入我们</a>
           </div>
-          <a class="left carousel-control" href="#wmCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a class="right carousel-control" href="#wmCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-         </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="row wm-features">
-      <div class="col-sm-4">
-        <h3>
-          <%= image_tag "features/library.png", :alt=>"" %>
-          万门图书馆
-        </h3>
-        <p>信息时代，学习资源的收集和获取不再是关键问题。更重要的是在于从汗牛充栋的课程及书籍中有效地筛选材料；是在于对繁多驳杂的材料进行系统性的梳理；是在于输出对知识的理解，形成经验之谈并分享于众。
-        </p>
-      </div>
+        <section class="container wm-projects">
 
-      <div class="col-sm-4">
-        <h3>
-          <%= image_tag "features/monitor.png", :alt=>"" %>
-          万门课堂
-        </h3>
-        <p>我们不应局限于专业，要发展综合能力成为一个完整的人；我们在收获知识之余，要学会思考自我，思考世界，追求更有意义的人生。多媒体和网络技术的运用，将使学习不再枯燥无味，让学习变得更有趣、更个性、更高效。
-        </p>
-      </div>
+          <div class="col-sm-3">
+            <figure>
+              <img src="img/projects/courses.png" height="50" alt=""/>
+              <figcaption>万门课堂</figcaption>
+            </figure>
+            <p>大学要发展我们的综合知识能力，要引领我们去追求富有意义的人生。万门课堂，让这些成为可能。</p>
+          </div>
 
-      <div class="col-sm-4">
-        <h3>
-          <%= image_tag "features/wanmenX.png", :alt=>"" %>
-          万门大学X
-        </h3>
-        <p>浮躁功利的环境里，我们需要追求知识的那份纯粹；慵懒沉寂的风气下，我们需要自我改变的那种决心。静心笃学，自由讨论，积极分享——我们的大学需要这样一种氛围，我们的校园需要这样一个团体。
-        </p>
-      </div>
-    </section>
-  </article>
-</main>
+          <div class="col-sm-3">
+            <figure>
+              <img src="img/projects/library.png" height="50" alt=""/>
+              <figcaption>万门图书馆</figcaption>
+            </figure>
+            <p>网络时代，信息爆炸，观点横流。万门图书馆——一个系统精炼的知识库，一个汇集我们自己声音的平台。</p>
+          </div>
 
-<% content_for :bottom_script do %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('.carousel').carousel({interval: 3000});
-      });
-      $(window).load(function() {
-        var num = $('.carousel img').height() / 33 - 1;
-        $('.wm-newest li').slice(Math.floor(num)).addClass('wm-hidden');
-      });
-    </script>
-<% end %>
+          <div class="col-sm-3">
+            <figure>
+              <img src="img/projects/wanmenX.png" height="50" alt=""/>
+              <figcaption>万门大学X</figcaption>
+            </figure>
+            <p>静心笃学，自由讨论，积极分享——我们的大学需要这样一种氛围，我们的校园需要这样一个社团。</p>
+          </div>
+
+          <div class="col-sm-3">
+            <figure>
+              <img src="img/projects/participant.png" height="50" alt=""/>
+              <figcaption>我与万门</figcaption>
+            </figure>
+            <p>万门大学属于每一个人。一句真心的称赞，一番中肯的批评，这些都激励并鞭策着我们不断前进。</p>
+          </div>
+        </section>
+      </article>
+    </main>
+
