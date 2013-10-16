@@ -36,7 +36,8 @@
   </head>
 
   <body>
-  <header class="navbar navbar-default navbar-fixed-top" role="banner">
+
+    <header class="navbar navbar-fixed-top" role="banner">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,29 +45,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">万门大学</a>
+          <a class="navbar-brand" href="/"><img src="/assets/images/wanmen.png" height="32" alt=""/></a>
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
-            <li class="active">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">知识库<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/books.html"><span class="glyphicon glyphicon-book"></span> 图书</a>
-                </li>
-                <li>
-                  <a href="/videos.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频</a>
-                </li>
-                <li>
-                  <a href="/articles.html"><span class="glyphicon glyphicon-edit"></span> 经验贴</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">其它分类</li>
-                <li>
-                  <a href="/tags.html"><span class="glyphicon glyphicon-tags"></span> 标签</a>
-                </li>
-              </ul>
-            </li>
+            <li><a href="/books"><span class="glyphicon glyphicon-book"></span> 图书</a></li>
+            <li><a href="/videos"><span class="glyphicon glyphicon-facetime-video"></span> 视频</a></li>
+            <li><a href="/articles"><span class="glyphicon glyphicon-edit"></span> 经验贴</a></li>
           </ul>
            <% if user_signed_in? %>
             <ul class="nav navbar-nav">
@@ -86,11 +71,9 @@
             <% else %>
                 <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
             <% end %>
-          <form class="navbar-right navbar-form" role="search" method="get" action="/search">
+          <form class="navbar-right navbar-form" action="/search" role="search">
             <div class="input-group">
-              <input type="hidden" name="type" value="book,video,article">
-              <input type="hidden" name="list" value="book,video,article,mix">
-              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴，标签" title="请输入关键词进行搜索"/>
+              <input class="form-control" type="search" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
@@ -101,6 +84,7 @@
         </nav>
       </div>
     </header>
+
     <% if flash[:alert] %>
     <p class="alert alert-warning">
       <%= flash[:alert] %>
@@ -114,19 +98,22 @@
     </p>
     <% end %>
     <%= yield %>
-    <footer class="navbar-default" role="contentinfo">
+
+    <footer role="contentinfo">
       <div class="container">
-          <address>
-              &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
-              <div class="pull-right">
-                  <a href="/aboutus.html">关于万门</a> |
-                  <a href="/joinus.html">加入我们</a> |
-                  <a href="/helpme.html">帮助中心</a> |
-                  <a href="/terms.html">免责声明</a>
-              </div>
-          </address>
+        <address>
+          <img src="/assets/images/favicon.png" height="48" alt="" />
+          &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
+          <div class="pull-right">
+            <a href="/aboutus.html">关于万门</a> |
+            <a href="/joinus.html">加入我们</a> |
+            <a href="/helpme.html">帮助中心</a> |
+            <a href="/terms.html">免责声明</a>
+          </div>
+        </address>
       </div>
-  </footer>
+    </footer>
+
   <%= javascript_include_tag "application" %>
   <%= yield :bottom_script %>
   </body>
