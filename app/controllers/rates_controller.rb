@@ -25,7 +25,21 @@ class RatesController < ApplicationController
         format.json { render action: 'show', status: :failed, location: @rateable }
       else
         @rate = @rateable.rates.new(rate_params)
-        if @rate.save
+        
+	#The following code is for calculating rate values 
+        rates_length= @rateable.rates.length
+        if @rateable.rate == 0.0						    #The Base Case
+          if @rateable.rates.length > 1					#	history ratings exist
+            @rateable.rate = ((rate_params['star']).to_f + @rateable.rates.average(:star)*(rates_length - 1).to_f) / (rates_length).to_f		#		count the old rates in
+          else										#	brand new
+            @rateable.rate= (rate_params['star']).to_f	#		just take the current value
+          end
+        else										#The Normal Case
+          
+          @rateable.rate= ((rate_params['star']).to_f + @rateable.rate*(rates_length - 1).to_f)/ (rates_length).to_f
+        end
+	#end calculating
+        if @rate.save && @rateable.save
           format.html { redirect_to @rateable, notice: '评分成功' }
           format.json { render action: 'show', status: :created, location: @rateable }
         else

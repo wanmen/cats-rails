@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006053534) do
+ActiveRecord::Schema.define(version: 20131015041959) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.float    "rate",       default: 0.0
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "translator"
+    t.float    "rate",       default: 0.0
   end
 
   add_index "books", ["user_id"], name: "index_books_on_user_id", using: :btree
@@ -103,8 +105,8 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
-    t.integer  "order_num",     default: 0
+    t.string   "description",               null: false
+    t.integer  "order_num",     default: 0, null: false
     t.integer  "user_id"
   end
 
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.integer  "user_id"
     t.integer  "list_type",   default: 0
     t.text     "links_array"
+    t.float    "rate",        default: 0.0
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
@@ -182,7 +185,6 @@ ActiveRecord::Schema.define(version: 20131006053534) do
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: true do |t|
@@ -195,6 +197,7 @@ ActiveRecord::Schema.define(version: 20131006053534) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "ownership",  default: 1
+    t.float    "rate",       default: 0.0
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
