@@ -14,7 +14,7 @@
             <% end %>
             <%= link_to '返回', articles_path %>
             <% if can? :destroy, @article %>
-                |<%= link_to '删除', articles_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
+                | <%= link_to '删除', article_path(@article), method: :delete, data: { confirm: '请确认要删除此经验贴?' } %>
             <% end %>
         </span>
     </h3>
