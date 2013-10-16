@@ -27,7 +27,7 @@ class RatesController < ApplicationController
         @rate = @rateable.rates.new(rate_params)
         
 	#The following code is for calculating rate values 
-	rates_length= @rateable.rates.length
+        rates_length= @rateable.rates.length
         if @rateable.rate == 0.0						    #The Base Case
           if @rateable.rates.length > 1					#	history ratings exist
             @rateable.rate = ((rate_params['star']).to_f + @rateable.rates.average(:star)*(rates_length - 1).to_f) / (rates_length).to_f		#		count the old rates in
