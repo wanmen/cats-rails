@@ -45,12 +45,12 @@ aside ul {
 }
 
 footer {
-  background-image: url("../img/bg-footer.png");
+  background-image: url("/assets/images/bg-footer.png");
 }
 
 footer address {
   margin: 15px 0;
-  color: #FFF;
+  color: #FFFFFF;
 }
 
 footer address img {
@@ -58,7 +58,7 @@ footer address img {
 }
 
 footer address a {
-  color: #FFF;
+  color: #FFFFF;
 }
 
 footer address a:hover {
@@ -75,7 +75,7 @@ header.navbar {
   font-size: 18px;
   font-weight: normal;
   background-color: #F8F8F8;
-  background-image: url("../img/bg-header.jpg");
+  background-image: url("/assets/images/bg-header.jpg");
   background-repeat: repeat-x;
   background-size: 100% 100%;
   border-bottom: 1px solid #C0C0C0;
@@ -187,7 +187,7 @@ header.navbar li a:hover {
 
 .wm-projects {
   text-align: center;
-  background-image: url("../img/bg-project.png");
+  background-image: url("/assets/images/bg-project.png");
   border-radius: 10px;
 }
 
