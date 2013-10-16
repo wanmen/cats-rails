@@ -19,8 +19,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "人人") if is_navigational_format?
     else
-      session["devise.social_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      session["devise.social_data"] = request.env["omniauth.auth"]  
+      sign_in @user
+      redirect_to '/users/sign_in', notice: '通过人人注册成功,请再次点击人人登陆完成登陆'
     end
   end
   def douban
