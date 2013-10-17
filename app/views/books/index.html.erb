@@ -7,7 +7,7 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-star"></span> 精选书单
-        <a class="wm-quick-link" href="/search?list=book">查看全部</a>
+        <a class="wm-quick-link" href="/search?list=book&sortby=rate">查看全部</a>
       </h3>
       <div class="row">
           <% @bestBooklist.each do |booklist| %>
@@ -23,7 +23,7 @@
       </div>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-star"></span> 精选图书
-        <a class="wm-quick-link" href="/search?type=book">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=book&sortby=rate">查看全部</a>
       </h3>
       <div class="row">
         <% @best.each do |book| %>
@@ -63,7 +63,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-tasks"></span> 热门书单
-        <a class="wm-quick-link" href="/search?list=book">查看全部</a>
+        <a class="wm-quick-link" href="/search?list=book&sortby=rate">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popularBooklist.each do |list| %>
@@ -75,7 +75,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-th-list"></span> 热门图书
-        <a class="wm-quick-link" href="/search?type=book">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=book&sortby=rate">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popular.each do |book| %>

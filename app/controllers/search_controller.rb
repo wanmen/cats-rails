@@ -76,7 +76,11 @@ class SearchController < ApplicationController
 		else
 			@title = ''
 		end
-		@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
+		if (params[:sortby]&&params[:sortby]=='rate')
+			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["rate"] }.reverse
+		else
+			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
+		end
 		numperpage = 5
 		@page = 0
 		if params[:page]
