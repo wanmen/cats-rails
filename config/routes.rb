@@ -1,5 +1,9 @@
 Cats::Application.routes.draw do
 
+  resources :xclubs do
+    resources :xevents
+  end
+
   resources :tags do
     resources :likes
     resources :follows
