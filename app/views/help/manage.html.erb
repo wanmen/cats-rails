@@ -46,7 +46,7 @@
 	<dt>您现在是万门大学超级管理员，可以做的事情是</dt>
 	<dd> <a class="btn btn-primary" href="/tags/new.html">添加</a>或修改标签</dd>
 	<dd> 修改管理员创建的内容</dd>
-	<dd> 提拔某人或者贬低某人的职务</dd>
+	<dd> 在图书馆中提拔某人或者贬低某人的职务</dd>
 	<%= form_for('') do |f| %>
 	<dd>把
 	 <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
@@ -60,8 +60,18 @@
 	</select>
 	<button class="btn btn-primary" href="/tags/new.html">确认</button>
 	</dd>
+    <% end %>
+        <dd> 在万门Ｘ项目中提拔某人或者贬低某人的职务</dd>
+    <%= form_for('') do |f| %>
+    <dd>把
+     <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
+     提拔/贬为
+     <%= f.select :xclub_id, @xclubs.map{ |x| [x.name, x.id] } %>
+     的管理员
+      <button class="btn btn-primary" href="/tags/new.html">确认</button>
+    </dd>
 	<% end %>
-	<% end %>
+    <% end %>
   </dl>
 </section>
 </article>

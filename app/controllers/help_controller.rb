@@ -7,6 +7,7 @@ class HelpController < ApplicationController
   	@role = current_user[:role]
   	if (current_user[:role]== SUPERADMIN)
   		@users = User.all
+      @xclubs = Xclub.all
   	end
   end
 
@@ -20,7 +21,7 @@ class HelpController < ApplicationController
 		    else
 		        format.html { redirect_to :back, notice: '申请失败' }
 		    end
-		end
+		  end
     elsif (@role == SUPERADMIN)
     	@user = User.find(params[:user_id])
     	@user.role = params[:role]
@@ -30,16 +31,16 @@ class HelpController < ApplicationController
 		    else
 		       format.html { redirect_to :back, notice: '修改权限失败' }
 		    end
-		end
-	 elsif (@role == SCHOLAR)
-		current_user[:role]=PREADMIN
+		  end
+	  elsif (@role == SCHOLAR)
+		  current_user[:role]=PREADMIN
     	respond_to do |format|
 	    	if current_user.save
 		        format.html { redirect_to :back, notice: '申请成功提交' }
 		    else
 		        format.html { redirect_to :back, notice: '申请失败' }
 		    end
-		end
+		  end
     end
   end
 

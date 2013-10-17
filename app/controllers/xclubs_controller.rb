@@ -1,6 +1,8 @@
 class XclubsController < ApplicationController
   before_action :set_xclub, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /xclubs
   # GET /xclubs.json
   def index
