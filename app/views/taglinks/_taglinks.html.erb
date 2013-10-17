@@ -3,6 +3,6 @@
     <!-- <a href="/tags/<%= taglink.tag.id %>"><%= taglink.tag.name %></a> -->
     <%= taglink.tag.name %>
     <% if can? :destroy, @taglinkable %>
-    <%= link_to '删除', taglink_path(taglink), method: :delete, data: { confirm: '请再次确认删除' } %>|
+    <%= link_to '删除', taglink_path(taglink), method: :delete, data: { confirm: '请再次确认删除' } %> |
     <% end %>
 <% end %>
