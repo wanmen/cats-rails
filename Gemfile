@@ -9,6 +9,8 @@ gem 'devise'
 # Use CanCan to handle user access
 gem 'cancan'
 
+gem 'rails-i18n'
+
 # Javascript Run Time
 gem 'execjs'
 
