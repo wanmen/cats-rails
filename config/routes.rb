@@ -66,6 +66,7 @@ Cats::Application.routes.draw do
   get '/search' => 'search#index', :as => :new_search
   get '/manage' => 'help#manage', :as => :help_manage
   post '/manage' => 'help#apply', :as => :help_apply
+  post '/manage/xclubadmin' => 'help#xclubadmin', :as => :help_xclubadmin
   
   post '/lists/:id/sort' => 'lists#sort', :as=> :sort
   # Example of regular route:

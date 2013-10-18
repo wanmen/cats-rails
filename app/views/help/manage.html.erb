@@ -62,10 +62,10 @@
 	</dd>
     <% end %>
         <dd> 在万门Ｘ项目中提拔某人或者贬低某人的职务</dd>
-    <%= form_for('') do |f| %>
+    <%= form_for('', url: { action: 'xclubadmin' }) do |f| %>
     <dd>把
      <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
-     提拔/贬为
+     提拔
      <%= f.select :xclub_id, @xclubs.map{ |x| [x.name, x.id] } %>
      的管理员
       <button class="btn btn-primary" href="/tags/new.html">确认</button>

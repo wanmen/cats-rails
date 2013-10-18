@@ -12,6 +12,7 @@ class HelpController < ApplicationController
   end
 
   def apply
+    puts 'In apply'
     @role = current_user[:role]
     if (@role == BEGINNER)
     	current_user[:role]=PRESCHOLAR
@@ -41,6 +42,17 @@ class HelpController < ApplicationController
 		        format.html { redirect_to :back, notice: '申请失败' }
 		    end
 		  end
+    end
+  end
+
+  def xclubadmin
+    @xmember = Xmember.new(params.permit(:user_id, :xclub_id).merge(role: 'xadmin'))
+    respond_to do |format|
+      if @xmember.save
+        format.html { redirect_to :back, notice: '成功修改权限' }
+      else
+        format.html { redirect_to :back, notice: '修改权限失败' }
+      end
     end
   end
 

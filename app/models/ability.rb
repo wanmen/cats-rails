@@ -93,6 +93,7 @@ class Ability
   end
 
   def scholar
+    prescholar
     can :create, [Book, Like, Rate]
     can :update, Book, user_id: @user.id
     can :create, List, list_type: BOOKLIST
@@ -114,6 +115,7 @@ class Ability
   def xadmin
     # A user can only be xadmin of ONE xclub.
     can [:create, :update, :destroy], Xevent, xclub_id: Xmember.where("user_id = ? AND role = ?", @user.id, 'xadmin').take[:xclub_id]
+    can :update, Xclub, id: Xmember.where("user_id = ? AND role = ?", @user.id, "xadmin").take[:xclub_id]
   end
 
   def xmember

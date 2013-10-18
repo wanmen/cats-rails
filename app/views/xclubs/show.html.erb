@@ -27,13 +27,19 @@
       <td><%= event.title %></td>
       <td><%= event.summary %></td>
       <td><%= link_to 'Show', xclub_xevent_path(event[:xclub_id], event) %></td>
-      <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
-      <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% if can? :update, event %>
+        <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
+      <% end %>
+      <% if can? :destroy, event %>
+        <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr><br>
 <% end %>
 </tbody>
 
+<% if can? :update, @xclub %>
 <%= link_to '新建活动', new_xclub_xevent_path(@xclub) %> <br>
+<% end %>
 
 <%= link_to 'Edit', edit_xclub_path(@xclub) %> |
 <%= link_to 'Back', xclubs_path %>

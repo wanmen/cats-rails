@@ -25,8 +25,12 @@
         <td><%= event.summary %></td>
         <span class="wm-quick-link">
         <td><%= link_to 'Show', xclub_xevent_path(event[:xclub_id], event) %></td>
-        <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
-        <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, event %>
+          <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
+        <% end %>
+        <% if can? :destroy, event %>
+          <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         </span>
       </tr>
     <% end %>
@@ -44,7 +48,9 @@
 
 <hr>
 
-<%= link_to 'New Xclub', new_xclub_path %>
+<% if can? :create, @xclub %>
+    <%= link_to 'New Xclub', new_xclub_path %>
+<% end %>
 
 </main>
 
