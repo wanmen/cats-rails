@@ -59,21 +59,21 @@
               <a href="/manage.html" class="">管理</a>
             </li>
             </ul>
-                <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%= current_user.thumbnail_url %>" height="50" alt=""/>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "修改",edit_user_registration_path %> </li>
-                    <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
-                    </li>
-                  </ul>
-                </div>
+            <div class="dropdown navbar-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="<%= current_user.thumbnail_url %>" height="50" alt=""/>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "修改",edit_user_registration_path %> </li>
+                <li> <%= link_to "登出", destroy_user_session_path, :method => :get %></li>
+              </ul>
+            </div>
             <% else %>
-                <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
+            <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
             <% end %>
-          <form class="navbar-right navbar-form" action="/search" role="search">
+          <form class="navbar-right navbar-form" action="/search" method="get" role="search">
             <div class="input-group">
-              <input class="form-control" type="search" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
+              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>
