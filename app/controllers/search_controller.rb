@@ -78,6 +78,8 @@ class SearchController < ApplicationController
 		end
 		if (params[:sortby]&&params[:sortby]=='rate')
 			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["rate"] }.reverse
+		elsif (params[:sortby]&&params[:sortby]=='popularity')
+			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["popularity"] }.reverse
 		else
 			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
 		end
