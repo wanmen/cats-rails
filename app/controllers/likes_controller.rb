@@ -26,6 +26,10 @@ class LikesController < ApplicationController
         format.json { render action: 'show', status: :failed, location: @likeable }
       else
         @like = @likeable.likes.new(:user_id => current_user.id)
+#The following code is for calculating popularity values 
+        likes_length= @likeable.likes.length
+        @likeable.popularity =likes_length+1;
+  #end calculating
         if @like.save
           format.html { redirect_to @likeable, notice: '喜欢已成功' }
           format.json { render action: 'show', status: :created, location: @likeable }
