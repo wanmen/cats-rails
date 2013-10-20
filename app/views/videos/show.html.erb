@@ -10,9 +10,9 @@
         <% if can? :edit, @video %>
         <%= link_to '修改', edit_video_path(@video) %>  |
         <% end %>
-        <%= link_to '返回', videos_path %>  |
+        <%= link_to '返回', videos_path %>
         <% if can? :destroy, @video %>
-        <%= link_to '删除', video_path(@video), method: :delete, data: { confirm: '请确认要删除此视频?'} %>
+         | <%= link_to '删除', video_path(@video), method: :delete, data: { confirm: '请确认要删除此视频?'} %>
         <% end %>
       </span>
     </h3>
