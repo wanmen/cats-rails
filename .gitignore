@@ -24,3 +24,5 @@
 /.idea/*
 /config/environments/development.rb
 /config/environments/production.rb
+/public/uploads/tmp/*
+/config/initializers/carrierwave.rb
