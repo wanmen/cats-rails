@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     has_many :videos
     has_many :articles
     has_many :lists
-    mount_uploader :thubmnail, ImageUploader
+    mount_uploader :thumbnail, ImageUploader
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
         user = User.where(:provider => auth.provider, :uid => auth.uid).first
         unless user

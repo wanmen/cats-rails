@@ -3,7 +3,7 @@
 <% @comments.each do |comment| %>
 <div class="row">
 	<figure class="col-sm-2 wm-user-info">
-        <img src="<%= comment.user.thumbnail_url %>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
+        <img src="<%= comment.user.thumbnail.url("medium") %>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
 	</figure>
 	<div class="col-sm-10 wm-user-comment">
 	  <h5>
