@@ -8,7 +8,7 @@
       <% @best.each do |recommend| %>
           <figure class="col-sm-6">
             <a class="thumbnail" href="/lists/<%= recommend.id %>.html">
-              <img src="<%= recommend.links[0].linkable.cover %>!medium" alt="" title="<%= recommend.title %>"/>
+              <img src="<%= recommend.cover %>!medium" alt="" title="<%= recommend.title %>"/>
             </a>
             <figcaption>
               <a href="/lists/<%= recommend.id %>.html" title="<%= recommend.title %>"><%= recommend.title %></a>
