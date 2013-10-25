@@ -55,7 +55,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def default_url
     # You can use FTP to upload a default image
-    "#{Setting.upload_url}/blank.png#{version_name}"
+    "wanmen/blank.png#{version_name}"
   end
 
   # Override url method to implement with "Image Space"

@@ -67,6 +67,9 @@ Cats::Application.routes.draw do
   post '/manage' => 'help#apply', :as => :help_apply
   
   post '/lists/:id/sort' => 'lists#sort', :as=> :sort
+
+  get '/upload' => 'uploads#new', :as => :upload_form
+  post '/upload' => 'uploads#create', :as => :upload
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

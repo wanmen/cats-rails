@@ -9,7 +9,7 @@
   <%= f.text_field :name %></div>
   
   <%= image_tag(resource.thumbnail.url("medium")) if resource.thumbnail? %>
-            <%= f.file_field :thumbnail %>
+  <%= f.file_field :thumbnail %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
