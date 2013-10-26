@@ -17,7 +17,7 @@ class UploadsController < ApplicationController
 
   # GET /uploads/new
   def new
-  	@upload = Upload.new
+    render layout: false
   end
 
   # GET /uploads/1/edit
@@ -29,9 +29,9 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
     if @upload.save
-    	render json: @upload
+      render layout: false
     else
-    	render status: 500
+      render json: @upload.errors, status: :unprocessable_entity
     end
   end
 
