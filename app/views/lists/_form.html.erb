@@ -20,6 +20,11 @@
     <%= f.select :list_type, @types %>
   </div>
   <div class="field">
+    封面：
+    <%= image_tag(@list.cover.url("medium")) if @list.cover? %>
+    <%= f.file_field :cover %>
+  </div>
+  <div class="field">
     描述：
     <%= f.text_area :summary %>
   </div>

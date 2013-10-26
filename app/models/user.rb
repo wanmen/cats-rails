@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     has_many :videos
     has_many :articles
     has_many :lists
-
+    mount_uploader :thumbnail, ImageUploader
     def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
         user = User.where(:provider => auth.provider, :uid => auth.uid).first
         unless user
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
                                provider:auth.provider,
                                uid:auth.uid,
                                email:auth.info.email,
-                               thumbnail: auth.info.image,
+                               remote_thumbnail_url: auth.info.image,
                                password:Devise.friendly_token[0,20])
         end
         user
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
             user = User.create(name:auth.extra.raw_info.name,
                                provider:auth.provider,
                                uid:auth.uid,
-                               thumbnail: auth.info.image,
+                               remote_thumbnail_url: auth.info.image,
                                email:"",
                                password:Devise.friendly_token[0,20])
         end
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
                                provider:auth.provider,
                                uid:auth.uid,
                                email:auth.info.email,
-                               thumbnail: auth.info.image,
+                               remote_thumbnail_url: auth.info.image,
                                password:Devise.friendly_token[0,20])
         end
         user
