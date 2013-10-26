@@ -19,7 +19,7 @@
     <section class="row wm-gallery">
       <figure class="col-sm-4 wm-show-video">
         <a href="<%= @video.url %>" class="thumbnail">
-          <img src="<%= @video.cover %>!big" alt="<%= @video.title %>" title="<%= @video.title %>">
+          <%= image_tag(@video.cover.url("medium")) %>
         </a>
         <figcaption>
           <a href="<%= @video.url %>">观看视频</a>

@@ -13,7 +13,7 @@
         <% @bestVideolist.each do |list|%>
         <figure class="col-sm-4">
           <a href="/lists/<%= list.id %>.html" class="thumbnail">
-            <img src="<%= list.links[0].linkable.cover %>!medium" alt="<%= list.title %>" title="<%= list.title %>"/>
+            <img src="<%= list.cover.url("medium") %>" alt="<%= list.title %>" title="<%= list.title %>"/>
           </a>
           <figcaption>
             <a href="/lists/<%= list.id %>.html" title="<%= list.title %>"><%= list.title %></a>

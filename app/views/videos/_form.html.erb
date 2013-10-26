@@ -12,15 +12,8 @@
   <div class="form-group">
     <a href="/uploader?return_url=<%=request.original_url%>" class="btn btn-success">上传封面</a>
   </div>
-  <% if params[:url] %>
-    <img src="<%= upyun_url + params[:url] %>!medium">
-    <%= f.text_field :cover, :value=> upyun_url+params[:url], :type=>:hidden %>
-  <% else %>
-    <div class="form-group">
-        <%= f.label "或者添加图片链接", :class=>"col-sm-3", :for=>"video_title" %>
-        <%= f.text_field :cover, :class=>"form-control", :placeholder=>'添加图片URL' %>
-    </div>
-  <% end %>
+  <%= image_tag(@video.cover.url("medium")) if @video.cover? %>
+  <%= f.file_field :cover %>
   <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
   <div class="form-group">
     <%= f.label "标题", :class=>"col-sm-3", :for=>"video_title" %>

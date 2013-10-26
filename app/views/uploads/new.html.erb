@@ -1,0 +1,8 @@
+<%= form_tag :upload , :multipart=> true, :id=> 'new_upload' do %>
+    <input name="upload[file]" type="file" />
+    <%= image_tag(@upload.file.url("medium")) if @upload.file? %>
+<% end %>
+<div id="status"></div>
+<% content_for :bottom_script do %>
+    <%= javascript_include_tag "upload.js" %>
+<% end %>

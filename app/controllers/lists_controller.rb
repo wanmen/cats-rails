@@ -132,7 +132,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:title, :summary, :list_type).merge(user_id: current_user.id)
+      params.require(:list).permit(:title, :summary, :list_type, :cover).merge(user_id: current_user.id)
     end
     
 

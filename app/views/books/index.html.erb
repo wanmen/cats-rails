@@ -13,7 +13,7 @@
           <% @bestBooklist.each do |booklist| %>
           <figure class="col-sm-4">
             <a href="/lists/<%=booklist.id %>.html" class="thumbnail">
-               <img src="<%=booklist.links[0].linkable.cover %>!medium" alt="">
+               <img src="<%=booklist.cover.url("medium") %>" alt="">
             </a>
             <figcaption>
               <a href="/lists/<%=booklist.id %>.html"><%=booklist.title%></a>
