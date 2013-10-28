@@ -68,6 +68,6 @@ class LinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:list_id,:description,:order_num).merge(user_id: current_user.id)
+    params.require(:link).permit(:list_id,:description).merge(user_id: current_user.id)
   end
 end

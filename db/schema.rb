@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025115727) do
+ActiveRecord::Schema.define(version: 20131028083019) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -107,8 +107,7 @@ ActiveRecord::Schema.define(version: 20131025115727) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description",               null: false
-    t.integer  "order_num",     default: 0, null: false
+    t.string   "description",   null: false
     t.integer  "user_id"
   end
 
