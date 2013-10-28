@@ -56,13 +56,6 @@ class User < ActiveRecord::Base
         end
         user
     end
-    def thumbnail_url()
-        tb = self.thumbnail
-        if tb && tb.start_with?('/assets/profile.png')
-            tb = ActionController::Base.helpers.asset_path 'profile.png'
-        end
-        tb
-    end
 
     def role?(role)
       self.role == role
