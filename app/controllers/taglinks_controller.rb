@@ -19,13 +19,13 @@ class TaglinksController < ApplicationController
   def create
     @taglinkable = find_taglinkable
     @taglink = Taglink.where("tag_id = ? AND tagable_id = ? AND tagable_type = ?", params[:taglink][:tag_id], @taglinkable.id, @taglinkable.class).take
-
     respond_to do |format|
       if @taglink != nil
         format.html { redirect_to @taglinkable, notice: '标签已存在'}
         format.json { render action: 'show', status: failed, location: @taglinkable }
       else
         @taglink = @taglinkable.taglinks.new(taglink_params)
+        @taglink[:user_id] = current_user.id
         if @taglink.save
           format.html { redirect_to @taglinkable, notice: '添加标签成功' }
           format.json { render action: 'show', status: :created, location: @taglinkable }
@@ -76,6 +76,6 @@ class TaglinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def taglink_params
-    params.require(:taglink).permit(:tag_id).merge(user_id: current_user.id)
+    params.require(:taglink).permit(:tag_id)
   end
 end
