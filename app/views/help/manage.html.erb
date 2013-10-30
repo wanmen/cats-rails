@@ -35,16 +35,16 @@
 	<dd>请注意操作的真实可靠性</dd>
 	<% elsif @role == ADMIN %>
 	<dt>您现在是万门大学管理员，可以做的事情是</dt>
-	<dd> <a class="btn btn-primary" href="/books/new.html">添加新书</a></dd>
-	<dd> <a class="btn btn-primary" href="/videos/new.html">添加视频</a></dd>
-	<dd> <a class="btn btn-primary" href="/articles/new.html">添加经验贴</a></dd>
-	<dd> <a class="btn btn-primary" href="/lists/new.html">添加单子</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_video_path%>>添加视频</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_article_path%>>添加经验贴</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加单子</a></dd>
 	<dd> <a class="btn btn-primary" href="/books/1.html">添加和删除内容对应的标签</a></dd>
 	<dd> <a class="btn btn-primary" href="/books/1.html">添加内容到你的单子</a></dd>
 	<dd> Email我们举报不受节操的学者和管理员</dd>
 	<% elsif @role == SUPERADMIN %>
 	<dt>您现在是万门大学超级管理员，可以做的事情是</dt>
-	<dd> <a class="btn btn-primary" href="/tags/new.html">添加</a>或修改标签</dd>
+	<dd> <a class="btn btn-primary" href=<%=new_tag_path%>>添加</a>或修改标签</dd>
 	<dd> 修改管理员创建的内容</dd>
 	<dd> 在图书馆中提拔某人或者贬低某人的职务</dd>
 	<%= form_for('') do |f| %>
@@ -71,6 +71,11 @@
       <button class="btn btn-primary" href="/tags/new.html">确认</button>
     </dd>
 	<% end %>
+
+    <% if can? :create, @xclub %>
+        <%= link_to '建立新的X社团', new_xclub_path %>
+    <% end %>
+
     <% end %>
   </dl>
 </section>

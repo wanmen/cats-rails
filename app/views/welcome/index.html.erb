@@ -7,7 +7,7 @@
         <section class="wm-banner">
           <div>
             <img src="<%= asset_path "wm-banner.jpg" %>" alt=""/>
-            <a class="btn btn-primary btn-lg" href=joinus>加入我们</a>
+            <a class="btn btn-primary btn-lg" href=<%=joinus_path%>>加入我们</a>
           </div>
         </section>
 
@@ -30,10 +30,12 @@
           </div>
 
           <div class="col-sm-3">
-            <figure>
-              <img src="<%= asset_path "projects/wanmenX.png" %>" height="50" alt=""/>
-              <figcaption>万门大学X</figcaption>
-            </figure>
+            <a href=<%=xclubs_path%>>
+              <figure>
+                <img src="<%= asset_path "projects/wanmenX.png" %>" height="50" alt=""/>
+                <figcaption>万门大学X</figcaption>
+              </figure>
+            </a>
             <p>静心笃学，自由讨论，积极分享——我们的大学需要这样一种氛围，我们的校园需要这样一个社团。</p>
           </div>
 
