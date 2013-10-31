@@ -16,7 +16,7 @@ Devise.setup do |config|
   require 'omniauth-weibo-oauth2'
   require 'omniauth-douban-oauth2'
 
-  config.omniauth :weibo, "3820802944", "9a4855c31ac4619fafb2b8f139c7b846", :strategy_class => OmniAuth::Strategies::Weibo
+  config.omniauth :weibo, "4110574502", "e8b93dfd67c4323855ad37989c808384", :strategy_class => OmniAuth::Strategies::Weibo
   config.omniauth :renren, "605dddd8b117428c97369dfb283eb796","911a006a5079492d8400374b0a76b9b8",:strategy_class => OmniAuth::Strategies::Renren, :scope => 'email'
   config.omniauth :douban, "0a953dd512413a691fbfb97f36c3af3b","5c202e480ae039f6",:strategy_class => OmniAuth::Strategies::Douban
 

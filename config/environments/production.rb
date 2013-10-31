@@ -91,5 +91,5 @@ Cats::Application.configure do
   :password             => 'DoNotReply2013',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
-  config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }
+  config.action_mailer.default_url_options = { :host => 'beta.wanmen.org' }
 end
