@@ -27,6 +27,12 @@ $(document).ready(function() {
       }
       return false;
     });
+    
+    $('.wm-inline-search li a').on('click', function() {
+      window.location = href.replace(/&sortby=[^&]*/, '') +
+        '&' + $(this).attr('href').slice(1);
+      return false;
+    });
 
     $('.wm-lg-left :checkbox').on('change', function() {
       var title = href.match(/&title=.+$/),
