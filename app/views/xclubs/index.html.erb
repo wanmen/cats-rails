@@ -29,12 +29,12 @@
     <section class="wm-recent-news">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-calendar"></span> 近期动态
-        <a class="wm-quick-link" href="">查看全部</a>
+        <!-- <a class="wm-quick-link" href="">查看全部</a> -->
       </h3>
       <ul>
         <% @latest.each do |event| %>
-            <li><%= event.time %>
-              <h5><%= event.title %></h5>
+            <li><%= event.time.to_date %>
+              <a href="<%=xclub_xevent_path(event[:xclub_id], event)%>"><h5><%= event.title %></h5></a>
               <span><%= event.location %></span>
             </li>
         <% end %>
@@ -45,55 +45,14 @@
         <span class="glyphicon glyphicon-flag"></span> 成员风采
         <!-- <a class="wm-quick-link" href="">查看全部</a> -->
       </h3>
-      <div>
-        <img class="img-rounded" src="img/wanmenX/p1.png" height="50" alt=""/>
-        <a href="">万门大学X武汉大学</a>
-      </div>
-      <div>
-        <img class="img-rounded" src="img/wanmenX/p2.png" height="50" alt=""/>
-        <a href="">万门大学X复旦大学</a>
-      </div>
+      <% @xclubs.each do |xclub| %>
+          <div>
+            <img class="img-rounded" src="<%= asset_path "wanmenX/p1.png" %>" height="50" alt=""/>
+            <a href="/xclubs/<%= xclub.id %>" title=""<%= xclub.name %>"><%= xclub.name %></a> <br>
+          </div>
+      <% end %>
     </section>
   </aside>
-
-
-<h3>最新动态</h3>
-<table>
-  <thead>
-    <tr>
-      <th>标题</th>
-      <th>简介</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @latest.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.summary %></td>
-        <span class="wm-quick-link">
-        <td><%= link_to 'Show', xclub_xevent_path(event[:xclub_id], event) %></td>
-        <% if can? :update, event %>
-          <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
-        <% end %>
-        <% if can? :destroy, event %>
-          <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        </span>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<hr>
-
-<h3>成员列表</h3>
-<% @xclubs.each do |xclub| %>
-    <a href="/xclubs/<%= xclub.id %>" title=""<%= xclub.name %>"><%= xclub.name %></a> <br>
-<% end %>
 
 <br>
 

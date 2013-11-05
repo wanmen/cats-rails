@@ -1,5 +1,17 @@
-<h1>New xclub</h1>
+<% content_for :head do %>
+    <title>新建X社团 | 万门大学</title>
+<% end %>
 
-<%= render 'form' %>
+<main class="container" role="main">
+  <h3 class="page-header text-center">
+    <span class="wm-title">新建X社团</span>
+    <span class="wm-quick-link">
+      <a href="JavaScript:window.history.back();">返回</a>
+    </span>
+  </h3>
+  <%= render 'form' %>
+</main>
 
-<%= link_to 'Back', xclubs_path %>
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/markdown' %>
+<% end %>
