@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords" content="网络大学，高等教育"/>
     <meta name="description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。"/>
+    <!-- for weibo social sdks -->
+    <meta property="wb:webmaster" content="ffe3eeb8f9094f74" />
     <!--[if IE]>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
@@ -59,21 +61,21 @@
               <a href=<%=help_manage_path%>>管理</a>
             </li>
             </ul>
-                <div class="dropdown navbar-right">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%= current_user.thumbnail_url %>" height="50" alt=""/>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "修改",edit_user_registration_path %> </li>
-                    <li> <%= link_to "登出", destroy_user_session_path, :method => :get %>
-                    </li>
-                  </ul>
-                </div>
+            <div class="dropdown navbar-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="<%= current_user.thumbnail_url("medium") %>" height="50" alt=""/>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "修改",edit_user_registration_path %> </li>
+                <li> <%= link_to "登出", destroy_user_session_path, :method => :get %></li>
+              </ul>
+            </div>
             <% else %>
-                <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
+            <a class="navbar-right navbar-btn btn btn-primary" href="/users/sign_in">登录</a>
             <% end %>
-          <form class="navbar-right navbar-form" action="/search" role="search">
+          <form class="navbar-right navbar-form" action="/search" method="get" role="search">
             <div class="input-group">
-              <input class="form-control" type="search" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
+              <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>

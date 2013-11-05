@@ -68,6 +68,7 @@ class BooksController < ApplicationController
         format.json { render action: 'show', status: :failed, location: @book }
       else
         @book = Book.new(book_params)
+        @book[:user_id] = current_user.id
         if @book.save
           format.html { redirect_to @book, notice: '您已成功添加新书' }
           format.json { render action: 'show', status: :created, location: @book }
@@ -111,6 +112,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator).merge(user_id: current_user.id)
+      params.require(:book).permit(:title, :dbid, :cover, :summary, :isbn, :author, :publisher, :url, :translator)
     end
 end

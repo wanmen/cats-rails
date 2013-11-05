@@ -19,5 +19,6 @@ module Cats
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = "zh-CN"
+    OmniAuth.config.full_host="http://beta.wanmen.org"
   end
 end

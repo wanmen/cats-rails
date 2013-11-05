@@ -55,7 +55,7 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
-
+    @video[:user_id] = current_user.id
     respond_to do |format|
       if @video.save
         format.html { redirect_to @video, notice: '添加视频成功' }

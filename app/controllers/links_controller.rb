@@ -19,6 +19,7 @@ class LinksController < ApplicationController
   def create
     @linkable = find_linkable
     @link = @linkable.links.new(link_params)
+    @link[:user_id] = current_user.id
     respond_to do |format|
       if @link.save
         format.html { redirect_to @linkable, notice: '成功添加到单子' }
@@ -68,6 +69,6 @@ class LinksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:list_id,:description,:order_num).merge(user_id: current_user.id)
+    params.require(:link).permit(:list_id,:description)
   end
 end

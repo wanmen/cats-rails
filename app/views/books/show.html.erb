@@ -18,7 +18,7 @@
     </h3>
     <section class="row wm-gallery">
       <figure class="col-sm-4">
-        <img src="<%= @book.cover %>!medium" alt="" title="<%= @book.title %>">
+        <%= image_tag(@book.cover.url("medium")) %>
       </figure>
       <div class="col-sm-8 wm-metadata">
         <span>作者</span> <%= @book.author %> <br/>

@@ -1,7 +1,0 @@
-<<<<<<< HEAD
-<span>有<%= @rates.length %>人评分</span> 
-<div id="star" data-score="<%= @rates.average(:star) %>"></div>
-=======
-<span class="wm-lg-left">有<%= @rates.length %>人评分</span> 
-<div id="star" data-score="<%= @rateable.rate %>"></div>
->>>>>>> 87ea5187d383fed9a8a7e8e23ac15f87f0efceb1

@@ -7,13 +7,13 @@
     <section class="wm-gallery">
       <h3 class="page-header">
         <span class="glyphicon glyphicon-star"></span> 精选视频集
-        <a class="wm-quick-link" href="/search?list=video">查看全部</a>
+        <a class="wm-quick-link" href="/search?list=video&sortby=rate">查看全部</a>
       </h3>
       <div class="row">
         <% @bestVideolist.each do |list|%>
         <figure class="col-sm-4">
           <a href="/lists/<%= list.id %>.html" class="thumbnail">
-            <img src="<%= list.links[0].linkable.cover %>!medium" alt="<%= list.title %>" title="<%= list.title %>"/>
+            <img src="<%= list.cover.url("medium") %>" alt="<%= list.title %>" title="<%= list.title %>"/>
           </a>
           <figcaption>
             <a href="/lists/<%= list.id %>.html" title="<%= list.title %>"><%= list.title %></a>
@@ -30,7 +30,7 @@
     <section>
       <h3 class="page-header">
         <span class="glyphicon glyphicon-th-list"></span> 热门视频
-        <a class="wm-quick-link" href="/search?type=video">查看全部</a>
+        <a class="wm-quick-link" href="/search?type=video&sortby=popularity">查看全部</a>
       </h3>
       <ol class="wm-list-popular">
         <% @popular.each do |video| %>

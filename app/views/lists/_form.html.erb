@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-  <%= f.text_field :user_id, :type=>:hidden, :value=>current_user[:id]%>
   <div class="field">
     标题：
     <%= f.text_field :title %>
@@ -18,6 +17,11 @@
   <div class="field">
     类型：
     <%= f.select :list_type, @types %>
+  </div>
+  <div class="field">
+    封面：
+    <%= image_tag(@list.cover.url("medium")) if @list.cover? %>
+    <%= f.file_field :cover %>
   </div>
   <div class="field">
     描述：
