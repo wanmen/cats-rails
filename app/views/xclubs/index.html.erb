@@ -47,7 +47,7 @@
       </h3>
       <% @xclubs.each do |xclub| %>
           <div>
-            <img class="img-rounded" src="<%= asset_path "wanmenX/p1.png" %>" height="50" alt=""/>
+            <%=image_tag(xclub.thumbnail.url("medium"), class: :"img-rounded", height: :"50", alt: :"")%>
             <a href="/xclubs/<%= xclub.id %>" title=""<%= xclub.name %>"><%= xclub.name %></a> <br>
           </div>
       <% end %>

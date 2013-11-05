@@ -6,7 +6,7 @@
   <aside class="col-sm-3 text-center wm-member-info">
     <section>
       <h3><%= @xclub.name %></h3>
-      <img class="img-rounded" src="<%= asset_path "wanmenX/p1.png" %>" alt=""/>
+      <%=image_tag(@xclub.thumbnail.url("medium"), class: :"img-rounded", alt: :"")%>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="">加入我们</a></li>
         <li><a href="">关于我们</a></li>
