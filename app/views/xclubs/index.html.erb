@@ -3,8 +3,59 @@
 <% end %>
 
 <main class="container" role="main">
+  <article class="col-sm-9 wm-skip-top">
+    <section class="media well">
+      <img class="pull-left media-object" src="<%= asset_path "projects/wanmenX.png" %>" height="50" alt=""/>
+      <div class="media-body">
+        <h3 class="media-heading text-primary">万门大学X</h3>
+        <p>“万门大学X”是一个以在校大学生为主要受众，以各个高校为单位，以有规划性的共同学习、讨论、分享为宗旨，以通过倡导学生自身的改变而改善中国高校学习环境为目标的全国性青年发展团体。“X”指的独立于万门大学总部运作，在申请及认证通过后，社团可自行负责组织的运营与管理以及具体活动形式和主题的设计工作。</p>
+      </div>
+    </section>
 
-<h1>万门大学X</h1>
+    <section class="wm-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-star"></span> 精选活动
+      </h3>
+      <div class="row wm-activity">
+
+      </div>
+      <div class="row wm-activity">
+
+      </div>
+    </section>
+  </article>
+
+  <aside class="col-sm-3">
+    <section class="wm-recent-news">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-calendar"></span> 近期动态
+        <a class="wm-quick-link" href="">查看全部</a>
+      </h3>
+      <ul>
+        <% @latest.each do |event| %>
+            <li><%= event.time %>
+              <h5><%= event.title %></h5>
+              <span><%= event.location %></span>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="wm-member-list">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-flag"></span> 成员风采
+        <!-- <a class="wm-quick-link" href="">查看全部</a> -->
+      </h3>
+      <div>
+        <img class="img-rounded" src="img/wanmenX/p1.png" height="50" alt=""/>
+        <a href="">万门大学X武汉大学</a>
+      </div>
+      <div>
+        <img class="img-rounded" src="img/wanmenX/p2.png" height="50" alt=""/>
+        <a href="">万门大学X复旦大学</a>
+      </div>
+    </section>
+  </aside>
+
 
 <h3>最新动态</h3>
 <table>
@@ -45,8 +96,6 @@
 <% end %>
 
 <br>
-
-<hr>
 
 </main>
 
