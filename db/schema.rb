@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131028084039) do
+ActiveRecord::Schema.define(version: 20131106084323) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20131028084039) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description",   null: false
+    t.string   "description"
     t.integer  "user_id"
   end
 
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(version: 20131028084039) do
     t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover"
   end
 
   create_table "xmembers", force: true do |t|
