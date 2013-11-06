@@ -11,6 +11,12 @@
         <li class="active"><a href="">加入我们</a></li>
         <li><a href="">关于我们</a></li>
         <li><a href="">联系我们</a></li>
+        <% if can? :edit, @xclub %>
+          <li><%= link_to '添加新活动', new_xclub_xevent_path(@xclub) %></li>
+        <% end %>
+        <% if can? :destroy, @xclub %>
+          <li><%= link_to '删除本社团', xclub_path(@xclub), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <% end %>
       </ul>
     </section>
   </aside>

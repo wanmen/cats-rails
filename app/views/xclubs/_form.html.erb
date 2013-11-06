@@ -3,7 +3,7 @@
   <div class="form-group">
     <label class="col-sm-3" for="xclub_thumbnail">头像*</label>
     <%= image_tag(@xclub.thumbnail.url("medium")) if @xclub.thumbnail? %>
-    <%= f.file_field :thumbnail %>
+    <%= f.file_field :thumbnail, required: :true %>
   </div>
   <div class="form-group">
     <label class="col-sm-3" for="xclub_name">社团名称*</label>

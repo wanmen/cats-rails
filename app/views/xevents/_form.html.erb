@@ -1,35 +1,36 @@
-  <% if @xevent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@xevent.errors.count, "error") %> prohibited this xevent from being saved:</h2>
-
-      <ul>
-      <% @xevent.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for [@xclub, @xevent], url: xclub_xevents_path, html: {method: :post} do |f| %>
+<div class="col-sm-10">
+  <div class="form-group">
+    <label class="col-sm-3" for="xevent_title">活动标题*</label>
+    <%= f.text_field :title, class: :'form-control', placeholder: :'请输入活动标题(必填)', required: :true %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xevent_summary">活动简介*</label>
+    <%= f.text_area :summary, class: :'col-sm-offset-1 form-control', placeholder: :'请输入活动简介(必填)', required: :true %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xevent_location">活动地点*</label>
+    <%= f.text_field :location, class: :'form-control', placeholder: :'请输入活动地点(必填)', required: :true %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xevent_time">活动时间*</label>
+    <%= f.datetime_select :time, class: :'form-control' %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="wmd-input">活动内容*</label>
+    <div class="col-sm-9 wm-reset">
+      <a class="btn btn-primary btn-sm pull-right" href="<%=markdowneditor_path%>">如何编辑？</a>
+      <br/>
+      <div class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+        <%= f.text_area :content, id: :"wmd-input",  class: :"wmd-input", title: :"请在此编辑书评" ,required: :true%>
+      </div>
+      <div class="wmd-panel wmd-preview" id="wmd-preview"></div>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="text-center">
+    <button class="col-sm-offset-5 btn btn-primary" type="submit">完成</button>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.datetime_select :time %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+<% end %>
