@@ -60,4 +60,30 @@ class User < ActiveRecord::Base
     def role?(role)
       self.role == role
     end
+
+    def roles
+      ret = []
+      if self.role ==  BLACKLIST
+        ret.append('blacklist')
+      elsif self.role == BEGINNER
+        ret.append('beginner')
+      elsif self.role == PRESCHOLAR
+        ret.append('prescholar')
+      elsif self.role == SCHOLAR
+        ret.append('scholar')
+      elsif self.role == PREADMIN
+        ret.append('preadmin')
+      elsif self.role == ADMIN
+        ret.append('admin')
+      elsif self.role == SUPERADMIN
+        ret.append('superadmin')
+      end
+
+      # member or admin of xclub
+      Xmember.where('user_id = ?', self.id).each do |m|
+        ret.append(m.role)
+      end
+
+      return ret
+    end
 end

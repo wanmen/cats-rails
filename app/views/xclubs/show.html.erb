@@ -1,39 +1,74 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @xclub.name %>
-</p>
-
-<p>
-  <strong>Started:</strong>
-  <%= @xclub.started %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @xclub.summary %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @xclub.thumbnail %>
-</p>
-
-<h3>最新动态</h3>
-<tbody>
-<% @latest.each do |event| %>
-    <tr>
-      <td><%= event.title %></td>
-      <td><%= event.summary %></td>
-      <td><%= link_to 'Show', xclub_xevent_path(event[:xclub_id], event) %></td>
-      <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
-      <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr><br>
+<% content_for :head do %>
+    <title> X社团 | 万门大学</title>
 <% end %>
-</tbody>
 
-<%= link_to '新建活动', new_xclub_xevent_path(@xclub) %> <br>
+<main class="container" role="main">
+  <aside class="col-sm-3 text-center wm-member-info">
+    <section>
+      <h3><%= @xclub.name %></h3>
+      <%=image_tag(@xclub.thumbnail.url("medium"), class: :"img-rounded", alt: :"")%>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="">加入我们</a></li>
+        <li><a href="">关于我们</a></li>
+        <li><a href="">联系我们</a></li>
+        <% if can? :edit, @xclub %>
+          <li><%= link_to '添加新活动', new_xclub_xevent_path(@xclub) %></li>
+        <% end %>
+        <% if can? :destroy, @xclub %>
+          <li><%= link_to '删除本社团', xclub_path(@xclub), method: :delete, data: { confirm: '确定要删除此社团？(操作不可逆)' } %></li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
 
-<%= link_to 'Edit', edit_xclub_path(@xclub) %> |
-<%= link_to 'Back', xclubs_path %>
+  <article class="col-sm-9">
+    <section class="wm-recent-events">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-calendar"></span> 近期动态
+        <!-- <a class="wm-quick-link" href="">查看全部</a> -->
+      </h3>
+      <% @latest.each do |event| %>
+      <div class="container">
+        <div class="col-sm-3 text-right">
+          <span class="text-primary"><%= transform_date(event.time.to_date.to_s) %></span><br/>
+          <span class="text-primary"><%=event.time.strftime("%H:%M")%></span>
+        </div>
+        <div class="col-sm-6">
+          <span><%= event.title %></span><br/>
+          <span class="text-muted"><%= event.location %></span>
+        </div>
+        <div class="col-sm-3 text-center wm-md-top">
+          <% if event.time > DateTime.now %>
+            <span class="text-success">敬请期待</span>
+          <% else %>
+            <span class="text-danger">已结束</span>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </section>
+
+    <section class="wm-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-lock"></span> 往期活动
+      </h3>
+      <div class="row wm-activity">
+        <div class="col-sm-4">
+          <div class="thumbnail">
+            <a href="">
+              <img src="<%= asset_path "wanmenX/x1.png" %>" alt="" title="万门谈——信仰与文化"/>
+            </a>
+            <h5>万门谈——信仰与文化</h5>
+            <a href=""><%=@xclub.name%></a><br/>
+            <span>时间：2013-07-27 09:00</span><br/>
+            <span>地点：北京海淀区中关村科学院南</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/rails' %>
+<% end %>

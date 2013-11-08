@@ -1,6 +1,8 @@
 class XclubsController < ApplicationController
   before_action :set_xclub, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /xclubs
   # GET /xclubs.json
   def index
@@ -11,8 +13,8 @@ class XclubsController < ApplicationController
   # GET /xclubs/1
   # GET /xclubs/1.json
   def show
-    # get the latest 5 event of the current xclub
-    @latest = Xevent.where("xclub_id = ?", @xclub.id).order("created_at DESC").limit(5)
+    # get the latest 3 event of the current xclub
+    @latest = Xevent.where("xclub_id = ?", @xclub.id).order("created_at DESC").limit(3)
   end
 
   # GET /xclubs/new
@@ -74,4 +76,15 @@ class XclubsController < ApplicationController
     def xclub_params
       params.require(:xclub).permit(:name, :started, :summary, :thumbnail)
     end
+
+    #
+    def transform_date(date)
+      puts date
+      date[4] = '年'
+      date[7] = '月'
+      date << '日'
+      date
+    end
+
+  helper_method :transform_date
 end

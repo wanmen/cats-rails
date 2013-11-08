@@ -12,7 +12,7 @@
         <% end %>
         <a href="JavaScript:window.history.back();">返回</a>
         <% if can? :destroy, @book %>
-          |<%= link_to '删除', book_path(@book), method: :delete, data: { confirm: '请确认要删除此图书?' } %>
+          | <%= link_to '删除', book_path(@book), method: :delete, data: { confirm: '请确认要删除此图书?' } %>
         <% end %>
       </span>
     </h3>

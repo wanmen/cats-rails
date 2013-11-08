@@ -3,48 +3,58 @@
 <% end %>
 
 <main class="container" role="main">
+  <article class="col-sm-9 wm-skip-top">
+    <section class="media well">
+      <img class="pull-left media-object" src="<%= asset_path "projects/wanmenX.png" %>" height="50" alt=""/>
+      <div class="media-body">
+        <h3 class="media-heading text-primary">万门大学X</h3>
+        <p>“万门大学X”是一个以在校大学生为主要受众，以各个高校为单位，以有规划性的共同学习、讨论、分享为宗旨，以通过倡导学生自身的改变而改善中国高校学习环境为目标的全国性青年发展团体。“X”指的独立于万门大学总部运作，在申请及认证通过后，社团可自行负责组织的运营与管理以及具体活动形式和主题的设计工作。</p>
+      </div>
+    </section>
 
-<h1>万门大学X</h1>
+    <section class="wm-gallery">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-star"></span> 精选活动
+      </h3>
+      <div class="row wm-activity">
 
-<h3>最新动态</h3>
-<table>
-  <thead>
-    <tr>
-      <th>标题</th>
-      <th>简介</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+      </div>
+      <div class="row wm-activity">
 
-  <tbody>
-    <% @latest.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.summary %></td>
-        <span class="wm-quick-link">
-        <td><%= link_to 'Show', xclub_xevent_path(event[:xclub_id], event) %></td>
-        <td><%= link_to 'Edit', edit_xclub_xevent_path(event[:xclub_id], event) %></td>
-        <td><%= link_to 'Destroy', xclub_xevent_path(event[:xclub_id], event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </span>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </section>
+  </article>
 
-<hr>
-
-<h3>成员列表</h3>
-<% @xclubs.each do |xclub| %>
-    <a href="/xclubs/<%= xclub.id %>" title=""<%= xclub.name %>"><%= xclub.name %></a> <br>
-<% end %>
+  <aside class="col-sm-3">
+    <section class="wm-recent-news">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-calendar"></span> 近期动态
+        <!-- <a class="wm-quick-link" href="">查看全部</a> -->
+      </h3>
+      <ul>
+        <% @latest.each do |event| %>
+            <li><%= event.time.to_date %>
+              <a href="<%=xclub_xevent_path(event[:xclub_id], event)%>"><h5><%= event.title %></h5></a>
+              <span><%= event.location %></span>
+            </li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="wm-member-list">
+      <h3 class="page-header">
+        <span class="glyphicon glyphicon-flag"></span> 成员风采
+        <!-- <a class="wm-quick-link" href="">查看全部</a> -->
+      </h3>
+      <% @xclubs.each do |xclub| %>
+          <div>
+            <%=image_tag(xclub.thumbnail.url("medium"), class: :"img-rounded", height: :"50", alt: :"")%>
+            <a href="/xclubs/<%= xclub.id %>" title=""<%= xclub.name %>"><%= xclub.name %></a> <br>
+          </div>
+      <% end %>
+    </section>
+  </aside>
 
 <br>
-
-<hr>
-
-<%= link_to 'New Xclub', new_xclub_path %>
 
 </main>
 

@@ -51,14 +51,14 @@
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
-            <li><a href="/books"><span class="glyphicon glyphicon-book"></span> 图书</a></li>
-            <li><a href="/videos"><span class="glyphicon glyphicon-facetime-video"></span> 视频</a></li>
-            <li><a href="/articles"><span class="glyphicon glyphicon-edit"></span> 经验贴</a></li>
+            <li><a href=<%=books_path%>><span class="glyphicon glyphicon-book"></span> 图书</a></li>
+            <li><a href=<%=videos_path%>><span class="glyphicon glyphicon-facetime-video"></span> 视频</a></li>
+            <li><a href=<%=articles_path%>><span class="glyphicon glyphicon-edit"></span> 经验贴</a></li>
           </ul>
            <% if user_signed_in? %>
             <ul class="nav navbar-nav">
             <li>
-              <a href="/manage.html" class="">管理</a>
+              <a href=<%=help_manage_path%>>管理</a>
             </li>
             </ul>
             <div class="dropdown navbar-right">
@@ -107,10 +107,10 @@
           <img src="<%= asset_path "favicon.png" %>" height="48" alt="" />
           &copy; 2013 万门公益 &ensp; 京ICP备13038614号-1
           <div class="pull-right">
-            <a href="/aboutus.html">关于万门</a> |
-            <a href="/joinus.html">加入我们</a> |
-            <a href="/helpme.html">帮助中心</a> |
-            <a href="/terms.html">免责声明</a>
+            <a href=<%=aboutus_path%>>关于万门</a> |
+            <a href=<%=joinus_path%>>加入我们</a> |
+            <a href=<%=helpme_path%>>帮助中心</a> |
+            <a href=<%=terms_path%>>免责声明</a>
           </div>
         </address>
       </div>

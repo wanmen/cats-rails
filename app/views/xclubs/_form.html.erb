@@ -1,33 +1,25 @@
-<%= form_for(@xclub) do |f| %>
-  <% if @xclub.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@xclub.errors.count, "error") %> prohibited this xclub from being saved:</h2>
+<%= form_for @xclub, :html =>{:class =>"container form-horizontal wm-form", :role =>"form", :multipart => true} do |f| %>
+<div class="col-sm-10">
+  <div class="form-group">
+    <label class="col-sm-3" for="xclub_thumbnail">头像*</label>
+    <%= image_tag(@xclub.thumbnail.url("medium")) if @xclub.thumbnail? %>
+    <%= f.file_field :thumbnail, required: :true %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xclub_name">社团名称*</label>
+    <%= f.text_field :name, class: :'form-control', placeholder: :'请输入社团名称(必填)', required: :true %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xclub_started">建立时间*</label>
+    <%= f.date_select :started, class: :'form-control' %>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3" for="xclub_summary">社团简介*</label>
+    <%= f.text_field :summary, class: :'col-sm-offset-1 form-control', placeholder: :'请输入社团简介(必填)', required: :true %>
+  </div>
 
-      <ul>
-      <% @xclub.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="text-center">
+    <button class="col-sm-offset-5 btn btn-primary" type="submit">完成</button>
   </div>
-  <div class="field">
-    <%= f.label :started %><br>
-    <%= f.date_select :started %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :thumbnail %><br>
-    <%= f.text_field :thumbnail %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

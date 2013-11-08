@@ -1,6 +1,6 @@
 <span>已加入<%= @links.length %>个书单</span> 
 <% @links.each do |link| %>
     <a href="/lists/<%= link.list.id %>"><%= link.list.title %></a>
-    <% if can? :destroy, link %><%= link_to '删除', '/links/'+link.id.to_s, method: :delete, data: { confirm: '请再次确认删除' } %>|
+    <% if can? :destroy, link %><%= link_to '删除', '/links/'+link.id.to_s, method: :delete, data: { confirm: '请再次确认删除' } %> |
     <% end %>
 <% end %>

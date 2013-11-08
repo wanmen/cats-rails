@@ -48,13 +48,13 @@
 	<dd> Email我们举报不受节操的学者和管理员</dd>
 	<% elsif @role == SUPERADMIN %>
 	<dt>您现在是万门大学超级管理员，可以做的事情是</dt>
-        <dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
-        <dd> <a class="btn btn-primary" href=<%=new_video_path%>>添加视频</a></dd>
-        <dd> <a class="btn btn-primary" href=<%=new_article_path%>>添加经验贴</a></dd>
-        <dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加单子</a></dd>
-	<dd> <a class="btn btn-primary" href="/tags/new.html">添加</a>或修改标签</dd>
+    <dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
+    <dd> <a class="btn btn-primary" href=<%=new_video_path%>>添加视频</a></dd>
+    <dd> <a class="btn btn-primary" href=<%=new_article_path%>>添加经验贴</a></dd>
+    <dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加单子</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_tag_path%>>添加</a>或修改标签</dd>
 	<dd> 修改管理员创建的内容</dd>
-	<dd> 提拔某人或者贬低某人的职务</dd>
+	<dd> 在图书馆中提拔某人或者贬低某人的职务</dd>
 	<%= form_for('') do |f| %>
 	<dd>把
 	 <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
@@ -68,8 +68,23 @@
 	</select>
 	<button class="btn btn-primary" href="/tags/new.html">确认</button>
 	</dd>
+    <% end %>
+        <dd> 在万门Ｘ项目中提拔某人或者贬低某人的职务</dd>
+    <%= form_for('', url: { action: 'xclubadmin' }) do |f| %>
+    <dd>把
+     <%= f.select :user_id, @users.map{ |c| [c.email, c.id] } %>
+     提拔
+     <%= f.select :xclub_id, @xclubs.map{ |x| [x.name, x.id] } %>
+     的管理员
+      <button class="btn btn-primary" href="">确认</button>
+    </dd>
 	<% end %>
-	<% end %>
+
+    <% if can? :create, @xclub %>
+        <%= link_to '建立新的X社团', new_xclub_path %>
+    <% end %>
+
+    <% end %>
   </dl>
 </section>
 </article>

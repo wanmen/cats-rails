@@ -1,6 +1,7 @@
 class XeventsController < ApplicationController
   before_action :set_xevent, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
 
   def index
     @xevents = Xevent.all
@@ -27,7 +28,7 @@ class XeventsController < ApplicationController
 
     respond_to do |format|
       if @xevent.save
-        format.html { redirect_to xclub_xevent_path(@xevent[:xclub_id], @xevent), notice: '新活动创建成功' }
+        format.html { redirect_to xclub_path(find_xclub), notice: '新活动创建成功' }
         format.json { render action: 'show', status: :created, location: @xevent }
       else
         format.html { render action: 'new' }
