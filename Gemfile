@@ -30,6 +30,7 @@ gem 'omniauth'
 gem 'omniauth-weibo-oauth2'
 gem 'omniauth-renren-oauth2'
 gem 'omniauth-douban-oauth2'
+gem 'omniauth-qq-connect'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
