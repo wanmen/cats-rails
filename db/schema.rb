@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20131106084323) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+    t.string   "description",   null: false
     t.integer  "user_id"
   end
 

@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 	 # store last url - this is needed for post-login redirect to whatever the user last visited.
 	    if (request.fullpath != "/users/sign_in" && \
 	        request.fullpath != "/users/sign_up" && \
+          request.fullpath != "/users/sign_out" && \
 	        request.fullpath[0..10] != "/users/auth" && \
 	        request.fullpath != "/users/password" && \
 	        !request.xhr?) # don't store ajax calls
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
 
    def after_sign_in_path_for(resource)
 	  session[:previous_url] || root_path
+   end
+
+   def after_sign_out_path_for(resource)
+    session[:previous_url] || root_path
    end
 
   # Handle CanCan exception
