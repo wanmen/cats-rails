@@ -93,6 +93,9 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    omniauth-qq-connect (0.2.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-renren-oauth2 (0.0.2)
       omniauth (~> 1.1)
       omniauth-oauth2 (~> 1.1)
@@ -181,6 +184,7 @@ DEPENDENCIES
   mysql2
   omniauth
   omniauth-douban-oauth2
+  omniauth-qq-connect
   omniauth-renren-oauth2
   omniauth-weibo-oauth2
   rails (= 4.0.0)
