@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery-ui
 //= require bootstrap
+//= require jquery.placeholder
 //= require wm-dom
