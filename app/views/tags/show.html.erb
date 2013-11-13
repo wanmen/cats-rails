@@ -10,10 +10,8 @@
     </h3>
     <section>
         <%= render :partial => 'follows/follows' %>
-		<% @tag.follows.each do |follow| %>
-		<a href="/scholars/<%=follow.user.id %>"><%=follow.user.name %></a>
-		<% end %>
 		<%= render :partial => 'follows/form' %>
+        <br/>
 		<%= render :partial => 'likes/likes' %>
 		<%= render :partial => 'likes/form' %>
     </section>

@@ -2,30 +2,19 @@
   <title>修改标签 | 万门大学</title>
 <% end %>
 
-<h1>Editing tag</h1>
-
-<%= form_for(@tag) do |f| %>
-  <% if @tag.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-
-      <ul>
-      <% @tag.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<main class="container" role="main">
+  <h3 class="page-header text-center">
+    <span class="wm-title">修改标签</span>
+    <span class="wm-quick-link">
+      <% if can? :destroy, @tag %>
+          <%= link_to '删除此标签', tag_path(@tag), method: :delete, data: { confirm: '请确认要删除此标签?' } %> |
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <a href="JavaScript:window.history.back();"> 返回</a>
+    </span>
+  </h3>
+  <%= render 'form' %>
+</main>
 
-  <div class="field">
-    标签名<br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit "修改标签名", :name =>"update" %>
-    <%= f.submit "删除标签", :name =>"delete" %>   
-  </div>
+<% content_for :bottom_script do %>
+    <%= render :partial => 'layouts/rails' %>
 <% end %>
-
-<%= link_to '显示', @tag %> |
-<%= link_to '返回标签列表', tags_path %>

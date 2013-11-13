@@ -1,15 +1,3 @@
-<%= form_for [@followable, @follow] do |f| %>
-  <% if @follow.errors.any? %>
-    <div class="error_messages">
-      <h2>Please correct the following errors.</h2>
-      <ul>
-      <% @follow.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit "关注" %>
-  </div>
+<%= form_for [@followable, @follow], :html=>{:class=>"wm-inline-block",:role=>"form"} do |f| %>
+    <%= f.submit "关注", :class=>"btn btn-default btn-xs" %>
 <% end %>

@@ -12,7 +12,6 @@ class HelpController < ApplicationController
   end
 
   def apply
-    puts 'In apply'
     @role = current_user[:role]
     if (@role == BEGINNER)
     	current_user[:role]=PRESCHOLAR

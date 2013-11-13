@@ -2,8 +2,12 @@
   <title>添加新标签 | 万门大学</title>
 <% end %>
 
-<h1>添加标签</h1>
-
-<%= render 'form' %>
-
-<%= link_to '返回标签列表', tags_path %>
+<main class="container" role="main">
+  <h3 class="page-header text-center">
+    <span class="wm-title">添加新标签</span>
+    <span class="wm-quick-link">
+      <a href="JavaScript:window.history.back();">返回</a>
+    </span>
+  </h3>
+  <%= render 'form' %>
+</main>

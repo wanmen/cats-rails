@@ -24,10 +24,14 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
+    @parentTags = Tag.where(parent: 0).unshift(Tag.new(id: 0, name: ' '))
+    @selected = ' '
   end
 
   # GET /tags/1/edit
   def edit
+    @parentTags = Tag.where(parent: 0).unshift(Tag.new(id: 0, name: ' '))
+    @selected = @tag.parent
   end
 
   # POST /tags
@@ -56,7 +60,6 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
-    
     respond_to do |format|
       if params[:delete]
         @tag.destroy
@@ -92,6 +95,6 @@ class TagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:tag).permit(:name, :parent)
     end
 end
