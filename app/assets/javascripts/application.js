@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.placeholder
 //= require jquery-ui
 //= require bootstrap
 //= require wm-dom

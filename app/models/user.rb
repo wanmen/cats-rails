@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     # :token_authenticatable, :confirmable,
     # :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:douban,:weibo,:renren]
+        :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:douban,:weibo,:renren,:qq_connect]
     has_many :books
     has_many :videos
     has_many :articles
@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     def self.find_for_qq_oauth(auth, signed_in_resource=nil)
         user = User.where(:provider => auth.provider, :uid => auth.uid).first
         unless user
-            user = User.create(name:auth.extra.raw_info.name,
+            user = User.create(name:auth.info.nickname,
                                provider:auth.provider,
                                uid:auth.uid,
                                email:auth.info.email,
