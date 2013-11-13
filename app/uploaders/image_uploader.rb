@@ -64,7 +64,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     version_name = version_name.to_s
 
     return @url if version_name.blank?
-    return "/assets/profile.png" if @url.include? "profile.png"
 
     if not version_name.in?(IMAGE_UPLOADER_ALLOW_IMAGE_VERSION_NAMES)
       # To protected version name using, when it not defined, this will be give an error message in development environment

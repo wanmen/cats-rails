@@ -7,8 +7,15 @@
   <%= f.email_field :email, :autofocus => true %></div>
   <div><%= f.label :name,"昵称" %><br />
   <%= f.text_field :name %></div>
+
+  <% if resource.thumbnail? %>
+    <% if resource.thumbnail_url.include? "profile.png" %>
+      <%= image_tag(asset_path("profile.png"))%>
+    <% else %>
+      <%= image_tag(resource.thumbnail.url("medium"))%>
+    <% end %>
+  <% end %>
   
-  <%= image_tag(resource.thumbnail.url("medium")) if resource.thumbnail? %>
   <%= f.file_field :thumbnail %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
