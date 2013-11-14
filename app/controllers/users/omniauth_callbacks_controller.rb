@@ -8,7 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "微博") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"].except("extra")
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url, notice: '微博登陆成功,请绑定您的邮箱完成注册'
     end
   end
   def renren
@@ -20,8 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "人人") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]  
-      sign_in @user
-      redirect_to '/users/sign_in', notice: '通过人人注册成功,请再次点击人人登陆完成登陆'
+      redirect_to new_user_registration_url, notice: '人人登陆成功,请绑定您的邮箱完成注册'
     end
   end
   def douban
@@ -33,10 +32,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "豆瓣") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url, notice: '豆瓣登陆成功,请绑定您的邮箱完成注册'
     end
   end
-  def qq
+  def qq_connect
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.find_for_qq_oauth(request.env["omniauth.auth"], current_user)
 
@@ -45,7 +44,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, :kind => "QQ") if is_navigational_format?
     else
       session["devise.social_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url, notice: 'QQ登陆成功，请绑定您的邮箱完成注册'
     end
   end
 end
