@@ -7,9 +7,9 @@
     <section>
       <h3><%= @xclub.name %></h3>
       <%=image_tag(@xclub.thumbnail.url("medium"), class: :"img-rounded", alt: :"")%>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="">加入我们</a></li>
-        <li><a href="">关于我们</a></li>
+      <ul class="nav nav-pills nav-stacked wm-list-group">
+        <li class="wm-list-group-item"><a href="">加入我们</a></li>
+        <li class="wm-list-group-item"><a href="">关于我们</a></li>
         <li><a href="">联系我们</a></li>
         <% if can? :edit, @xclub %>
           <li><%= link_to '添加新活动', new_xclub_xevent_path(@xclub) %></li>
@@ -71,4 +71,13 @@
 
 <% content_for :bottom_script do %>
     <%= render :partial => 'layouts/rails' %>
+    <script type="text/javascript">
+
+        $('.wm-list-group-item').on('click',function(e){
+            var previous = $(this).closest(".wm-list-group").children(".active");
+            previous.removeClass('active'); // previous list-item
+            $(e.target).addClass('active'); // activated list-item
+        });
+
+    </script>
 <% end %>

@@ -8,6 +8,18 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tags = Tag.all
+    @tagInfo = {}
+    @tags.each do |tag|
+      if tag.parent == 0
+        @tagInfo[tag.id] = [tag.name, 1, []]
+        @tagInfo[tag.id][TAGCHILD].push(tag)
+      else
+        @tagInfo[tag.parent][TAGCOUNT] += 1
+        @tagInfo[tag.parent][TAGCHILD].push(tag)
+      end
+    end
+    @levelOneTags = Tag.where(parent: 0)
+    puts @tagInfo.inspect
   end
 
   # GET /tags/1
@@ -19,6 +31,7 @@ class TagsController < ApplicationController
     @followable = @tag
     @follows = @followable.follows
     @follow = Follow.new
+    @childTags = Tag.where(parent: params[:id])
   end
 
   # GET /tags/new

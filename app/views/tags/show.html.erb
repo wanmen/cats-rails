@@ -15,6 +15,12 @@
 		<%= render :partial => 'likes/likes' %>
 		<%= render :partial => 'likes/form' %>
     </section>
+    <h3 class="page-header">相关标签</h3>
+    <section>
+      <% @childTags.each do |t| %>
+        <%= link_to t.name, t %><br/>
+      <% end %>
+    </section>
   </aside>
 
   <article class="col-sm-9">
