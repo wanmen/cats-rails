@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     # :token_authenticatable, :confirmable,
     # :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:douban,:weibo,:renren,:qq_connect]
+        :recoverable, :rememberable, :confirmable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:douban,:weibo,:renren,:qq_connect]
     has_many :books
     has_many :videos
     has_many :articles
