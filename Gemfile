@@ -14,6 +14,12 @@ gem 'rails-i18n'
 # Javascript Run Time
 gem 'execjs'
 
+gem 'sidekiq'
+
+gem "devise-async"
+
+# Send Email Async
+
 gem 'kramdown'
 
 gem 'therubyracer'
