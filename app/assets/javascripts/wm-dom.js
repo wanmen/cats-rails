@@ -52,12 +52,15 @@
     );
 
     $('.wm-recommend img').css('height',
-      $('.wm-recommend img').eq(0).css('height') || 120
+      $('.wm-recommend img').eq(0).height() || 120
     );
 
     $('.wm-show-video a').on('click', function() {
       var video = $(this).attr('href'),
         width = $('main article').width();
+      if($('.wm-show-video').length > 1) {
+        $('.wm-video .wm-video-title').text($(this).text());
+      }
       if(!$('.wm-video iframe').length) {
         $('.wm-video').append('<iframe src="http://player.youku.com/"></iframe>');
       }
