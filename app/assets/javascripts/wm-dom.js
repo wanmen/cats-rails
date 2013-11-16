@@ -48,11 +48,11 @@
     });
 
     $('.wm-gallery img').css('height',
-      $('.wm-gallery img').eq(-1).height()
+      $('.wm-gallery img').eq(0).height() || 240
     );
 
     $('.wm-recommend img').css('height',
-      $('.wm-recommend img').eq(-1).css('height')
+      $('.wm-recommend img').eq(0).css('height') || 120
     );
 
     $('.wm-show-video a').on('click', function() {
