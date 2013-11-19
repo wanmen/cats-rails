@@ -1,0 +1,7 @@
+---
+:require: ./app/workers/hard_worker.rb # in case of non Rails apps location of workers file to require:
+:concurrency: 25
+:queues:
+  - [often, 7]
+  - [default, 5]
+  - [seldom, 3]
