@@ -11,7 +11,7 @@
       </h3>
       <div class="row">
           <% @bestBooklist.each do |booklist| %>
-          <figure class="col-sm-4">
+          <figure class="col-sm-4 col-xs-6">
             <a href="/lists/<%=booklist.id %>.html" class="thumbnail">
                <img src="<%=booklist.cover.url("medium") %>" alt="">
             </a>
@@ -27,7 +27,7 @@
       </h3>
       <div class="row">
         <% @best.each do |book| %>
-        <figure class="col-sm-4">
+        <figure class="col-sm-4 col-xs-6">
           <a class="thumbnail" href="/books/<%=book.id %>.html">
             <img src="<%=book.cover %>!medium" alt="<%=book.title %>" title="<%=book.title %>"/>
           </a>
@@ -46,7 +46,7 @@
       </h3>
       <div class="row">
          <% @newest.each do |book| %>
-          <figure class="col-sm-4">
+          <figure class="col-sm-4 col-xs-6">
             <a class="thumbnail" href="/books/<%=book.id %>.html">
               <img src="<%=book.cover %>!medium" alt="" title="<%=book.title %>"/>
             </a>
