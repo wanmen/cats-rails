@@ -31,7 +31,7 @@
       	<% link=@Link.find(lkid) %> <!--TODO:: fix this proformance issue -->
       <div lkid="lkarray-<%= link.id %>">
         <div class="row wm-list-item">
-          <figure class="col-sm-3">
+          <figure class="col-sm-3 col-xs-6">
                 <% case link.linkable.class.name
                     when 'Book'%>          
                     <a href="/books/<%=link.linkable.id %>.html" class="thumbnail">

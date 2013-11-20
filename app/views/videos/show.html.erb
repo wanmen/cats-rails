@@ -17,7 +17,7 @@
       </span>
     </h3>
     <section class="row wm-gallery">
-      <figure class="col-sm-4 wm-show-video">
+      <figure class="col-sm-4 col-xs-6 wm-show-video">
         <a href="<%= @video.url %>" class="thumbnail">
           <%= image_tag(@video.cover.url("medium")) %>
         </a>
@@ -25,7 +25,7 @@
           <a href="<%= @video.url %>">观看视频</a>
         </figcaption>
       </figure>
-      <div class="col-sm-8 wm-metadata">
+      <div class="col-sm-8 col-xs-6 wm-metadata">
         <span>主讲人</span> <%= @video.lecturer %> <br/>
         <span>学校</span> <br/>
         <span>时长</span> <br/>
@@ -70,7 +70,7 @@
 </main>
 
 <% content_for :bottom_script do %>
-    <%= render :partial => 'layouts/markdown' %>
-    <%= render :partial => 'layouts/raty' %>
-    <%= render :partial => 'layouts/rails' %>
+  <%= render :partial => 'layouts/markdown' %>
+  <%= render :partial => 'layouts/raty' %>
+  <%= render :partial => 'layouts/rails' %>
 <% end %>
