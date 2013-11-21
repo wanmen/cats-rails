@@ -30,17 +30,18 @@ Cats::Application.configure do
   # Don't care if the mailer can't send
 
   require 'tlsmail' #key but not always described
-  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+  #Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
-  ActionMailer::Base.raise_delivery_errors = true 
+  ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.exmail.qq.com",
-  :port                 => 465,
-  :domain               => 'wanmen.org',
-  :user_name            => 'noreply@wanmen.org',
-  :password             => 'DoNotReply2013',
-  :authentication       => 'plain',
-  :enable_starttls_auto => true  }
+      :address              => 'smtp.qq.com',
+      :port                 => '25',
+      :domain               => 'qq.com',
+      :user_name            => 'noreply@wanmen.org',
+      :password             => 'DoNotReply2013',
+      :authentication       => 'login',
+  }
+  
   config.action_mailer.default_url_options = { :host => 'wanmen.org:3000' }
 end

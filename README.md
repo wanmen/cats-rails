@@ -38,3 +38,7 @@ Schrödinger's cat - Ruby on Rails
  	* `gem 'omniauth-renren-oauth2'`
  	* `gem 'omniauth-douban-oauth2'`
  	* `config/initializers/devise.rb` set up the smtp mail
+ * Async Mail
+ 	* `gem 'devise-async'`
+    * `gem 'sidekiq'`
+    * sending mail asynchronously. You will need to start redis in order to make it work.
