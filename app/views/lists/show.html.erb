@@ -25,7 +25,6 @@
     <section class="wm-indent">  
       <%=raw Kramdown::Document.new(@list.summary).to_html%>
     </section>
-
     <section class="wm-book-list wm-book-gallery">
       <% @links_array.each do |lkid| %>
       	<% link=@Link.find(lkid) %> <!--TODO:: fix this proformance issue -->
@@ -80,7 +79,7 @@
       </div>
       <% end %>
     </section>
-
+    <%= paginate @links_array %>
     <section class="wm-metadata">
       <div>   
       <%= render :partial => 'taglinks/taglinks' %>

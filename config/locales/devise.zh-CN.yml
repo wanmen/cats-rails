@@ -1,6 +1,12 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 zh-CN:
+  views:
+    pagination:
+      next: "下一页"
+      last: "最后页"
+      previous: "上一页"
+      first: "第一页"
   errors:
     messages:
       expired: "您已过期，请重新申请"

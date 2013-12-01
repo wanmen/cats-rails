@@ -18,10 +18,6 @@ gem 'kramdown'
 
 gem 'therubyracer'
 
-# To enable paginate
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
-
 # Use mysql for database
 gem 'mysql2'
 # in ubuntu, you will probably need to install some dependent libraries: sudo apt-get install mysql-client libmysqlclient-dev
@@ -49,6 +45,9 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+# For pagination
+gem 'kaminari', '~> 0.15.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

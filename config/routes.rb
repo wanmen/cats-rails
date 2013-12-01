@@ -14,6 +14,7 @@ Cats::Application.routes.draw do
     resources :likes
     resources :rates
     resources :taglinks
+    get ':id/page/:page', :action => :show, :on => :collection
   end
 
   resources :articles do
