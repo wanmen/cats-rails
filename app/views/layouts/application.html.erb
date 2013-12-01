@@ -12,13 +12,13 @@
     <meta property="og:url" content="http://beta.wanmen.org" />
     <meta property="og:title" content="万门大学" />
     <meta property="og:description" content="万门大学不仅是一所网络大学，它也是一种信仰，这种信仰来自于我们相信每个人内在的价值，相信大学之道的存在；它更是一次中国高等教育改革的践行——在符合时代特征和发展规律的基础上，对大学精神以及大学教育进行深入的思考和尝试。" />
-    <!-- Weibo -->
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=4110574502" type="text/javascript" charset="utf-8"></script>
+    <!-- End of Weibo -->
+
     <!-- for QQ login -->
     <meta property="qc:admins" content="5057303654167165566727" />
     <!-- End of QQ login -->
     
-    <!-- End of Weibo -->
     <!--[if IE]>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
@@ -92,6 +92,8 @@
           <form class="navbar-right navbar-form" action="/search" method="get" role="search">
             <div class="input-group">
               <input class="form-control" type="search" name="title" placeholder="图书，视频，经验贴" title="请输入关键词进行搜索"/>
+              <input type="hidden" name="type" value="book,video,article">
+              <input type="hidden" name="list" value="book,video,article,mix">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                   <span class="glyphicon glyphicon-search"></span>

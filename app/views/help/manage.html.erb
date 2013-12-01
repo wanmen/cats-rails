@@ -29,7 +29,8 @@
 	<dd>学者得到赏识将可以被提拔为管理员，为广大新生提供更多更优质的资源</dd>
 	<dd>你也可以直接<%= form_tag "/manage" do %><button class="btn btn-primary">申请</button><% end %>
 	<dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
-	<dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加单子</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加书单</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_article_path%>>添加经验贴</a></dd>
 	</dd>
 	<% elsif @role == PREADMIN %>
 	<dt>谢谢您申请万门管理员，我们会尽快处理您的请求。您现在可以</dt>
@@ -37,6 +38,7 @@
 	<dd>请注意操作的真实可靠性</dd>
 	<dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
 	<dd> <a class="btn btn-primary" href=<%=new_list_path%>>添加单子</a></dd>
+	<dd> <a class="btn btn-primary" href=<%=new_article_path%>>添加经验贴</a></dd>
 	<% elsif @role == ADMIN %>
 	<dt>您现在是万门大学管理员，可以做的事情是</dt>
 	<dd> <a class="btn btn-primary" href=<%=new_book_path%>>添加新书</a></dd>
