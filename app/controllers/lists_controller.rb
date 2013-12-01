@@ -43,6 +43,7 @@ class ListsController < ApplicationController
     else
     	@links_array = @list.links_array
     end
+    @links_array = Kaminari.paginate_array(@links_array).page(params[:page]).per(5)
 #    @links = Link.find(@list.links_array)
   end
 

@@ -83,15 +83,6 @@ class SearchController < ApplicationController
 		else
 			@allresults = (@books+@videos+@articles+@booklists+@videolists+@articlelists+@mixlists).sort_by { |k| k["created_at"] }.reverse
 		end
-		numperpage = 5
-		@page = 0
-		if params[:page]
-			@page = params[:page].to_i-1
-		end
-		@numberofpages= @allresults.length/numperpage +(@allresults.length%numperpage>0? 1:0)-1
-		@results = @allresults[@page*numperpage,numperpage]
-		if (@results==nil) 
-			@results =[]
-		end
+		@results = Kaminari.paginate_array(@allresults).page(params[:page]).per(5)
 	end
 end

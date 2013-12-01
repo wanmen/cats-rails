@@ -6,6 +6,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer = "Devise::Mailer"
   config.mailer_sender = "noreply@wanmen.org"
+  config.secret_key = '82edac18a4f401bcef0604bbb778e4bd3b316cb1a1268a8a7e63db05366610b3b88432859a3e9d98e235d24854b4b38fa0cd74e5464c2e292bb68607575ab2e7'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

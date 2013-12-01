@@ -169,13 +169,7 @@
     </section>
 
     <section class="text-center">
-      <ul class="pagination" data-total="<%= @numberofpages + 1 %>">
-        <li><a href="#prev" title="上一页">&laquo;</a></li>
-       <% for i in [@page-4, 0].max .. [@page+6, @numberofpages].min %>
-        <li<% if (i == @page) %> class="active"<% end %>><a href="?page=<%= i+1%>"><%= i+1%></a></li>
-       <% end %>
-        <li><a href="#next" title="下一页">&raquo;</a></li>
-      </ul>
+      <%= paginate @results %>
     </section>
   </article>
 
