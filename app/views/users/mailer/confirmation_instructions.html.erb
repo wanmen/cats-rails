@@ -1,7 +1,7 @@
-<p>您好 <%= @email %>!</p>
+<p>您好 <%= @resource.name %>!</p>
 
 <p>确认您的邮箱，请点击下面的链接:</p>
 
-<p><%= link_to '确认我的账号', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to '确认我的账号', confirmation_url(@resource, :confirmation_token => @token) %></p>
 <p>最好的问候，</p>
 <p>万门小机器人</p>

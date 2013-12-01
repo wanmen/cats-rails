@@ -98,6 +98,10 @@ class Ability
     can :update, Book, user_id: @user.id
     can :create, List, list_type: BOOKLIST
     can :update, List,  list_type: BOOKLIST, user_id: @user.id
+    can :create, [Article, Like, Rate]
+    can :update, Article, user_id: @user.id
+    can :create, List, list_type: ARTICLELIST
+    can :update, List,  list_type: ARTICLELIST, user_id: @user.id
     can :manage, Taglink # TODO: Only the taglinkable owner can manage, Now we are using a workaround.
     can [:create, :destroy], Link, user_id: @user.id
     can [:read, :create, :destroy], Comment, user_id: @user.id
