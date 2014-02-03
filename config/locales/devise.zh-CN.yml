@@ -7,6 +7,7 @@ zh-CN:
       last: "最后页"
       previous: "上一页"
       first: "第一页"
+      Truncate: "..."
   errors:
     messages:
       expired: "您已过期，请重新申请"
