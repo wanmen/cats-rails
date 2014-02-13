@@ -1,5 +1,9 @@
 <main class="container" role="main">
-	<a href="/scholars/<%= @user.id%>"><img src="<%= @user.thumbnail%>"> <%= @user.name %></a>
+	<% if @user.thumbnail.url.include? "profile.png" %>
+       <a href="/scholars/<%= @user.id%>"><img src="<%= asset_path("profile.png") %>" width="50px" /></a>
+    <% else %>
+       <a href="/scholars/<%= @user.id%>"><img src="<%= @user.thumbnail%>"> <%= @user.name %></a>
+    <% end %>
 	Ta的书
 	<% @user.books.each do |book| %>
 	<p>

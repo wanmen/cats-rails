@@ -3,7 +3,11 @@
 <% @comments.each do |comment| %>
 <div class="row">
 	<figure class="col-sm-2 wm-user-info">
-        <img src="<%= comment.user.thumbnail.url("medium") %>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
+    <% if comment.user.thumbnail.url.include? "profile.png" %>
+      <img src="<%= asset_path("profile.png") %>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
+    <% else %>
+       <img src="<%= comment.user.thumbnail.url("medium") %>" class="img-rounded" alt="<%= comment.user[:name]%>" title="<%= comment.user[:name]%>"/>
+    <% end %>
 	</figure>
 	<div class="col-sm-10 wm-user-comment">
 	  <h5>
