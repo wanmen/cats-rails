@@ -5,3 +5,9 @@ CarrierWave.configure do |config|
   config.upyun_bucket = "空间名"
   config.upyun_bucket_domain = "空间名.b0.upaiyun.com 或 使用你独立配置的域名"
 end
+
+/*CarrierWave.configure do |config|
+  config.permissions = 0666
+  config.directory_permissions = 0777
+  config.storage = :file
+end*/
